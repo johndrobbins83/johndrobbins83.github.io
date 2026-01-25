@@ -1,7 +1,9 @@
 /* =========================================================
    IMAGE-LINE / FL STUDIO INSPIRED DESIGN SYSTEM
    ========================================================= */
-
+body {
+  background: red !important;
+}
 :root {
     /* Core Colors */
     --color-bg: #0b0d10;
