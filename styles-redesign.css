@@ -1,0 +1,307 @@
+/* =============================
+   Root Variables
+   ============================= */
+:root {
+  /* Colors */
+  --color-primary: #1a5f7a;
+  --color-primary-light: #2d7a95;
+  --color-primary-dark: #0f3d4d;
+  --color-accent: #2196F3;
+  --color-accent-light: #64B5F6;
+  --color-bg: #1b1d22;
+  --color-bg-alt: #2e2f36;
+  --color-text: #ffffff;
+  --color-text-light: #cccccc;
+  --color-border: #3c3d46;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+
+  /* Layout */
+  --container-width: 1200px;
+  --border-radius: 8px;
+
+  /* Animations */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* =============================
+   Reset & Base
+   ============================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-accent-light);
+}
+
+/* =============================
+   Navigation
+   ============================= */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.nav-container {
+  width: var(--container-width);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav-menu li a {
+  padding: var(--spacing-xs) 0;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.nav-menu li a:hover {
+  color: var(--color-accent-light);
+}
+
+/* =============================
+   Headers / Hero
+   ============================= */
+.main-header {
+  padding: var(--spacing-xl) var(--spacing-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-top: 70px;
+}
+
+.header-container {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  max-width: var(--container-width);
+  width: 100%;
+}
+
+.header-photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-info {
+  flex: 2;
+}
+
+.header-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-accent);
+}
+
+.header-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.header-contact span {
+  display: inline-block;
+  margin-right: var(--spacing-md);
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.header-links a {
+  margin-right: var(--spacing-sm);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  background: var(--color-accent);
+  color: var(--color-white);
+  transition: all var(--transition-base);
+}
+
+.header-links a:hover {
+  background: var(--color-accent-light);
+}
+
+/* =============================
+   Sections
+   ============================= */
+.section {
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-accent-light);
+  display: inline-block;
+}
+
+/* Cards */
+.card {
+  background: var(--color-bg-alt);
+  border-radius: 12px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-md) 0;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+}
+
+/* Floating Cards / Highlight */
+.card-highlight {
+  background: linear-gradient(135deg, #1a5f7a, #0f3d4d);
+  color: #fff;
+  border: none;
+}
+
+/* =============================
+   Knobs
+   ============================= */
+.knob-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 3rem 0;
+}
+
+.knob {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #1b1d22;
+  border: 3px solid #2e2f36;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset -2px -2px 5px rgba(0,0,0,0.6),
+              inset 2px 2px 5px rgba(255,255,255,0.05),
+              0 5px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.knob::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 30%;
+  background: #f97316;
+  top: 10%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(0deg);
+  border-radius: 2px;
+}
+
+.knob::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -1.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  text-align: center;
+  width: 100%;
+}
+
+.knob:hover {
+  transform: scale(1.1);
+}
+
+/* =============================
+   Responsive
+   ============================= */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .stats-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .knob-container {
+    gap: 1rem;
+  }
+}
