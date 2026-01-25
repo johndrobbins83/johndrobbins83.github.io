@@ -1,277 +1,150 @@
-/* =============================
-   Root Variables
-   ============================= */
 :root {
-  /* Colors */
-  --color-primary: #1a5f7a;
-  --color-primary-light: #2d7a95;
-  --color-primary-dark: #0f3d4d;
-  --color-accent: #2196F3;
-  --color-accent-light: #64B5F6;
-  --color-bg: #1b1d22;
-  --color-bg-alt: #2e2f36;
+  --color-primary: #2196F3;
+  --color-primary-dark: #0d47a1;
+  --color-bg-dark: #1b1d22;
+  --color-bg-mid: #2e2f36;
+  --color-bg-light: #3c3d46;
   --color-text: #ffffff;
   --color-text-light: #cccccc;
-  --color-border: #3c3d46;
-  --color-white: #ffffff;
-
-  /* Typography */
   --font-display: 'Poppins', sans-serif;
   --font-body: 'Poppins', sans-serif;
-
-  /* Spacing */
+  --border-radius: 8px;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 5rem;
-
-  /* Layout */
-  --container-width: 1200px;
-  --border-radius: 8px;
-
-  /* Animations */
-  --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
-  --transition-slow: 0.5s ease;
-}
-
-/* =============================
-   Reset & Base
-   ============================= */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 body {
   font-family: var(--font-body);
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-dark);
   line-height: 1.7;
-  font-size: 16px;
-  overflow-x: hidden;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-text);
+  letter-spacing: 0.5px;
 }
 
-p {
-  margin-bottom: var(--spacing-sm);
-  color: var(--color-text-light);
-}
+h1 { font-weight: 700; font-size: 3rem; }
+h2 { font-weight: 600; font-size: 2.5rem; }
+h3 { font-weight: 500; font-size: 1.8rem; }
 
 a {
-  color: var(--color-accent);
   text-decoration: none;
+  color: var(--color-primary);
   transition: var(--transition-base);
 }
 
-a:hover {
-  color: var(--color-accent-light);
-}
+a:hover { color: var(--color-primary-dark); }
 
-/* =============================
-   Navigation
-   ============================= */
-.top-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(6px);
-}
-
-.nav-container {
-  width: var(--container-width);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-sm) var(--spacing-md);
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-accent);
-}
-
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: var(--spacing-md);
-}
-
-.nav-menu li a {
-  padding: var(--spacing-xs) 0;
-  font-weight: 500;
-  color: var(--color-text-light);
-}
-
-.nav-menu li a:hover {
-  color: var(--color-accent-light);
-}
-
-/* =============================
-   Headers / Hero
-   ============================= */
-.main-header {
-  padding: var(--spacing-xl) var(--spacing-md);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--spacing-lg);
-  margin-top: 70px;
-}
-
-.header-container {
-  display: flex;
-  gap: var(--spacing-lg);
-  flex-wrap: wrap;
-  max-width: var(--container-width);
-  width: 100%;
-}
-
-.header-photo {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-info {
-  flex: 2;
-}
-
-.header-info h1 {
-  font-size: 2.5rem;
-  margin-bottom: var(--spacing-sm);
-  color: var(--color-accent);
-}
-
-.header-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: var(--spacing-md);
-}
-
-.header-contact span {
-  display: inline-block;
-  margin-right: var(--spacing-md);
-  font-size: 0.9rem;
-  color: var(--color-text-light);
-}
-
-.header-links a {
-  margin-right: var(--spacing-sm);
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--border-radius);
+/* Buttons */
+.btn {
+  font-family: var(--font-display);
   font-weight: 600;
-  background: var(--color-accent);
-  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
   transition: all var(--transition-base);
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
 }
 
-.header-links a:hover {
-  background: var(--color-accent-light);
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-text);
 }
 
-/* =============================
-   Sections
-   ============================= */
-.section {
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-text);
+}
+
+/* Sections */
+section {
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
-.section-title {
-  font-size: 2rem;
-  margin-bottom: var(--spacing-md);
-  border-bottom: 2px solid var(--color-accent-light);
-  display: inline-block;
-}
+.hero { background: linear-gradient(135deg, #1b1d22, #2e2f36); }
+.about { background: var(--color-bg-mid); }
+.project-management { background: var(--color-bg-dark); }
+.web-development { background: var(--color-bg-light); }
+.music { background: var(--color-bg-dark); }
+.contact { background: var(--color-primary); color: #fff; }
 
 /* Cards */
 .card {
-  background: var(--color-bg-alt);
-  border-radius: 12px;
+  background: var(--color-bg-mid);
   padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   margin-bottom: var(--spacing-md);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: all var(--transition-base);
 }
 
-/* Stats */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+}
+
+/* Stats Row */
 .stats-row {
   display: flex;
   gap: var(--spacing-lg);
-  margin: var(--spacing-md) 0;
+  flex-wrap: wrap;
 }
 
-.stat-number {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-accent);
-}
+.stat-number { font-size: 2rem; font-weight: 700; color: var(--color-primary); }
+.stat-label { font-size: 0.9rem; color: var(--color-text-light); }
 
-.stat-label {
-  font-size: 0.9rem;
-}
-
-/* Floating Cards / Highlight */
-.card-highlight {
-  background: linear-gradient(135deg, #1a5f7a, #0f3d4d);
-  color: #fff;
-  border: none;
-}
-
-/* =============================
-   Knobs
-   ============================= */
+/* Knob Styles */
 .knob-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  flex-wrap: wrap;
   margin: 3rem 0;
 }
 
 .knob {
-  width: 80px;
-  height: 80px;
+  width: 80px; height: 80px;
   border-radius: 50%;
-  background: #1b1d22;
-  border: 3px solid #2e2f36;
+  background: var(--color-bg-dark);
+  border: 3px solid var(--color-bg-mid);
+  box-shadow: inset -2px -2px 5px rgba(0,0,0,0.6),
+              inset 2px 2px 5px rgba(255,255,255,0.05),
+              0 5px 10px rgba(0,0,0,0.3);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset -2px -2px 5px rgba(0,0,0,0.6),
-              inset 2px 2px 5px rgba(255,255,255,0.05),
-              0 5px 10px rgba(0,0,0,0.3);
   cursor: pointer;
-  transition: transform 0.2s;
 }
 
 .knob::before {
   content: '';
-  position: absolute;
-  width: 4px;
-  height: 30%;
+  width: 4px; height: 30%;
   background: #f97316;
+  position: absolute;
   top: 10%;
   left: 50%;
-  transform-origin: bottom center;
   transform: translateX(-50%) rotate(0deg);
+  transform-origin: bottom center;
   border-radius: 2px;
 }
 
@@ -279,29 +152,17 @@ a:hover {
   content: attr(data-label);
   position: absolute;
   bottom: -1.5rem;
-  font-size: 0.85rem;
-  color: #ccc;
-  text-align: center;
   width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
 }
 
-.knob:hover {
-  transform: scale(1.1);
-}
+.knob:hover { transform: scale(1.1); }
 
-/* =============================
-   Responsive
-   ============================= */
+/* Responsive */
 @media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .stats-row {
-    flex-direction: column;
-    align-items: center;
-  }
-  .knob-container {
-    gap: 1rem;
-  }
+  .stats-row, .knob-container { flex-direction: column; align-items: center; }
+  section { padding: 4rem 2rem; }
 }
+
