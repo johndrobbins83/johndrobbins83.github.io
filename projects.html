@@ -48,13 +48,13 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 1.5rem 2rem;
-            display: flex;
+            display: grid; grid-template-columns: auto 1fr auto;
             justify-content: space-between;
             align-items: center;
         }
 
         .nav-profile {
-            display: flex;
+            display: grid; grid-template-columns: auto 1fr auto;
             align-items: center;
             gap: 1rem;
         }
@@ -65,7 +65,7 @@
             border-radius: 50%;
             background: var(--dark-card);
             border: 2px solid var(--primary-blue);
-            display: flex;
+           display: grid; grid-template-columns: auto 1fr auto;
             align-items: center;
             justify-content: center;
             font-weight: 700;
@@ -75,7 +75,7 @@
         }
 
         .nav-info {
-            display: flex;
+            display: grid; grid-template-columns: auto 1fr auto;
             flex-direction: column;
             gap: 0.25rem;
         }
@@ -93,7 +93,7 @@
         }
 
         nav ul {
-            display: flex;
+            display: grid; grid-template-columns: auto 1fr auto;
             list-style: none;
             gap: 3rem;
         }
