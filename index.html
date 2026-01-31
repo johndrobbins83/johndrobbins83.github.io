@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John D. Robbins | Project Manager & Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #85C7F2;
+            --light-gray: #DBDBDB;
+            --off-white: #D1D1D1;
+            --mid-gray: #636363;
+            --dark-gray: #4C4C4C;
+            --dark-bg: #0A0A0A;
+            --dark-card: #141414;
+            --dark-border: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        nav {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-profile-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        .nav-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .nav-info .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--off-white);
+            line-height: 1.2;
+        }
+
+        .nav-info .title {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            color: var(--off-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-icon:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        nav ul li a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(133, 199, 242, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 1500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 500px;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 500px;
+            height: 500px;
+            border-radius: 8px;
+            border: 3px solid var(--primary-blue);
+            overflow: hidden;
+            background: var(--dark-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--mid-gray);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-text .summary {
+            font-size: 1.05rem;
+            color: var(--mid-gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            border: 1px solid;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+            border-color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background: var(--light-gray);
+            border-color: var(--light-gray);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--off-white);
+            border-color: var(--dark-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--off-white);
+            background: rgba(245, 245, 245, 0.05);
+        }
+
+        .profile-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            padding: 2rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-gray));
+        }
+
+        .profile-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+            border: 1px solid var(--dark-border);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-blue);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .profile-links a {
+            flex: 1;
+            padding: 0.75rem;
+            text-align: center;
+            background: rgba(245, 245, 245, 0.05);
+            border: 1px solid var(--dark-border);
+            color: var(--off-white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .profile-links a:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--dark-bg);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 2rem;
+            background: var(--dark-bg);
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .view-all {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-all:hover {
+            transform: translateX(5px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .category-section {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .project-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            width: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--dark-border);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-logo {
+            width: 60px;
+            height: 60px;
+            background: rgba(133, 199, 242, 0.1);
+            border: 1px solid var(--dark-border);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-logo-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-card h3 a {
+            color: var(--off-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project-card h3 a:hover {
+            color: var(--primary-blue);
+        }
+
+        .project-role {
+            color: var(--mid-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Work History & Summary */
+        .work-summary {
+            padding: 6rem 2rem;
+            background: var(--dark-card);
+            border-top: 1px solid var(--dark-border);
+            border-bottom: 1px solid var(--dark-border);
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .work-summary-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .summary-text h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .summary-text p {
+            color: var(--mid-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .work-history h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .job {
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--dark-border);
+            transition: border-color 0.3s ease;
+        }
+
+        .job:hover {
+            border-left-color: var(--primary-blue);
+        }
+
+        .job h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--off-white);
+        }
+
+        .job .company {
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .job .date {
+            color: var(--mid-gray);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Other Sections Preview */
+        .other-sections {
+            padding: 6rem 2rem;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .other-sections-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .section-preview {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--off-white);
+            display: block;
+        }
+
+        .section-preview:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .section-icon-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--dark-border);
+            transition: border-color 0.3s ease;
+        }
+
+        .section-preview:hover .section-icon-image {
+            border-color: var(--primary-blue);
+        }
+
+        .section-icon-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section-icon-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: var(--dark-bg);
+            color: var(--primary-blue);
+        }
+
+        .section-icon-image img:not([src=""]) + .section-icon-fallback {
+            display: none;
+        }
+
+        .section-preview h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--off-white);
+        }
+
+        .section-preview p {
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--dark-card);
+            border-top: 1px solid var(--dark-border);
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' /%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            color: var(--mid-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 1rem;
+            background: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            color: var(--off-white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.05);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            padding: 1rem 3rem;
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+            border: 1px solid var(--primary-blue);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
+            justify-self: start;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--light-gray);
+            border-color: var(--light-gray);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--dark-border);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact {
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--mid-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--off-white);
+        }
+
+        .copyright {
+            color: var(--mid-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 500px;
+                height: auto;
+                aspect-ratio: 1;
+                margin: 0 auto;
+            }
+
+            .work-summary-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            .nav-icons {
+                justify-content: flex-start;
+            }
+
+            .nav-info .name {
+                font-size: 0.9rem;
+            }
+
+            .nav-info .title {
+                font-size: 0.7rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects,
+            .work-summary,
+            .other-sections,
+            .contact {
+                padding: 3rem 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Scroll animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-profile">
+                <div class="nav-profile-image">JR</div>
+                <div class="nav-info">
+                    <div class="name">John D. Robbins</div>
+                    <div class="title">Project Manager</div>
+                </div>
+            </div>
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#work">Work History</a></li>
+                <li><a href="art-design.html">Design</a></li>
+                <li><a href="#audio">Audio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="resume.pdf" download class="nav-icon" title="Download Resume">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    John D. Robbins
+                    <span>Project Manager</span>
+                </h1>
+                <p class="subtitle">Marketing & Web Development</p>
+                <p class="summary">
+                    Results-driven Project Manager with 15+ years of experience leading cross-functional teams in web development, digital marketing, and creative production. Expert in bridging technical and business requirements while delivering exceptional results on time and under budget.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Replace this div with: <img src="your-image-path.jpg" alt="John D. Robbins"> -->
+                JDR
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="projects-container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+
+            <!-- Development Projects -->
+            <div class="category-section">
+                <h3 class="category-title">Development</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/540-logo.jpg" alt="540.co Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">540</div>
+                        </div>
+                        <h3><a href="https://www.540.co" target="_blank">540.co</a></h3>
+                        <p class="project-role">Project Manager, Co-Developer</p>
+                        <p class="project-description">Full-scale web development and project coordination for modern digital solution.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/wilmington-marine-logo.jpg" alt="Wilmington Marine Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">WM</div>
+                        </div>
+                        <h3><a href="https://www.wilmingtonmarine.com" target="_blank">Wilmington Marine</a></h3>
+                        <p class="project-role">Project Manager, Co-Developer</p>
+                        <p class="project-description">Comprehensive marine services website with custom functionality and user experience.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/seven-rubies-logo.jpg" alt="Seven Rubies Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">7R</div>
+                        </div>
+                        <h3><a href="https://www.sevenrubies.com" target="_blank">Seven Rubies</a></h3>
+                        <p class="project-role">Project Manager, Wireframe</p>
+                        <p class="project-description">Strategic planning and wireframe development for brand website architecture.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/jungle-rapids-logo.jpg" alt="Jungle Rapids Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">JR</div>
+                        </div>
+                        <h3><a href="https://www.junglerapids.com" target="_blank">Jungle Rapids</a></h3>
+                        <p class="project-role">Project Management</p>
+                        <p class="project-description">Project coordination for family entertainment venue digital presence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketing Projects -->
+            <div class="category-section">
+                <h3 class="category-title">Marketing</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/marblehead-logo.jpg" alt="Marblehead Custom Jewelry Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">MC</div>
+                        </div>
+                        <h3><a href="https://www.marbleheadcustomjewelry.com" target="_blank">Marblehead Custom Jewelry</a></h3>
+                        <p class="project-role">Marketing Manager, Advertising</p>
+                        <p class="project-description">Comprehensive digital marketing strategy including Google Ads, Meta campaigns, and custom interactive jewelry creator tool.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/glory-foods-logo.jpg" alt="Glory Foods Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">GF</div>
+                        </div>
+                        <h3><a href="https://www.gloryfopods.com" target="_blank">Glory Foods</a></h3>
+                        <p class="project-role">Marketing Project Manager</p>
+                        <p class="project-description">National campaign partnering with gospel choirs for authentic brand storytelling and community engagement.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/peanut-patch-logo.jpg" alt="Peanut Patch Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">PP</div>
+                        </div>
+                        <h3><a href="https://www.peanutpatchboiledpeanuts.com" target="_blank">Peanut Patch</a></h3>
+                        <p class="project-role">Marketing Project Manager</p>
+                        <p class="project-description">Television commercial production and integrated social media campaign management.</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-logo">
+                            <img src="images/logos/jungle-rapids-marketing-logo.jpg" alt="Jungle Rapids Marketing Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-logo-text" style="display:none;">JR</div>
+                        </div>
+                        <h3><a href="https://www.junglerapids.com" target="_blank">Jungle Rapids Marketing</a></h3>
+                        <p class="project-role">Marketing Project Management</p>
+                        <p class="project-description">Multi-channel marketing strategy and campaign execution for entertainment venue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work History & Summary -->
+    <section class="work-summary" id="work">
+        <div class="work-summary-container">
+            <div class="summary-text">
+                <h2>Professional Experience</h2>
+                <p>
+                    With over 15 years of experience spanning web development, digital marketing, and creative production, I've built a career on delivering exceptional results through strategic project management and technical excellence.
+                </p>
+                <p>
+                    My unique background combines hands-on development expertise with comprehensive marketing strategy, allowing me to bridge the gap between technical teams and business objectives effectively.
+                </p>
+                <p>
+                    From managing multi-brand national campaigns to developing custom web applications, I bring a solutions-focused approach to every project, ensuring deliverables exceed client expectations while maintaining profitability and timeline commitments.
+                </p>
+            </div>
+            <div class="work-history">
+                <h3>Work History</h3>
+                <div class="job">
+                    <h4>Development and Marketing Project Manager</h4>
+                    <p class="company">Bluetone Media</p>
+                    <p class="date">January 2025 – Present</p>
+                </div>
+                <div class="job">
+                    <h4>Part-Time Marketing Advertiser & Webmaster</h4>
+                    <p class="company">Marblehead Custom Jewelry</p>
+                    <p class="date">March 2025 – Present</p>
+                </div>
+                <div class="job">
+                    <h4>Marketing Project Manager</h4>
+                    <p class="company">Coyne & Co Advertising / McCall Farms</p>
+                    <p class="date">December 2020 – June 2025</p>
+                </div>
+                <div class="job">
+                    <h4>Professional Music Producer</h4>
+                    <p class="company">Independent</p>
+                    <p class="date">September 2009 – December 2020</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Sections Preview -->
+    <section class="other-sections">
+        <div class="other-sections-container">
+            <div class="section-header">
+                <h2>More to Explore</h2>
+            </div>
+            <div class="sections-grid">
+                <a href="web-development.html" class="section-preview">
+                    <div class="section-icon-image">
+                        <img src="images/web-dev-icon.jpg" alt="Web Development">
+                        <!-- If no image yet, you'll see the placeholder emoji below -->
+                        <div class="section-icon-fallback">💻</div>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Full-stack development projects and custom solutions</p>
+                </a>
+                <a href="art-design-v1-complete.html" class="section-preview">
+                    <div class="section-icon-image">
+                        <img src="images/design-icon.jpg" alt="Art & Design">
+                        <div class="section-icon-fallback">🎨</div>
+                    </div>
+                    <h3>Art & Design</h3>
+                    <p>Creative design work across digital and print media</p>
+                </a>
+                <a href="music-audio.html" class="section-preview">
+                    <div class="section-icon-image">
+                        <img src="images/music-icon.jpg" alt="Music & Audio">
+                        <div class="section-icon-fallback">🎵</div>
+                    </div>
+                    <h3>Music & Audio</h3>
+                    <p>Professional production, engineering, and composition</p>
+                </a>
+                <a href="podcasts.html" class="section-preview">
+                    <div class="section-icon-image">
+                        <img src="images/podcast-icon.jpg" alt="Podcasts">
+                        <div class="section-icon-fallback">🎙️</div>
+                    </div>
+                    <h3>Podcasts</h3>
+                    <p>Audio content creation and production projects</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Contact Me</h2>
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason for Contact</label>
+                    <select id="reason" name="reason">
+                        <option value="">Select a reason</option>
+                        <option value="employment">Employment</option>
+                        <option value="project">Project Management</option>
+                        <option value="design">Design</option>
+                        <option value="development">Web Development</option>
+                        <option value="audio">Audio</option>
+                        <option value="video">Video</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">John D. Robbins</div>
+            <div class="footer-contact">
+                <a href="/cdn-cgi/l/email-protection#1a707572747e6875787873746922295a7d777b737634797577"><span class="__cf_email__" data-cfemail="b2d8dddadcd6c0ddd0d0dbdcc18a81f2d5dfd3dbde9cd1dddf">[email&#160;protected]</span></a> | Holly Ridge, NC
+            </div>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
+                <a href="/resume.pdf" download>Resume</a>
+            </div>
+            <p class="copyright">&copy; 2026 John D. Robbins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Form submission handler
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Form submission functionality to be implemented. This will connect to your backend service.');
+});
+    </script>
+</body>
+</html>
