@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work History & Projects | John D. Robbins</title>
+    <title>Work History | John D. Robbins</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -45,12 +45,13 @@
         }
 
         nav {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
+            gap: 3rem;
         }
 
         .nav-profile {
@@ -60,8 +61,8 @@
         }
 
         .nav-profile-image {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: var(--dark-card);
             border: 2px solid var(--primary-blue);
@@ -69,7 +70,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary-blue);
             flex-shrink: 0;
         }
@@ -77,319 +78,82 @@
         .nav-info {
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            gap: 0.1rem;
         }
 
         .nav-info .name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--off-white);
+            line-height: 1.2;
         }
 
         .nav-info .title {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--mid-gray);
             font-weight: 400;
+            line-height: 1.2;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: 2rem;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
         }
 
-        nav a {
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            color: var(--off-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-icon:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        nav ul li a {
             color: var(--off-white);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
             position: relative;
+            padding: 0.5rem 0;
         }
 
-        nav a:hover {
+        nav ul li a:hover {
             color: var(--primary-blue);
         }
 
-        nav a::after {
+        nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(133, 199, 242, 0.15) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
-        }
-
-        .hero-content {
-            max-width: 1500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 500px;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-image {
-            width: 500px;
-            height: 500px;
-            border-radius: 8px;
-            border: 3px solid var(--primary-blue);
-            overflow: hidden;
-            background: var(--dark-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary-blue);
-            font-weight: 700;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-text h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
-        }
-
-        .hero-text h1 span {
-            color: var(--primary-blue);
-            display: block;
-        }
-
-        .hero-text .subtitle {
-            font-size: 1.3rem;
-            color: var(--mid-gray);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .hero-text .summary {
-            font-size: 1.05rem;
-            color: var(--mid-gray);
-            margin-bottom: 3rem;
-            max-width: 800px;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-            border: 1px solid;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            border-color: var(--primary-blue);
-        }
-
-        .btn-primary:hover {
-            background: var(--light-gray);
-            border-color: var(--light-gray);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--off-white);
-            border-color: var(--dark-border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--off-white);
-            background: rgba(245, 245, 245, 0.05);
-        }
-
-        .profile-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            padding: 2rem;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--light-gray));
-        }
-
-        .profile-image {
-            width: 100%;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
-            border: 1px solid var(--dark-border);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--primary-blue);
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .profile-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .profile-links a {
-            flex: 1;
-            padding: 0.75rem;
-            text-align: center;
-            background: rgba(245, 245, 245, 0.05);
-            border: 1px solid var(--dark-border);
-            color: var(--off-white);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .profile-links a:hover {
-            background: var(--primary-blue);
-            border-color: var(--primary-blue);
-            color: var(--dark-bg);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 6rem 2rem;
-            background: var(--dark-bg);
-            background-image: 
-                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .projects-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        .section-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            font-weight: 600;
-        }
-
-        .view-all {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .view-all:hover {
-            transform: translateX(5px);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .category-section {
-            margin-bottom: 4rem;
-        }
-
-        .category-title {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .project-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -397,192 +161,292 @@
             transition: width 0.3s ease;
         }
 
-        .project-card:hover::before {
+        nav ul li a:hover::after {
             width: 100%;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--dark-border);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        /* Page Hero */
+        .page-hero {
+            margin-top: 80px;
+            padding: 4rem 2rem 2rem;
+            background: var(--dark-bg);
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .project-logo {
-            width: 60px;
-            height: 60px;
-            background: rgba(133, 199, 242, 0.1);
-            border: 1px solid var(--dark-border);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
+        .page-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .project-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-
-        .project-card h3 a {
-            color: var(--off-white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .project-card h3 a:hover {
-            color: var(--primary-blue);
-        }
-
-        .project-role {
-            color: var(--mid-gray);
-            font-size: 0.9rem;
+        .page-hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: var(--off-white);
         }
 
-        .project-description {
+        .page-hero h1 span {
+            color: var(--primary-blue);
+        }
+
+        .page-hero .subtitle {
+            font-size: 1.2rem;
             color: var(--mid-gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 3rem;
         }
 
-        /* Work History & Summary */
-        .work-summary {
+        /* Timeline Section */
+        .timeline-section {
             padding: 6rem 2rem;
-            background: var(--dark-card);
-            border-top: 1px solid var(--dark-border);
-            border-bottom: 1px solid var(--dark-border);
+            background: var(--dark-bg);
             background-image: 
                 radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 20px 20px;
         }
 
-        .work-summary-container {
-            max-width: 1400px;
+        .timeline-container {
+            max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        /* Timeline Line */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary-blue), transparent);
+        }
+
+        .timeline-item {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 0;
+            margin-bottom: 4rem;
+            position: relative;
         }
 
-        .summary-text h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-marker {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-empty {
+            grid-column: 3;
+        }
+
+        .timeline-item:nth-child(even) .timeline-empty {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-marker {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 3;
+        }
+
+        .timeline-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border: 4px solid var(--dark-bg);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--primary-blue);
+        }
+
+        .timeline-content {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            padding: 2.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -20px;
+            border-left-color: var(--dark-border);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -20px;
+            border-right-color: var(--dark-border);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(133, 199, 242, 0.2);
+            border-color: var(--primary-blue);
+        }
+
+        .job-dates {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
             font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .summary-text p {
+        .job-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--off-white);
+        }
+
+        .company-name {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .job-description {
             color: var(--mid-gray);
             line-height: 1.8;
             margin-bottom: 1.5rem;
         }
 
-        .work-history h3 {
-            font-size: 1.5rem;
+        .job-responsibilities {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-responsibilities li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--mid-gray);
+            line-height: 1.6;
+        }
+
+        .job-responsibilities li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .job-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(133, 199, 242, 0.1);
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* Summary Section */
+        .summary-section {
+            padding: 6rem 2rem;
+            background: var(--dark-card);
+            border-top: 1px solid var(--dark-border);
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .summary-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .summary-box {
+            background: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            padding: 3rem;
+            border-radius: 4px;
+        }
+
+        .summary-box h2 {
+            font-size: 2rem;
             color: var(--primary-blue);
             margin-bottom: 2rem;
             font-weight: 600;
         }
 
-        .job {
-            margin-bottom: 2.5rem;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--dark-border);
-            transition: border-color 0.3s ease;
-        }
-
-        .job:hover {
-            border-left-color: var(--primary-blue);
-        }
-
-        .job h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--off-white);
-        }
-
-        .job .company {
+        .summary-box p {
             color: var(--mid-gray);
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
-        .job .date {
-            color: var(--mid-gray);
-            font-size: 0.85rem;
-            font-style: italic;
-        }
-
-        /* Other Sections Preview */
-        .other-sections {
-            padding: 6rem 2rem;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .other-sections-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .sections-grid {
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .section-preview {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .section-preview:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-blue);
-        }
-
-        .section-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-blue);
-        }
-
-        .section-preview h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--off-white);
+            margin-bottom: 0.75rem;
             font-weight: 600;
         }
 
-        .section-preview p {
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category ul li {
             color: var(--mid-gray);
+            padding: 0.25rem 0;
             font-size: 0.95rem;
         }
 
         /* Contact Section */
         .contact {
             padding: 6rem 2rem;
-            background: var(--dark-card);
+            background: var(--dark-bg);
             border-top: 1px solid var(--dark-border);
             background-image: 
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' /%3E%3C/g%3E%3C/svg%3E");
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='25' r='3'/%3E%3Ccircle cx='90' cy='15' r='2'/%3E%3Ccircle cx='30' cy='60' r='2.5'/%3E%3Ccircle cx='70' cy='80' r='3'/%3E%3Ccircle cx='20' cy='90' r='2'/%3E%3Ccircle cx='85' cy='50' r='2.5'/%3E%3Ccircle cx='45' cy='85' r='2'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         .contact-container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .contact h2 {
-            font-family: 'Poppins', sans-serif;
             font-size: 3rem;
             text-align: center;
             margin-bottom: 3rem;
@@ -590,12 +454,14 @@
         }
 
         .contact-form {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
         }
 
         .form-group {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 0.5rem;
         }
 
@@ -648,33 +514,31 @@
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
             border-radius: 2px;
-            justify-self: start;
         }
 
         button[type="submit"]:hover {
             background: var(--light-gray);
-            border-color: var(--light-gray);
-            color: var(--dark-bg);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
         }
 
         /* Footer */
         footer {
-            padding: 3rem 2rem;
+            background: var(--dark-card);
             border-top: 1px solid var(--dark-border);
-            text-align: center;
+            padding: 3rem 2rem 2rem;
         }
 
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .footer-logo {
-            font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: var(--off-white);
         }
 
         .footer-contact {
@@ -685,569 +549,123 @@
         .footer-contact a {
             color: var(--primary-blue);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--light-gray);
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .footer-links a {
-            color: var(--mid-gray);
+            color: var(--off-white);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         .footer-links a:hover {
-            color: var(--off-white);
+            color: var(--primary-blue);
         }
 
         .copyright {
-            color: var(--mid-gray);
-            font-size: 0.85rem;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+            .timeline-container::before {
+                left: 40px;
             }
 
-            .hero-image {
-                width: 100%;
-                max-width: 500px;
-                height: auto;
-                aspect-ratio: 1;
-                margin: 0 auto;
+            .timeline-item {
+                grid-template-columns: 80px 1fr;
             }
 
-            .work-summary-container {
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                grid-column: 2;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-marker,
+            .timeline-item:nth-child(even) .timeline-marker {
+                grid-column: 1;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-empty,
+            .timeline-item:nth-child(even) .timeline-empty {
+                display: none;
+            }
+
+            .timeline-content::before {
+                left: -20px !important;
+                right: auto !important;
+                border-right-color: var(--dark-border) !important;
+                border-left-color: transparent !important;
+            }
+
+            .summary-container {
                 grid-template-columns: 1fr;
-                gap: 4rem;
+                gap: 2rem;
             }
         }
 
         @media (max-width: 768px) {
             nav {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
             }
 
             nav ul {
-                gap: 1.5rem;
-                font-size: 0.9rem;
+                gap: 1rem;
+                font-size: 0.85rem;
                 flex-wrap: wrap;
+                justify-content: flex-start;
             }
 
-            .hero-text h1 {
+            .nav-icons {
+                justify-content: flex-start;
+            }
+
+            .nav-info .name {
+                font-size: 0.9rem;
+            }
+
+            .nav-info .title {
+                font-size: 0.7rem;
+            }
+
+            .page-hero h1 {
                 font-size: 3rem;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .timeline-section {
+                padding: 4rem 1rem;
             }
 
-            .sections-grid {
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .job-title {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
             }
-
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-                width: 100%;
-            }
-
-            .hero {
-                padding: 2rem 1rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .projects,
-            .work-summary,
-            .other-sections,
-            .contact {
-                padding: 3rem 1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Scroll animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        /* Additional styles for Work History page */
-        .page-hero {
-            margin-top: 80px;
-            padding: 4rem 2rem 2rem;
-            background: var(--dark-bg);
-            background-image: 
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .page-hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .page-hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--off-white);
-        }
-
-        .page-hero h1 span {
-            color: var(--primary-blue);
-        }
-
-        .page-hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--mid-gray);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        /* Filter and Sort Controls */
-        .controls-section {
-            padding: 3rem 2rem 0;
-            background: var(--dark-bg);
-        }
-
-        .controls-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            color: var(--off-white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-
-        .filter-btn:hover {
-            border-color: var(--primary-blue);
-            background: rgba(133, 199, 242, 0.1);
-        }
-
-        .filter-btn.active {
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            border-color: var(--primary-blue);
-        }
-
-        .sort-control {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .sort-control label {
-            color: var(--mid-gray);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .sort-control select {
-            padding: 0.75rem 1.5rem;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            color: var(--off-white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-
-        .sort-control select:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-
-        /* Projects Section */
-        .projects-list {
-            padding: 3rem 2rem 6rem;
-            background: var(--dark-bg);
-            background-image: 
-                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .projects-list-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .category-header {
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        .category-header h2 {
-            font-size: 2rem;
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        /* Enhanced Project Cards */
-        .project-card-enhanced {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .project-card-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
-
-        .project-card-enhanced:hover::before {
-            width: 100%;
-        }
-
-        .project-card-enhanced:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .project-header {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .project-logo-large {
-            width: 80px;
-            height: 80px;
-            background: rgba(133, 199, 242, 0.1);
-            border: 1px solid var(--dark-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-blue);
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .project-logo-large img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-info {
-            flex: 1;
-        }
-
-        .project-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .project-info h3 a {
-            color: var(--off-white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .project-info h3 a:hover {
-            color: var(--primary-blue);
-        }
-
-        .project-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .meta-item {
-            color: var(--mid-gray);
-        }
-
-        .meta-item strong {
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        .project-description {
-            color: var(--mid-gray);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-specs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .spec-tag {
-            padding: 0.5rem 1rem;
-            background: rgba(133, 199, 242, 0.1);
-            border: 1px solid var(--dark-border);
-            color: var(--primary-blue);
-            font-size: 0.85rem;
-            border-radius: 20px;
-        }
-
-        .project-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-view-gallery {
-            padding: 0.75rem 1.5rem;
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-view-gallery:hover {
-            background: var(--light-gray);
-            transform: translateY(-2px);
-        }
-
-        .btn-view-site {
-            padding: 0.75rem 1.5rem;
-            background: transparent;
-            color: var(--off-white);
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 4px;
-            border: 1px solid var(--dark-border);
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .btn-view-site:hover {
-            border-color: var(--primary-blue);
-            background: rgba(133, 199, 242, 0.05);
-        }
-
-        /* Gallery Modal */
-        .gallery-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 10000;
-            overflow-y: auto;
-        }
-
-        .gallery-modal.active {
-            display: block;
-        }
-
-        .gallery-modal-content {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .gallery-close {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--off-white);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            z-index: 10001;
-        }
-
-        .gallery-close:hover {
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            transform: rotate(90deg);
-        }
-
-        .gallery-title {
-            font-size: 2rem;
-            color: var(--off-white);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            aspect-ratio: 16/9;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 4px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            border-color: var(--primary-blue);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-item-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary-blue);
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .controls-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .page-hero h1 {
-                font-size: 3rem;
-            }
-
-            .filter-buttons {
-                width: 100%;
-            }
-
-            .filter-btn {
-                flex: 1;
-                text-align: center;
-            }
-
-            .project-header {
-                flex-direction: column;
-            }
-
-            .project-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1255,10 +673,16 @@
                 font-size: 2.5rem;
             }
 
-            .controls-section,
-            .projects-list {
-                padding-left: 1rem;
-                padding-right: 1rem;
+            .timeline-container::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 40px 1fr;
+            }
+
+            .job-title {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -1276,9 +700,8 @@
             </div>
             <ul>
                 <li><a href="index-v1-complete.html">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="work-history-v1-complete.html">Work History</a></li>
-                <li><a href="art-design.html">Design</a></li>
+                <li><a href="work-history-v1-complete.html">Projects</a></li>
+                <li><a href="art-design-v1-complete.html">Design</a></li>
                 <li><a href="#audio">Audio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1304,52 +727,192 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="page-hero-content">
-            <h1>Work History <span>&</span> Projects</h1>
-            <p class="subtitle">A comprehensive portfolio of development, marketing, and project management work across multiple industries and platforms.</p>
+            <h1><span>Work</span> History</h1>
+            <p class="subtitle">A chronological journey through my professional experience in project management, marketing, and web development.</p>
         </div>
     </section>
 
-    <!-- Filter and Sort Controls -->
-    <section class="controls-section">
-        <div class="controls-container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="development">Development</button>
-                <button class="filter-btn" data-filter="marketing">Marketing</button>
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+
+            <!-- Bluetone Media -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="job-dates">January 2025 - Present</div>
+                    <h3 class="job-title">Project Manager</h3>
+                    <div class="company-name">Bluetone Media</div>
+                    <p class="job-description">Leading web development and marketing projects for diverse clients, managing full project lifecycles from conception through deployment.</p>
+                    <ul class="job-responsibilities">
+                        <li>Managing multiple concurrent web development projects with 2-3 developers per project</li>
+                        <li>Client relationship management and project scope definition</li>
+                        <li>Development of custom web tools and interactive features</li>
+                        <li>SEO optimization and digital marketing strategy implementation</li>
+                        <li>Quality assurance and project delivery coordination</li>
+                    </ul>
+                    <div class="job-skills">
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Client Relations</span>
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">SEO</span>
+                    </div>
+                </div>
+                <div class="timeline-marker">
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-empty"></div>
             </div>
-            <div class="sort-control">
-                <label for="sort-select">Sort by:</label>
-                <select id="sort-select">
-                    <option value="newest">Newest First</option>
-                    <option value="az">A-Z</option>
-                    <option value="za">Z-A</option>
-                </select>
+
+            <!-- Marblehead Custom Jewelry -->
+            <div class="timeline-item">
+                <div class="timeline-empty"></div>
+                <div class="timeline-marker">
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="job-dates">March 2025 - Present</div>
+                    <h3 class="job-title">Marketing Manager & Webmaster</h3>
+                    <div class="company-name">Marblehead Custom Jewelry</div>
+                    <p class="job-description">Comprehensive digital marketing and web management for luxury custom jewelry brand, including tool development and advertising campaigns.</p>
+                    <ul class="job-responsibilities">
+                        <li>Developed interactive Custom Jewelry Creator tool using HTML/CSS/JS integrated with Google Sheets</li>
+                        <li>Managing Google Ads and Meta advertising campaigns</li>
+                        <li>Website maintenance and landing page creation using WordPress/Divi</li>
+                        <li>Digital marketing strategy and analytics</li>
+                        <li>Customer engagement and conversion optimization</li>
+                    </ul>
+                    <div class="job-skills">
+                        <span class="skill-tag">Digital Marketing</span>
+                        <span class="skill-tag">WordPress</span>
+                        <span class="skill-tag">Google Ads</span>
+                        <span class="skill-tag">Meta Ads</span>
+                        <span class="skill-tag">Tool Development</span>
+                    </div>
+                </div>
             </div>
+
+            <!-- Coyne & Co / McCall Farms -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="job-dates">December 2020 - June 2025</div>
+                    <h3 class="job-title">Marketing Project Manager</h3>
+                    <div class="company-name">Coyne & Co / McCall Farms</div>
+                    <p class="job-description">Led major marketing campaigns for national food brands including Glory Foods and Peanut Patch, managing creative teams and multi-channel marketing initiatives.</p>
+                    <ul class="job-responsibilities">
+                        <li>Managed Glory Foods national campaign partnering with gospel choirs for authentic brand storytelling</li>
+                        <li>Led Peanut Patch "Get Boilin'" television and social media campaign</li>
+                        <li>Coordinated asset creation, social media management, and team workflows</li>
+                        <li>Television commercial production and post-production oversight</li>
+                        <li>Multi-platform campaign strategy and execution</li>
+                    </ul>
+                    <div class="job-skills">
+                        <span class="skill-tag">Campaign Management</span>
+                        <span class="skill-tag">TV Production</span>
+                        <span class="skill-tag">Social Media</span>
+                        <span class="skill-tag">Team Management</span>
+                        <span class="skill-tag">Brand Strategy</span>
+                    </div>
+                </div>
+                <div class="timeline-marker">
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-empty"></div>
+            </div>
+
+            <!-- Independent Music Producer -->
+            <div class="timeline-item">
+                <div class="timeline-empty"></div>
+                <div class="timeline-marker">
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="job-dates">September 2009 - December 2020</div>
+                    <h3 class="job-title">Independent Music Producer</h3>
+                    <div class="company-name">Self-Employed</div>
+                    <p class="job-description">Professional music production, audio engineering, and composition work for independent artists and commercial projects.</p>
+                    <ul class="job-responsibilities">
+                        <li>Full music production from concept through final mastering</li>
+                        <li>Audio engineering and mixing for diverse musical genres</li>
+                        <li>Composition and sound design for commercial projects</li>
+                        <li>Client relationship management and project coordination</li>
+                        <li>Studio management and technical workflow optimization</li>
+                    </ul>
+                    <div class="job-skills">
+                        <span class="skill-tag">Music Production</span>
+                        <span class="skill-tag">Audio Engineering</span>
+                        <span class="skill-tag">Composition</span>
+                        <span class="skill-tag">Pro Tools</span>
+                        <span class="skill-tag">Mixing & Mastering</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Projects List -->
-    <section class="projects-list">
-        <div class="projects-list-container">
-            <div id="projects-container">
-                <!-- Projects will be dynamically inserted here -->
+    <!-- Summary Section -->
+    <section class="summary-section">
+        <div class="summary-container">
+            <div class="summary-box">
+                <h2>Professional Summary</h2>
+                <p>Versatile project manager with extensive experience bridging creative and technical disciplines. Proven track record of delivering complex web development projects, managing marketing campaigns, and leading cross-functional teams.</p>
+                <p>My unique background in music production has cultivated strong attention to detail, creative problem-solving abilities, and the discipline required for managing intricate, multi-layered projects.</p>
+                <p>Specializing in web development project management, digital marketing strategy, and creating innovative technical solutions that drive business results.</p>
+            </div>
+
+            <div class="summary-box">
+                <h2>Core Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Project Management</h3>
+                        <ul>
+                            <li>Agile Methodologies</li>
+                            <li>Team Leadership</li>
+                            <li>Client Relations</li>
+                            <li>Scope Definition</li>
+                            <li>Timeline Management</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Web Development</h3>
+                        <ul>
+                            <li>HTML/CSS/JavaScript</li>
+                            <li>WordPress/Divi</li>
+                            <li>Responsive Design</li>
+                            <li>UI/UX Principles</li>
+                            <li>SEO Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Marketing</h3>
+                        <ul>
+                            <li>Digital Advertising</li>
+                            <li>Google & Meta Ads</li>
+                            <li>Campaign Strategy</li>
+                            <li>Social Media</li>
+                            <li>Analytics & Reporting</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Creative Tools</h3>
+                        <ul>
+                            <li>Adobe Creative Suite</li>
+                            <li>Photoshop/Illustrator</li>
+                            <li>Premiere Pro</li>
+                            <li>Pro Tools</li>
+                            <li>Balsamiq Wireframes</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Gallery Modal -->
-    <div class="gallery-modal" id="gallery-modal">
-        <div class="gallery-close" onclick="closeGallery()">×</div>
-        <div class="gallery-modal-content">
-            <h2 class="gallery-title" id="gallery-title"></h2>
-            <div class="gallery-grid" id="gallery-grid"></div>
-        </div>
-    </div>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
-            <h2>Contact Me</h2>
+            <h2>Get In Touch</h2>
             <form class="contact-form">
                 <div class="form-row">
                     <div class="form-group">
@@ -1369,12 +932,9 @@
                     <label for="reason">Reason for Contact</label>
                     <select id="reason" name="reason">
                         <option value="">Select a reason</option>
-                        <option value="employment">Employment</option>
-                        <option value="project">Project Management</option>
-                        <option value="design">Design</option>
-                        <option value="development">Web Development</option>
-                        <option value="audio">Audio</option>
-                        <option value="video">Video</option>
+                        <option value="employment">Employment Opportunity</option>
+                        <option value="project">Project Inquiry</option>
+                        <option value="collaboration">Collaboration</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
@@ -1396,349 +956,32 @@
             </div>
             <div class="footer-links">
                 <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
-                <a href="/resume.pdf" download>Resume</a>
+                <a href="resume.pdf" download>Resume</a>
             </div>
             <p class="copyright">&copy; 2026 John D. Robbins. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Form submission handler
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Form submission functionality to be implemented. This will connect to your backend service.');
-});
-
-        // Projects Data
-        const projectsData = [
-            {
-                id: 'marblehead-jewelry',
-                title: 'Marblehead Custom Jewelry',
-                url: 'https://www.marbleheadcustomjewelry.com',
-                category: 'both',
-                dates: 'May 2025 - Current',
-                role: 'Project Manager, Webmaster, Marketing Manager',
-                platform: 'WordPress',
-                type: 'Full Site + Web Tool',
-                description: 'Comprehensive digital marketing strategy including Google Ads, Meta campaigns, and custom interactive jewelry creator tool. Oversaw the creation of this website, manage the digital marketing for the site as well as create the landing pages.',
-                specs: ['HTML/CSS/JS', 'Divi', 'Google Sheets', 'Google Ads', 'Meta Ads'],
-                logo: 'images/logos/marblehead-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: '540-co',
-                title: '540.co',
-                url: 'https://www.540.co',
-                category: 'development',
-                dates: 'May 2025 - Oct 2025',
-                role: 'Project Manager, Co-Developer',
-                platform: 'BTM Proprietary',
-                type: 'Full Site',
-                description: 'Complete site overhaul. Re-built the bones of an old site into a fully interactive project. Created animations, video animations for the header, photo edits, graphic design alterations, and full layout shifts. Picked up this project that was started by the project manager before me, was able to complete the site, handling a large portion of the development, including animations, when the developer went AWOL.',
-                specs: ['HTML', 'CSS', 'JavaScript', 'Premiere Pro', 'Photoshop'],
-                logo: 'images/logos/540-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: 'wilmington-marine',
-                title: 'Wilmington Marine',
-                url: 'https://www.wilmingtonmarine.com',
-                category: 'development',
-                dates: 'March 2025 - May 2025',
-                role: 'Project Manager, Co-Developer',
-                platform: 'BTM Proprietary',
-                type: 'Full Site',
-                description: 'Managed the project from kick-off to completion. Comprehensive marine services website with custom functionality and user experience. I took on a good chunk of the development work due to my work in proximity with the client.',
-                specs: ['HTML', 'CSS', 'JavaScript'],
-                logo: 'images/logos/wilmington-marine-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: 'seven-rubies',
-                title: 'Seven Rubies',
-                url: 'https://www.sevenrubies.com',
-                category: 'development',
-                dates: 'August 2025 - Jan 2026',
-                role: 'Project Manager, Wireframe',
-                platform: 'WordPress',
-                type: 'Full Site',
-                description: 'Created the original full Balsamiq wireframe, lead the client through the entire process, and finished with a high functioning, internal database for photographers with a subscription e-commerce addition. Strategic planning and wireframe development for brand website architecture.',
-                specs: ['WordPress', 'E-Commerce', 'Balsamiq', 'Database'],
-                logo: 'images/logos/seven-rubies-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: 'jungle-rapids-dev',
-                title: 'Jungle Rapids',
-                url: 'https://www.junglerapids.com',
-                category: 'both',
-                dates: 'April 2025 - June 2025',
-                role: 'Project Management, Marketing Project Management',
-                platform: 'BTM Proprietary',
-                type: 'Full Site',
-                description: 'Managed the development of the rebuild of the main website. Highly dynamic UI/UX, with 2 developers, 1 Designer. Multi-channel marketing strategy and campaign execution for entertainment venue.',
-                specs: ['HTML', 'CSS', 'JavaScript', 'UI/UX', 'Marketing'],
-                logo: 'images/logos/jungle-rapids-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: 'daniel-mccrorie-law',
-                title: 'Daniel McCrorie Law',
-                url: 'https://www.danielmccrorielaw.com',
-                category: 'both',
-                dates: 'August 2025 - Current',
-                role: 'Marketing Project Manager, Site Developer',
-                platform: 'BTM Proprietary',
-                type: 'Full Site',
-                description: 'Built site from design. Simple but effective site with a bunch of SEO optimizations that worked almost immediately after launch. Blog page enhancements. SEO Audit and ongoing blog management.',
-                specs: ['HTML', 'CSS', 'JavaScript', 'SEO', 'Blogs'],
-                logo: 'images/logos/daniel-mccrorie-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: 'sr-remodeling-tool',
-                title: 'SR Remodeling Job Builder',
-                url: 'https://www.srremodelingnc.com/job-builder',
-                category: 'development',
-                dates: 'N/A',
-                role: 'Web Developer',
-                platform: 'BTM Proprietary',
-                type: 'Web Tool',
-                description: 'Created a tool that allows users to fill out their job form interactively with a question tree that fills into a Google Sheet and into their CRM.',
-                specs: ['HTML', 'CSS', 'JavaScript', 'Google Sheets', 'CRM Integration'],
-                logo: 'images/logos/sr-remodeling-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: 'evident-view',
-                title: 'Evident View NC',
-                url: 'https://www.evidentviewnc.com',
-                category: 'development',
-                dates: 'N/A',
-                role: 'Full Build and Design',
-                platform: 'BTM Proprietary',
-                type: 'Full Site',
-                description: 'An example of a very simple site for an older client that wanted something extremely uncomplicated.',
-                specs: ['HTML', 'CSS', 'JavaScript'],
-                logo: 'images/logos/evident-view-logo.jpg',
-                hasGallery: false,
-                gallery: []
-            },
-            {
-                id: 'glory-foods',
-                title: 'Glory Foods',
-                url: 'https://www.gloryfoods.com',
-                category: 'marketing',
-                dates: 'Feb 2023 - May 2024',
-                role: 'Marketing Project Manager',
-                platform: 'Multi-Platform',
-                type: 'Marketing Campaign',
-                description: 'Managed the project from kick-off to completion. National campaign partnering with gospel choirs nationwide for authentic brand storytelling and community engagement. Asset Creation, Social Media Management, Campaign Management, Team Management.',
-                specs: ['Social Media', 'Campaign Management', 'Asset Creation', 'Team Management'],
-                logo: 'images/logos/glory-foods-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            },
-            {
-                id: 'peanut-patch',
-                title: 'Peanut Patch Boiled Peanuts',
-                url: 'https://www.peanutpatchboiledpeanuts.com',
-                category: 'marketing',
-                dates: 'Feb 2022 - Feb 2024',
-                role: 'Marketing Project Manager, Advertising Team',
-                platform: 'Multi-Platform',
-                type: 'Marketing Campaign',
-                description: 'Television commercial production and integrated social media campaign management. Get Boilin\' Advertising Campaign - Media Creation and Management, Project Management, Social Media.',
-                specs: ['TV Commercial', 'Social Media', 'Video Production', 'Campaign Management'],
-                logo: 'images/logos/peanut-patch-logo.jpg',
-                hasGallery: true,
-                gallery: []
-            }
-        ];
-
-        // Current filter and sort
-        let currentFilter = 'all';
-        let currentSort = 'newest';
-
-        // Render projects
-        function renderProjects() {
-            const container = document.getElementById('projects-container');
-            let filteredProjects = projectsData.filter(project => {
-                if (currentFilter === 'all') return true;
-                if (currentFilter === 'development') return project.category === 'development' || project.category === 'both';
-                if (currentFilter === 'marketing') return project.category === 'marketing' || project.category === 'both';
-                return true;
-            });
-
-            // Sort projects
-            filteredProjects.sort((a, b) => {
-                if (currentSort === 'az') {
-                    return a.title.localeCompare(b.title);
-                } else if (currentSort === 'za') {
-                    return b.title.localeCompare(a.title);
-                } else {
-                    // newest - by dates string (this is simplified, you'd want actual date parsing)
-                    return 0; // Keep original order for newest
-                }
-            });
-
-            // Group by category
-            const devProjects = filteredProjects.filter(p => p.category === 'development' || p.category === 'both');
-            const marketingProjects = filteredProjects.filter(p => p.category === 'marketing' || p.category === 'both');
-
-            let html = '';
-
-            if (currentFilter === 'all' || currentFilter === 'development') {
-                if (devProjects.length > 0) {
-                    html += `
-                        <div class="category-header">
-                            <h2>Development Projects</h2>
-                        </div>
-                        <div class="projects-grid">
-                    `;
-                    devProjects.forEach(project => {
-                        html += createProjectCard(project);
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
-                    html += '</div>';
                 }
-            }
-
-            if (currentFilter === 'all' || currentFilter === 'marketing') {
-                if (marketingProjects.length > 0 && currentFilter !== 'development') {
-                    html += `
-                        <div class="category-header">
-                            <h2>Marketing Projects</h2>
-                        </div>
-                        <div class="projects-grid">
-                    `;
-                    marketingProjects.forEach(project => {
-                        if (project.category === 'marketing') {
-                            html += createProjectCard(project);
-                        }
-                    });
-                    html += '</div>';
-                }
-            }
-
-            container.innerHTML = html;
-        }
-
-        // Create project card HTML
-        function createProjectCard(project) {
-            return `
-                <div class="project-card-enhanced" data-category="${project.category}">
-                    <div class="project-header">
-                        <div class="project-logo-large">
-                            <img src="${project.logo}" alt="${project.title} Logo" onerror="this.style.display='none'; this.parentElement.innerText='${project.title.substring(0, 2)}';">
-                        </div>
-                        <div class="project-info">
-                            <h3><a href="${project.url}" target="_blank">${project.title}</a></h3>
-                            <div class="project-meta">
-                                <div class="meta-item"><strong>Dates:</strong> ${project.dates}</div>
-                                <div class="meta-item"><strong>Role:</strong> ${project.role}</div>
-                                ${project.platform ? `<div class="meta-item"><strong>Platform:</strong> ${project.platform}</div>` : ''}
-                                ${project.type ? `<div class="meta-item"><strong>Type:</strong> ${project.type}</div>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                    <p class="project-description">${project.description}</p>
-                    <div class="project-specs">
-                        ${project.specs.map(spec => `<span class="spec-tag">${spec}</span>`).join('')}
-                    </div>
-                    <div class="project-actions">
-                        ${project.hasGallery ? `<button class="btn-view-gallery" onclick="openGallery('${project.id}')">📸 View Gallery</button>` : ''}
-                        <a href="${project.url}" target="_blank" class="btn-view-site">Visit Site →</a>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.dataset.filter;
-                renderProjects();
             });
         });
 
-        // Sort functionality
-        document.getElementById('sort-select').addEventListener('change', function() {
-            currentSort = this.value;
-            renderProjects();
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form. Please implement backend functionality for actual submission.');
         });
-
-        // Gallery functions
-        function openGallery(projectId) {
-            const project = projectsData.find(p => p.id === projectId);
-            if (!project) return;
-
-            document.getElementById('gallery-title').textContent = project.title + ' Gallery';
-            const galleryGrid = document.getElementById('gallery-grid');
-            
-            if (project.gallery && project.gallery.length > 0) {
-                galleryGrid.innerHTML = project.gallery.map((img, index) => `
-                    <div class="gallery-item">
-                        <img src="${img}" alt="${project.title} - Image ${index + 1}">
-                    </div>
-                `).join('');
-            } else {
-                // Placeholder gallery
-                galleryGrid.innerHTML = `
-                    <div class="gallery-item"><div class="gallery-item-placeholder">📷</div></div>
-                    <div class="gallery-item"><div class="gallery-item-placeholder">🖼️</div></div>
-                    <div class="gallery-item"><div class="gallery-item-placeholder">🎨</div></div>
-                    <div class="gallery-item"><div class="gallery-item-placeholder">📸</div></div>
-                `;
-            }
-
-            document.getElementById('gallery-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeGallery() {
-            document.getElementById('gallery-modal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close gallery on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeGallery();
-            }
-        });
-
-        // Close gallery on background click
-        document.getElementById('gallery-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeGallery();
-            }
-        });
-
-        // Initial render
-        renderProjects();
     </script>
 </body>
 </html>
