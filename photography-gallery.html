@@ -783,46 +783,24 @@ nav ul li a:hover::after {
 <body>
     <!-- Header -->
     <header>
-        <nav>
-            <div class="nav-profile">
-                <a href="/index" class="nav-profile-image">
-  <img src="https://www.johnthepm.com/images/nav/JDR%20LOGO.png" alt="JR">
-</a
-                <div class="nav-info">
-                    <div class="name">John D. Robbins</div>
-                    <div class="title">Project Manager</div>
-                </div>
-            </div>
-            <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/work-history">Work History</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/art-design">Design</a></li>
-                <li><a href="/audio">Audio</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-            <div class="nav-icons">
-                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="resume.pdf" download class="nav-icon" title="Download Resume">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                </a>
-            </div>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
+        // Hamburger menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('nav ul');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+}
     </header>
 
     <!-- Page Hero -->
