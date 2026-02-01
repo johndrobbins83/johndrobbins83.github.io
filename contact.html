@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | John D. Robbins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #85C7F2;
+            --light-gray: #DBDBDB;
+            --off-white: #D1D1D1;
+            --mid-gray: #636363;
+            --dark-gray: #4C4C4C;
+            --dark-bg: #0A0A0A;
+            --dark-card: #141414;
+            --dark-border: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        nav {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-profile-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        .nav-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .nav-info .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--off-white);
+            line-height: 1.2;
+        }
+
+        .nav-info .title {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            color: var(--off-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-icon:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        nav ul li a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: 1px solid var(--dark-border);
+            cursor: pointer;
+            padding: 0.75rem;
+            z-index: 1001;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.05);
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--off-white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active {
+            border-color: var(--primary-blue);
+        }
+
+        .hamburger.active span {
+            background: var(--primary-blue);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100vh;
+            background: var(--dark-card);
+            border-left: 1px solid var(--primary-blue);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .mobile-menu-profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-bg);
+            border: 2px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-profile-info .name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--off-white);
+            line-height: 1.3;
+        }
+
+        .mobile-menu-profile-info .title {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            line-height: 1.3;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .mobile-menu ul li {
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .mobile-menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu ul li a {
+            display: block;
+            padding: 1.25rem 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--off-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .mobile-menu ul li a::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--primary-blue);
+            padding-left: 2rem;
+        }
+
+        .mobile-menu ul li a:hover::before {
+            opacity: 1;
+        }
+
+        .mobile-nav-icons {
+            display: flex;
+            gap: 1rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--dark-border);
+        }
+
+        .mobile-nav-icons .nav-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--dark-border);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-icons .nav-icon:hover {
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--dark-border);
+            text-align: center;
+        }
+
+        .mobile-menu-footer p {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            margin-top: 80px;
+            padding: 4rem 2rem 2rem;
+            background: var(--dark-bg);
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .page-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--off-white);
+        }
+
+        .page-hero h1 span {
+            color: var(--primary-blue);
+        }
+
+        .page-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 2rem;
+            background: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            padding: 3rem;
+            border-radius: 4px;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            color: var(--mid-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(133, 199, 242, 0.1);
+            border: 1px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text {
+            flex: 1;
+        }
+
+        .contact-item-label {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-value {
+            font-size: 1rem;
+            color: var(--off-white);
+            font-weight: 500;
+        }
+
+        .contact-item-value a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-value a:hover {
+            color: var(--light-gray);
+        }
+
+        .contact-form-section {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            padding: 3rem;
+            border-radius: 4px;
+        }
+
+        .contact-form-section h2 {
+            font-size: 2rem;
+            color: var(--off-white);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            color: var(--mid-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 1rem;
+            background: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            color: var(--off-white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.05);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            padding: 1rem 3rem;
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+            border: 1px solid var(--primary-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 6rem 2rem;
+            background: var(--dark-card);
+            border-top: 1px solid var(--dark-border);
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-container h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .about-content {
+            color: var(--mid-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content strong {
+            color: var(--off-white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            border-top: 1px solid var(--dark-border);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--off-white);
+        }
+
+        .footer-contact {
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--light-gray);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--off-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .copyright {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul,
+            .nav-icons {
+                display: none !important;
+            }
+            
+            nav {
+                grid-template-columns: 1fr auto;
+            }
+
+            .page-hero h1 {
+                font-size: 3rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info,
+            .contact-form-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-profile">
+                <div class="nav-profile-image">JR</div>
+                <div class="nav-info">
+                    <div class="name">John D. Robbins</div>
+                    <div class="title">Project Manager</div>
+                </div>
+            </div>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/work-history">Work History</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/art-design">Design</a></li>
+                <li><a href="/audio">Audio</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="resume.pdf" download class="nav-icon" title="Download Resume">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="mobile-menu-profile-image">JR</div>
+            <div class="mobile-menu-profile-info">
+                <div class="name">John D. Robbins</div>
+                <div class="title">Project Manager</div>
+            </div>
+        </div>
+        
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/work-history">Work History</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/art-design">Design</a></li>
+            <li><a href="/audio">Audio</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        
+        <div class="mobile-nav-icons">
+            <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </a>
+            <a href="resume.pdf" download class="nav-icon" title="Download Resume">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="mobile-menu-footer">
+            <p>Holly Ridge, NC</p>
+            <p style="color: var(--primary-blue); margin-top: 0.5rem;">johndrobbins83@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Get in <span>Touch</span></h1>
+            <p class="subtitle">Let's discuss your next project, collaboration opportunity, or just connect. I'm always open to new opportunities and conversations.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p>Feel free to reach out through any of the following channels. I typically respond within 24-48 hours.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">Email</div>
+                            <div class="contact-item-value">
+                                <a href="mailto:johndrobbins83@gmail.com">johndrobbins83@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">Location</div>
+                            <div class="contact-item-value">Holly Ridge, NC</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">LinkedIn</div>
+                            <div class="contact-item-value">
+                                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">Connect on LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">Availability</div>
+                            <div class="contact-item-value">Open to new opportunities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2>Send a Message</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Reason for Contact</label>
+                        <select id="reason" name="reason">
+                            <option value="">Select a reason</option>
+                            <option value="employment">Employment Opportunity</option>
+                            <option value="project">Project Inquiry</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Hi, I'm <strong>John D. Robbins</strong>, a versatile project manager with a unique blend of technical expertise and creative experience spanning web development, marketing, and music production.</p>
+                
+                <p>Currently working as a <strong>Project Manager at Bluetone Media</strong>, I specialize in managing complex web development projects, leading cross-functional teams, and delivering innovative digital solutions for diverse clients. My background includes extensive experience in digital marketing campaign management, having led national campaigns for major food brands and managed comprehensive marketing strategies.</p>
+                
+                <p>What sets me apart is my <strong>15+ years of professional music production experience</strong>. This creative foundation has cultivated exceptional attention to detail, creative problem-solving abilities, and the discipline required for managing intricate, multi-layered projects—skills that translate seamlessly into my project management and development work.</p>
+                
+                <p><strong>Core Expertise:</strong> Project Management, Web Development (HTML/CSS/JavaScript, WordPress), Digital Marketing (Google Ads, Meta Ads, SEO), Audio Engineering (Pro Tools, Logic Pro, Ableton Live), and Adobe Creative Suite.</p>
+                
+                <p>I'm passionate about bridging the gap between creative vision and technical execution, always looking for opportunities to create exceptional digital experiences and help businesses achieve their goals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">John D. Robbins</div>
+            <div class="footer-contact">
+                <a href="mailto:johndrobbins83@gmail.com">johndrobbins83@gmail.com</a> | Holly Ridge, NC
+            </div>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
+                <a href="resume.pdf" download>Resume</a>
+            </div>
+            <p class="copyright">&copy; 2026 John D. Robbins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        if (hamburger) {
+            hamburger.addEventListener('click', toggleMenu);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', toggleMenu);
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your backend
+            console.log('Form submitted:', data);
+            
+            // Show success message (replace with actual backend integration)
+            alert('Thank you for your message! I will get back to you soon.\n\nNote: This is a demo. See instructions below for Gmail integration.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- 
+    ========================================
+    GMAIL INTEGRATION INSTRUCTIONS
+    ========================================
+    
+    To connect this form to your Gmail (johndrobbins83@gmail.com), you have several options:
+    
+    OPTION 1: FORMSPREE (Easiest - Recommended)
+    -------------------------------------------
+    1. Go to https://formspree.io
+    2. Sign up with your Gmail account
+    3. Create a new form
+    4. Get your form endpoint URL
+    5. Update the form tag above to:
+       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    6. Remove the JavaScript submit handler or modify it to allow the form to submit
+    
+    OPTION 2: EMAILJS (Free, No Backend)
+    -------------------------------------
+    1. Go to https://www.emailjs.com
+    2. Sign up and create a service connecting to Gmail
+    3. Create an email template
+    4. Add EmailJS SDK to your page:
+       <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    5. Update the form submission JavaScript to use EmailJS
+    6. Example code:
+       emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+           name: formData.get('name'),
+           email: formData.get('email'),
+           message: formData.get('message')
+       });
+    
+    OPTION 3: GOOGLE APPS SCRIPT (Free, Google-based)
+    --------------------------------------------------
+    1. Create a Google Apps Script web app
+    2. Set it up to forward form data to Gmail
+    3. Deploy as web app and get the URL
+    4. Send form data to that URL via fetch()
+    
+    OPTION 4: NETLIFY FORMS (If using Netlify)
+    -------------------------------------------
+    1. Add netlify attribute to form:
+       <form netlify name="contact">
+    2. Deploy to Netlify
+    3. Forms will appear in your Netlify dashboard
+    4. Set up email notifications in Netlify settings
+    
+    OPTION 5: CUSTOM BACKEND (Most Control)
+    ----------------------------------------
+    1. Create a backend API (Node.js, Python, PHP, etc.)
+    2. Use nodemailer (Node.js) or similar to send emails
+    3. Set up Gmail SMTP or use Gmail API
+    4. Update form to POST to your API endpoint
+    
+    RECOMMENDATION:
+    For quick setup with no backend, use FORMSPREE or EMAILJS.
+    Both are free for basic usage and very easy to implement.
+    
+    ========================================
+    -->
+</body>
+</html>
