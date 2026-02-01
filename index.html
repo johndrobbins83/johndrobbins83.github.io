@@ -1153,6 +1153,193 @@
         grid-template-columns: 1fr auto;
     }
 }
+        /* Project Modal/Popup */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.project-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-modal-content {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 3rem;
+}
+
+.project-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(133, 199, 242, 0.1);
+    border: 1px solid var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.project-modal-close:hover {
+    background: var(--primary-blue);
+    color: var(--dark-bg);
+    transform: rotate(90deg);
+}
+
+.project-modal-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.project-modal-logo {
+    width: 80px;
+    height: 80px;
+    background: var(--dark-bg);
+    border: 1px solid var(--dark-border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+.project-modal-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.5rem;
+}
+
+.project-modal-info {
+    flex: 1;
+}
+
+.project-modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--off-white);
+    margin-bottom: 0.5rem;
+}
+
+.project-modal-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.project-modal-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.project-modal-meta-label {
+    font-size: 0.75rem;
+    color: var(--mid-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-modal-meta-value {
+    font-size: 0.95rem;
+    color: var(--off-white);
+}
+
+.project-modal-role {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.project-modal-description {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    color: var(--off-white);
+}
+
+.project-modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.project-modal-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(133, 199, 242, 0.1);
+    border: 1px solid rgba(133, 199, 242, 0.3);
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    border-radius: 4px;
+}
+
+.project-modal-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-modal-button {
+    padding: 0.75rem 2rem;
+    background: transparent;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-modal-button:hover {
+    background: var(--primary-blue);
+    color: var(--dark-bg);
+}
+
+.project-modal-button.primary {
+    background: var(--primary-blue);
+    color: var(--dark-bg);
+}
+
+.project-modal-button.primary:hover {
+    background: transparent;
+    color: var(--primary-blue);
+}
+
+/* Make project cards clickable */
+.project-card {
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -1279,7 +1466,7 @@
             <div class="category-section">
                 <h3 class="category-title">Development</h3>
                 <div class="projects-grid">
-                    <div class="project-card">
+                    <div class="project-card" data-project="540">
                         <div class="project-logo">
                             <img src="https://www.johnthepm.com/images/homepage/logo-1.png" alt="540.co Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="project-logo-text" style="display:none;">540</div>
@@ -1288,7 +1475,7 @@
                         <p class="project-role">Project Manager, Co-Developer</p>
                         <p class="project-description">Full-scale web development and project coordination for modern digital solution.</p>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-project="wilmington-marine">
                         <div class="project-logo">
                             <img src="https://www.johnthepm.com/images/homepage/logo-2.png" alt="Wilmington Marine Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="project-logo-text" style="display:none;">WM</div>
@@ -1297,7 +1484,7 @@
                         <p class="project-role">Project Manager, Co-Developer</p>
                         <p class="project-description">Comprehensive marine services website with custom functionality and user experience.</p>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-project="fozzie-miller">
                         <div class="project-logo">
                             <img src="https://www.johnthepm.com/images/homepage/logo-3.png" alt="FMG Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="project-logo-text" style="display:none;">FMG</div>
@@ -1306,7 +1493,7 @@
                         <p class="project-role">Project Manager, Developer</p>
                         <p class="project-description">Project Management, Website development, Update, and Maintainence</p>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-project="jungle-rapids">
                         <div class="project-logo">
                             <img src="https://www.johnthepm.com/images/homepage/logo-4.png" alt="Jungle Rapids Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="project-logo-text" style="display:none;">JR</div>
@@ -1560,5 +1747,166 @@ document.addEventListener('keydown', (e) => {
     }
 });
     </script>
+    <!-- Project Modal -->
+<div class="project-modal" id="projectModal">
+    <div class="project-modal-content">
+        <div class="project-modal-close" onclick="closeProjectModal()">×</div>
+        
+        <div class="project-modal-header">
+            <div class="project-modal-logo" id="modalLogo">
+                <!-- Logo will be inserted here -->
+            </div>
+            <div class="project-modal-info">
+                <h2 class="project-modal-title" id="modalTitle"></h2>
+                <div class="project-modal-meta">
+                    <div class="project-modal-meta-item">
+                        <span class="project-modal-meta-label">Dates</span>
+                        <span class="project-modal-meta-value" id="modalDates"></span>
+                    </div>
+                    <div class="project-modal-meta-item">
+                        <span class="project-modal-meta-label">Role</span>
+                        <span class="project-modal-meta-value project-modal-role" id="modalRole"></span>
+                    </div>
+                    <div class="project-modal-meta-item">
+                        <span class="project-modal-meta-label">Platform</span>
+                        <span class="project-modal-meta-value" id="modalPlatform"></span>
+                    </div>
+                    <div class="project-modal-meta-item">
+                        <span class="project-modal-meta-label">Type</span>
+                        <span class="project-modal-meta-value" id="modalType"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p class="project-modal-description" id="modalDescription"></p>
+        
+        <div class="project-modal-tags" id="modalTags"></div>
+        
+        <div class="project-modal-buttons" id="modalButtons"></div>
+    </div>
+</div>
+    <script>
+// Project data with full details
+const projectData = {
+    'marblehead': {
+        title: 'Marblehead Custom Jewelry',
+        dates: 'May 2025 - Current',
+        role: 'Project Manager, Webmaster, Marketing Manager',
+        platform: 'WordPress',
+        type: 'Full Site + Web Tool',
+        description: 'Comprehensive digital marketing strategy including Google Ads, Meta campaigns, and custom interactive jewelry creator tool. Oversaw the creation of this website, manage the digital marketing for the site as well as create the landing pages.',
+        tags: ['HTML/CSS/JS', 'Divi', 'Google Sheets', 'Google Ads', 'Meta Ads'],
+        buttons: [
+            { text: '🖼️ View Gallery', href: '#', type: 'secondary' },
+            { text: 'Visit Site →', href: 'https://marbleheadcustomjewelry.com', type: 'primary' }
+        ],
+        logo: 'images/logos/marblehead-logo.jpg',
+        logoText: 'Ma'
+    },
+    '540': {
+        title: '540.co',
+        dates: 'January 2024 - Current',
+        role: 'Project Manager, Developer',
+        platform: 'Custom Platform',
+        type: 'Web Application',
+        description: 'Built and managed a comprehensive real estate platform including property listings, agent management system, and custom CRM integration. Led development team and oversaw all technical implementations.',
+        tags: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'Stripe'],
+        buttons: [
+            { text: 'Visit Site →', href: 'https://540.co', type: 'primary' }
+        ],
+        logo: 'images/logos/540-logo.jpg',
+        logoText: '540'
+    },
+    'coastal': {
+        title: 'Coastal Collision',
+        dates: 'March 2023 - December 2023',
+        role: 'Web Developer, Marketing Manager',
+        platform: 'WordPress',
+        type: 'Business Website',
+        description: 'Complete website redesign and digital marketing campaign for auto body shop. Implemented online booking system and customer portal.',
+        tags: ['WordPress', 'Google Ads', 'SEO', 'Booking System'],
+        buttons: [
+            { text: 'Visit Site →', href: '#', type: 'primary' }
+        ],
+        logo: 'images/logos/coastal-logo.jpg',
+        logoText: 'CC'
+    }
+    // Add more projects here...
+};
+
+// Open project modal
+function openProjectModal(projectKey) {
+    const project = projectData[projectKey];
+    if (!project) return;
+    
+    const modal = document.getElementById('projectModal');
+    
+    // Set logo
+    const logoEl = document.getElementById('modalLogo');
+    if (project.logo) {
+        logoEl.innerHTML = `<img src="${project.logo}" alt="${project.title}">`;
+    } else {
+        logoEl.textContent = project.logoText;
+    }
+    
+    // Set text content
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalDates').textContent = project.dates;
+    document.getElementById('modalRole').textContent = project.role;
+    document.getElementById('modalPlatform').textContent = project.platform;
+    document.getElementById('modalType').textContent = project.type;
+    document.getElementById('modalDescription').textContent = project.description;
+    
+    // Set tags
+    const tagsEl = document.getElementById('modalTags');
+    tagsEl.innerHTML = project.tags.map(tag => 
+        `<span class="project-modal-tag">${tag}</span>`
+    ).join('');
+    
+    // Set buttons
+    const buttonsEl = document.getElementById('modalButtons');
+    buttonsEl.innerHTML = project.buttons.map(btn =>
+        `<a href="${btn.href}" class="project-modal-button ${btn.type}" target="_blank">${btn.text}</a>`
+    ).join('');
+    
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close project modal
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Close on background click
+document.getElementById('projectModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeProjectModal();
+    }
+});
+
+// Close on ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeProjectModal();
+    }
+});
+
+// Add click handlers to project cards
+document.addEventListener('DOMContentLoaded', function() {
+    // Example: Add data attributes to your project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+        card.addEventListener('click', function() {
+            const projectKey = this.dataset.project || 'marblehead';
+            openProjectModal(projectKey);
+        });
+    });
+});
+</script>
 </body>
 </html>
