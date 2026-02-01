@@ -1377,13 +1377,7 @@ nav ul li a:hover::after {
             if (e.target === this) closeLightbox();
         });
 
-        // Hamburger menu (placeholder - implement as needed)
-        const hamburger = document.getElementById('hamburger');
-        if (hamburger) {
-            hamburger.addEventListener('click', function() {
-                // Add your mobile menu toggle code here
-                alert('Mobile menu - implement as needed');
-            });
+
         }
         / Hamburger menu toggle
 const hamburger = document.querySelector('.hamburger');
@@ -1403,6 +1397,40 @@ if (hamburger) {
         });
     });
 }
+        const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+function toggleMenu() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    mobileMenuOverlay.classList.toggle('active');
+    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
+}
+
+if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+}
+
+if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener('click', toggleMenu);
+}
+
+// Close menu when clicking a link
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+        toggleMenu();
+    }
+});
     </script>
 </body>
 </html>
