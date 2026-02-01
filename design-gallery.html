@@ -33,141 +33,214 @@
             overflow-x: hidden;
         }
 
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        nav {
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .nav-profile {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-                .nav-profile-image {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--dark-card);
-            border: 2px solid var(--primary-blue);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--primary-blue);
-            flex-shrink: 0;
-        }
-        .nav-profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--dark-border);
 }
-        .nav-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
-        }
 
-        .nav-info .name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--off-white);
-            line-height: 1.2;
-        }
+nav {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 3rem;
+}
 
-        .nav-info .title {
-            font-size: 0.75rem;
-            color: var(--mid-gray);
-            font-weight: 400;
-            line-height: 1.2;
-        }
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
+.nav-profile-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--dark-card);
+    border: 2px solid var(--primary-blue);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
 
-        .nav-icons {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+.nav-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
 
-        .nav-icon {
-            color: var(--off-white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            border: 1px solid var(--dark-border);
-            background: rgba(255, 255, 255, 0.03);
-        }
+.nav-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
 
-        .nav-icon:hover {
-            color: var(--primary-blue);
-            border-color: var(--primary-blue);
-            background: rgba(133, 199, 242, 0.1);
-            transform: translateY(-2px);
-        }
+.nav-info .name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--off-white);
+    line-height: 1.2;
+}
 
-        .nav-icon svg {
-            width: 18px;
-            height: 18px;
-        }
+.nav-info .title {
+    font-size: 0.75rem;
+    color: var(--mid-gray);
+    font-weight: 400;
+    line-height: 1.2;
+}
 
-        nav ul li a {
-            color: var(--off-white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
 
-        nav ul li a:hover {
-            color: var(--primary-blue);
-        }
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
+.nav-icon {
+    color: var(--off-white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 1px solid var(--dark-border);
+    background: rgba(255, 255, 255, 0.03);
+}
 
-        nav ul li a:hover::after {
-            width: 100%;
-        }
+.nav-icon:hover {
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    background: rgba(133, 199, 242, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+nav ul li a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav ul li a:hover {
+    color: var(--primary-blue);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-blue);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--off-white);
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        grid-template-columns: auto auto;
+        gap: 1rem;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--dark-border);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    nav ul.active {
+        transform: translateX(0);
+    }
+
+    .nav-icons {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-info {
+        display: none;
+    }
+}
         /* Page Hero */
         .page-hero {
             margin-top: 80px;
@@ -750,58 +823,43 @@
     </style>
 </head>
 <body>
-    <!-- Fixed Side Image Panels -->
-    <div class="page-side-panel left">
-        <img src="images/design/side-left.jpg" alt="Design Gallery" style="object-fit: cover;">
-    </div>
-    <div class="page-side-panel right">
-        <img src="images/design/side-right.jpg" alt="Design Gallery" style="object-fit: cover;">
-    </div>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="nav-profile">
-                <a href="/index" class="nav-profile-image">
-  <img src="https://www.johnthepm.com/images/nav/JDR%20LOGO.png" alt="JR">
-</a
-                <div class="nav-info">
-                    <div class="name">John D. Robbins</div>
-                    <div class="title">Project Manager</div>
-                </div>
-            </div>
-            <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/work-history">Work History</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/art-design">Design</a></li>
-                <li><a href="/audio">Audio</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-            <div class="nav-icons">
-                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="resume.pdf" download class="nav-icon" title="Download Resume">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                </a>
-            </div>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    </header>
 
+   <!-- Header -->
+<header>
+    <nav>
+        <div class="nav-profile">
+            <div class="nav-profile-image">
+                <img src="https://cdn.yourportfolio.com/images/homepage/profile-badge.jpg" alt="JDR" onerror="this.style.display='none'; this.parentElement.textContent='JR';">
+            </div>
+            <div class="nav-info">
+                <div class="name">John D. Robbins</div>
+                <div class="title">Project Manager</div>
+            </div>
+        </div>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/work-history">Work History</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/art-design">Design</a></li>
+            <li><a href="/audio">Audio</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="https://linkedin.com/in/yourprofile" class="nav-icon" target="_blank" aria-label="LinkedIn">
+                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/yourprofile" class="nav-icon" target="_blank" aria-label="GitHub">
+                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+        </div>
+        <button class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="page-hero-content">
@@ -1327,6 +1385,24 @@
                 alert('Mobile menu - implement as needed');
             });
         }
+        / Hamburger menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('nav ul');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+}
     </script>
 </body>
 </html>
