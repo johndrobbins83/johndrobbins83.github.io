@@ -60,13 +60,13 @@
             gap: 1rem;
         }
 
-        .nav-profile-image {
+                .nav-profile-image {
             width: 45px;
             height: 45px;
             border-radius: 50%;
             background: var(--dark-card);
             border: 2px solid var(--primary-blue);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
@@ -168,46 +168,6 @@
         nav ul li a:hover::after {
             width: 100%;
         }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            background: none;
-            border: 1px solid var(--dark-border);
-            cursor: pointer;
-            padding: 0.75rem;
-            z-index: 1001;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger:hover {
-            border-color: var(--primary-blue);
-            background: rgba(133, 199, 242, 0.05);
-        }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--off-white);
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
         /* Page Hero */
         .page-hero {
             margin-top: 80px;
