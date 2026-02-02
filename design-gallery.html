@@ -876,135 +876,329 @@ nav ul li a:hover::after {
         </div>
     </section>
 
-    <!-- Gallery Section 1 - Digital Designs -->
-    <section class="gallery-section">
-        <div class="gallery-container">
-            <div class="gallery-header">
-                <div class="gallery-header-left">
-                    <h2 class="gallery-title">Digital Designs</h2>
-                    <button class="view-all-btn" id="viewAllBtn1">
-                        <span>View All</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                </div>
-                <div class="gallery-header-right">
-                    <div class="search-box">
-                        <input type="text" id="searchInput1" placeholder="Search..." class="search-input">
-                        <span class="search-icon">🔍</span>
-                    </div>
-                    <select id="sortSelect1" class="sort-select">
-                        <option value="title-asc">Title (A-Z)</option>
-                        <option value="title-desc">Title (Z-A)</option>
-                        <option value="date-newest">Date (Newest)</option>
-                        <option value="date-oldest">Date (Oldest)</option>
-                    </select>
-                </div>
+    <!-- Gallery Section 1 - Flyers and Posters -->
+<section class="gallery-section" id="flyers-posters">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <div class="gallery-header-left">
+                <h2 class="gallery-title">Flyers & Posters</h2>
+                <button class="view-all-btn" data-gallery="1">
+                    <span>View All</span>
+                    <span class="arrow">▼</span>
+                </button>
             </div>
-
-            <div class="mosaic-gallery" id="mosaicGallery1">
-                <!-- Initial 8 visible items -->
-                <div class="gallery-item big" data-index="0" 
-                     data-title="Brand Identity Design" 
-                     data-date="January 2026" 
-                     data-description="Complete brand identity system including logo, color palette, typography, and brand guidelines for a modern tech startup.">
-                    <div class="gallery-item-placeholder">🎨</div>
-                    <!-- Replace with: <img src="images/design/image1.jpg" alt="Design 1"> -->
+            <div class="gallery-header-right">
+                <div class="search-box">
+                    <input type="text" class="search-input" data-gallery="1" placeholder="Search...">
+                    <span class="search-icon">🔍</span>
                 </div>
-                <div class="gallery-item" data-index="1" 
-                     data-title="Poster Design" 
-                     data-date="December 2025" 
-                     data-description="Event poster design featuring bold typography and vibrant colors for a music festival.">
-                    <div class="gallery-item-placeholder">🖼️</div>
-                </div>
-                <div class="gallery-item tall" data-index="2" 
-                     data-title="Social Media Graphics" 
-                     data-date="November 2025" 
-                     data-description="Series of Instagram posts and stories designed for a fashion brand campaign.">
-                    <div class="gallery-item-placeholder">✏️</div>
-                </div>
-                <div class="gallery-item" data-index="3" 
-                     data-title="Logo Design" 
-                     data-date="October 2025" 
-                     data-description="Modern minimalist logo design for a sustainable lifestyle brand.">
-                    <div class="gallery-item-placeholder">🎭</div>
-                </div>
-                <div class="gallery-item wide" data-index="4" 
-                     data-title="Website Mockup" 
-                     data-date="September 2025" 
-                     data-description="Full website design mockup showcasing homepage layout, navigation, and user interface elements.">
-                    <div class="gallery-item-placeholder">🌈</div>
-                </div>
-                <div class="gallery-item" data-index="5" 
-                     data-title="Packaging Design" 
-                     data-date="August 2025" 
-                     data-description="Product packaging design for organic coffee brand with hand-drawn illustrations.">
-                    <div class="gallery-item-placeholder">💎</div>
-                </div>
-                <div class="gallery-item" data-index="6" 
-                     data-title="Magazine Layout" 
-                     data-date="July 2025" 
-                     data-description="Editorial layout design for quarterly lifestyle magazine feature article.">
-                    <div class="gallery-item-placeholder">🔥</div>
-                </div>
-                <div class="gallery-item tall" data-index="7" 
-                     data-title="Typography Poster" 
-                     data-date="June 2025" 
-                     data-description="Experimental typography poster exploring letterform and composition.">
-                    <div class="gallery-item-placeholder">⭐</div>
-                </div>
-
-                <!-- Hidden items (shown when "View All" is clicked) -->
-                <div class="gallery-item hidden" data-index="8" 
-                     data-title="Business Card Design" 
-                     data-date="May 2025" 
-                     data-description="Minimalist business card design with embossed details and premium finish.">
-                    <div class="gallery-item-placeholder">🎪</div>
-                </div>
-                <div class="gallery-item hidden wide" data-index="9" 
-                     data-title="Banner Design" 
-                     data-date="April 2025" 
-                     data-description="Large format banner design for trade show booth display.">
-                    <div class="gallery-item-placeholder">🎯</div>
-                </div>
-                <div class="gallery-item hidden" data-index="10" 
-                     data-title="Icon Set" 
-                     data-date="March 2025" 
-                     data-description="Custom icon set designed for mobile app interface with consistent style.">
-                    <div class="gallery-item-placeholder">🎨</div>
-                </div>
-                <div class="gallery-item hidden" data-index="11" 
-                     data-title="Brochure Design" 
-                     data-date="February 2025" 
-                     data-description="Tri-fold brochure design for real estate development project.">
-                    <div class="gallery-item-placeholder">🖌️</div>
-                </div>
-                <div class="gallery-item hidden tall" data-index="12" 
-                     data-title="Book Cover Design" 
-                     data-date="January 2025" 
-                     data-description="Illustrated book cover design for contemporary fiction novel.">
-                    <div class="gallery-item-placeholder">🎬</div>
-                </div>
-                <div class="gallery-item hidden" data-index="13" 
-                     data-title="App UI Design" 
-                     data-date="December 2024" 
-                     data-description="Mobile app user interface design with modern, clean aesthetic.">
-                    <div class="gallery-item-placeholder">📐</div>
-                </div>
-                <div class="gallery-item hidden big" data-index="14" 
-                     data-title="Infographic Design" 
-                     data-date="November 2024" 
-                     data-description="Data visualization infographic explaining complex environmental statistics.">
-                    <div class="gallery-item-placeholder">🌟</div>
-                </div>
-                <div class="gallery-item hidden" data-index="15" 
-                     data-title="Label Design" 
-                     data-date="October 2024" 
-                     data-description="Wine label design featuring hand-lettered typography and vintage aesthetic.">
-                    <div class="gallery-item-placeholder">🎨</div>
-                </div>
+                <select class="sort-select" data-gallery="1">
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                    <option value="date-newest">Date (Newest)</option>
+                    <option value="date-oldest">Date (Oldest)</option>
+                </select>
             </div>
         </div>
-    </section>
+
+        <div class="mosaic-gallery" data-gallery="1">
+            <!-- Initial 4 visible items -->
+            <div class="gallery-item big" data-index="0" 
+                 data-title="Concert Poster" 
+                 data-date="January 2026" 
+                 data-description="Bold concert poster design featuring dynamic typography and vibrant colors for rock band tour.">
+                <div class="gallery-item-placeholder">🎸</div>
+            </div>
+            <div class="gallery-item" data-index="1" 
+                 data-title="Event Flyer" 
+                 data-date="December 2025" 
+                 data-description="Promotional flyer for community art festival with playful illustration style.">
+                <div class="gallery-item-placeholder">🎨</div>
+            </div>
+            <div class="gallery-item tall" data-index="2" 
+                 data-title="Festival Poster" 
+                 data-date="November 2025" 
+                 data-description="Large format poster design for annual music festival featuring hand-drawn elements.">
+                <div class="gallery-item-placeholder">🎪</div>
+            </div>
+            <div class="gallery-item" data-index="3" 
+                 data-title="Sale Flyer" 
+                 data-date="October 2025" 
+                 data-description="Retail sale promotional flyer with bold graphics and clear call-to-action.">
+                <div class="gallery-item-placeholder">🛍️</div>
+            </div>
+
+            <!-- Hidden items (shown when "View All" is clicked) -->
+            <div class="gallery-item hidden wide" data-index="4" 
+                 data-title="Movie Poster" 
+                 data-date="September 2025" 
+                 data-description="Cinematic poster design for indie film with dramatic lighting and composition.">
+                <div class="gallery-item-placeholder">🎬</div>
+            </div>
+            <div class="gallery-item hidden" data-index="5" 
+                 data-title="Workshop Flyer" 
+                 data-date="August 2025" 
+                 data-description="Educational workshop promotional flyer with clean, modern aesthetic.">
+                <div class="gallery-item-placeholder">📚</div>
+            </div>
+            <div class="gallery-item hidden" data-index="6" 
+                 data-title="Restaurant Poster" 
+                 data-date="July 2025" 
+                 data-description="Menu poster design for upscale restaurant featuring food photography and elegant typography.">
+                <div class="gallery-item-placeholder">🍽️</div>
+            </div>
+            <div class="gallery-item hidden tall" data-index="7" 
+                 data-title="Exhibition Poster" 
+                 data-date="June 2025" 
+                 data-description="Art exhibition poster with minimalist design and striking visual hierarchy.">
+                <div class="gallery-item-placeholder">🖼️</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section 2 - Digital Art -->
+<section class="gallery-section" id="digital-art" style="background: var(--dark-card); border-top: 1px solid var(--dark-border);">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <div class="gallery-header-left">
+                <h2 class="gallery-title">Digital Art</h2>
+                <button class="view-all-btn" data-gallery="2">
+                    <span>View All</span>
+                    <span class="arrow">▼</span>
+                </button>
+            </div>
+            <div class="gallery-header-right">
+                <div class="search-box">
+                    <input type="text" class="search-input" data-gallery="2" placeholder="Search...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <select class="sort-select" data-gallery="2">
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                    <option value="date-newest">Date (Newest)</option>
+                    <option value="date-oldest">Date (Oldest)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mosaic-gallery" data-gallery="2">
+            <!-- Initial 4 visible items -->
+            <div class="gallery-item big" data-index="8" 
+                 data-title="Abstract Composition" 
+                 data-date="January 2026" 
+                 data-description="Digital abstract artwork exploring color relationships and geometric forms.">
+                <div class="gallery-item-placeholder">🌈</div>
+            </div>
+            <div class="gallery-item" data-index="9" 
+                 data-title="Character Illustration" 
+                 data-date="December 2025" 
+                 data-description="Original character design with detailed digital painting technique.">
+                <div class="gallery-item-placeholder">👤</div>
+            </div>
+            <div class="gallery-item tall" data-index="10" 
+                 data-title="Fantasy Landscape" 
+                 data-date="November 2025" 
+                 data-description="Imaginative landscape painting created entirely in digital medium.">
+                <div class="gallery-item-placeholder">🏔️</div>
+            </div>
+            <div class="gallery-item" data-index="11" 
+                 data-title="Portrait Study" 
+                 data-date="October 2025" 
+                 data-description="Digital portrait exploring light, shadow, and human expression.">
+                <div class="gallery-item-placeholder">🎭</div>
+            </div>
+
+            <!-- Hidden items -->
+            <div class="gallery-item hidden wide" data-index="12" 
+                 data-title="Sci-Fi Scene" 
+                 data-date="September 2025" 
+                 data-description="Futuristic science fiction environment with detailed digital painting.">
+                <div class="gallery-item-placeholder">🚀</div>
+            </div>
+            <div class="gallery-item hidden" data-index="13" 
+                 data-title="Creature Design" 
+                 data-date="August 2025" 
+                 data-description="Original creature concept art with anatomical considerations.">
+                <div class="gallery-item-placeholder">🐉</div>
+            </div>
+            <div class="gallery-item hidden" data-index="14" 
+                 data-title="Surreal Artwork" 
+                 data-date="July 2025" 
+                 data-description="Dreamlike surreal composition combining unexpected elements.">
+                <div class="gallery-item-placeholder">💭</div>
+            </div>
+            <div class="gallery-item hidden tall" data-index="15" 
+                 data-title="Fashion Illustration" 
+                 data-date="June 2025" 
+                 data-description="Fashion illustration showcasing avant-garde clothing design.">
+                <div class="gallery-item-placeholder">👗</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section 3 - Logos -->
+<section class="gallery-section" id="logos">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <div class="gallery-header-left">
+                <h2 class="gallery-title">Logos</h2>
+                <button class="view-all-btn" data-gallery="3">
+                    <span>View All</span>
+                    <span class="arrow">▼</span>
+                </button>
+            </div>
+            <div class="gallery-header-right">
+                <div class="search-box">
+                    <input type="text" class="search-input" data-gallery="3" placeholder="Search...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <select class="sort-select" data-gallery="3">
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                    <option value="date-newest">Date (Newest)</option>
+                    <option value="date-oldest">Date (Oldest)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mosaic-gallery" data-gallery="3">
+            <!-- Initial 4 visible items -->
+            <div class="gallery-item big" data-index="16" 
+                 data-title="Tech Startup Logo" 
+                 data-date="January 2026" 
+                 data-description="Modern minimalist logo design for innovative technology startup.">
+                <div class="gallery-item-placeholder">🚀</div>
+            </div>
+            <div class="gallery-item" data-index="17" 
+                 data-title="Coffee Brand Logo" 
+                 data-date="December 2025" 
+                 data-description="Organic coffee brand logo with hand-drawn lettermark style.">
+                <div class="gallery-item-placeholder">☕</div>
+            </div>
+            <div class="gallery-item tall" data-index="18" 
+                 data-title="Fitness App Logo" 
+                 data-date="November 2025" 
+                 data-description="Dynamic logo design for fitness tracking mobile application.">
+                <div class="gallery-item-placeholder">💪</div>
+            </div>
+            <div class="gallery-item" data-index="19" 
+                 data-title="Restaurant Logo" 
+                 data-date="October 2025" 
+                 data-description="Elegant restaurant logo combining classic and contemporary elements.">
+                <div class="gallery-item-placeholder">🍴</div>
+            </div>
+
+            <!-- Hidden items -->
+            <div class="gallery-item hidden wide" data-index="20" 
+                 data-title="Eco Brand Logo" 
+                 data-date="September 2025" 
+                 data-description="Sustainable lifestyle brand logo featuring natural elements.">
+                <div class="gallery-item-placeholder">🌿</div>
+            </div>
+            <div class="gallery-item hidden" data-index="21" 
+                 data-title="Gaming Logo" 
+                 data-date="August 2025" 
+                 data-description="Bold esports team logo with aggressive aesthetic.">
+                <div class="gallery-item-placeholder">🎮</div>
+            </div>
+            <div class="gallery-item hidden" data-index="22" 
+                 data-title="Fashion Logo" 
+                 data-date="July 2025" 
+                 data-description="Luxury fashion brand logo with sophisticated typography.">
+                <div class="gallery-item-placeholder">💎</div>
+            </div>
+            <div class="gallery-item hidden tall" data-index="23" 
+                 data-title="Music Label Logo" 
+                 data-date="June 2025" 
+                 data-description="Independent music label logo with retro-inspired design.">
+                <div class="gallery-item-placeholder">🎵</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section 4 - 3D Modeling -->
+<section class="gallery-section" id="3d-modeling" style="background: var(--dark-card); border-top: 1px solid var(--dark-border);">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <div class="gallery-header-left">
+                <h2 class="gallery-title">3D Modeling</h2>
+                <button class="view-all-btn" data-gallery="4">
+                    <span>View All</span>
+                    <span class="arrow">▼</span>
+                </button>
+            </div>
+            <div class="gallery-header-right">
+                <div class="search-box">
+                    <input type="text" class="search-input" data-gallery="4" placeholder="Search...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <select class="sort-select" data-gallery="4">
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                    <option value="date-newest">Date (Newest)</option>
+                    <option value="date-oldest">Date (Oldest)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mosaic-gallery" data-gallery="4">
+            <!-- Initial 4 visible items -->
+            <div class="gallery-item big" data-index="24" 
+                 data-title="Product Visualization" 
+                 data-date="January 2026" 
+                 data-description="Photorealistic 3D product rendering for e-commerce showcase.">
+                <div class="gallery-item-placeholder">📦</div>
+            </div>
+            <div class="gallery-item" data-index="25" 
+                 data-title="Character Model" 
+                 data-date="December 2025" 
+                 data-description="Low-poly character model optimized for game engine integration.">
+                <div class="gallery-item-placeholder">🎮</div>
+            </div>
+            <div class="gallery-item tall" data-index="26" 
+                 data-title="Architectural Render" 
+                 data-date="November 2025" 
+                 data-description="Detailed 3D architectural visualization of modern residential design.">
+                <div class="gallery-item-placeholder">🏠</div>
+            </div>
+            <div class="gallery-item" data-index="27" 
+                 data-title="Vehicle Model" 
+                 data-date="October 2025" 
+                 data-description="High-detail 3D model of concept vehicle with realistic materials.">
+                <div class="gallery-item-placeholder">🚗</div>
+            </div>
+
+            <!-- Hidden items -->
+            <div class="gallery-item hidden wide" data-index="28" 
+                 data-title="Environment Scene" 
+                 data-date="September 2025" 
+                 data-description="Complete 3D environment scene for game development project.">
+                <div class="gallery-item-placeholder">🌲</div>
+            </div>
+            <div class="gallery-item hidden" data-index="29" 
+                 data-title="Abstract Sculpture" 
+                 data-date="August 2025" 
+                 data-description="Experimental 3D abstract sculpture exploring form and space.">
+                <div class="gallery-item-placeholder">🗿</div>
+            </div>
+            <div class="gallery-item hidden" data-index="30" 
+                 data-title="Weapon Model" 
+                 data-date="July 2025" 
+                 data-description="Game-ready weapon asset with PBR textures and optimized topology.">
+                <div class="gallery-item-placeholder">⚔️</div>
+            </div>
+            <div class="gallery-item hidden tall" data-index="31" 
+                 data-title="Furniture Design" 
+                 data-date="June 2025" 
+                 data-description="Modern furniture design 3D model for product development.">
+                <div class="gallery-item-placeholder">🪑</div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Gallery Section 2 - Stable Diffusion -->
     <section class="gallery-section" style="background: var(--dark-card); border-top: 1px solid var(--dark-border);">
