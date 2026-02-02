@@ -405,11 +405,11 @@
             transform: translateX(5px);
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr; 
-            gap: 2rem;
-        }
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* ← Change back to 2 columns */
+    gap: 2rem;
+}
 
         .category-section {
             margin-bottom: 4rem;
