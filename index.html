@@ -1340,9 +1340,198 @@
 .project-card {
     cursor: pointer;
 }
+        /* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Logo container with circle */
+.loading-logo-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SVG Circle */
+.loading-progress-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Start from top (12 o'clock) */
+}
+
+.loading-circle-bg {
+    opacity: 0.3;
+}
+
+.loading-circle-progress {
+    stroke-dasharray: 722.566; /* 2 * PI * 115 = circumference */
+    stroke-dashoffset: 722.566; /* Start at 0% (hidden) */
+    transition: stroke-dashoffset 0.1s linear;
+    filter: drop-shadow(0 0 15px rgba(133, 199, 242, 0.6));
+}
+
+/* Logo in center */
+.loading-logo {
+    position: relative;
+    z-index: 10;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: logoFadeIn 0.6s ease;
+}
+
+@keyframes logoFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.loading-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Percentage text */
+.loading-percentage {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-family: 'Poppins', sans-serif;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading text */
+.loading-text {
+    font-size: 1rem;
+    color: var(--mid-gray);
+    font-weight: 500;
+    letter-spacing: 1px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .loading-logo-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .loading-logo {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .loading-percentage {
+        font-size: 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
+    <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-wrapper">
+            <!-- Logo in center with circle around it -->
+            <div class="loading-logo-container">
+                <svg class="loading-progress-circle" width="250" height="250" viewBox="0 0 250 250">
+                    <!-- Background circle (dark gray) -->
+                    <circle 
+                        class="loading-circle-bg" 
+                        cx="125" 
+                        cy="125" 
+                        r="115"
+                        fill="none"
+                        stroke="rgba(42, 42, 42, 0.3)"
+                        stroke-width="6"
+                    />
+                    <!-- Progress circle (blue) -->
+                    <circle 
+                        class="loading-circle-progress" 
+                        cx="125" 
+                        cy="125" 
+                        r="115"
+                        fill="none"
+                        stroke="#85C7F2"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                    />
+                </svg>
+                
+                <!-- Logo in the center -->
+                <div class="loading-logo">
+                    <img src="https://www.johnthepm.com/images/nav/JDR%20LOGO.png" alt="JDR Logo">
+                </div>
+            </div>
+            
+            <!-- Percentage below -->
+            <div class="loading-percentage">0%</div>
+            
+            <!-- Optional loading text -->
+            <div class="loading-text">Loading Your Portfolio...</div>
+        </div>
+    </div>
+
+    <!-- Your page content starts here -->
+    <header>
+        <!-- ... -->
+    </header>
     <!-- Header -->
     <header>
         <nav>
@@ -1987,6 +2176,53 @@ document.addEventListener('DOMContentLoaded', function() {
             openProjectModal(projectKey);
         });
     });
+});
+        // Loading Screen - Circle Progress Around Logo
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    const progressCircle = document.querySelector('.loading-circle-progress');
+    const percentageText = document.querySelector('.loading-percentage');
+    
+    const radius = 115;
+    const circumference = 2 * Math.PI * radius; // 722.566
+    
+    // Set initial state
+    progressCircle.style.strokeDasharray = circumference;
+    progressCircle.style.strokeDashoffset = circumference;
+    
+    let progress = 0;
+    const duration = 2000; // 2 seconds (adjust as needed)
+    const startTime = Date.now();
+    
+    function updateProgress(percent) {
+        // As percent increases from 0 to 100, offset decreases from circumference to 0
+        // This makes the circle "draw" clockwise from the top
+        const offset = circumference - (percent / 100) * circumference;
+        progressCircle.style.strokeDashoffset = offset;
+        percentageText.textContent = Math.round(percent) + '%';
+    }
+    
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        progress = Math.min((elapsed / duration) * 100, 100);
+        
+        updateProgress(progress);
+        
+        if (progress < 100) {
+            requestAnimationFrame(animate);
+        } else {
+            // Completed - fade out
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 400);
+        }
+    }
+    
+    // Start animation
+    animate();
 });
 </script>
 </body>
