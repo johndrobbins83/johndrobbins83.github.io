@@ -1386,7 +1386,7 @@ nav ul li a:hover::after {
                         const sortType = this.value;
                         const items = Array.from(gallery.querySelectorAll('.gallery-item'));
                         
-                        const itemsData = items.map(item => ({
+                        const itemsData = items.map(item => {
                             element: item,
                             title: item.dataset.title || '',
                             date: item.dataset.date || '',
