@@ -930,6 +930,61 @@
     .project-description {
         font-size: 0.75rem;
     }
+                /* Mobile: Project Modal Layout */
+    .project-modal-content {
+        padding: 2rem 1rem;
+    }
+
+    .project-modal-header {
+        flex-direction: row-reverse; /* Logo on right */
+        gap: 1rem;
+    }
+
+    .project-modal-logo {
+        width: 60px;
+        height: 60px;
+        order: 2; /* Keep logo on right */
+    }
+
+    .project-modal-info {
+        order: 1;
+        text-align: left;
+    }
+
+    .project-modal-title {
+        font-size: 1.3rem;
+    }
+
+    .project-modal-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columns */
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-modal-meta-item:nth-child(1),
+    .project-modal-meta-item:nth-child(2) {
+        /* Date and Role on first row */
+    }
+
+    .project-modal-meta-item:nth-child(3),
+    .project-modal-meta-item:nth-child(4) {
+        /* Platform and Type on second row */
+    }
+
+    .project-modal-description {
+        font-size: 0.9rem;
+    }
+
+    .project-modal-buttons {
+        flex-direction: column;
+    }
+
+    .project-modal-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
 
     /* KEEP EXISTING CODE BELOW */
     .sections-grid {
