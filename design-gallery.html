@@ -896,24 +896,20 @@ nav ul li a:hover::after {
 
             /* Mobile Slider Adjustments */
             .image-slider {
-                overflow: hidden;
-                padding: 1rem 0 0.5rem;
                 position: relative;
+                overflow: hidden;
+                padding: 0;
             }
 
-            /* Row that holds: [prev arrow] [card] [next arrow] */
             .slider-row {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
+                position: relative;
+                overflow: hidden;
             }
 
             .slider-container {
-                flex: 1;
-                min-width: 0;
                 padding: 0;
-                overflow: hidden;
                 gap: 0;
+                overflow: visible;
             }
 
             .slider-item {
@@ -923,22 +919,26 @@ nav ul li a:hover::after {
                 height: 300px;
             }
 
-            /* Nav arrows: not absolute, just flex siblings */
             .slider-nav {
-                position: relative;
-                top: auto;
-                left: auto;
-                right: auto;
-                transform: none;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
                 width: 36px;
                 height: 36px;
-                min-width: 36px;
                 font-size: 1.2rem;
-                flex-shrink: 0;
+                z-index: 10;
             }
 
             .slider-nav:hover {
-                transform: none;
+                transform: translateY(-50%) scale(1.1);
+            }
+
+            .slider-nav.prev {
+                left: 4px;
+            }
+
+            .slider-nav.next {
+                right: 4px;
             }
 
             /* On mobile: hide mosaic grids, show mobile sliders instead */
@@ -1668,14 +1668,9 @@ nav ul li a:hover::after {
                 dots.className = 'slider-dots';
                 dots.id = name + 'Dots';
 
-                // Wrap arrows + track in a row so CSS can flex them
-                var row = document.createElement('div');
-                row.className = 'slider-row';
-                row.appendChild(prevBtn);
-                row.appendChild(track);
-                row.appendChild(nextBtn);
-
-                sliderWrapper.appendChild(row);
+                sliderWrapper.appendChild(prevBtn);
+                sliderWrapper.appendChild(track);
+                sliderWrapper.appendChild(nextBtn);
                 sliderWrapper.appendChild(dots);
 
                 container.appendChild(sliderWrapper);
@@ -1685,28 +1680,8 @@ nav ul li a:hover::after {
             });
         }
 
-        // Wrap a static slider's prev + container + next into a .slider-row on mobile
-        function wrapStaticSliderRow(sliderId) {
-            var wrapper   = document.getElementById(sliderId);
-            if (!wrapper || wrapper.querySelector('.slider-row')) return; // already done
-            var prev      = wrapper.querySelector('.slider-nav.prev');
-            var container = wrapper.querySelector('.slider-container');
-            var next      = wrapper.querySelector('.slider-nav.next');
-            if (!prev || !container || !next) return;
-            var row = document.createElement('div');
-            row.className = 'slider-row';
-            wrapper.insertBefore(row, prev);
-            row.appendChild(prev);
-            row.appendChild(container);
-            row.appendChild(next);
-        }
-
         // ─── Init desktop sliders (Logos + 3D Modeling — always sliders) ───
         function initDesktopSliders() {
-            if (window.innerWidth <= 768) {
-                wrapStaticSliderRow('logosSlider');
-                wrapStaticSliderRow('modelingSlider');
-            }
             initSlider('logos',    document.getElementById('logosContainer'),    document.getElementById('logosDots'));
             initSlider('modeling', document.getElementById('modelingContainer'), document.getElementById('modelingDots'));
         }
@@ -1737,7 +1712,6 @@ nav ul li a:hover::after {
             setupAllGalleries();
             initDesktopSliders();
             buildMobileSliders();
-            // Also rebuild if orientation/resize crosses 768
             window.addEventListener('resize', buildMobileSliders);
         });
     </script>
