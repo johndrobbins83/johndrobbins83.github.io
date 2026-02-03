@@ -444,6 +444,11 @@ nav ul li a:hover::after {
             display: none;
         }
 
+        /* Mobile-only sliders for grid sections — hidden on desktop */
+        .mobile-slider {
+            display: none;
+        }
+
         /* Image Slider for Logos and 3D Modeling */
         .image-slider {
             position: relative;
@@ -891,6 +896,24 @@ nav ul li a:hover::after {
                 font-size: 1.2rem;
             }
 
+            /* On mobile: hide mosaic grids, show mobile sliders instead */
+            .mosaic-gallery {
+                display: none;
+            }
+
+            .mobile-slider {
+                display: block;
+            }
+
+            /* Hide search/sort/view-all on mobile for grid sections (slider shows all) */
+            .gallery-header-right {
+                display: none;
+            }
+
+            .view-all-btn {
+                display: none;
+            }
+
             .lightbox-content {
                 max-width: 95%;
             }
@@ -1062,6 +1085,7 @@ nav ul li a:hover::after {
                     <div class="gallery-item-placeholder">🖼️</div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -1356,401 +1380,292 @@ nav ul li a:hover::after {
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Universal gallery controls setup
-        function setupAllGalleries() {
-            const galleries = document.querySelectorAll('.mosaic-gallery[data-gallery]');
-            
-            galleries.forEach((gallery) => {
-                const galleryNum = gallery.dataset.gallery;
-                const viewAllBtn = document.querySelector(`.view-all-btn[data-gallery="${galleryNum}"]`);
-                const searchInput = document.querySelector(`.search-input[data-gallery="${galleryNum}"]`);
-                const sortSelect = document.querySelector(`.sort-select[data-gallery="${galleryNum}"]`);
-                const hiddenItems = gallery.querySelectorAll('.gallery-item.hidden');
-                
-                let viewingAll = false;
-                
-                // View All Toggle
-                if (viewAllBtn) {
-                    viewAllBtn.addEventListener('click', function() {
-                        viewingAll = !viewingAll;
-                        
-                        hiddenItems.forEach(item => {
-                            if (viewingAll) {
-                                item.classList.remove('hidden');
-                            } else {
-                                item.classList.add('hidden');
-                            }
-                        });
-
-                        this.classList.toggle('active');
-                        this.querySelector('span').textContent = viewingAll ? 'View Less' : 'View All';
-                    });
-                }
-                
-                // Search functionality
-                if (searchInput) {
-                    searchInput.addEventListener('input', function() {
-                        const searchTerm = this.value.toLowerCase();
-                        const items = gallery.querySelectorAll('.gallery-item');
-                        
-                        items.forEach(item => {
-                            const title = (item.dataset.title || '').toLowerCase();
-                            const description = (item.dataset.description || '').toLowerCase();
-                            const date = (item.dataset.date || '').toLowerCase();
-                            
-                            const matches = title.includes(searchTerm) || 
-                                          description.includes(searchTerm) || 
-                                          date.includes(searchTerm);
-                            
-                            if (matches) {
-                                item.style.display = '';
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        });
-                    });
-                }
-                
-                // Sort functionality
-                if (sortSelect) {
-                    sortSelect.addEventListener('change', function() {
-                        const sortType = this.value;
-                        const items = Array.from(gallery.querySelectorAll('.gallery-item'));
-                        
-                        const itemsData = items.map(item => ({
-                            element: item,
-                            title: item.dataset.title || '',
-                            date: item.dataset.date || '',
-                            index: parseInt(item.dataset.index)
-                        }));
-                        
-                        itemsData.sort((a, b) => {
-                            switch(sortType) {
-                                case 'title-asc':
-                                    return a.title.localeCompare(b.title);
-                                case 'title-desc':
-                                    return b.title.localeCompare(a.title);
-                                case 'date-newest':
-                                    return parseDate(b.date) - parseDate(a.date);
-                                case 'date-oldest':
-                                    return parseDate(a.date) - parseDate(b.date);
-                                default:
-                                    return a.index - b.index;
-                            }
-                        });
-                        
-                        itemsData.forEach(item => {
-                            gallery.appendChild(item.element);
-                        });
-                    });
-                }
-            });
-        }
-
-        // Helper function to parse dates
-        function parseDate(dateStr) {
-            if (!dateStr) return 0;
-            const months = {
-                'january': 0, 'february': 1, 'march': 2, 'april': 3,
-                'may': 4, 'june': 5, 'july': 6, 'august': 7,
-                'september': 8, 'october': 9, 'november': 10, 'december': 11
-            };
-            const parts = dateStr.toLowerCase().split(' ');
-            if (parts.length === 2) {
-                const month = months[parts[0]] || 0;
-                const year = parseInt(parts[1]) || 0;
-                return new Date(year, month, 1).getTime();
-            }
-            return 0;
-        }
-
-        // Lightbox functionality
+    <script>
+        // ─── Lightbox refs ───
         let currentImageIndex = 0;
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxDate = document.getElementById('lightboxDate');
+        const lightbox            = document.getElementById('lightbox');
+        const lightboxImage       = document.getElementById('lightboxImage');
+        const lightboxTitle       = document.getElementById('lightboxTitle');
+        const lightboxDate        = document.getElementById('lightboxDate');
         const lightboxDescription = document.getElementById('lightboxDescription');
 
-        // Open lightbox on gallery item click
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                const placeholder = this.querySelector('.gallery-item-placeholder');
-                
-                if (img || placeholder) {
-                    currentImageIndex = parseInt(this.dataset.index);
-                    const aspect = this.dataset.aspect || 'square';
-                    
-                    // Generate appropriate demo image based on aspect ratio
-                    let width, height, imageLabel;
-                    switch(aspect) {
-                        case 'square':
-                            width = 600;
-                            height = 600;
-                            imageLabel = 'Square Image';
-                            break;
-                        case 'wide':
-                            width = 800;
-                            height = 500;
-                            imageLabel = 'Wide Image';
-                            break;
-                        case 'tall':
-                            width = 600;
-                            height = 800;
-                            imageLabel = 'Tall Image';
-                            break;
-                        default:
-                            width = 600;
-                            height = 600;
-                            imageLabel = 'Demo Image';
-                    }
-                    
-                    if (img) {
-                        lightboxImage.src = img.src;
-                        lightboxImage.alt = img.alt;
-                        lightboxImage.style.display = 'block';
-                    } else {
-                        const svgData = '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '"><rect width="' + width + '" height="' + height + '" fill="%2385C7F2"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="60" fill="white">' + imageLabel + '</text></svg>';
-                        lightboxImage.src = 'data:image/svg+xml,' + svgData;
-                        lightboxImage.alt = imageLabel;
-                        lightboxImage.style.display = 'block';
-                    }
-                    
-                    lightboxTitle.textContent = this.dataset.title || 'Untitled';
-                    lightboxDate.textContent = this.dataset.date || '';
-                    lightboxDescription.textContent = this.dataset.description || '';
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        });
+        // ─── Helper: open lightbox from any item element ───
+        function openLightbox(el) {
+            currentImageIndex = parseInt(el.dataset.index);
+            const aspect = el.dataset.aspect || 'square';
+            var width, height, label;
+            if (aspect === 'wide')      { width = 800; height = 500; label = 'Wide Image'; }
+            else if (aspect === 'tall') { width = 600; height = 800; label = 'Tall Image'; }
+            else                        { width = 600; height = 600; label = 'Square Image'; }
+
+            lightboxImage.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '"><rect width="' + width + '" height="' + height + '" fill="%2385C7F2"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="60" fill="white">' + label + '</text></svg>';
+            lightboxImage.alt  = label;
+            lightboxTitle.textContent       = el.dataset.title       || 'Untitled';
+            lightboxDate.textContent        = el.dataset.date        || '';
+            lightboxDescription.textContent = el.dataset.description || '';
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
-        function navigateLightbox(direction) {
-            const visibleItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden'));
-            const currentVisibleIndex = visibleItems.findIndex(item => parseInt(item.dataset.index) === currentImageIndex);
-            let nextIndex = currentVisibleIndex + direction;
-
-            if (nextIndex < 0) nextIndex = visibleItems.length - 1;
-            if (nextIndex >= visibleItems.length) nextIndex = 0;
-
-            const nextItem = visibleItems[nextIndex];
-            const nextImg = nextItem.querySelector('img');
-            const nextPlaceholder = nextItem.querySelector('.gallery-item-placeholder');
-            const aspect = nextItem.dataset.aspect || 'square';
-            
-            // Generate appropriate demo image based on aspect ratio
-            let width, height, imageLabel;
-            switch(aspect) {
-                case 'square':
-                    width = 600;
-                    height = 600;
-                    imageLabel = 'Square Image';
-                    break;
-                case 'wide':
-                    width = 800;
-                    height = 500;
-                    imageLabel = 'Wide Image';
-                    break;
-                case 'tall':
-                    width = 600;
-                    height = 800;
-                    imageLabel = 'Tall Image';
-                    break;
-                default:
-                    width = 600;
-                    height = 600;
-                    imageLabel = 'Demo Image';
-            }
-            
-            if (nextImg || nextPlaceholder) {
-                currentImageIndex = parseInt(nextItem.dataset.index);
-                
-                if (nextImg) {
-                    lightboxImage.src = nextImg.src;
-                    lightboxImage.alt = nextImg.alt;
-                } else {
-                    const svgData = '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '"><rect width="' + width + '" height="' + height + '" fill="%2385C7F2"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="60" fill="white">' + imageLabel + '</text></svg>';
-                    lightboxImage.src = 'data:image/svg+xml,' + svgData;
-                    lightboxImage.alt = imageLabel;
-                }
-                
-                lightboxTitle.textContent = nextItem.dataset.title || 'Untitled';
-                lightboxDate.textContent = nextItem.dataset.date || '';
-                lightboxDescription.textContent = nextItem.dataset.description || '';
-            }
+        // ─── Helper: get aspect dims for navigateLightbox ───
+        function getDims(aspect) {
+            if (aspect === 'wide')      return { w: 800, h: 500, label: 'Wide Image' };
+            if (aspect === 'tall')      return { w: 600, h: 800, label: 'Tall Image' };
+            return                             { w: 600, h: 600, label: 'Square Image' };
         }
 
-        // Close lightbox on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        function navigateLightbox(direction) {
+            // Collect ALL visible items across every gallery & slider
+            var allItems = Array.from(document.querySelectorAll('.gallery-item:not(.hidden), .slider-item'));
+            var idx = allItems.findIndex(function(el) { return parseInt(el.dataset.index) === currentImageIndex; });
+            idx += direction;
+            if (idx < 0)              idx = allItems.length - 1;
+            if (idx >= allItems.length) idx = 0;
+            openLightbox(allItems[idx]);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape')     closeLightbox();
+            if (e.key === 'ArrowLeft')  navigateLightbox(-1);
             if (e.key === 'ArrowRight') navigateLightbox(1);
         });
+        lightbox.addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
 
-        // Close lightbox on background click
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === this) closeLightbox();
-        });
+        // ─── Desktop grid galleries (View All / Search / Sort) ───
+        function setupAllGalleries() {
+            document.querySelectorAll('.mosaic-gallery[data-gallery]').forEach(function(gallery) {
+                var num          = gallery.dataset.gallery;
+                var viewAllBtn   = document.querySelector('.view-all-btn[data-gallery="' + num + '"]');
+                var searchInput  = document.querySelector('.search-input[data-gallery="' + num + '"]');
+                var sortSelect   = document.querySelector('.sort-select[data-gallery="' + num + '"]');
+                var hiddenItems  = gallery.querySelectorAll('.gallery-item.hidden');
+                var viewingAll   = false;
 
-        // Hamburger menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('nav ul');
+                // Click → lightbox
+                gallery.querySelectorAll('.gallery-item').forEach(function(item) {
+                    item.addEventListener('click', function() { openLightbox(this); });
+                });
 
+                if (viewAllBtn) {
+                    viewAllBtn.addEventListener('click', function() {
+                        viewingAll = !viewingAll;
+                        hiddenItems.forEach(function(item) {
+                            item.classList.toggle('hidden', !viewingAll);
+                        });
+                        this.classList.toggle('active');
+                        this.querySelector('span').textContent = viewingAll ? 'View Less' : 'View All';
+                    });
+                }
+
+                if (searchInput) {
+                    searchInput.addEventListener('input', function() {
+                        var term = this.value.toLowerCase();
+                        gallery.querySelectorAll('.gallery-item').forEach(function(item) {
+                            var match = (item.dataset.title || '').toLowerCase().includes(term) ||
+                                        (item.dataset.description || '').toLowerCase().includes(term) ||
+                                        (item.dataset.date || '').toLowerCase().includes(term);
+                            item.style.display = match ? '' : 'none';
+                        });
+                    });
+                }
+
+                if (sortSelect) {
+                    sortSelect.addEventListener('change', function() {
+                        var sortType = this.value;
+                        var items = Array.from(gallery.querySelectorAll('.gallery-item'));
+                        items.sort(function(a, b) {
+                            if (sortType === 'title-asc')    return (a.dataset.title||'').localeCompare(b.dataset.title||'');
+                            if (sortType === 'title-desc')   return (b.dataset.title||'').localeCompare(a.dataset.title||'');
+                            if (sortType === 'date-newest')  return parseDate(b.dataset.date) - parseDate(a.dataset.date);
+                            if (sortType === 'date-oldest')  return parseDate(a.dataset.date) - parseDate(b.dataset.date);
+                            return 0;
+                        });
+                        items.forEach(function(item) { gallery.appendChild(item); });
+                    });
+                }
+            });
+        }
+
+        function parseDate(str) {
+            if (!str) return 0;
+            var months = { january:0, february:1, march:2, april:3, may:4, june:5, july:6, august:7, september:8, october:9, november:10, december:11 };
+            var parts  = str.toLowerCase().split(' ');
+            return parts.length === 2 ? new Date(parseInt(parts[1]) || 0, months[parts[0]] || 0, 1).getTime() : 0;
+        }
+
+        // ─── Generic slider engine ───
+        // sliderState = { currentIndex, containerEl, dotsEl, items }
+        var sliderState = {};
+
+        function initSlider(name, containerEl, dotsEl) {
+            var items = containerEl.querySelectorAll('.slider-item');
+            sliderState[name] = { currentIndex: 0, containerEl: containerEl, dotsEl: dotsEl, items: items };
+
+            // Build dots
+            dotsEl.innerHTML = '';
+            for (var i = 0; i < items.length; i++) {
+                var dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                (function(idx) { dot.onclick = function() { goToSlide(name, idx); }; })(i);
+                dotsEl.appendChild(dot);
+            }
+
+            // Click → lightbox
+            Array.from(items).forEach(function(item) {
+                item.addEventListener('click', function() { openLightbox(this); });
+            });
+
+            updateSliderPosition(name);
+        }
+
+        function slideBy(name, direction) {
+            var s = sliderState[name];
+            s.currentIndex += direction;
+            if (s.currentIndex < 0)                s.currentIndex = s.items.length - 1;
+            if (s.currentIndex >= s.items.length)  s.currentIndex = 0;
+            updateSliderPosition(name);
+        }
+
+        function goToSlide(name, index) {
+            sliderState[name].currentIndex = index;
+            updateSliderPosition(name);
+        }
+
+        function updateSliderPosition(name) {
+            var s          = sliderState[name];
+            var itemWidth  = s.items[0].offsetWidth + 24; // gap
+            var parentW    = s.containerEl.parentElement.offsetWidth - 100;
+            var offset     = -(s.currentIndex * itemWidth) + (parentW / 2) - (itemWidth / 2);
+            s.containerEl.style.transform = 'translateX(' + offset + 'px)';
+
+            // Update dots
+            var dots = s.dotsEl.querySelectorAll('.slider-dot');
+            dots.forEach(function(dot, i) { dot.classList.toggle('active', i === s.currentIndex); });
+        }
+
+        // Expose slide functions that onclick attrs can call
+        function slideMobile(name, dir)  { slideBy(name, dir); }
+        function slideLogos(dir)         { slideBy('logos', dir); }
+        function slideModeling(dir)      { slideBy('modeling', dir); }
+
+        // ─── Mobile: convert grid sections into sliders ───
+        // Map: gallery data-gallery number → slider name
+        var mobileSliderMap = { '1': 'flyers', '2': 'digitalart', '5': 'stable' };
+
+        function buildMobileSliders() {
+            if (window.innerWidth > 768) return; // desktop only
+
+            Object.keys(mobileSliderMap).forEach(function(galleryNum) {
+                var name       = mobileSliderMap[galleryNum];
+                var mosaic     = document.querySelector('.mosaic-gallery[data-gallery="' + galleryNum + '"]');
+                var section    = mosaic.closest('.gallery-section');
+                var container  = section.querySelector('.gallery-container');
+
+                // Already built?
+                if (section.querySelector('.mobile-slider')) return;
+
+                // Grab every gallery-item (visible + hidden — slider shows all)
+                var gridItems = Array.from(mosaic.querySelectorAll('.gallery-item'));
+
+                // Build slider HTML
+                var sliderWrapper = document.createElement('div');
+                sliderWrapper.className = 'mobile-slider image-slider';
+
+                var prevBtn = document.createElement('div');
+                prevBtn.className = 'slider-nav prev';
+                prevBtn.setAttribute('onclick', "slideMobile('" + name + "', -1)");
+                prevBtn.innerHTML = '&#8249;';
+
+                var track = document.createElement('div');
+                track.className = 'slider-container';
+                track.id = name + 'Container';
+
+                // Convert each grid item into a slider-item
+                gridItems.forEach(function(item) {
+                    var si = document.createElement('div');
+                    si.className = 'slider-item';
+                    si.dataset.index       = item.dataset.index;
+                    si.dataset.aspect      = item.dataset.aspect || 'square';
+                    si.dataset.title       = item.dataset.title || '';
+                    si.dataset.date        = item.dataset.date || '';
+                    si.dataset.description = item.dataset.description || '';
+
+                    // Clone the placeholder / img
+                    var placeholder = item.querySelector('.gallery-item-placeholder');
+                    if (placeholder) si.appendChild(placeholder.cloneNode(true));
+                    var img = item.querySelector('img');
+                    if (img) si.appendChild(img.cloneNode(true));
+
+                    // Caption overlay
+                    var caption = document.createElement('div');
+                    caption.className = 'slider-caption';
+                    caption.innerHTML = '<h3>' + (item.dataset.title || '') + '</h3><p>' + (item.dataset.description || '').substring(0, 60) + '...</p>';
+                    si.appendChild(caption);
+
+                    track.appendChild(si);
+                });
+
+                var nextBtn = document.createElement('div');
+                nextBtn.className = 'slider-nav next';
+                nextBtn.setAttribute('onclick', "slideMobile('" + name + "', 1)");
+                nextBtn.innerHTML = '&#8250;';
+
+                var dots = document.createElement('div');
+                dots.className = 'slider-dots';
+                dots.id = name + 'Dots';
+
+                sliderWrapper.appendChild(prevBtn);
+                sliderWrapper.appendChild(track);
+                sliderWrapper.appendChild(nextBtn);
+                sliderWrapper.appendChild(dots);
+
+                container.appendChild(sliderWrapper);
+
+                // Init the slider engine
+                initSlider(name, track, dots);
+            });
+        }
+
+        // ─── Init desktop sliders (Logos + 3D Modeling — always sliders) ───
+        function initDesktopSliders() {
+            initSlider('logos',    document.getElementById('logosContainer'),    document.getElementById('logosDots'));
+            initSlider('modeling', document.getElementById('modelingContainer'), document.getElementById('modelingDots'));
+        }
+
+        // ─── Auto-advance all active sliders every 5s ───
+        setInterval(function() {
+            Object.keys(sliderState).forEach(function(name) { slideBy(name, 1); });
+        }, 5000);
+
+        // ─── Hamburger ───
+        var hamburger = document.querySelector('.hamburger');
+        var navMenu   = document.querySelector('nav ul');
         if (hamburger) {
-            hamburger.addEventListener('click', () => {
+            hamburger.addEventListener('click', function() {
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
-
-            // Close menu when clicking on a link
-            document.querySelectorAll('nav ul li a').forEach(link => {
-                link.addEventListener('click', () => {
+            document.querySelectorAll('nav ul li a').forEach(function(link) {
+                link.addEventListener('click', function() {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 });
             });
         }
 
-        // Initialize all galleries on page load
+        // ─── Boot ───
         document.addEventListener('DOMContentLoaded', function() {
             setupAllGalleries();
-            initializeSliders();
+            initDesktopSliders();
+            buildMobileSliders();
+            // Also rebuild if orientation/resize crosses 768
+            window.addEventListener('resize', buildMobileSliders);
         });
-
-        // Slider functionality
-        let logosCurrentIndex = 0;
-        let modelingCurrentIndex = 0;
-
-        function initializeSliders() {
-            // Initialize Logos slider
-            const logosContainer = document.getElementById('logosContainer');
-            const logosItems = logosContainer.querySelectorAll('.slider-item');
-            createDots('logosDots', logosItems.length, 'logos');
-            updateSlider('logos', logosCurrentIndex);
-
-            // Initialize 3D Modeling slider
-            const modelingContainer = document.getElementById('modelingContainer');
-            const modelingItems = modelingContainer.querySelectorAll('.slider-item');
-            createDots('modelingDots', modelingItems.length, 'modeling');
-            updateSlider('modeling', modelingCurrentIndex);
-
-            // Add click handlers to slider items for lightbox
-            document.querySelectorAll('.slider-item').forEach((item) => {
-                item.addEventListener('click', function() {
-                    currentImageIndex = parseInt(this.dataset.index);
-                    const aspect = this.dataset.aspect || 'square';
-                    
-                    // Generate appropriate demo image based on aspect ratio
-                    let width, height, imageLabel;
-                    switch(aspect) {
-                        case 'square':
-                            width = 600;
-                            height = 600;
-                            imageLabel = 'Square Image';
-                            break;
-                        case 'wide':
-                            width = 800;
-                            height = 500;
-                            imageLabel = 'Wide Image';
-                            break;
-                        case 'tall':
-                            width = 600;
-                            height = 800;
-                            imageLabel = 'Tall Image';
-                            break;
-                        default:
-                            width = 600;
-                            height = 600;
-                            imageLabel = 'Demo Image';
-                    }
-                    
-                    const svgData = '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '"><rect width="' + width + '" height="' + height + '" fill="%2385C7F2"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="60" fill="white">' + imageLabel + '</text></svg>';
-                    lightboxImage.src = 'data:image/svg+xml,' + svgData;
-                    lightboxImage.alt = imageLabel;
-                    lightboxImage.style.display = 'block';
-                    
-                    lightboxTitle.textContent = this.dataset.title || 'Untitled';
-                    lightboxDate.textContent = this.dataset.date || '';
-                    lightboxDescription.textContent = this.dataset.description || '';
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-        }
-
-        function createDots(dotsId, count, sliderType) {
-            const dotsContainer = document.getElementById(dotsId);
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < count; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'slider-dot';
-                if (i === 0) dot.classList.add('active');
-                dot.onclick = () => goToSlide(sliderType, i);
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function slideLogos(direction) {
-            const container = document.getElementById('logosContainer');
-            const items = container.querySelectorAll('.slider-item');
-            logosCurrentIndex += direction;
-            
-            if (logosCurrentIndex < 0) logosCurrentIndex = items.length - 1;
-            if (logosCurrentIndex >= items.length) logosCurrentIndex = 0;
-            
-            updateSlider('logos', logosCurrentIndex);
-        }
-
-        function slideModeling(direction) {
-            const container = document.getElementById('modelingContainer');
-            const items = container.querySelectorAll('.slider-item');
-            modelingCurrentIndex += direction;
-            
-            if (modelingCurrentIndex < 0) modelingCurrentIndex = items.length - 1;
-            if (modelingCurrentIndex >= items.length) modelingCurrentIndex = 0;
-            
-            updateSlider('modeling', modelingCurrentIndex);
-        }
-
-        function goToSlide(sliderType, index) {
-            if (sliderType === 'logos') {
-                logosCurrentIndex = index;
-                updateSlider('logos', logosCurrentIndex);
-            } else if (sliderType === 'modeling') {
-                modelingCurrentIndex = index;
-                updateSlider('modeling', modelingCurrentIndex);
-            }
-        }
-
-        function updateSlider(sliderType, index) {
-            const container = sliderType === 'logos' ? 
-                document.getElementById('logosContainer') : 
-                document.getElementById('modelingContainer');
-            const dotsContainer = sliderType === 'logos' ? 
-                document.getElementById('logosDots') : 
-                document.getElementById('modelingDots');
-            
-            const items = container.querySelectorAll('.slider-item');
-            const itemWidth = items[0].offsetWidth + 24; // 24 = 1.5rem gap
-            
-            // Calculate how many items fit in view
-            const containerWidth = container.parentElement.offsetWidth - 100; // Account for nav buttons
-            const itemsInView = Math.floor(containerWidth / itemWidth);
-            
-            // Center the current item
-            const offset = -(index * itemWidth) + (containerWidth / 2) - (itemWidth / 2);
-            container.style.transform = `translateX(${offset}px)`;
-            
-            // Update dots
-            const dots = dotsContainer.querySelectorAll('.slider-dot');
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
+    </script>
+</body>
+</html>
