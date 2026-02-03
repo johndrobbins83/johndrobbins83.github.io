@@ -895,39 +895,45 @@ nav ul li a:hover::after {
             /* Mobile Slider Adjustments */
             .image-slider {
                 overflow: hidden;
-                padding: 1.5rem 0 1rem;
+                padding: 1rem 0 0.5rem;
+                position: relative;
+            }
+
+            /* Row that holds: [prev arrow] [card] [next arrow] */
+            .slider-row {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
             }
 
             .slider-container {
-                display: flex;
+                flex: 1;
+                min-width: 0;
                 padding: 0;
-                gap: 1.5rem;
+                overflow: hidden;
             }
 
             .slider-item {
-                min-width: calc(100vw - 96px);
-                height: 320px;
+                min-width: 100%;
+                height: 300px;
             }
 
+            /* Nav arrows: not absolute, just flex siblings */
             .slider-nav {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                transform: none;
                 width: 36px;
                 height: 36px;
+                min-width: 36px;
                 font-size: 1.2rem;
-                top: calc(1.5rem + 160px);  /* padding-top + half card height */
-                transform: none;
-                z-index: 10;
+                flex-shrink: 0;
             }
 
             .slider-nav:hover {
                 transform: none;
-            }
-
-            .slider-nav.prev {
-                left: 4px;
-            }
-
-            .slider-nav.next {
-                right: 4px;
             }
 
             /* On mobile: hide mosaic grids, show mobile sliders instead */
@@ -1003,12 +1009,8 @@ nav ul li a:hover::after {
             }
 
             .slider-item {
-                min-width: calc(100vw - 96px);
-                height: 280px;
-            }
-
-            .slider-nav {
-                top: calc(1.5rem + 140px);  /* padding-top + half card height */
+                min-width: 100%;
+                height: 260px;
             }
         }
     </style>
@@ -1572,10 +1574,17 @@ nav ul li a:hover::after {
 
         function updateSliderPosition(name) {
             var s          = sliderState[name];
-            var itemWidth  = s.items[0].offsetWidth + 24; // gap (1.5rem)
             var isMobile   = window.innerWidth <= 768;
-            var centerW    = isMobile ? window.innerWidth : s.containerEl.parentElement.offsetWidth;
-            var offset     = -(s.currentIndex * itemWidth) + (centerW / 2) - (s.items[0].offsetWidth / 2);
+            var itemWidth  = s.items[0].offsetWidth + (isMobile ? 0 : 24); // no gap on mobile (one card visible)
+            var offset;
+            if (isMobile) {
+                // Simple: slide by exactly one card width each time
+                offset = -(s.currentIndex * s.items[0].offsetWidth);
+            } else {
+                // Desktop: center the active card
+                var parentW = s.containerEl.parentElement.offsetWidth;
+                offset = -(s.currentIndex * itemWidth) + (parentW / 2) - (s.items[0].offsetWidth / 2);
+            }
             s.containerEl.style.transform = 'translateX(' + offset + 'px)';
 
             // Update dots
@@ -1654,9 +1663,14 @@ nav ul li a:hover::after {
                 dots.className = 'slider-dots';
                 dots.id = name + 'Dots';
 
-                sliderWrapper.appendChild(prevBtn);
-                sliderWrapper.appendChild(track);
-                sliderWrapper.appendChild(nextBtn);
+                // Wrap arrows + track in a row so CSS can flex them
+                var row = document.createElement('div');
+                row.className = 'slider-row';
+                row.appendChild(prevBtn);
+                row.appendChild(track);
+                row.appendChild(nextBtn);
+
+                sliderWrapper.appendChild(row);
                 sliderWrapper.appendChild(dots);
 
                 container.appendChild(sliderWrapper);
@@ -1666,8 +1680,28 @@ nav ul li a:hover::after {
             });
         }
 
+        // Wrap a static slider's prev + container + next into a .slider-row on mobile
+        function wrapStaticSliderRow(sliderId) {
+            var wrapper   = document.getElementById(sliderId);
+            if (!wrapper || wrapper.querySelector('.slider-row')) return; // already done
+            var prev      = wrapper.querySelector('.slider-nav.prev');
+            var container = wrapper.querySelector('.slider-container');
+            var next      = wrapper.querySelector('.slider-nav.next');
+            if (!prev || !container || !next) return;
+            var row = document.createElement('div');
+            row.className = 'slider-row';
+            wrapper.insertBefore(row, prev);
+            row.appendChild(prev);
+            row.appendChild(container);
+            row.appendChild(next);
+        }
+
         // ─── Init desktop sliders (Logos + 3D Modeling — always sliders) ───
         function initDesktopSliders() {
+            if (window.innerWidth <= 768) {
+                wrapStaticSliderRow('logosSlider');
+                wrapStaticSliderRow('modelingSlider');
+            }
             initSlider('logos',    document.getElementById('logosContainer'),    document.getElementById('logosDots'));
             initSlider('modeling', document.getElementById('modelingContainer'), document.getElementById('modelingDots'));
         }
