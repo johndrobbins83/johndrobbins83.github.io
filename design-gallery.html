@@ -895,30 +895,39 @@ nav ul li a:hover::after {
             /* Mobile Slider Adjustments */
             .image-slider {
                 overflow: hidden;
-            }
-
-            .slider-item {
-                min-width: calc(100% - 80px);
-                height: 320px;
+                padding: 1.5rem 0 1rem;
             }
 
             .slider-container {
-                padding: 0 40px;
+                display: flex;
+                padding: 0;
+                gap: 1.5rem;
+            }
+
+            .slider-item {
+                min-width: calc(100vw - 96px);
+                height: 320px;
             }
 
             .slider-nav {
                 width: 36px;
                 height: 36px;
                 font-size: 1.2rem;
-                top: calc(50% + 1rem);  /* account for .image-slider padding-top */
+                top: calc(1.5rem + 160px);  /* padding-top + half card height */
+                transform: none;
+                z-index: 10;
+            }
+
+            .slider-nav:hover {
+                transform: none;
             }
 
             .slider-nav.prev {
-                left: 2px;
+                left: 4px;
             }
 
             .slider-nav.next {
-                right: 2px;
+                right: 4px;
             }
 
             /* On mobile: hide mosaic grids, show mobile sliders instead */
@@ -994,12 +1003,12 @@ nav ul li a:hover::after {
             }
 
             .slider-item {
-                min-width: calc(100% - 80px);
+                min-width: calc(100vw - 96px);
                 height: 280px;
             }
 
-            .slider-container {
-                padding: 0 40px;
+            .slider-nav {
+                top: calc(1.5rem + 140px);  /* padding-top + half card height */
             }
         }
     </style>
@@ -1563,9 +1572,10 @@ nav ul li a:hover::after {
 
         function updateSliderPosition(name) {
             var s          = sliderState[name];
-            var itemWidth  = s.items[0].offsetWidth + 24; // gap
-            var parentW    = s.containerEl.parentElement.offsetWidth;
-            var offset     = -(s.currentIndex * itemWidth) + (parentW / 2) - (itemWidth / 2);
+            var itemWidth  = s.items[0].offsetWidth + 24; // gap (1.5rem)
+            var isMobile   = window.innerWidth <= 768;
+            var centerW    = isMobile ? window.innerWidth : s.containerEl.parentElement.offsetWidth;
+            var offset     = -(s.currentIndex * itemWidth) + (centerW / 2) - (s.items[0].offsetWidth / 2);
             s.containerEl.style.transform = 'translateX(' + offset + 'px)';
 
             // Update dots
