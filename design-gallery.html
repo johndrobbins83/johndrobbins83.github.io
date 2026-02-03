@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design Gallery | John D. Robbins</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>   
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #85C7F2;  
+            --primary-blue: #85C7F2;
             --light-gray: #DBDBDB;
             --off-white: #D1D1D1;
             --mid-gray: #636363;
@@ -839,8 +839,40 @@ nav ul li a:hover::after {
 
             .gallery-header {
                 flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
+                gap: 0.75rem;
+                align-items: stretch;
+            }
+
+            .gallery-header-left {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .gallery-title {
+                font-size: 1.5rem;
+            }
+
+            .gallery-header-right {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .sort-select {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .view-all-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.82rem;
+                white-space: nowrap;
             }
 
             /* Mobile Slider Adjustments */
@@ -931,7 +963,7 @@ nav ul li a:hover::after {
     <nav>
         <div class="nav-profile">
             <div class="nav-profile-image">
-                <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR" onerror="this.parentElement.textContent='JR'">
+                <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR" onerror="this.style.display='none'; this.parentElement.textContent='JR';">
             </div>
             <div class="nav-info">
                 <div class="name">John D. Robbins</div>
@@ -1177,7 +1209,7 @@ nav ul li a:hover::after {
                     <div class="slider-item" data-index="24" data-aspect="wide" data-title="Product Visualization" data-date="January 2026" data-description="Photorealistic 3D product rendering for e-commerce showcase.">
                         <div class="slider-item-placeholder">📦</div>
                         <div class="slider-caption">
-                            <h3>Product Visualization.</h3>
+                            <h3>Product Visualization</h3>
                             <p>Photorealistic rendering</p>
                         </div>
                     </div>
@@ -1314,7 +1346,7 @@ nav ul li a:hover::after {
         <div class="footer-content">
             <div class="footer-logo">John D. Robbins</div>
             <div class="footer-contact">
-                johndrobbins83@gmail.com | Holly Ridge, NC
+                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365c595e5852445954545f58450e0576515b575f5a1855595b">[email&#160;protected]</a> | Holly Ridge, NC
             </div>
             <div class="footer-links">
                 <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
@@ -1324,7 +1356,7 @@ nav ul li a:hover::after {
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Universal gallery controls setup
         function setupAllGalleries() {
             const galleries = document.querySelectorAll('.mosaic-gallery[data-gallery]');
@@ -1722,16 +1754,3 @@ nav ul li a:hover::after {
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
-        }
-
-        // Auto-advance sliders (optional)
-        setInterval(() => {
-            slideLogos(1);
-        }, 5000);
-
-        setInterval(() => {
-            slideModeling(1);
-        }, 5500);
-    </script>
-</body>
-</html>
