@@ -439,6 +439,14 @@ nav ul li a:hover::after {
             background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
         }
 
+        /* When a gallery-item-placeholder is cloned into a slider, override grid styles */
+        .slider-item .gallery-item-placeholder {
+            width: 100%;
+            height: 100%;
+            background: none;
+            font-size: 5rem;
+        }
+
         /* Hidden items */
         .gallery-item.hidden {
             display: none;
@@ -885,19 +893,32 @@ nav ul li a:hover::after {
             }
 
             /* Mobile Slider Adjustments */
+            .image-slider {
+                overflow: hidden;
+            }
+
             .slider-item {
-                min-width: 280px;
+                min-width: calc(100% - 80px);
                 height: 320px;
             }
 
             .slider-container {
-                padding: 0 2rem;
+                padding: 0 40px;
             }
 
             .slider-nav {
-                width: 40px;
-                height: 40px;
+                width: 36px;
+                height: 36px;
                 font-size: 1.2rem;
+                top: calc(50% + 1rem);  /* account for .image-slider padding-top */
+            }
+
+            .slider-nav.prev {
+                left: 2px;
+            }
+
+            .slider-nav.next {
+                right: 2px;
             }
 
             /* On mobile: hide mosaic grids, show mobile sliders instead */
@@ -973,12 +994,12 @@ nav ul li a:hover::after {
             }
 
             .slider-item {
-                min-width: 100%;
+                min-width: calc(100% - 80px);
                 height: 280px;
             }
 
             .slider-container {
-                padding: 0 1rem;
+                padding: 0 40px;
             }
         }
     </style>
@@ -1543,7 +1564,7 @@ nav ul li a:hover::after {
         function updateSliderPosition(name) {
             var s          = sliderState[name];
             var itemWidth  = s.items[0].offsetWidth + 24; // gap
-            var parentW    = s.containerEl.parentElement.offsetWidth - 100;
+            var parentW    = s.containerEl.parentElement.offsetWidth;
             var offset     = -(s.currentIndex * itemWidth) + (parentW / 2) - (itemWidth / 2);
             s.containerEl.style.transform = 'translateX(' + offset + 'px)';
 
