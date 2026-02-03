@@ -466,7 +466,7 @@ nav ul li a:hover::after {
         .slider-item {
             min-width: 350px;
             height: 400px;
-            background: var(--dark-card);
+            background: linear-gradient(135deg, #1a1f2e 0%, #232a3b 100%);
             border: 1px solid var(--dark-border);
             border-radius: 8px;
             overflow: hidden;
@@ -477,8 +477,6 @@ nav ul li a:hover::after {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2.5rem;
-            box-sizing: border-box;
         }
 
         .slider-item:hover {
@@ -501,15 +499,12 @@ nav ul li a:hover::after {
 
         .slider-item-placeholder,
         .slider-item .gallery-item-placeholder {
-            width: 100%;
-            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--primary-blue);
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
-            border-radius: 6px;
+            background: none;
         }
 
         .slider-caption {
