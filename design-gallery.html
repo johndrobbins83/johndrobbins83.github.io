@@ -379,10 +379,10 @@ nav ul li a:hover::after {
         /* Mosaic Gallery Grid - Tight Puzzle Layout */
         .mosaic-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-auto-rows: 250px;
-            grid-auto-flow: dense;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
             gap: 0.5rem;
+            aspect-ratio: 1 / 1;
         }
 
         .gallery-item {
@@ -413,19 +413,25 @@ nav ul li a:hover::after {
             transform: scale(1.05);
         }
 
-        /* Mosaic variations - puzzle piece sizes */
-        .gallery-item.tall {
-            grid-row: span 2;
-        }
-
-        .gallery-item.wide {
-            grid-column: span 2;
-        }
-
-        .gallery-item.big {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
+        /* Mosaic variations - explicit grid placement matching reference layout */
+        /* 4 columns, 4 rows. Layout:
+           Col 1-2, Row 1-2 : .mosaic-1 (big)
+           Col 3,   Row 1   : .mosaic-2 (short)
+           Col 4,   Row 1-2 : .mosaic-3 (tall)
+           Col 3,   Row 2-3 : .mosaic-4 (tall)
+           Col 4,   Row 3   : .mosaic-5 (square)
+           Col 1-2, Row 3-4 : .mosaic-6 (wide)
+           Col 4,   Row 4   : .mosaic-7 (square)
+           Col 3,   Row 4   : .mosaic-8 (square, hidden by default)
+        */
+        .mosaic-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+        .mosaic-2 { grid-column: 3;     grid-row: 1;     }
+        .mosaic-3 { grid-column: 4;     grid-row: 1 / 3; }
+        .mosaic-4 { grid-column: 3;     grid-row: 2 / 4; }
+        .mosaic-5 { grid-column: 4;     grid-row: 3;     }
+        .mosaic-6 { grid-column: 1 / 3; grid-row: 3 / 5; }
+        .mosaic-7 { grid-column: 4;     grid-row: 4;     }
+        .mosaic-8 { grid-column: 3;     grid-row: 4;     }
 
         /* Placeholder styling */
         .gallery-item-placeholder {
@@ -849,12 +855,7 @@ nav ul li a:hover::after {
                 grid-auto-rows: 150px;
             }
 
-            .gallery-item.tall,
-            .gallery-item.wide,
-            .gallery-item.big {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
+            /* On mobile mosaic is hidden anyway (slider takes over) */
 
             .gallery-header {
                 flex-direction: column;
@@ -1101,28 +1102,28 @@ nav ul li a:hover::after {
             </div>
 
             <div class="mosaic-gallery" data-gallery="1">
-                <div class="gallery-item big" data-index="0" data-aspect="tall" data-title="Concert Poster" data-date="January 2026" data-description="Bold concert poster design featuring dynamic typography and vibrant colors for rock band tour.">
+                <div class="gallery-item mosaic-1" data-index="0" data-aspect="square" data-title="Concert Poster" data-date="January 2026" data-description="Bold concert poster design featuring dynamic typography and vibrant colors for rock band tour.">
                     <div class="gallery-item-placeholder">🎸</div>
                 </div>
-                <div class="gallery-item" data-index="1" data-aspect="square" data-title="Event Flyer" data-date="December 2025" data-description="Promotional flyer for community art festival with playful illustration style.">
+                <div class="gallery-item mosaic-2" data-index="1" data-aspect="wide" data-title="Event Flyer" data-date="December 2025" data-description="Promotional flyer for community art festival with playful illustration style.">
                     <div class="gallery-item-placeholder">🎨</div>
                 </div>
-                <div class="gallery-item tall" data-index="2" data-aspect="tall" data-title="Festival Poster" data-date="November 2025" data-description="Large format poster design for annual music festival featuring hand-drawn elements.">
+                <div class="gallery-item mosaic-3" data-index="2" data-aspect="tall" data-title="Festival Poster" data-date="November 2025" data-description="Large format poster design for annual music festival featuring hand-drawn elements.">
                     <div class="gallery-item-placeholder">🎪</div>
                 </div>
-                <div class="gallery-item" data-index="3" data-aspect="wide" data-title="Sale Flyer" data-date="October 2025" data-description="Retail sale promotional flyer with bold graphics and clear call-to-action.">
+                <div class="gallery-item mosaic-4" data-index="3" data-aspect="tall" data-title="Sale Flyer" data-date="October 2025" data-description="Retail sale promotional flyer with bold graphics and clear call-to-action.">
                     <div class="gallery-item-placeholder">🛍️</div>
                 </div>
-                <div class="gallery-item hidden wide" data-index="4" data-aspect="wide" data-title="Movie Poster" data-date="September 2025" data-description="Cinematic poster design for indie film with dramatic lighting and composition.">
+                <div class="gallery-item mosaic-5" data-index="4" data-aspect="square" data-title="Movie Poster" data-date="September 2025" data-description="Cinematic poster design for indie film with dramatic lighting and composition.">
                     <div class="gallery-item-placeholder">🎬</div>
                 </div>
-                <div class="gallery-item hidden" data-index="5" data-aspect="tall" data-title="Workshop Flyer" data-date="August 2025" data-description="Educational workshop promotional flyer with clean, modern aesthetic.">
+                <div class="gallery-item mosaic-6" data-index="5" data-aspect="wide" data-title="Workshop Flyer" data-date="August 2025" data-description="Educational workshop promotional flyer with clean, modern aesthetic.">
                     <div class="gallery-item-placeholder">📚</div>
                 </div>
-                <div class="gallery-item hidden" data-index="6" data-aspect="tall" data-title="Restaurant Poster" data-date="July 2025" data-description="Menu poster design for upscale restaurant featuring food photography and elegant typography.">
+                <div class="gallery-item mosaic-7" data-index="6" data-aspect="square" data-title="Restaurant Poster" data-date="July 2025" data-description="Menu poster design for upscale restaurant featuring food photography and elegant typography.">
                     <div class="gallery-item-placeholder">🍽️</div>
                 </div>
-                <div class="gallery-item hidden tall" data-index="7" data-aspect="tall" data-title="Exhibition Poster" data-date="June 2025" data-description="Art exhibition poster with minimalist design and striking visual hierarchy.">
+                <div class="gallery-item mosaic-8 hidden" data-index="7" data-aspect="square" data-title="Exhibition Poster" data-date="June 2025" data-description="Art exhibition poster with minimalist design and striking visual hierarchy.">
                     <div class="gallery-item-placeholder">🖼️</div>
                 </div>
             </div>
@@ -1156,28 +1157,28 @@ nav ul li a:hover::after {
             </div>
 
             <div class="mosaic-gallery" data-gallery="2">
-                <div class="gallery-item big" data-index="8" data-aspect="square" data-title="Abstract Composition" data-date="January 2026" data-description="Digital abstract artwork exploring color relationships and geometric forms.">
+                <div class="gallery-item mosaic-1" data-index="8" data-aspect="square" data-title="Abstract Composition" data-date="January 2026" data-description="Digital abstract artwork exploring color relationships and geometric forms.">
                     <div class="gallery-item-placeholder">🌈</div>
                 </div>
-                <div class="gallery-item" data-index="9" data-aspect="tall" data-title="Character Illustration" data-date="December 2025" data-description="Original character design with detailed digital painting technique.">
+                <div class="gallery-item mosaic-2" data-index="9" data-aspect="wide" data-title="Character Illustration" data-date="December 2025" data-description="Original character design with detailed digital painting technique.">
                     <div class="gallery-item-placeholder">👤</div>
                 </div>
-                <div class="gallery-item tall" data-index="10" data-aspect="wide" data-title="Fantasy Landscape" data-date="November 2025" data-description="Imaginative landscape painting created entirely in digital medium.">
+                <div class="gallery-item mosaic-3" data-index="10" data-aspect="tall" data-title="Fantasy Landscape" data-date="November 2025" data-description="Imaginative landscape painting created entirely in digital medium.">
                     <div class="gallery-item-placeholder">🏔️</div>
                 </div>
-                <div class="gallery-item" data-index="11" data-aspect="square" data-title="Portrait Study" data-date="October 2025" data-description="Digital portrait exploring light, shadow, and human expression.">
+                <div class="gallery-item mosaic-4" data-index="11" data-aspect="tall" data-title="Portrait Study" data-date="October 2025" data-description="Digital portrait exploring light, shadow, and human expression.">
                     <div class="gallery-item-placeholder">🎭</div>
                 </div>
-                <div class="gallery-item hidden wide" data-index="12" data-aspect="wide" data-title="Sci-Fi Scene" data-date="September 2025" data-description="Futuristic science fiction environment with detailed digital painting.">
+                <div class="gallery-item mosaic-5" data-index="12" data-aspect="square" data-title="Sci-Fi Scene" data-date="September 2025" data-description="Futuristic science fiction environment with detailed digital painting.">
                     <div class="gallery-item-placeholder">🚀</div>
                 </div>
-                <div class="gallery-item hidden" data-index="13" data-aspect="square" data-title="Creature Design" data-date="August 2025" data-description="Original creature concept art with anatomical considerations.">
+                <div class="gallery-item mosaic-6" data-index="13" data-aspect="wide" data-title="Creature Design" data-date="August 2025" data-description="Original creature concept art with anatomical considerations.">
                     <div class="gallery-item-placeholder">🐉</div>
                 </div>
-                <div class="gallery-item hidden" data-index="14" data-aspect="tall" data-title="Surreal Artwork" data-date="July 2025" data-description="Dreamlike surreal composition combining unexpected elements.">
+                <div class="gallery-item mosaic-7" data-index="14" data-aspect="square" data-title="Surreal Artwork" data-date="July 2025" data-description="Dreamlike surreal composition combining unexpected elements.">
                     <div class="gallery-item-placeholder">💭</div>
                 </div>
-                <div class="gallery-item hidden tall" data-index="15" data-aspect="tall" data-title="Fashion Illustration" data-date="June 2025" data-description="Fashion illustration showcasing avant-garde clothing design.">
+                <div class="gallery-item mosaic-8 hidden" data-index="15" data-aspect="square" data-title="Fashion Illustration" data-date="June 2025" data-description="Fashion illustration showcasing avant-garde clothing design.">
                     <div class="gallery-item-placeholder">👗</div>
                 </div>
             </div>
@@ -1360,28 +1361,28 @@ nav ul li a:hover::after {
             </div>
 
             <div class="mosaic-gallery" data-gallery="5">
-                <div class="gallery-item big" data-index="32" data-aspect="wide" data-title="AI Generated Landscape" data-date="January 2026" data-description="Surreal landscape generated using Stable Diffusion with custom prompts and settings.">
+                <div class="gallery-item mosaic-1" data-index="32" data-aspect="square" data-title="AI Generated Landscape" data-date="January 2026" data-description="Surreal landscape generated using Stable Diffusion with custom prompts and settings.">
                     <div class="gallery-item-placeholder">🤖</div>
                 </div>
-                <div class="gallery-item" data-index="33" data-aspect="square" data-title="Abstract AI Art" data-date="January 2026" data-description="Abstract composition exploring color and form through AI generation.">
+                <div class="gallery-item mosaic-2" data-index="33" data-aspect="wide" data-title="Abstract AI Art" data-date="January 2026" data-description="Abstract composition exploring color and form through AI generation.">
                     <div class="gallery-item-placeholder">🎨</div>
                 </div>
-                <div class="gallery-item tall" data-index="34" data-aspect="tall" data-title="Portrait Study" data-date="December 2025" data-description="AI-generated portrait exploring different artistic styles and lighting.">
+                <div class="gallery-item mosaic-3" data-index="34" data-aspect="tall" data-title="Portrait Study" data-date="December 2025" data-description="AI-generated portrait exploring different artistic styles and lighting.">
                     <div class="gallery-item-placeholder">👤</div>
                 </div>
-                <div class="gallery-item" data-index="35" data-aspect="wide" data-title="Fantasy Architecture" data-date="December 2025" data-description="Imaginative architectural design created through AI image generation.">
+                <div class="gallery-item mosaic-4" data-index="35" data-aspect="tall" data-title="Fantasy Architecture" data-date="December 2025" data-description="Imaginative architectural design created through AI image generation.">
                     <div class="gallery-item-placeholder">🏛️</div>
                 </div>
-                <div class="gallery-item hidden wide" data-index="36" data-aspect="wide" data-title="Cinematic Scene" data-date="November 2025" data-description="Wide-format cinematic scene generated with Stable Diffusion.">
+                <div class="gallery-item mosaic-5" data-index="36" data-aspect="square" data-title="Cinematic Scene" data-date="November 2025" data-description="Wide-format cinematic scene generated with Stable Diffusion.">
                     <div class="gallery-item-placeholder">🎬</div>
                 </div>
-                <div class="gallery-item hidden" data-index="37" data-aspect="square" data-title="Nature Generation" data-date="November 2025" data-description="AI interpretation of natural elements and organic forms.">
+                <div class="gallery-item mosaic-6" data-index="37" data-aspect="wide" data-title="Nature Generation" data-date="November 2025" data-description="AI interpretation of natural elements and organic forms.">
                     <div class="gallery-item-placeholder">🌿</div>
                 </div>
-                <div class="gallery-item hidden" data-index="38" data-aspect="tall" data-title="Sci-Fi Concept" data-date="October 2025" data-description="Science fiction concept art created through AI prompting.">
+                <div class="gallery-item mosaic-7" data-index="38" data-aspect="square" data-title="Sci-Fi Concept" data-date="October 2025" data-description="Science fiction concept art created through AI prompting.">
                     <div class="gallery-item-placeholder">🚀</div>
                 </div>
-                <div class="gallery-item hidden tall" data-index="39" data-aspect="tall" data-title="Character Design" data-date="October 2025" data-description="AI-assisted character design exploring unique aesthetics.">
+                <div class="gallery-item mosaic-8 hidden" data-index="39" data-aspect="square" data-title="Character Design" data-date="October 2025" data-description="AI-assisted character design exploring unique aesthetics.">
                     <div class="gallery-item-placeholder">👾</div>
                 </div>
             </div>
