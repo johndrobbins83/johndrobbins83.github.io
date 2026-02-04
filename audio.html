@@ -560,6 +560,87 @@
             justify-content: center;
         }
 
+        /* Mobile Podcast Slider */
+        .mobile-podcast-slider {
+            display: none;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .podcast-slider-container {
+            display: flex;
+            gap: 0;
+            transition: transform 0.5s ease;
+            padding: 0;
+        }
+
+        .podcast-slider-item {
+            min-width: 100%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .podcast-slider-item .soundcloud-item {
+            width: 100%;
+        }
+
+        .podcast-slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .podcast-slider-nav:hover {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+        }
+
+        .podcast-slider-nav.prev {
+            left: 0;
+        }
+
+        .podcast-slider-nav.next {
+            right: 0;
+        }
+
+        .podcast-slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .podcast-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--dark-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .podcast-slider-dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.3);
+        }
+
         /* Summary Section */
         .summary-section {
             padding: 6rem 2rem;
@@ -830,7 +911,11 @@
             }
 
             .soundcloud-grid {
-                grid-template-columns: 1fr;
+                display: none;
+            }
+
+            .mobile-podcast-slider {
+                display: block;
             }
         }
 
@@ -1381,6 +1466,8 @@
     <section class="soundcloud-section" id="podcasts">
         <div class="soundcloud-container">
             <h2 class="section-title"><span>Podcasts</span></h2>
+            
+            <!-- Desktop Grid -->
             <div class="soundcloud-grid">
                 <div class="soundcloud-item">
                     <iframe 
@@ -1403,6 +1490,45 @@
                     <div class="soundcloud-placeholder">
                         <p>Playlist 3<br>Embed Goes Here</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- Mobile Slider -->
+            <div class="mobile-podcast-slider">
+                <div class="podcast-slider-nav prev">‹</div>
+                <div class="podcast-slider-container">
+                    <div class="podcast-slider-item">
+                        <div class="soundcloud-item">
+                            <iframe 
+                                width="100%" 
+                                height="450" 
+                                scrolling="no" 
+                                frameborder="no" 
+                                allow="autoplay" 
+                                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A251174784&color=%23303030&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="podcast-slider-item">
+                        <div class="soundcloud-item">
+                            <div class="soundcloud-placeholder">
+                                <p>Playlist 2<br>Embed Goes Here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="podcast-slider-item">
+                        <div class="soundcloud-item">
+                            <div class="soundcloud-placeholder">
+                                <p>Playlist 3<br>Embed Goes Here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="podcast-slider-nav next">›</div>
+                <div class="podcast-slider-dots">
+                    <div class="podcast-slider-dot active"></div>
+                    <div class="podcast-slider-dot"></div>
+                    <div class="podcast-slider-dot"></div>
                 </div>
             </div>
         </div>
@@ -1681,6 +1807,59 @@
 
         window.addEventListener('resize', updateProjectsSlider);
         updateProjectsSlider();
+
+        // Podcast Mobile Slider
+        const podcastSliderContainer = document.querySelector('.podcast-slider-container');
+        const podcastPrevBtn = document.querySelector('.mobile-podcast-slider .prev');
+        const podcastNextBtn = document.querySelector('.mobile-podcast-slider .next');
+        const podcastDots = document.querySelectorAll('.podcast-slider-dot');
+        let podcastCurrentIndex = 0;
+
+        function updatePodcastSlider() {
+            if (window.innerWidth > 768) return;
+            
+            const items = document.querySelectorAll('.podcast-slider-item');
+            const itemWidth = items[0] ? items[0].offsetWidth : 0;
+            const offset = -(podcastCurrentIndex * itemWidth);
+            
+            podcastSliderContainer.style.transform = `translateX(${offset}px)`;
+            
+            podcastDots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === podcastCurrentIndex);
+            });
+        }
+
+        function slidePodcast(direction) {
+            const items = document.querySelectorAll('.podcast-slider-item');
+            podcastCurrentIndex += direction;
+            
+            if (podcastCurrentIndex < 0) {
+                podcastCurrentIndex = items.length - 1;
+            }
+            if (podcastCurrentIndex >= items.length) {
+                podcastCurrentIndex = 0;
+            }
+            
+            updatePodcastSlider();
+        }
+
+        if (podcastPrevBtn) {
+            podcastPrevBtn.addEventListener('click', () => slidePodcast(-1));
+        }
+
+        if (podcastNextBtn) {
+            podcastNextBtn.addEventListener('click', () => slidePodcast(1));
+        }
+
+        podcastDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                podcastCurrentIndex = index;
+                updatePodcastSlider();
+            });
+        });
+
+        window.addEventListener('resize', updatePodcastSlider);
+        updatePodcastSlider();
     </script>
 </body>
 </html>
