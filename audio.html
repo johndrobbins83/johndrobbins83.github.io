@@ -732,6 +732,89 @@
             font-size: 0.9rem;
         }
 
+        /* Mobile Projects Slider */
+        .mobile-projects-slider {
+            display: none;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .projects-slider-container {
+            display: flex;
+            gap: 0;
+            transition: transform 0.5s ease;
+            padding: 0;
+        }
+
+        .projects-slider-item {
+            min-width: 100%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .projects-slider-item .project-card {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .projects-slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .projects-slider-nav:hover {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+        }
+
+        .projects-slider-nav.prev {
+            left: 0;
+        }
+
+        .projects-slider-nav.next {
+            right: 0;
+        }
+
+        .projects-slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .projects-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--dark-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .projects-slider-dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.3);
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .projects-grid {
@@ -782,7 +865,11 @@
             }
 
             .projects-grid {
-                grid-template-columns: 1fr;
+                display: none;
+            }
+
+            .mobile-projects-slider {
+                display: block;
             }
 
             .playlist-track {
@@ -806,6 +893,7 @@
                 justify-content: center;
             }
         }
+
        /* Hamburger Menu Styles */
 .hamburger {
     display: none;
@@ -1031,9 +1119,9 @@
     <header>
         <nav>
             <div class="nav-profile">
-                                <a href="/index" class="nav-profile-image">
-  <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JR">
-</a>
+                <a href="/index" class="nav-profile-image">
+                    <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JR">
+                </a>
                 <div class="nav-info">
                     <div class="name">John D. Robbins</div>
                     <div class="title">Project Manager</div>
@@ -1063,57 +1151,54 @@
                     </svg>
                 </a>
             </div>
-<!-- Add this button after .nav-icons -->
-<button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
-        <!-- Mobile Menu Overlay -->
-<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header">
-        <div class="mobile-menu-profile-image">JR</div>
-        <div class="mobile-menu-profile-info">
-            <div class="name">John D. Robbins</div>
-            <div class="title">Project Manager</div>
-        </div>
-    </div>
-    
-    <ul>
-          <li><a href="/index">Home</a></li>
+        
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <div class="mobile-menu-profile-image">JR</div>
+                <div class="mobile-menu-profile-info">
+                    <div class="name">John D. Robbins</div>
+                    <div class="title">Project Manager</div>
+                </div>
+            </div>
+            
+            <ul>
+                <li><a href="/index">Home</a></li>
                 <li><a href="/work-history">Work History</a></li>
                 <li><a href="/projects">Projects</a></li>
                 <li><a href="/art-design">Design</a></li>
                 <li><a href="/audio">Audio</a></li>
                 <li><a href="/contact">Contact</a></li>
-    </ul>
-    
-    <div class="mobile-nav-icons">
-        <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-        </a>
-        <a href="resume.pdf" download class="nav-icon" title="Download Resume">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-        </a>
-    </div>
-    
-    <div class="mobile-menu-footer">
-        <p>Holly Ridge, NC</p>
-        <p style="color: var(--primary-blue); margin-top: 0.5rem;">johndrobbins83@gmail.com</p>
-    </div>
-</div>
+            </ul>
+            
+            <div class="mobile-nav-icons">
+                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="resume.pdf" download class="nav-icon" title="Download Resume">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="mobile-menu-footer">
+                <p>Holly Ridge, NC</p>
+                <p style="color: var(--primary-blue); margin-top: 0.5rem;">johndrobbins83@gmail.com</p>
+            </div>
+        </div>
     </header>
 
     <!-- Page Hero -->
@@ -1128,6 +1213,8 @@
     <section class="music-projects">
         <div class="projects-container">
             <h2 class="section-title">Music <span>Projects</span></h2>
+            
+            <!-- Desktop Grid -->
             <div class="projects-grid">
                 <a href="#" class="project-card">
                     <div class="project-logo">🎵</div>
@@ -1149,6 +1236,48 @@
                     <div class="project-name">deemster</div>
                     <div class="project-type">Music Project</div>
                 </a>
+            </div>
+
+            <!-- Mobile Slider -->
+            <div class="mobile-projects-slider">
+                <div class="projects-slider-nav prev">‹</div>
+                <div class="projects-slider-container">
+                    <div class="projects-slider-item">
+                        <a href="#" class="project-card">
+                            <div class="project-logo">🎵</div>
+                            <div class="project-name">RUN DMT</div>
+                            <div class="project-type">Music Project</div>
+                        </a>
+                    </div>
+                    <div class="projects-slider-item">
+                        <a href="#" class="project-card">
+                            <div class="project-logo">🎸</div>
+                            <div class="project-name">PPLPRSN</div>
+                            <div class="project-type">Music Project</div>
+                        </a>
+                    </div>
+                    <div class="projects-slider-item">
+                        <a href="#" class="project-card">
+                            <div class="project-logo">🎹</div>
+                            <div class="project-name">Sobo</div>
+                            <div class="project-type">Music Project</div>
+                        </a>
+                    </div>
+                    <div class="projects-slider-item">
+                        <a href="#" class="project-card">
+                            <div class="project-logo">🎧</div>
+                            <div class="project-name">deemster</div>
+                            <div class="project-type">Music Project</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="projects-slider-nav next">›</div>
+                <div class="projects-slider-dots">
+                    <div class="projects-slider-dot active"></div>
+                    <div class="projects-slider-dot"></div>
+                    <div class="projects-slider-dot"></div>
+                    <div class="projects-slider-dot"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -1190,7 +1319,6 @@
                     </div>
                 </div>
 
-                <!-- Hidden audio element -->
                 <audio id="audioPlayer"></audio>
             </div>
 
@@ -1240,18 +1368,11 @@
                     <div class="track-duration">6:05</div>
                 </div>
                 <div class="playlist-track" data-src="https://www.johnthepm.com/audio/profile%20tracks%20and%20beats/cash%20out%20hip%20hop%20version2.mp3" data-title="Cash Out (Hip Hop Version)" data-artist="Tommyblaze336 x Phillyqueso" data-album="Prod. by John the Jiant">
-                    <div class="track-number">7</div>
-                    <div class="track-name">Cash Oout (Hip Hop Version)</div>
+                    <div class="track-number">8</div>
+                    <div class="track-name">Cash Out (Hip Hop Version)</div>
                     <div class="track-album">Prod. by John the Jiant</div>
                     <div class="track-duration">6:05</div>
                 </div>
-                           <div class="playlist-track" data-src="https://www.johnthepm.com/audio/profile%20tracks%20and%20beats/cash%20out%20hip%20hop%20version2.mp3" data-title="Cash Out (Hip Hop Version)" data-artist="Tommyblaze336 x Phillyqueso" data-album="Prod. by John the Jiant">
-                    <div class="track-number">7</div>
-                    <div class="track-name">Cash Oout (Hip Hop Version)</div>
-                    <div class="track-album">Prod. by John the Jiant</div>
-                    <div class="track-duration">6:05</div>
-                </div>
-                
             </div>
         </div>
     </section>
@@ -1261,53 +1382,24 @@
         <div class="soundcloud-container">
             <h2 class="section-title"><span>Podcasts</span></h2>
             <div class="soundcloud-grid">
-                <!-- Playlist 1 -->
                 <div class="soundcloud-item">
-                    <!-- Replace src with your first SoundCloud playlist URL -->
-                    
-                  <iframe 
-                      width="100%" 
-                      height="450" 
-                      scrolling="no" 
-                      frameborder="no" 
-                      allow="autoplay" 
-                      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A251174784&color=%23303030&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                      <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/killyouregonow" title="Kill Your Ego" target="_blank" style="color: #cccccc; text-decoration: none;">Kill Your Ego</a> · 
-                      <a href="https://soundcloud.com/killyouregonow/sets/the-kill-your-ego-podcast" title="THE KILL YOUR EGO PODCAST" target="_blank" style="color: #cccccc; text-decoration: none;">THE KILL YOUR EGO PODCAST</a></div>
-                   
-                </div>
-
-                <!-- Playlist 2 -->
-                <div class="soundcloud-item">
-                    <!-- Replace src with your second SoundCloud playlist URL -->
-                    <!-- 
                     <iframe 
                         width="100%" 
                         height="450" 
                         scrolling="no" 
                         frameborder="no" 
                         allow="autoplay" 
-                        src="https://soundcloud.com/killyouregonow/sets/past-podcasts">
+                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A251174784&color=%23303030&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
                     </iframe>
-                    -->
+                </div>
+
+                <div class="soundcloud-item">
                     <div class="soundcloud-placeholder">
                         <p>Playlist 2<br>Embed Goes Here</p>
                     </div>
                 </div>
 
-                <!-- Playlist 3 -->
                 <div class="soundcloud-item">
-                    <!-- Replace src with your third SoundCloud playlist URL -->
-                    <!-- 
-                    <iframe 
-                        width="100%" 
-                        height="450" 
-                        scrolling="no" 
-                        frameborder="no" 
-                        allow="autoplay" 
-                        src="https://soundcloud.com/killyouregonow/sets/the-genre-fix">
-                    </iframe>
-                    -->
                     <div class="soundcloud-placeholder">
                         <p>Playlist 3<br>Embed Goes Here</p>
                     </div>
@@ -1370,7 +1462,7 @@
         <div class="footer-content">
             <div class="footer-logo">John D. Robbins</div>
             <div class="footer-contact">
-                <a href="/cdn-cgi/l/email-protection#28424740464c5a474a4a41465b101b684f45494144064b4745"><span class="__cf_email__" data-cfemail="97fdf8fff9f3e5f8f5f5fef9e4afa4d7f0faf6fefbb9f4f8fa">[email&#160;protected]</span></a> | Holly Ridge, NC
+                johndrobbins83@gmail.com | Holly Ridge, NC
             </div>
             <div class="footer-links">
                 <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
@@ -1380,7 +1472,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Audio Player Functionality
         const audioPlayer = document.getElementById('audioPlayer');
         const playPauseBtn = document.getElementById('playPauseBtn');
@@ -1399,7 +1491,6 @@
         let currentTrackIndex = 0;
         let isPlaying = false;
 
-        // Load track
         function loadTrack(index) {
             const track = playlistTracks[index];
             const src = track.dataset.src;
@@ -1410,14 +1501,12 @@
             currentTrackTitle.textContent = title;
             currentTrackArtist.textContent = artist;
 
-            // Update playlist UI
             playlistTracks.forEach(t => t.classList.remove('playing'));
             track.classList.add('playing');
 
             currentTrackIndex = index;
         }
 
-        // Play/Pause
         function togglePlayPause() {
             if (isPlaying) {
                 audioPlayer.pause();
@@ -1429,35 +1518,30 @@
             isPlaying = !isPlaying;
         }
 
-        // Previous track
         function previousTrack() {
             currentTrackIndex = (currentTrackIndex - 1 + playlistTracks.length) % playlistTracks.length;
             loadTrack(currentTrackIndex);
             if (isPlaying) audioPlayer.play();
         }
 
-        // Next track
         function nextTrack() {
             currentTrackIndex = (currentTrackIndex + 1) % playlistTracks.length;
             loadTrack(currentTrackIndex);
             if (isPlaying) audioPlayer.play();
         }
 
-        // Update progress bar
         function updateProgress() {
             const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
             progressFill.style.width = progress + '%';
             currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
         }
 
-        // Seek
         progressBar.addEventListener('click', (e) => {
             const rect = progressBar.getBoundingClientRect();
             const percent = (e.clientX - rect.left) / rect.width;
             audioPlayer.currentTime = percent * audioPlayer.duration;
         });
 
-        // Volume
         volumeSlider.addEventListener('click', (e) => {
             const rect = volumeSlider.getBoundingClientRect();
             const percent = (e.clientX - rect.left) / rect.width;
@@ -1465,14 +1549,12 @@
             volumeFill.style.width = (percent * 100) + '%';
         });
 
-        // Format time
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // Event listeners
         playPauseBtn.addEventListener('click', togglePlayPause);
         prevBtn.addEventListener('click', previousTrack);
         nextBtn.addEventListener('click', nextTrack);
@@ -1482,7 +1564,6 @@
         });
         audioPlayer.addEventListener('ended', nextTrack);
 
-        // Playlist clicks
         playlistTracks.forEach((track, index) => {
             track.addEventListener('click', () => {
                 loadTrack(index);
@@ -1492,7 +1573,6 @@
             });
         });
 
-        // Load first track on page load
         loadTrack(0);
 
         // Contact form
@@ -1507,50 +1587,100 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
-      }
-    });
-  });
 
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
-                
-// Hamburger menu functionality
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-
-function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    mobileMenuOverlay.classList.toggle('active');
-    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
-}
-
-if (hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-}
-
-if (mobileMenuOverlay) {
-    mobileMenuOverlay.addEventListener('click', toggleMenu);
-}
-
-// Close menu when clicking a link
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (mobileMenu && mobileMenu.classList.contains('active')) {
-            toggleMenu();
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
         }
-    });
-});
 
-// Close menu on escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
-        toggleMenu();
-    }
-});
-                </script>
-    
+        if (hamburger) {
+            hamburger.addEventListener('click', toggleMenu);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', toggleMenu);
+        }
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        // Music Projects Mobile Slider
+        const projectsSliderContainer = document.querySelector('.projects-slider-container');
+        const projectsPrevBtn = document.querySelector('.mobile-projects-slider .prev');
+        const projectsNextBtn = document.querySelector('.mobile-projects-slider .next');
+        const projectsDots = document.querySelectorAll('.projects-slider-dot');
+        let projectsCurrentIndex = 0;
+
+        function updateProjectsSlider() {
+            if (window.innerWidth > 768) return;
+            
+            const items = document.querySelectorAll('.projects-slider-item');
+            const itemWidth = items[0] ? items[0].offsetWidth : 0;
+            const offset = -(projectsCurrentIndex * itemWidth);
+            
+            projectsSliderContainer.style.transform = `translateX(${offset}px)`;
+            
+            projectsDots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === projectsCurrentIndex);
+            });
+        }
+
+        function slideProjects(direction) {
+            const items = document.querySelectorAll('.projects-slider-item');
+            projectsCurrentIndex += direction;
+            
+            if (projectsCurrentIndex < 0) {
+                projectsCurrentIndex = items.length - 1;
+            }
+            if (projectsCurrentIndex >= items.length) {
+                projectsCurrentIndex = 0;
+            }
+            
+            updateProjectsSlider();
+        }
+
+        if (projectsPrevBtn) {
+            projectsPrevBtn.addEventListener('click', () => slideProjects(-1));
+        }
+
+        if (projectsNextBtn) {
+            projectsNextBtn.addEventListener('click', () => slideProjects(1));
+        }
+
+        projectsDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                projectsCurrentIndex = index;
+                updateProjectsSlider();
+            });
+        });
+
+        window.addEventListener('resize', updateProjectsSlider);
+        updateProjectsSlider();
+    </script>
+</body>
+</html>
