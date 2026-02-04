@@ -33,214 +33,176 @@
             overflow-x: hidden;
         }
 
-/* Header & Navigation */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--dark-border);
-}
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
+        }
 
-nav {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 3rem;
-}
+        nav {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 3rem;
+        }
 
-.nav-profile {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
+        .nav-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-.nav-profile-image {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: var(--dark-card);
-    border: 2px solid var(--primary-blue);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--primary-blue);
-    flex-shrink: 0;
-}
+        .nav-profile-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
 
-.nav-profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
+        .nav-profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
-.nav-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-}
+        .nav-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
 
-.nav-info .name {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--off-white);
-    line-height: 1.2;
-}
+        .nav-info .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--off-white);
+            line-height: 1.2;
+        }
 
-.nav-info .title {
-    font-size: 0.75rem;
-    color: var(--mid-gray);
-    font-weight: 400;
-    line-height: 1.2;
-}
+        .nav-info .title {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            font-weight: 400;
+            line-height: 1.2;
+        }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
 
-.nav-icons {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-.nav-icon {
-    color: var(--off-white);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    border: 1px solid var(--dark-border);
-    background: rgba(255, 255, 255, 0.03);
-}
+        .nav-icon {
+            color: var(--off-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
+            background: rgba(255, 255, 255, 0.03);
+        }
 
-.nav-icon:hover {
-    color: var(--primary-blue);
-    border-color: var(--primary-blue);
-    background: rgba(133, 199, 242, 0.1);
-    transform: translateY(-2px);
-}
+        .nav-icon:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.1);
+            transform: translateY(-2px);
+        }
 
-.nav-icon svg {
-    width: 18px;
-    height: 18px;
-}
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
 
-nav ul li a {
-    color: var(--off-white);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-    position: relative;
-    padding: 0.5rem 0;
-}
+        nav ul li a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
 
-nav ul li a:hover {
-    color: var(--primary-blue);
-}
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
 
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-blue);
-    transition: width 0.3s ease;
-}
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
 
-nav ul li a:hover::after {
-    width: 100%;
-}
+        nav ul li a:hover::after {
+            width: 100%;
+        }
 
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-}
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
 
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background: var(--off-white);
-    transition: all 0.3s ease;
-}
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--off-white);
+            transition: all 0.3s ease;
+        }
 
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-}
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
 
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
 
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
 
-/* Responsive */
-@media (max-width: 768px) {
-    nav {
-        grid-template-columns: auto auto;
-        gap: 1rem;
-    }
-
-    nav ul {
-        position: fixed;
-        top: 76px;
-        left: 0;
-        width: 100%;
-        background: rgba(10, 10, 10, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        border-bottom: 1px solid var(--dark-border);
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-    }
-
-    nav ul.active {
-        transform: translateX(0);
-    }
-
-    .nav-icons {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-info {
-        display: none;
-    }
-}
         /* Page Hero */
         .page-hero {
             margin-top: 80px;
@@ -285,7 +247,7 @@ nav ul li a:hover::after {
             margin: 0 auto;
         }
 
-        /* Gallery Header - New Layout */
+        /* Gallery Header */
         .gallery-header {
             display: flex;
             justify-content: space-between;
@@ -345,7 +307,7 @@ nav ul li a:hover::after {
             transform: rotate(180deg);
         }
 
-        /* Sort Select - Styled like View All button */
+        /* Sort Select */
         .sort-select {
             padding: 0.75rem 1.5rem;
             background: transparent;
@@ -376,7 +338,7 @@ nav ul li a:hover::after {
             color: var(--off-white);
         }
 
-        /* Compact Search Box */
+        /* Search Box */
         .search-box {
             width: 200px;
             position: relative;
@@ -414,52 +376,6 @@ nav ul li a:hover::after {
             font-size: 0.9rem;
         }
 
-        /* Remove old gallery-controls styles */
-        .gallery-controls {
-            display: none;
-        }
-
-        .sort-controls {
-            display: none;
-        }
-
-        .gallery-title {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--off-white);
-        }
-
-        .view-all-btn {
-            padding: 0.75rem 2rem;
-            background: transparent;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .view-all-btn:hover {
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-        }
-
-        .view-all-btn .arrow {
-            transition: transform 0.3s ease;
-        }
-
-        .view-all-btn.active .arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Square Grid Gallery (No Mosaic) */
         /* Square Grid Gallery */
         .mosaic-gallery {
             display: grid;
@@ -494,30 +410,7 @@ nav ul li a:hover::after {
             transform: scale(1.05);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 10px 30px rgba(133, 199, 242, 0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
         /* Video-specific styles */
-        .gallery-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .video-overlay {
             position: absolute;
             top: 0;
@@ -566,15 +459,6 @@ nav ul li a:hover::after {
             font-weight: 600;
         }
 
-        /* Remove mosaic variations */
-        .gallery-item.tall,
-        .gallery-item.wide,
-        .gallery-item.big {
-            grid-column: span 1;
-            grid-row: span 1;
-        }
-
-        /* Placeholder styling */
         .gallery-item-placeholder {
             width: 100%;
             height: 100%;
@@ -586,9 +470,131 @@ nav ul li a:hover::after {
             background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
         }
 
-        /* Hidden items */
         .gallery-item.hidden {
             display: none;
+        }
+
+        /* Mobile Slider */
+        .mobile-slider {
+            display: none;
+        }
+
+        .image-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .slider-container {
+            display: flex;
+            gap: 0;
+            transition: transform 0.5s ease;
+            padding: 0;
+        }
+
+        .slider-item {
+            min-width: 100%;
+            height: 300px;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .slider-item .gallery-item-placeholder {
+            width: 100%;
+            height: 100%;
+            max-height: 300px;
+            font-size: 5rem;
+            background: none;
+        }
+
+        .slider-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 2rem 1.5rem 1rem;
+        }
+
+        .slider-caption h3 {
+            font-size: 1.1rem;
+            color: var(--off-white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .slider-caption p {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            line-height: 1.4;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-nav:hover {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+        }
+
+        .slider-nav.prev {
+            left: 0;
+        }
+
+        .slider-nav.next {
+            right: 0;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--dark-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.3);
         }
 
         /* Video Lightbox/Modal Player */
@@ -618,13 +624,6 @@ nav ul li a:hover::after {
             justify-content: center;
         }
 
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            display: none;
-        }
-
         .lightbox-video {
             max-width: 100%;
             max-height: 90vh;
@@ -641,25 +640,6 @@ nav ul li a:hover::after {
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             max-width: 100%;
-        }
-
-        .video-info {
-            padding: 1.5rem;
-            background: var(--dark-card);
-            border-top: 1px solid var(--dark-border);
-        }
-
-        .video-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--off-white);
-            margin-bottom: 0.5rem;
-        }
-
-        .video-description {
-            font-size: 0.9rem;
-            color: var(--mid-gray);
-            line-height: 1.6;
         }
 
         .lightbox-close {
@@ -746,11 +726,6 @@ nav ul li a:hover::after {
         .footer-contact a {
             color: var(--primary-blue);
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-contact a:hover {
-            color: var(--light-gray);
         }
 
         .footer-links {
@@ -778,39 +753,90 @@ nav ul li a:hover::after {
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                grid-template-columns: auto auto;
+                gap: 1rem;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--dark-border);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            nav ul.active {
+                transform: translateX(0);
+            }
+
+            .nav-icons {
+                display: none;
+            }
+
             .hamburger {
                 display: flex;
             }
 
-            nav ul,
-            .nav-icons {
-                display: none !important;
-            }
-            
-            nav {
-                grid-template-columns: 1fr auto;
+            .nav-info {
+                display: none;
             }
 
             .page-hero h1 {
                 font-size: 3rem;
             }
 
-            .mosaic-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                grid-auto-rows: 150px;
-            }
-
-            .gallery-item.tall,
-            .gallery-item.wide,
-            .gallery-item.big {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-
             .gallery-header {
                 flex-direction: column;
                 gap: 1rem;
-                align-items: flex-start;
+                align-items: stretch;
+            }
+
+            .gallery-header-left {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .gallery-title {
+                font-size: 1.5rem;
+            }
+
+            .gallery-header-right {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .sort-select {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .view-all-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+
+            .mosaic-gallery {
+                display: none;
+            }
+
+            .mobile-slider {
+                display: block;
             }
 
             .lightbox-nav {
@@ -831,36 +857,30 @@ nav ul li a:hover::after {
             .page-hero h1 {
                 font-size: 2.5rem;
             }
-
-            .mosaic-gallery {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 200px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
-        <div class="nav-profile">
-            <div class="nav-profile-image">
-                <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR" onerror="this.style.display='none'; this.parentElement.textContent='JR';">
+            <div class="nav-profile">
+                <div class="nav-profile-image">
+                    <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR" onerror="this.style.display='none'; this.parentElement.textContent='JR';">
+                </div>
+                <div class="nav-info">
+                    <div class="name">John D. Robbins</div>
+                    <div class="title">Project Manager</div>
+                </div>
             </div>
-            <div class="nav-info">
-                <div class="name">John D. Robbins</div>
-                <div class="title">Project Manager</div>
-            </div>
-        </div>
-        <ul>
-            <li><a href="/index">Home</a></li>
-            <li><a href="/work-history">Work History</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/art-design">Design</a></li>
-            <li><a href="/audio">Audio</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-<div class="nav-icons">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/work-history">Work History</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/art-design">Design</a></li>
+                <li><a href="/audio">Audio</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
                 <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -876,15 +896,14 @@ nav ul li a:hover::after {
                     </svg>
                 </a>
             </div>
-        <button class="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </header>
 
-    <!-- Page Hero -->
     <section class="page-hero">
         <div class="page-hero-content">
             <h1>Video <span>Gallery</span></h1>
@@ -892,23 +911,23 @@ nav ul li a:hover::after {
         </div>
     </section>
 
-    <!-- Gallery Section 1 - Videos -->
+    <!-- Production Videos Section -->
     <section class="gallery-section">
         <div class="gallery-container">
             <div class="gallery-header">
                 <div class="gallery-header-left">
-                    <h2 class="gallery-title">Videos</h2>
-                    <button class="view-all-btn" id="viewAllBtn1">
+                    <h2 class="gallery-title">Production Videos</h2>
+                    <button class="view-all-btn" data-gallery="production">
                         <span>View All</span>
                         <span class="arrow">▼</span>
                     </button>
                 </div>
                 <div class="gallery-header-right">
                     <div class="search-box">
-                        <input type="text" id="searchInput1" placeholder="Search..." class="search-input">
+                        <input type="text" class="search-input" data-gallery="production" placeholder="Search...">
                         <span class="search-icon">🔍</span>
                     </div>
-                    <select id="sortSelect1" class="sort-select">
+                    <select class="sort-select" data-gallery="production">
                         <option value="index-asc">Default Order</option>
                         <option value="duration-asc">Duration (Shortest)</option>
                         <option value="duration-desc">Duration (Longest)</option>
@@ -916,140 +935,201 @@ nav ul li a:hover::after {
                 </div>
             </div>
 
-            <div class="mosaic-gallery" id="mosaicGallery1">
-                <!-- Initial 8 visible items - All rectangular thumbnails -->
-                
-                <!-- Video 1 - Wide format -->
-                <div class="gallery-item wide" data-index="0" data-type="video" data-video-src="videos/video1.mp4">
-                    <img src="images/video/thumb1.jpg" alt="Video 1 Thumbnail">
+            <div class="mosaic-gallery" data-gallery="production">
+                <div class="gallery-item" data-index="0" data-type="video" data-video-src="videos/prod1.mp4" data-duration="154">
+                    <div class="gallery-item-placeholder">🎬</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">2:34</div>
                 </div>
-
-                <!-- Video 2 - Square format -->
-                <div class="gallery-item" data-index="1" data-type="video" data-video-src="videos/video2.mp4">
-                    <img src="images/video/thumb2.jpg" alt="Video 2 Thumbnail">
+                <div class="gallery-item" data-index="1" data-type="video" data-video-src="videos/prod2.mp4" data-duration="75">
+                    <div class="gallery-item-placeholder">🎥</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">1:15</div>
                 </div>
-
-                <!-- Video 3 - Tall format -->
-                <div class="gallery-item tall" data-index="2" data-type="video" data-video-src="videos/video3.mp4">
-                    <img src="images/video/thumb3.jpg" alt="Video 3 Thumbnail">
+                <div class="gallery-item" data-index="2" data-type="video" data-video-src="videos/prod3.mp4" data-duration="45">
+                    <div class="gallery-item-placeholder">🎞️</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">0:45</div>
                 </div>
-
-                <!-- Video 4 - Square format -->
-                <div class="gallery-item" data-index="3" data-type="video" data-video-src="videos/video4.mp4">
-                    <img src="images/video/thumb4.jpg" alt="Video 4 Thumbnail">
+                <div class="gallery-item" data-index="3" data-type="video" data-video-src="videos/prod4.mp4" data-duration="192">
+                    <div class="gallery-item-placeholder">📹</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">3:12</div>
                 </div>
-
-                <!-- Video 5 - Wide format -->
-                <div class="gallery-item wide" data-index="4" data-type="video" data-video-src="videos/video5.mp4">
-                    <img src="images/video/thumb5.jpg" alt="Video 5 Thumbnail">
+                <div class="gallery-item" data-index="4" data-type="video" data-video-src="videos/prod5.mp4" data-duration="320">
+                    <div class="gallery-item-placeholder">🎬</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">5:20</div>
                 </div>
-
-                <!-- Video 6 - Square format -->
-                <div class="gallery-item" data-index="5" data-type="video" data-video-src="videos/video6.mp4">
-                    <img src="images/video/thumb6.jpg" alt="Video 6 Thumbnail">
+                <div class="gallery-item" data-index="5" data-type="video" data-video-src="videos/prod6.mp4" data-duration="108">
+                    <div class="gallery-item-placeholder">🎥</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">1:48</div>
                 </div>
-
-                <!-- Video 7 - Tall format -->
-                <div class="gallery-item tall" data-index="6" data-type="video" data-video-src="videos/video7.mp4">
-                    <img src="images/video/thumb7.jpg" alt="Video 7 Thumbnail">
+                <div class="gallery-item" data-index="6" data-type="video" data-video-src="videos/prod7.mp4" data-duration="125">
+                    <div class="gallery-item-placeholder">🎞️</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">2:05</div>
                 </div>
-
-                <!-- Video 8 - Big format (featured) -->
-                <div class="gallery-item big" data-index="7" data-type="video" data-video-src="videos/video8.mp4">
-                    <img src="images/video/thumb8.jpg" alt="Video 8 Thumbnail">
+                <div class="gallery-item" data-index="7" data-type="video" data-video-src="videos/prod8.mp4" data-duration="270">
+                    <div class="gallery-item-placeholder">📹</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">4:30</div>
                 </div>
 
-                <!-- Hidden items (shown when "View All" is clicked) -->
-                <div class="gallery-item hidden" data-index="8" data-type="video" data-video-src="videos/video9.mp4">
-                    <img src="images/video/thumb9.jpg" alt="Video 9 Thumbnail">
+                <div class="gallery-item hidden" data-index="8" data-type="video" data-video-src="videos/prod9.mp4" data-duration="82">
+                    <div class="gallery-item-placeholder">🎬</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">1:22</div>
                 </div>
-
-                <div class="gallery-item hidden wide" data-index="9" data-type="video" data-video-src="videos/video10.mp4">
-                    <img src="images/video/thumb10.jpg" alt="Video 10 Thumbnail">
+                <div class="gallery-item hidden" data-index="9" data-type="video" data-video-src="videos/prod10.mp4" data-duration="225">
+                    <div class="gallery-item-placeholder">🎥</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">3:45</div>
                 </div>
-
-                <div class="gallery-item hidden tall" data-index="10" data-type="video" data-video-src="videos/video11.mp4">
-                    <img src="images/video/thumb11.jpg" alt="Video 11 Thumbnail">
+                <div class="gallery-item hidden" data-index="10" data-type="video" data-video-src="videos/prod11.mp4" data-duration="58">
+                    <div class="gallery-item-placeholder">🎞️</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">0:58</div>
                 </div>
-
-                <div class="gallery-item hidden" data-index="11" data-type="video" data-video-src="videos/video12.mp4">
-                    <img src="images/video/thumb12.jpg" alt="Video 12 Thumbnail">
+                <div class="gallery-item hidden" data-index="11" data-type="video" data-video-src="videos/prod12.mp4" data-duration="135">
+                    <div class="gallery-item-placeholder">📹</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">2:15</div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="gallery-item hidden wide" data-index="12" data-type="video" data-video-src="videos/video13.mp4">
-                    <img src="images/video/thumb13.jpg" alt="Video 13 Thumbnail">
+    <!-- AI-Generated Videos Section -->
+    <section class="gallery-section" style="background: var(--dark-card);">
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <div class="gallery-header-left">
+                    <h2 class="gallery-title">AI-Generated Videos</h2>
+                    <button class="view-all-btn" data-gallery="ai">
+                        <span>View All</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="gallery-header-right">
+                    <div class="search-box">
+                        <input type="text" class="search-input" data-gallery="ai" placeholder="Search...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <select class="sort-select" data-gallery="ai">
+                        <option value="index-asc">Default Order</option>
+                        <option value="duration-asc">Duration (Shortest)</option>
+                        <option value="duration-desc">Duration (Longest)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mosaic-gallery" data-gallery="ai">
+                <div class="gallery-item" data-index="12" data-type="video" data-video-src="videos/ai1.mp4" data-duration="30">
+                    <div class="gallery-item-placeholder">🤖</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="video-duration">4:02</div>
+                    <div class="video-duration">0:30</div>
                 </div>
-
-                <div class="gallery-item hidden" data-index="13" data-type="video" data-video-src="videos/video14.mp4">
-                    <img src="images/video/thumb14.jpg" alt="Video 14 Thumbnail">
+                <div class="gallery-item" data-index="13" data-type="video" data-video-src="videos/ai2.mp4" data-duration="45">
+                    <div class="gallery-item-placeholder">✨</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="video-duration">1:30</div>
+                    <div class="video-duration">0:45</div>
                 </div>
-
-                <div class="gallery-item hidden big" data-index="14" data-type="video" data-video-src="videos/video15.mp4">
-                    <img src="images/video/thumb15.jpg" alt="Video 15 Thumbnail">
+                <div class="gallery-item" data-index="14" data-type="video" data-video-src="videos/ai3.mp4" data-duration="60">
+                    <div class="gallery-item-placeholder">🎨</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="video-duration">6:18</div>
+                    <div class="video-duration">1:00</div>
+                </div>
+                <div class="gallery-item" data-index="15" data-type="video" data-video-src="videos/ai4.mp4" data-duration="25">
+                    <div class="gallery-item-placeholder">🌟</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:25</div>
+                </div>
+                <div class="gallery-item" data-index="16" data-type="video" data-video-src="videos/ai5.mp4" data-duration="40">
+                    <div class="gallery-item-placeholder">🤖</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:40</div>
+                </div>
+                <div class="gallery-item" data-index="17" data-type="video" data-video-src="videos/ai6.mp4" data-duration="35">
+                    <div class="gallery-item-placeholder">✨</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:35</div>
+                </div>
+                <div class="gallery-item" data-index="18" data-type="video" data-video-src="videos/ai7.mp4" data-duration="50">
+                    <div class="gallery-item-placeholder">🎨</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:50</div>
+                </div>
+                <div class="gallery-item" data-index="19" data-type="video" data-video-src="videos/ai8.mp4" data-duration="70">
+                    <div class="gallery-item-placeholder">🌟</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">1:10</div>
                 </div>
 
-                <div class="gallery-item hidden tall" data-index="15" data-type="video" data-video-src="videos/video16.mp4">
-                    <img src="images/video/thumb16.jpg" alt="Video 16 Thumbnail">
+                <div class="gallery-item hidden" data-index="20" data-type="video" data-video-src="videos/ai9.mp4" data-duration="28">
+                    <div class="gallery-item-placeholder">🤖</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:28</div>
+                </div>
+                <div class="gallery-item hidden" data-index="21" data-type="video" data-video-src="videos/ai10.mp4" data-duration="55">
+                    <div class="gallery-item-placeholder">✨</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:55</div>
+                </div>
+                <div class="gallery-item hidden" data-index="22" data-type="video" data-video-src="videos/ai11.mp4" data-duration="42">
+                    <div class="gallery-item-placeholder">🎨</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:42</div>
+                </div>
+                <div class="gallery-item hidden" data-index="23" data-type="video" data-video-src="videos/ai12.mp4" data-duration="65">
+                    <div class="gallery-item-placeholder">🌟</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
@@ -1059,23 +1139,23 @@ nav ul li a:hover::after {
         </div>
     </section>
 
-    <!-- Gallery Section 2 - Stable Diffusion Videos & Images -->
-    <section class="gallery-section" style="background: var(--dark-card); border-top: 1px solid var(--dark-border);">
+    <!-- Motion Graphics Section -->
+    <section class="gallery-section">
         <div class="gallery-container">
             <div class="gallery-header">
                 <div class="gallery-header-left">
-                    <h2 class="gallery-title">Stable Diffusion Videos & Images</h2>
-                    <button class="view-all-btn" id="viewAllBtn2">
+                    <h2 class="gallery-title">Motion Graphics</h2>
+                    <button class="view-all-btn" data-gallery="motion">
                         <span>View All</span>
                         <span class="arrow">▼</span>
                     </button>
                 </div>
                 <div class="gallery-header-right">
                     <div class="search-box">
-                        <input type="text" id="searchInput2" placeholder="Search..." class="search-input">
+                        <input type="text" class="search-input" data-gallery="motion" placeholder="Search...">
                         <span class="search-icon">🔍</span>
                     </div>
-                    <select id="sortSelect2" class="sort-select">
+                    <select class="sort-select" data-gallery="motion">
                         <option value="index-asc">Default Order</option>
                         <option value="duration-asc">Duration (Shortest)</option>
                         <option value="duration-desc">Duration (Longest)</option>
@@ -1083,131 +1163,87 @@ nav ul li a:hover::after {
                 </div>
             </div>
 
-            <div class="mosaic-gallery" id="mosaicGallery2">
-                <!-- Initial 8 visible items -->
-                <div class="gallery-item" data-index="16" data-type="video" data-video-src="videos/ai-video1.mp4">
-                    <img src="images/video/ai-thumb1.jpg" alt="AI Video 1">
+            <div class="mosaic-gallery" data-gallery="motion">
+                <div class="gallery-item" data-index="24" data-type="video" data-video-src="videos/motion1.mp4" data-duration="15">
+                    <div class="gallery-item-placeholder">💫</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:15</div>
+                </div>
+                <div class="gallery-item" data-index="25" data-type="video" data-video-src="videos/motion2.mp4" data-duration="20">
+                    <div class="gallery-item-placeholder">🎯</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:20</div>
+                </div>
+                <div class="gallery-item" data-index="26" data-type="video" data-video-src="videos/motion3.mp4" data-duration="30">
+                    <div class="gallery-item-placeholder">⚡</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">0:30</div>
                 </div>
-
-                <div class="gallery-item" data-index="17" data-type="video" data-video-src="videos/ai-video2.mp4">
-                    <img src="images/video/ai-thumb2.jpg" alt="AI Video 2">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">0:45</div>
-                </div>
-
-                <div class="gallery-item" data-index="18" data-type="video" data-video-src="videos/ai-video3.mp4">
-                    <img src="images/video/ai-thumb3.jpg" alt="AI Video 3">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">1:00</div>
-                </div>
-
-                <div class="gallery-item" data-index="19" data-type="video" data-video-src="videos/ai-video4.mp4">
-                    <img src="images/video/ai-thumb4.jpg" alt="AI Video 4">
+                <div class="gallery-item" data-index="27" data-type="video" data-video-src="videos/motion4.mp4" data-duration="25">
+                    <div class="gallery-item-placeholder">🎪</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">0:25</div>
                 </div>
-
-                <div class="gallery-item" data-index="20" data-type="video" data-video-src="videos/ai-video5.mp4">
-                    <img src="images/video/ai-thumb5.jpg" alt="AI Video 5">
+                <div class="gallery-item" data-index="28" data-type="video" data-video-src="videos/motion5.mp4" data-duration="18">
+                    <div class="gallery-item-placeholder">💫</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="video-duration">0:40</div>
+                    <div class="video-duration">0:18</div>
                 </div>
-
-                <div class="gallery-item" data-index="21" data-type="video" data-video-src="videos/ai-video6.mp4">
-                    <img src="images/video/ai-thumb6.jpg" alt="AI Video 6">
+                <div class="gallery-item" data-index="29" data-type="video" data-video-src="videos/motion6.mp4" data-duration="22">
+                    <div class="gallery-item-placeholder">🎯</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:22</div>
+                </div>
+                <div class="gallery-item" data-index="30" data-type="video" data-video-src="videos/motion7.mp4" data-duration="28">
+                    <div class="gallery-item-placeholder">⚡</div>
+                    <div class="video-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="video-duration">0:28</div>
+                </div>
+                <div class="gallery-item" data-index="31" data-type="video" data-video-src="videos/motion8.mp4" data-duration="35">
+                    <div class="gallery-item-placeholder">🎪</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
                     <div class="video-duration">0:35</div>
                 </div>
 
-                <div class="gallery-item" data-index="22" data-type="video" data-video-src="videos/ai-video7.mp4">
-                    <img src="images/video/ai-thumb7.jpg" alt="AI Video 7">
+                <div class="gallery-item hidden" data-index="32" data-type="video" data-video-src="videos/motion9.mp4" data-duration="12">
+                    <div class="gallery-item-placeholder">💫</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="video-duration">0:50</div>
+                    <div class="video-duration">0:12</div>
                 </div>
-
-                <div class="gallery-item" data-index="23" data-type="video" data-video-src="videos/ai-video8.mp4">
-                    <img src="images/video/ai-thumb8.jpg" alt="AI Video 8">
+                <div class="gallery-item hidden" data-index="33" data-type="video" data-video-src="videos/motion10.mp4" data-duration="24">
+                    <div class="gallery-item-placeholder">🎯</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="video-duration">1:10</div>
+                    <div class="video-duration">0:24</div>
                 </div>
-
-                <!-- Hidden items -->
-                <div class="gallery-item hidden" data-index="24" data-type="video" data-video-src="videos/ai-video9.mp4">
-                    <img src="images/video/ai-thumb9.jpg" alt="AI Video 9">
+                <div class="gallery-item hidden" data-index="34" data-type="video" data-video-src="videos/motion11.mp4" data-duration="19">
+                    <div class="gallery-item-placeholder">⚡</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="video-duration">0:28</div>
+                    <div class="video-duration">0:19</div>
                 </div>
-
-                <div class="gallery-item hidden" data-index="25" data-type="video" data-video-src="videos/ai-video10.mp4">
-                    <img src="images/video/ai-thumb10.jpg" alt="AI Video 10">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">0:55</div>
-                </div>
-
-                <div class="gallery-item hidden" data-index="26" data-type="video" data-video-src="videos/ai-video11.mp4">
-                    <img src="images/video/ai-thumb11.jpg" alt="AI Video 11">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">0:42</div>
-                </div>
-
-                <div class="gallery-item hidden" data-index="27" data-type="video" data-video-src="videos/ai-video12.mp4">
-                    <img src="images/video/ai-thumb12.jpg" alt="AI Video 12">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">1:05</div>
-                </div>
-
-                <div class="gallery-item hidden" data-index="28" data-type="video" data-video-src="videos/ai-video13.mp4">
-                    <img src="images/video/ai-thumb13.jpg" alt="AI Video 13">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">0:38</div>
-                </div>
-
-                <div class="gallery-item hidden" data-index="29" data-type="video" data-video-src="videos/ai-video14.mp4">
-                    <img src="images/video/ai-thumb14.jpg" alt="AI Video 14">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">0:48</div>
-                </div>
-
-                <div class="gallery-item hidden" data-index="30" data-type="video" data-video-src="videos/ai-video15.mp4">
-                    <img src="images/video/ai-thumb15.jpg" alt="AI Video 15">
-                    <div class="video-overlay">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="video-duration">1:20</div>
-                </div>
-
-                <div class="gallery-item hidden" data-index="31" data-type="video" data-video-src="videos/ai-video16.mp4">
-                    <img src="images/video/ai-thumb16.jpg" alt="AI Video 16">
+                <div class="gallery-item hidden" data-index="35" data-type="video" data-video-src="videos/motion12.mp4" data-duration="32">
+                    <div class="gallery-item-placeholder">🎪</div>
                     <div class="video-overlay">
                         <div class="play-button">▶</div>
                     </div>
@@ -1232,12 +1268,11 @@ nav ul li a:hover::after {
         <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">John D. Robbins</div>
             <div class="footer-contact">
-                <a href="/cdn-cgi/l/email-protection#22484d4a4c46504d40404b4c511a1162454f434b4e0c414d4f"><span class="__cf_email__" data-cfemail="2e444146404a5c414c4c47405d161d6e49434f4742004d4143">[email&#160;protected]</span></a> | Holly Ridge, NC
+                johndrobbins83@gmail.com | Holly Ridge, NC
             </div>
             <div class="footer-links">
                 <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
@@ -1247,268 +1282,335 @@ nav ul li a:hover::after {
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // View All Toggle for Gallery 1 (Videos)
-        const viewAllBtn1 = document.getElementById('viewAllBtn1');
-        const hiddenItems1 = document.querySelectorAll('#mosaicGallery1 .gallery-item.hidden');
-        let viewingAll1 = false;
-
-        if (viewAllBtn1) {
-            viewAllBtn1.addEventListener('click', function() {
-                viewingAll1 = !viewingAll1;
+    <script>
+        // View All Toggle - Support multiple galleries
+        document.querySelectorAll('.view-all-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const galleryId = this.dataset.gallery;
+                const gallery = document.querySelector(`.mosaic-gallery[data-gallery="${galleryId}"]`);
+                const hiddenItems = gallery.querySelectorAll('.gallery-item.hidden');
+                const isActive = this.classList.contains('active');
                 
-                hiddenItems1.forEach(item => {
-                    if (viewingAll1) {
-                        item.classList.remove('hidden');
-                    } else {
+                hiddenItems.forEach(item => {
+                    if (isActive) {
                         item.classList.add('hidden');
+                    } else {
+                        item.classList.remove('hidden');
                     }
                 });
 
                 this.classList.toggle('active');
-                this.querySelector('span').textContent = viewingAll1 ? 'View Less' : 'View All';
-            });
-        }
-
-        // View All Toggle for Gallery 2 (Stable Diffusion)
-        const viewAllBtn2 = document.getElementById('viewAllBtn2');
-        const hiddenItems2 = document.querySelectorAll('#mosaicGallery2 .gallery-item.hidden');
-        let viewingAll2 = false;
-
-        if (viewAllBtn2) {
-            viewAllBtn2.addEventListener('click', function() {
-                viewingAll2 = !viewingAll2;
+                this.querySelector('span').textContent = isActive ? 'View All' : 'View Less';
                 
-                hiddenItems2.forEach(item => {
-                    if (viewingAll2) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-
-                this.classList.toggle('active');
-                this.querySelector('span').textContent = viewingAll2 ? 'View Less' : 'View All';
+                if (window.innerWidth <= 768) {
+                    buildMobileSliders();
+                }
             });
-        }
+        });
 
-        // Search and Sort Functionality for Video Galleries
-        function setupVideoGalleryControls(galleryId, searchInputId, sortSelectId) {
-            const gallery = document.getElementById(galleryId);
-            const searchInput = document.getElementById(searchInputId);
-            const sortSelect = document.getElementById(sortSelectId);
-            
-            if (!gallery || !searchInput || !sortSelect) return;
-
-            const items = Array.from(gallery.querySelectorAll('.gallery-item'));
-            
-            // Search functionality - searches alt text and video src
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
+        // Search and Sort - Support multiple galleries
+        function setupGalleryControls() {
+            document.querySelectorAll('.search-input').forEach(searchInput => {
+                const galleryId = searchInput.dataset.gallery;
+                const gallery = document.querySelector(`.mosaic-gallery[data-gallery="${galleryId}"]`);
+                const items = Array.from(gallery.querySelectorAll('.gallery-item'));
                 
-                items.forEach(item => {
-                    const img = item.querySelector('img');
-                    const alt = img ? img.alt.toLowerCase() : '';
-                    const videoSrc = (item.dataset.videoSrc || '').toLowerCase();
-                    const index = item.dataset.index || '';
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
                     
-                    const matches = alt.includes(searchTerm) || 
-                                  videoSrc.includes(searchTerm) ||
-                                  index.includes(searchTerm);
+                    items.forEach(item => {
+                        const index = (item.dataset.index || '').toLowerCase();
+                        const videoSrc = (item.dataset.videoSrc || '').toLowerCase();
+                        
+                        const matches = index.includes(searchTerm) || videoSrc.includes(searchTerm);
+                        
+                        item.style.display = matches ? '' : 'none';
+                    });
                     
-                    if (matches) {
-                        item.style.display = '';
-                    } else {
-                        item.style.display = 'none';
+                    if (window.innerWidth <= 768) {
+                        buildMobileSliders();
                     }
                 });
             });
             
-            // Sort functionality
-            sortSelect.addEventListener('change', function() {
-                const sortType = this.value;
+            document.querySelectorAll('.sort-select').forEach(sortSelect => {
+                const galleryId = sortSelect.dataset.gallery;
+                const gallery = document.querySelector(`.mosaic-gallery[data-gallery="${galleryId}"]`);
+                const items = Array.from(gallery.querySelectorAll('.gallery-item'));
                 
-                // Create array of items with their data
-                const itemsData = items.map(item => {
-                    const durationText = item.querySelector('.video-duration')?.textContent || '0:00';
-                    const durationSeconds = parseDuration(durationText);
+                sortSelect.addEventListener('change', function() {
+                    const sortType = this.value;
                     
-                    return {
+                    const itemsData = items.map(item => ({
                         element: item,
-                        duration: durationSeconds,
+                        duration: parseInt(item.dataset.duration) || 0,
                         index: parseInt(item.dataset.index) || 0
-                    };
-                });
-                
-                // Sort based on selection
-                itemsData.sort((a, b) => {
-                    switch(sortType) {
-                        case 'duration-asc':
-                            return a.duration - b.duration;
-                        case 'duration-desc':
-                            return b.duration - a.duration;
-                        case 'index-asc':
-                        default:
-                            return a.index - b.index;
+                    }));
+                    
+                    itemsData.sort((a, b) => {
+                        switch(sortType) {
+                            case 'duration-asc':
+                                return a.duration - b.duration;
+                            case 'duration-desc':
+                                return b.duration - a.duration;
+                            case 'index-asc':
+                            default:
+                                return a.index - b.index;
+                        }
+                    });
+                    
+                    itemsData.forEach(item => {
+                        gallery.appendChild(item.element);
+                    });
+                    
+                    if (window.innerWidth <= 768) {
+                        buildMobileSliders();
                     }
-                });
-                
-                // Reorder DOM elements
-                itemsData.forEach(item => {
-                    gallery.appendChild(item.element);
                 });
             });
         }
 
-        // Helper function to parse duration like "2:34" to seconds
-        function parseDuration(durationStr) {
-            if (!durationStr) return 0;
-            const parts = durationStr.split(':');
-            if (parts.length === 2) {
-                const minutes = parseInt(parts[0]) || 0;
-                const seconds = parseInt(parts[1]) || 0;
-                return (minutes * 60) + seconds;
-            }
-            return 0;
-        }
+        setupGalleryControls();
 
-        // Setup controls for both video galleries
-        setupVideoGalleryControls('mosaicGallery1', 'searchInput1', 'sortSelect1');
-        setupVideoGalleryControls('mosaicGallery2', 'searchInput2', 'sortSelect2');
-
-        // Lightbox video player functionality (works for all galleries)
+        // Lightbox video player
         let currentImageIndex = 0;
-        const galleryItems = document.querySelectorAll('.gallery-item');
         const lightbox = document.getElementById('lightbox');
         const lightboxVideo = document.getElementById('lightboxVideo');
         const lightboxVideoSource = document.getElementById('lightboxVideoSource');
 
-        console.log('Video gallery items found:', galleryItems.length);
-        console.log('Lightbox element:', lightbox);
-
-        // Open lightbox on gallery item click
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', function(e) {
-                console.log('Video item clicked!', index);
+        document.querySelectorAll('.gallery-item, .slider-item').forEach(item => {
+            item.addEventListener('click', function() {
                 currentImageIndex = parseInt(this.dataset.index);
                 const videoSrc = this.dataset.videoSrc;
                 
-                console.log('Video src:', videoSrc);
-                
-                // For demo purposes, use a placeholder video if no real video exists
                 if (videoSrc) {
                     lightboxVideoSource.src = videoSrc;
                 } else {
-                    // Create a demo video source (you can replace this with actual video)
-                    console.log('No video source, using demo');
                     lightboxVideoSource.src = 'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAAAuW1kYXQAAAKuBgX//4ncRem95tlIt5Ys2CDZI+7veDI2NCAtIGNvcmUgMTU5IC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxOSAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTMgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTI1IHNjZW5lY3V0PTQwIGludHJhX3JlZnJlc2g9MCByY19sb29rYWhlYWQ9NDAgcmM9Y3JmIG1idHJlZT0xIGNyZj0yMy4wIHFjb21wPTAuNjAgcXBtaW49MCBxcG1heD02OSBxcHN0ZXA9NCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAAwWWIhAAz//727L4FNf2f0JcRLMXaSnA+KqSAgHc0wAAAAwAAAwAAFgn0I7DkqgN3QAAAHGAFBCwCPCVC';
                 }
                 
                 lightboxVideo.load();
-                console.log('Opening video lightbox...');
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                console.log('Lightbox classes:', lightbox.className);
             });
         });
 
         function closeLightbox() {
-            console.log('Closing video lightbox');
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
-            // Pause and reset video
             lightboxVideo.pause();
             lightboxVideo.currentTime = 0;
         }
 
         function navigateLightbox(direction) {
-            const visibleItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden'));
-            const currentVisibleIndex = visibleItems.findIndex(item => parseInt(item.dataset.index) === currentImageIndex);
-            let nextIndex = currentVisibleIndex + direction;
+            const allItems = Array.from(document.querySelectorAll('.gallery-item:not(.hidden), .slider-item'));
+            const currentIdx = allItems.findIndex(item => parseInt(item.dataset.index) === currentImageIndex);
+            let nextIdx = currentIdx + direction;
 
-            if (nextIndex < 0) nextIndex = visibleItems.length - 1;
-            if (nextIndex >= visibleItems.length) nextIndex = 0;
+            if (nextIdx < 0) nextIdx = allItems.length - 1;
+            if (nextIdx >= allItems.length) nextIdx = 0;
 
-            const nextItem = visibleItems[nextIndex];
+            const nextItem = allItems[nextIdx];
             const videoSrc = nextItem.dataset.videoSrc;
             
             if (videoSrc) {
                 currentImageIndex = parseInt(nextItem.dataset.index);
-                // Pause current video
                 lightboxVideo.pause();
-                // Load new video
                 lightboxVideoSource.src = videoSrc;
                 lightboxVideo.load();
                 lightboxVideo.play();
             }
         }
 
-        // Close lightbox on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') navigateLightbox(-1);
             if (e.key === 'ArrowRight') navigateLightbox(1);
         });
 
-        // Close lightbox on background click
-        if (lightbox) {
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === this) closeLightbox();
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Hamburger
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
             });
         }
 
-        // Hamburger menu toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('nav ul');
+        // Mobile Sliders - Support multiple galleries
+        function buildMobileSliders() {
+            if (window.innerWidth > 768) return;
 
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+            document.querySelectorAll('.mosaic-gallery').forEach(mosaic => {
+                const galleryId = mosaic.dataset.gallery;
+                const section = mosaic.closest('.gallery-section');
+                const container = section.querySelector('.gallery-container');
 
-    // Close menu when clicking on a link
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-}
-        const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                const existingSlider = section.querySelector('.mobile-slider');
+                if (existingSlider) {
+                    existingSlider.remove();
+                }
 
-function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    mobileMenuOverlay.classList.toggle('active');
-    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
-}
+                const gridItems = Array.from(mosaic.querySelectorAll('.gallery-item'))
+                    .filter(item => !item.classList.contains('hidden') && item.style.display !== 'none');
+                
+                if (gridItems.length === 0) return;
 
-if (hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-}
+                const sliderWrapper = document.createElement('div');
+                sliderWrapper.className = 'mobile-slider image-slider';
+                sliderWrapper.dataset.gallery = galleryId;
 
-if (mobileMenuOverlay) {
-    mobileMenuOverlay.addEventListener('click', toggleMenu);
-}
+                const prevBtn = document.createElement('div');
+                prevBtn.className = 'slider-nav prev';
+                prevBtn.innerHTML = '‹';
 
-// Close menu when clicking a link
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (mobileMenu && mobileMenu.classList.contains('active')) {
-            toggleMenu();
+                const track = document.createElement('div');
+                track.className = 'slider-container';
+                track.dataset.gallery = galleryId;
+
+                gridItems.forEach(item => {
+                    const si = document.createElement('div');
+                    si.className = 'slider-item';
+                    si.dataset.index = item.dataset.index;
+                    si.dataset.videoSrc = item.dataset.videoSrc || '';
+                    si.dataset.duration = item.dataset.duration || '';
+
+                    const placeholder = item.querySelector('.gallery-item-placeholder');
+                    if (placeholder) si.appendChild(placeholder.cloneNode(true));
+                    
+                    const videoOverlay = item.querySelector('.video-overlay');
+                    if (videoOverlay) si.appendChild(videoOverlay.cloneNode(true));
+                    
+                    const videoDuration = item.querySelector('.video-duration');
+                    if (videoDuration) si.appendChild(videoDuration.cloneNode(true));
+
+                    track.appendChild(si);
+                });
+
+                const nextBtn = document.createElement('div');
+                nextBtn.className = 'slider-nav next';
+                nextBtn.innerHTML = '›';
+
+                const dots = document.createElement('div');
+                dots.className = 'slider-dots';
+                dots.dataset.gallery = galleryId;
+
+                sliderWrapper.appendChild(prevBtn);
+                sliderWrapper.appendChild(track);
+                sliderWrapper.appendChild(nextBtn);
+                sliderWrapper.appendChild(dots);
+
+                container.appendChild(sliderWrapper);
+
+                initVideoSlider(galleryId, prevBtn, nextBtn);
+            });
         }
-    });
-});
 
-// Close menu on escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
-        toggleMenu();
-    }
-});
+        let videoSliderStates = {
+            'production': { currentIndex: 0 },
+            'ai': { currentIndex: 0 },
+            'motion': { currentIndex: 0 }
+        };
+
+        function initVideoSlider(galleryId, prevBtn, nextBtn) {
+            const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
+            const dots = document.querySelector(`.slider-dots[data-gallery="${galleryId}"]`);
+            const items = track.querySelectorAll('.slider-item');
+
+            videoSliderStates[galleryId].currentIndex = 0;
+
+            dots.innerHTML = '';
+            for (let i = 0; i < items.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToVideoSlide(galleryId, i);
+                dots.appendChild(dot);
+            }
+
+            items.forEach(item => {
+                item.addEventListener('click', function() {
+                    currentImageIndex = parseInt(this.dataset.index);
+                    const videoSrc = this.dataset.videoSrc;
+                    
+                    if (videoSrc) {
+                        lightboxVideoSource.src = videoSrc;
+                    } else {
+                        lightboxVideoSource.src = 'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAAAuW1kYXQAAAKuBgX//4ncRem95tlIt5Ys2CDZI+7veDI2NCAtIGNvcmUgMTU5IC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxOSAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTMgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTI1IHNjZW5lY3V0PTQwIGludHJhX3JlZnJlc2g9MCByY19sb29rYWhlYWQ9NDAgcmM9Y3JmIG1idHJlZT0xIGNyZj0yMy4wIHFjb21wPTAuNjAgcXBtaW49MCBxcG1heD02OSBxcHN0ZXA9NCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAAwWWIhAAz//727L4FNf2f0JcRLMXaSnA+KqSAgHc0wAAAAwAAAwAAFgn0I7DkqgN3QAAAHGAFBCwCPCVC';
+                    }
+                    
+                    lightboxVideo.load();
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            prevBtn.onclick = () => slideVideo(galleryId, -1);
+            nextBtn.onclick = () => slideVideo(galleryId, 1);
+
+            updateVideoSlider(galleryId);
+        }
+
+        function slideVideo(galleryId, direction) {
+            const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
+            if (!track) return;
+            
+            const items = track.querySelectorAll('.slider-item');
+            
+            videoSliderStates[galleryId].currentIndex += direction;
+            if (videoSliderStates[galleryId].currentIndex < 0) {
+                videoSliderStates[galleryId].currentIndex = items.length - 1;
+            }
+            if (videoSliderStates[galleryId].currentIndex >= items.length) {
+                videoSliderStates[galleryId].currentIndex = 0;
+            }
+            
+            updateVideoSlider(galleryId);
+        }
+
+        function goToVideoSlide(galleryId, index) {
+            videoSliderStates[galleryId].currentIndex = index;
+            updateVideoSlider(galleryId);
+        }
+
+        function updateVideoSlider(galleryId) {
+            const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
+            if (!track) return;
+            
+            const dots = document.querySelector(`.slider-dots[data-gallery="${galleryId}"]`);
+            const items = track.querySelectorAll('.slider-item');
+            const current = videoSliderStates[galleryId].currentIndex;
+            
+            const itemWidth = items[0] ? items[0].offsetWidth : 0;
+            const offset = -(current * itemWidth);
+            track.style.transform = `translateX(${offset}px)`;
+            
+            if (dots) {
+                dots.querySelectorAll('.slider-dot').forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === current);
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', buildMobileSliders);
+        
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(buildMobileSliders, 250);
+        });
     </script>
 </body>
 </html>
