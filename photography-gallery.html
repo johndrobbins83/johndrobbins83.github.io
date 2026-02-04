@@ -1243,7 +1243,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+    <script>
         // View All Toggle - Support multiple galleries
         document.querySelectorAll('.view-all-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -1448,34 +1448,27 @@
 
         // Mobile Sliders - Support multiple galleries
         function buildMobileSliders() {
-            console.log('buildMobileSliders called, window width:', window.innerWidth);
-            if (window.innerWidth > 768) {
-                console.log('Desktop mode - skipping sliders');
-                return;
-            }
+            if (window.innerWidth > 768) return;
 
             // Process each gallery section
             const galleries = document.querySelectorAll('.mosaic-gallery');
             console.log('Found', galleries.length, 'galleries');
+            galleries.forEach(g => console.log('Gallery:', g.dataset.gallery));
             
             galleries.forEach(mosaic => {
                 const galleryId = mosaic.dataset.gallery;
-                console.log('Processing gallery:', galleryId);
                 const section = mosaic.closest('.gallery-section');
                 const container = section.querySelector('.gallery-container');
 
                 // Remove existing slider for this gallery to rebuild
                 const existingSlider = section.querySelector('.mobile-slider');
                 if (existingSlider) {
-                    console.log('Removing existing slider for gallery', galleryId);
                     existingSlider.remove();
                 }
 
                 // Get items that are not hidden by View All AND not hidden by search
                 const gridItems = Array.from(mosaic.querySelectorAll('.gallery-item'))
                     .filter(item => !item.classList.contains('hidden') && item.style.display !== 'none');
-                
-                console.log('Gallery', galleryId, 'has', gridItems.length, 'visible items');
                 
                 if (gridItems.length === 0) return; // No items to show
 
@@ -1532,9 +1525,9 @@
         }
 
         let photoSliderStates = {
-            '1': { currentIndex: 0 },
-            '2': { currentIndex: 0 },
-            '3': { currentIndex: 0 }
+            'nature': { currentIndex: 0 },
+            'travel': { currentIndex: 0 },
+            'misc': { currentIndex: 0 }
         };
 
         function initPhotoSlider(galleryId, prevBtn, nextBtn) {
@@ -1579,8 +1572,12 @@
         }
 
         function slideMobile(galleryId, direction) {
+            console.log('slideMobile called for gallery', galleryId, 'direction:', direction);
             const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
-            if (!track) return;
+            if (!track) {
+                console.log('Track not found for gallery', galleryId);
+                return;
+            }
             
             const items = track.querySelectorAll('.slider-item');
             
@@ -1592,6 +1589,7 @@
                 photoSliderStates[galleryId].currentIndex = 0;
             }
             
+            console.log('New index for gallery', galleryId, ':', photoSliderStates[galleryId].currentIndex);
             updatePhotoSlider(galleryId);
         }
 
@@ -1602,14 +1600,18 @@
 
         function updatePhotoSlider(galleryId) {
             const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
+            console.log('updatePhotoSlider for gallery', galleryId, 'track found:', !!track);
             if (!track) return;
             
             const dots = document.querySelector(`.slider-dots[data-gallery="${galleryId}"]`);
             const items = track.querySelectorAll('.slider-item');
             const current = photoSliderStates[galleryId].currentIndex;
             
+            console.log('Gallery', galleryId, '- items:', items.length, 'current:', current);
+            
             const itemWidth = items[0] ? items[0].offsetWidth : 0;
             const offset = -(current * itemWidth);
+            console.log('Gallery', galleryId, '- itemWidth:', itemWidth, 'offset:', offset);
             track.style.transform = `translateX(${offset}px)`;
             
             if (dots) {
