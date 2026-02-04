@@ -33,214 +33,175 @@
             overflow-x: hidden;
         }
 
-       /* Header & Navigation */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--dark-border);
-}
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
+        }
 
-nav {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 3rem;
-}
+        nav {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 3rem;
+        }
 
-.nav-profile {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
+        .nav-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-.nav-profile-image {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: var(--dark-card);
-    border: 2px solid var(--primary-blue);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--primary-blue);
-    flex-shrink: 0;
-}
+        .nav-profile-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
 
-.nav-profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
+        .nav-profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
-.nav-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-}
+        .nav-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
 
-.nav-info .name {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--off-white);
-    line-height: 1.2;
-}
+        .nav-info .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--off-white);
+            line-height: 1.2;
+        }
 
-.nav-info .title {
-    font-size: 0.75rem;
-    color: var(--mid-gray);
-    font-weight: 400;
-    line-height: 1.2;
-}
+        .nav-info .title {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            font-weight: 400;
+            line-height: 1.2;
+        }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
 
-.nav-icons {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-.nav-icon {
-    color: var(--off-white);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    border: 1px solid var(--dark-border);
-    background: rgba(255, 255, 255, 0.03);
-}
+        .nav-icon {
+            color: var(--off-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
+            background: rgba(255, 255, 255, 0.03);
+        }
 
-.nav-icon:hover {
-    color: var(--primary-blue);
-    border-color: var(--primary-blue);
-    background: rgba(133, 199, 242, 0.1);
-    transform: translateY(-2px);
-}
+        .nav-icon:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.1);
+            transform: translateY(-2px);
+        }
 
-.nav-icon svg {
-    width: 18px;
-    height: 18px;
-}
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
 
-nav ul li a {
-    color: var(--off-white);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-    position: relative;
-    padding: 0.5rem 0;
-}
+        nav ul li a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
 
-nav ul li a:hover {
-    color: var(--primary-blue);
-}
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
 
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-blue);
-    transition: width 0.3s ease;
-}
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
 
-nav ul li a:hover::after {
-    width: 100%;
-}
+        nav ul li a:hover::after {
+            width: 100%;
+        }
 
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-}
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
 
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background: var(--off-white);
-    transition: all 0.3s ease;
-}
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--off-white);
+            transition: all 0.3s ease;
+        }
 
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-}
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
 
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
 
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    nav {
-        grid-template-columns: auto auto;
-        gap: 1rem;
-    }
-
-    nav ul {
-        position: fixed;
-        top: 76px;
-        left: 0;
-        width: 100%;
-        background: rgba(10, 10, 10, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        border-bottom: 1px solid var(--dark-border);
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-    }
-
-    nav ul.active {
-        transform: translateX(0);
-    }
-
-    .nav-icons {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-info {
-        display: none;
-    }
-}
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
 
         /* Page Hero */
         .page-hero {
@@ -286,7 +247,7 @@ nav ul li a:hover::after {
             margin: 0 auto;
         }
 
-        /* Gallery Header - New Layout */
+        /* Gallery Header */
         .gallery-header {
             display: flex;
             justify-content: space-between;
@@ -346,7 +307,7 @@ nav ul li a:hover::after {
             transform: rotate(180deg);
         }
 
-        /* Sort Select - Styled like View All button */
+        /* Sort Select */
         .sort-select {
             padding: 0.75rem 1.5rem;
             background: transparent;
@@ -377,7 +338,7 @@ nav ul li a:hover::after {
             color: var(--off-white);
         }
 
-        /* Compact Search Box */
+        /* Search Box */
         .search-box {
             width: 200px;
             position: relative;
@@ -415,53 +376,7 @@ nav ul li a:hover::after {
             font-size: 0.9rem;
         }
 
-        /* Remove old gallery-controls styles */
-        .gallery-controls {
-            display: none;
-        }
-
-        .sort-controls {
-            display: none;
-        }
-
-        .gallery-title {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--off-white);
-        }
-
-        .view-all-btn {
-            padding: 0.75rem 2rem;
-            background: transparent;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .view-all-btn:hover {
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-        }
-
-        .view-all-btn .arrow {
-            transition: transform 0.3s ease;
-        }
-
-        .view-all-btn.active .arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Mosaic Gallery Grid - Tight Puzzle Layout */
-        /* Mosaic Gallery Grid - Tight Puzzle Layout */
+        /* Mosaic Gallery Grid */
         .mosaic-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -498,7 +413,6 @@ nav ul li a:hover::after {
             transform: scale(1.05);
         }
 
-        /* Mosaic variations - puzzle piece sizes */
         .gallery-item.tall {
             grid-row: span 2;
         }
@@ -512,7 +426,6 @@ nav ul li a:hover::after {
             grid-row: span 2;
         }
 
-        /* Placeholder styling */
         .gallery-item-placeholder {
             width: 100%;
             height: 100%;
@@ -524,158 +437,133 @@ nav ul li a:hover::after {
             background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
         }
 
-        /* Hidden items */
         .gallery-item.hidden {
             display: none;
         }
-/* Mobile-only sliders for grid sections — hidden on desktop */
-.mobile-slider {
-    display: none;
-}
 
-/* Image Slider */
-.image-slider {
-    position: relative;
-    overflow: hidden;
-    padding: 2rem 0;
-}
+        /* Mobile Slider */
+        .mobile-slider {
+            display: none;
+        }
 
-.slider-container {
-    display: flex;
-    gap: 1.5rem;
-    transition: transform 0.5s ease;
-    padding: 0 3rem;
-}
+        .image-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
 
-.slider-item {
-    min-width: 350px;
-    height: 400px;
-    background: linear-gradient(135deg, #1a1f2e 0%, #232a3b 100%);
-    border: 1px solid var(--dark-border);
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .slider-container {
+            display: flex;
+            gap: 0;
+            transition: transform 0.5s ease;
+            padding: 0;
+        }
 
-.slider-item:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-blue);
-    box-shadow: 0 15px 40px rgba(133, 199, 242, 0.3);
-}
+        .slider-item {
+            min-width: 100%;
+            height: 300px;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
 
-.slider-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 6px;
-    transition: transform 0.3s ease;
-}
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
-.slider-item:hover img {
-    transform: scale(1.05);
-}
+        .slider-item .gallery-item-placeholder {
+            width: 100%;
+            height: 100%;
+            max-height: 300px;
+            font-size: 5rem;
+            background: none;
+        }
 
-.slider-item-placeholder,
-.slider-item .gallery-item-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    color: var(--primary-blue);
-    background: none;
-}
+        .slider-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 2rem 1.5rem 1rem;
+        }
 
-.slider-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-    padding: 2rem 1.5rem 1rem;
-}
+        .slider-caption h3 {
+            font-size: 1.1rem;
+            color: var(--off-white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
 
-.slider-caption h3 {
-    font-size: 1.1rem;
-    color: var(--off-white);
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
+        .slider-caption p {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            line-height: 1.4;
+        }
 
-.slider-caption p {
-    font-size: 0.85rem;
-    color: var(--mid-gray);
-    line-height: 1.4;
-}
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
 
-/* Slider Navigation Arrows */
-.slider-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: var(--dark-card);
-    border: 2px solid var(--primary-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--primary-blue);
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
+        .slider-nav:hover {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+        }
 
-.slider-nav:hover {
-    background: var(--primary-blue);
-    color: var(--dark-bg);
-    transform: translateY(-50%) scale(1.1);
-}
+        .slider-nav.prev {
+            left: 0;
+        }
 
-.slider-nav.prev {
-    left: 0;
-}
+        .slider-nav.next {
+            right: 0;
+        }
 
-.slider-nav.next {
-    right: 0;
-}
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
 
-/* Slider Dots */
-.slider-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 2rem;
-}
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--dark-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.slider-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--dark-border);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        .slider-dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.3);
+        }
 
-.slider-dot.active {
-    background: var(--primary-blue);
-    transform: scale(1.3);
-}
-
-.slider-dot:hover {
-    background: var(--primary-blue);
-    opacity: 0.7;
-}
         /* Lightbox */
         .lightbox {
             display: none;
@@ -834,11 +722,6 @@ nav ul li a:hover::after {
         .footer-contact a {
             color: var(--primary-blue);
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-contact a:hover {
-            color: var(--light-gray);
         }
 
         .footer-links {
@@ -864,148 +747,136 @@ nav ul li a:hover::after {
             font-size: 0.9rem;
         }
 
-      @media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                grid-template-columns: auto auto;
+                gap: 1rem;
+            }
 
-    nav ul,
-    .nav-icons {
-        display: none !important;
-    }
-    
-    nav {
-        grid-template-columns: 1fr auto;
-    }
+            nav ul {
+                position: fixed;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--dark-border);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
 
-    .page-hero h1 {
-        font-size: 3rem;
-    }
+            nav ul.active {
+                transform: translateX(0);
+            }
 
-    .gallery-header {
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: stretch;
-    }
+            .nav-icons {
+                display: none;
+            }
 
-    .gallery-header-left {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
+            .hamburger {
+                display: flex;
+            }
 
-    .gallery-title {
-        font-size: 1.5rem;
-    }
+            .nav-info {
+                display: none;
+            }
 
-    .gallery-header-right {
-        display: none; /* Hide search/sort on mobile */
-    }
+            .page-hero h1 {
+                font-size: 3rem;
+            }
 
-    .view-all-btn {
-        display: none; /* Hide on mobile */
-    }
+            .gallery-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
 
-    /* Mobile Slider Adjustments */
-    .image-slider {
-        position: relative;
-        overflow: hidden;
-        padding: 0;
-    }
+            .gallery-header-left {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
 
-    .slider-container {
-        padding: 0;
-        gap: 0;
-        overflow: visible;
-    }
+            .gallery-title {
+                font-size: 1.5rem;
+            }
 
-    .slider-item {
-        width: 100%;
-        min-width: 100%;
-        flex-shrink: 0;
-        height: 300px;
-    }
+            .gallery-header-right {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
 
-    .slider-nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 36px;
-        height: 36px;
-        font-size: 1.2rem;
-        z-index: 10;
-    }
+            .search-box {
+                width: 100%;
+            }
 
-    .slider-nav:hover {
-        transform: translateY(-50%) scale(1.1);
-    }
+            .sort-select {
+                width: 100%;
+                min-width: unset;
+            }
 
-    .slider-nav.prev {
-        left: 4px;
-    }
+            .view-all-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
 
-    .slider-nav.next {
-        right: 4px;
-    }
+            .mosaic-gallery {
+                display: none;
+            }
 
-    /* On mobile: hide mosaic grids, show mobile sliders instead */
-    .mosaic-gallery {
-        display: none;
-    }
+            .mobile-slider {
+                display: block;
+            }
 
-    .mobile-slider {
-        display: block;
-    }
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+            }
 
-    .lightbox-nav {
-        width: 40px;
-        height: 40px;
-    }
+            .lightbox-prev {
+                left: 1rem;
+            }
 
-    .lightbox-prev {
-        left: 1rem;
-    }
-
-    .lightbox-next {
-        right: 1rem;
-    }
-}
+            .lightbox-next {
+                right: 1rem;
+            }
+        }
 
         @media (max-width: 480px) {
             .page-hero h1 {
                 font-size: 2.5rem;
             }
-
-            .mosaic-gallery {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 200px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-<nav>
-        <div class="nav-profile">
-            <div class="nav-profile-image">
-                <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR" onerror="this.style.display='none'; this.parentElement.textContent='JR';">
+        <nav>
+            <div class="nav-profile">
+                <div class="nav-profile-image">
+                    <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR" onerror="this.style.display='none'; this.parentElement.textContent='JR';">
+                </div>
+                <div class="nav-info">
+                    <div class="name">John D. Robbins</div>
+                    <div class="title">Project Manager</div>
+                </div>
             </div>
-            <div class="nav-info">
-                <div class="name">John D. Robbins</div>
-                <div class="title">Project Manager</div>
-            </div>
-        </div>
-        <ul>
-            <li><a href="/index">Home</a></li>
-            <li><a href="/work-history">Work History</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/art-design">Design</a></li>
-            <li><a href="/audio">Audio</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-<div class="nav-icons">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/work-history">Work History</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/art-design">Design</a></li>
+                <li><a href="/audio">Audio</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
                 <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -1021,15 +892,14 @@ nav ul li a:hover::after {
                     </svg>
                 </a>
             </div>
-        <button class="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </header>
 
-    <!-- Page Hero -->
     <section class="page-hero">
         <div class="page-hero-content">
             <h1>Photography <span>Gallery</span></h1>
@@ -1037,23 +907,22 @@ nav ul li a:hover::after {
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="gallery-container">
             <div class="gallery-header">
                 <div class="gallery-header-left">
-                    <h2 class="gallery-title">Photography Gallery</h2>
-                    <button class="view-all-btn" id="viewAllBtn">
+                    <h2 class="gallery-title">Nature Photography</h2>
+                    <button class="view-all-btn" data-gallery="nature">
                         <span>View All</span>
                         <span class="arrow">▼</span>
                     </button>
                 </div>
                 <div class="gallery-header-right">
                     <div class="search-box">
-                        <input type="text" id="searchInput1" placeholder="Search..." class="search-input">
+                        <input type="text" class="search-input" data-gallery="nature" placeholder="Search...">
                         <span class="search-icon">🔍</span>
                     </div>
-                    <select id="sortSelect1" class="sort-select">
+                    <select class="sort-select" data-gallery="nature">
                         <option value="title-asc">Title (A-Z)</option>
                         <option value="title-desc">Title (Z-A)</option>
                         <option value="date-newest">Date (Newest)</option>
@@ -1062,111 +931,288 @@ nav ul li a:hover::after {
                 </div>
             </div>
 
-            <div class="mosaic-gallery" id="mosaicGallery" data-gallery="1">
-                <!-- Initial 8 visible items -->
+            <div class="mosaic-gallery" id="natureGallery" data-gallery="nature">
                 <div class="gallery-item big" data-index="0" 
-                     data-title="Sunset Over the Mountains" 
+                     data-title="Mountain Sunset" 
                      data-date="January 2026" 
                      data-description="Golden hour photograph capturing the last light over mountain ridges with dramatic cloud formations.">
-                    <div class="gallery-item-placeholder">📷</div>
+                    <div class="gallery-item-placeholder">🏔️</div>
                 </div>
                 <div class="gallery-item" data-index="1" 
-                     data-title="Urban Street Scene" 
+                     data-title="Forest Path" 
                      data-date="December 2025" 
-                     data-description="Black and white street photography showcasing city life and architectural details.">
-                    <div class="gallery-item-placeholder">📸</div>
+                     data-description="Misty morning light filtering through trees along a winding forest trail.">
+                    <div class="gallery-item-placeholder">🌲</div>
                 </div>
                 <div class="gallery-item tall" data-index="2" 
-                     data-title="Forest Path" 
+                     data-title="Waterfall Cascade" 
                      data-date="November 2025" 
-                     data-description="Misty morning light filtering through trees along a winding forest trail.">
-                    <div class="gallery-item-placeholder">🌄</div>
+                     data-description="Silky smooth waterfall captured with long exposure technique.">
+                    <div class="gallery-item-placeholder">💧</div>
                 </div>
                 <div class="gallery-item" data-index="3" 
-                     data-title="Coastal Sunrise" 
+                     data-title="Autumn Leaves" 
                      data-date="October 2025" 
-                     data-description="Early morning seascape with soft pastels and calm waters along the coast.">
-                    <div class="gallery-item-placeholder">🌃</div>
+                     data-description="Close-up macro photography of colorful fall foliage with shallow depth of field.">
+                    <div class="gallery-item-placeholder">🍂</div>
                 </div>
                 <div class="gallery-item wide" data-index="4" 
-                     data-title="City Lights at Night" 
+                     data-title="Desert Dunes" 
                      data-date="September 2025" 
-                     data-description="Long exposure nighttime cityscape featuring light trails and illuminated buildings.">
-                    <div class="gallery-item-placeholder">🌅</div>
+                     data-description="Golden sand dunes creating abstract patterns in harsh sunlight.">
+                    <div class="gallery-item-placeholder">🏜️</div>
                 </div>
                 <div class="gallery-item" data-index="5" 
-                     data-title="Autumn Leaves" 
+                     data-title="Ocean Waves" 
                      data-date="August 2025" 
-                     data-description="Close-up macro photography of colorful fall foliage with shallow depth of field.">
-                    <div class="gallery-item-placeholder">🌆</div>
+                     data-description="Powerful ocean waves crashing against rocky coastline.">
+                    <div class="gallery-item-placeholder">🌊</div>
                 </div>
                 <div class="gallery-item" data-index="6" 
-                     data-title="Architectural Detail" 
+                     data-title="Wildflower Meadow" 
                      data-date="July 2025" 
-                     data-description="Modern architecture emphasizing geometric patterns and clean lines.">
-                    <div class="gallery-item-placeholder">🌇</div>
+                     data-description="Vibrant wildflowers in full bloom across a spring meadow.">
+                    <div class="gallery-item-placeholder">🌸</div>
                 </div>
                 <div class="gallery-item tall" data-index="7" 
-                     data-title="Mountain Lake Reflection" 
+                     data-title="Mountain Lake" 
                      data-date="June 2025" 
                      data-description="Mirror-like reflection of peaks in a calm alpine lake at dawn.">
                     <div class="gallery-item-placeholder">🏞️</div>
                 </div>
 
-                <!-- Hidden items -->
                 <div class="gallery-item hidden" data-index="8" 
-                     data-title="Wildflower Meadow" 
+                     data-title="Winter Frost" 
                      data-date="May 2025" 
-                     data-description="Vibrant wildflowers in full bloom across a spring meadow.">
-                    <div class="gallery-item-placeholder">📷</div>
+                     data-description="Delicate frost patterns on winter branches in early morning light.">
+                    <div class="gallery-item-placeholder">❄️</div>
                 </div>
                 <div class="gallery-item hidden wide" data-index="9" 
                      data-title="Stormy Skies" 
                      data-date="April 2025" 
                      data-description="Dramatic storm clouds rolling across the prairie landscape.">
-                    <div class="gallery-item-placeholder">📸</div>
+                    <div class="gallery-item-placeholder">⛈️</div>
                 </div>
                 <div class="gallery-item hidden" data-index="10" 
-                     data-title="Desert Dunes" 
+                     data-title="Sunrise Glow" 
                      data-date="March 2025" 
-                     data-description="Golden sand dunes creating abstract patterns in harsh sunlight.">
-                    <div class="gallery-item-placeholder">🌄</div>
-                </div>
-                <div class="gallery-item hidden" data-index="11" 
-                     data-title="Winter Frost" 
-                     data-date="February 2025" 
-                     data-description="Delicate frost patterns on winter branches in early morning light.">
-                    <div class="gallery-item-placeholder">🌃</div>
-                </div>
-                <div class="gallery-item hidden tall" data-index="12" 
-                     data-title="Waterfall Cascade" 
-                     data-date="January 2025" 
-                     data-description="Silky smooth waterfall captured with long exposure technique.">
+                     data-description="First light of dawn painting the sky in vibrant colors.">
                     <div class="gallery-item-placeholder">🌅</div>
                 </div>
-                <div class="gallery-item hidden" data-index="13" 
-                     data-title="Abstract Patterns" 
-                     data-date="December 2024" 
-                     data-description="Close-up photography revealing abstract patterns in everyday objects.">
-                    <div class="gallery-item-placeholder">🌆</div>
-                </div>
-                <div class="gallery-item hidden big" data-index="14" 
-                     data-title="Milky Way Stars" 
-                     data-date="November 2024" 
-                     data-description="Night sky astrophotography showing the Milky Way galaxy over dark landscape.">
-                    <div class="gallery-item-placeholder">🌇</div>
-                </div>
-                <div class="gallery-item hidden" data-index="15" 
-                     data-title="Rural Farmland" 
-                     data-date="October 2024" 
-                     data-description="Rolling hills and farmland bathed in afternoon golden light.">
-                    <div class="gallery-item-placeholder">📷</div>
+                <div class="gallery-item hidden" data-index="11" 
+                     data-title="Pine Forest" 
+                     data-date="February 2025" 
+                     data-description="Dense evergreen forest with morning mist.">
+                    <div class="gallery-item-placeholder">🌲</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lightbox -->
+    <section class="gallery-section" style="background: var(--dark-card);">
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <div class="gallery-header-left">
+                    <h2 class="gallery-title">Travel Photography</h2>
+                    <button class="view-all-btn" data-gallery="travel">
+                        <span>View All</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="gallery-header-right">
+                    <div class="search-box">
+                        <input type="text" class="search-input" data-gallery="travel" placeholder="Search...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <select class="sort-select" data-gallery="travel">
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                        <option value="date-newest">Date (Newest)</option>
+                        <option value="date-oldest">Date (Oldest)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mosaic-gallery" id="travelGallery" data-gallery="travel">
+                <div class="gallery-item big" data-index="12" 
+                     data-title="Paris Streets" 
+                     data-date="January 2026" 
+                     data-description="Charming cobblestone streets of Paris with classic architecture.">
+                    <div class="gallery-item-placeholder">🗼</div>
+                </div>
+                <div class="gallery-item" data-index="13" 
+                     data-title="Tokyo Nights" 
+                     data-date="December 2025" 
+                     data-description="Neon-lit streets of Tokyo's vibrant nightlife district.">
+                    <div class="gallery-item-placeholder">🏮</div>
+                </div>
+                <div class="gallery-item tall" data-index="14" 
+                     data-title="Ancient Ruins" 
+                     data-date="November 2025" 
+                     data-description="Historical architecture showcasing ancient civilization.">
+                    <div class="gallery-item-placeholder">🏛️</div>
+                </div>
+                <div class="gallery-item" data-index="15" 
+                     data-title="Market Scene" 
+                     data-date="October 2025" 
+                     data-description="Colorful local market bustling with life and culture.">
+                    <div class="gallery-item-placeholder">🛒</div>
+                </div>
+                <div class="gallery-item wide" data-index="16" 
+                     data-title="Coastal Village" 
+                     data-date="September 2025" 
+                     data-description="Mediterranean fishing village with white-washed buildings.">
+                    <div class="gallery-item-placeholder">🏘️</div>
+                </div>
+                <div class="gallery-item" data-index="17" 
+                     data-title="Mountain Temple" 
+                     data-date="August 2025" 
+                     data-description="Buddhist temple perched high in the mountains.">
+                    <div class="gallery-item-placeholder">⛩️</div>
+                </div>
+                <div class="gallery-item" data-index="18" 
+                     data-title="Desert Caravan" 
+                     data-date="July 2025" 
+                     data-description="Traditional desert travel through vast sand dunes.">
+                    <div class="gallery-item-placeholder">🐪</div>
+                </div>
+                <div class="gallery-item tall" data-index="19" 
+                     data-title="Harbor Sunset" 
+                     data-date="June 2025" 
+                     data-description="Boats at rest in harbor during golden hour.">
+                    <div class="gallery-item-placeholder">⛵</div>
+                </div>
+
+                <div class="gallery-item hidden" data-index="20" 
+                     data-title="City Skyline" 
+                     data-date="May 2025" 
+                     data-description="Modern metropolitan skyline at dusk.">
+                    <div class="gallery-item-placeholder">🏙️</div>
+                </div>
+                <div class="gallery-item hidden wide" data-index="21" 
+                     data-title="Railway Station" 
+                     data-date="April 2025" 
+                     data-description="Historic train station with grand architecture.">
+                    <div class="gallery-item-placeholder">🚂</div>
+                </div>
+                <div class="gallery-item hidden" data-index="22" 
+                     data-title="Street Food" 
+                     data-date="March 2025" 
+                     data-description="Authentic street food vendors and local cuisine.">
+                    <div class="gallery-item-placeholder">🍜</div>
+                </div>
+                <div class="gallery-item hidden" data-index="23" 
+                     data-title="Bridge View" 
+                     data-date="February 2025" 
+                     data-description="Iconic bridge spanning across river at twilight.">
+                    <div class="gallery-item-placeholder">🌉</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <div class="gallery-header-left">
+                    <h2 class="gallery-title">Miscellaneous Photography</h2>
+                    <button class="view-all-btn" data-gallery="misc">
+                        <span>View All</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="gallery-header-right">
+                    <div class="search-box">
+                        <input type="text" class="search-input" data-gallery="misc" placeholder="Search...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <select class="sort-select" data-gallery="misc">
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                        <option value="date-newest">Date (Newest)</option>
+                        <option value="date-oldest">Date (Oldest)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mosaic-gallery" id="miscGallery" data-gallery="misc">
+                <div class="gallery-item big" data-index="24" 
+                     data-title="Urban Street Scene" 
+                     data-date="January 2026" 
+                     data-description="Black and white street photography showcasing city life.">
+                    <div class="gallery-item-placeholder">📸</div>
+                </div>
+                <div class="gallery-item" data-index="25" 
+                     data-title="Architectural Detail" 
+                     data-date="December 2025" 
+                     data-description="Modern architecture emphasizing geometric patterns and lines.">
+                    <div class="gallery-item-placeholder">🏢</div>
+                </div>
+                <div class="gallery-item tall" data-index="26" 
+                     data-title="Abstract Patterns" 
+                     data-date="November 2025" 
+                     data-description="Close-up photography revealing abstract patterns.">
+                    <div class="gallery-item-placeholder">🎨</div>
+                </div>
+                <div class="gallery-item" data-index="27" 
+                     data-title="Night Lights" 
+                     data-date="October 2025" 
+                     data-description="Long exposure cityscape with light trails.">
+                    <div class="gallery-item-placeholder">💡</div>
+                </div>
+                <div class="gallery-item wide" data-index="28" 
+                     data-title="Silhouette Study" 
+                     data-date="September 2025" 
+                     data-description="Dramatic silhouettes against vibrant sky.">
+                    <div class="gallery-item-placeholder">🌆</div>
+                </div>
+                <div class="gallery-item" data-index="29" 
+                     data-title="Reflections" 
+                     data-date="August 2025" 
+                     data-description="Creative use of reflections in urban environment.">
+                    <div class="gallery-item-placeholder">🪞</div>
+                </div>
+                <div class="gallery-item" data-index="30" 
+                     data-title="Minimalist Composition" 
+                     data-date="July 2025" 
+                     data-description="Clean, minimalist photography with negative space.">
+                    <div class="gallery-item-placeholder">⬜</div>
+                </div>
+                <div class="gallery-item tall" data-index="31" 
+                     data-title="Texture Study" 
+                     data-date="June 2025" 
+                     data-description="Macro photography exploring interesting textures.">
+                    <div class="gallery-item-placeholder">🔲</div>
+                </div>
+
+                <div class="gallery-item hidden" data-index="32" 
+                     data-title="Motion Blur" 
+                     data-date="May 2025" 
+                     data-description="Creative motion blur capturing movement.">
+                    <div class="gallery-item-placeholder">💨</div>
+                </div>
+                <div class="gallery-item hidden wide" data-index="33" 
+                     data-title="Shadow Play" 
+                     data-date="April 2025" 
+                     data-description="Dramatic use of shadows and contrast.">
+                    <div class="gallery-item-placeholder">🌑</div>
+                </div>
+                <div class="gallery-item hidden" data-index="34" 
+                     data-title="Symmetry" 
+                     data-date="March 2025" 
+                     data-description="Perfect symmetrical compositions.">
+                    <div class="gallery-item-placeholder">↔️</div>
+                </div>
+                <div class="gallery-item hidden" data-index="35" 
+                     data-title="Color Pop" 
+                     data-date="February 2025" 
+                     data-description="Vibrant color emphasis in composition.">
+                    <div class="gallery-item-placeholder">🎨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="lightbox" id="lightbox">
         <div class="lightbox-close" onclick="closeLightbox()">×</div>
         <div class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</div>
@@ -1183,12 +1229,11 @@ nav ul li a:hover::after {
         <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">John D. Robbins</div>
             <div class="footer-contact">
-                <a href="/cdn-cgi/l/email-protection#adc7c2c5c3c9dfc2cfcfc4c3de959eedcac0ccc4c183cec2c0"><span class="__cf_email__" data-cfemail="a5cfcacdcbc1d7cac7c7cccbd69d96e5c2c8c4ccc98bc6cac8">[email&#160;protected]</span></a> | Holly Ridge, NC
+                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92f8fdfafcf6e0fdf0f0fbfce1aaa1d2f5fff3fbfebcf1fdff">[email&#160;protected]</a> | Holly Ridge, NC
             </div>
             <div class="footer-links">
                 <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
@@ -1198,94 +1243,106 @@ nav ul li a:hover::after {
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // View All Toggle
-        const viewAllBtn = document.getElementById('viewAllBtn');
-        const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
-        let viewingAll = false;
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+        // View All Toggle - Support multiple galleries
+        document.querySelectorAll('.view-all-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const galleryId = this.dataset.gallery;
+                const gallery = document.querySelector(`.mosaic-gallery[data-gallery="${galleryId}"]`);
+                const hiddenItems = gallery.querySelectorAll('.gallery-item.hidden');
+                const isActive = this.classList.contains('active');
+                
+                hiddenItems.forEach(item => {
+                    if (isActive) {
+                        item.classList.add('hidden');
+                    } else {
+                        item.classList.remove('hidden');
+                    }
+                });
 
-        viewAllBtn.addEventListener('click', function() {
-            viewingAll = !viewingAll;
-            
-            hiddenItems.forEach(item => {
-                if (viewingAll) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
+                this.classList.toggle('active');
+                this.querySelector('span').textContent = isActive ? 'View All' : 'View Less';
+                
+                // Rebuild mobile slider if on mobile
+                if (window.innerWidth <= 768) {
+                    buildMobileSliders();
                 }
             });
-
-            this.classList.toggle('active');
-            this.querySelector('span').textContent = viewingAll ? 'View Less' : 'View All';
         });
 
-        // Search and Sort Functionality
-        function setupGalleryControls(galleryId, searchInputId, sortSelectId) {
-            const gallery = document.getElementById(galleryId);
-            const searchInput = document.getElementById(searchInputId);
-            const sortSelect = document.getElementById(sortSelectId);
-            
-            if (!gallery || !searchInput || !sortSelect) return;
-
-            const items = Array.from(gallery.querySelectorAll('.gallery-item'));
-            
-            // Search functionality
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
+        // Search and Sort - Support multiple galleries
+        function setupGalleryControls() {
+            // Setup search inputs
+            document.querySelectorAll('.search-input').forEach(searchInput => {
+                const galleryId = searchInput.dataset.gallery;
+                const gallery = document.querySelector(`.mosaic-gallery[data-gallery="${galleryId}"]`);
+                const items = Array.from(gallery.querySelectorAll('.gallery-item'));
                 
-                items.forEach(item => {
-                    const title = (item.dataset.title || '').toLowerCase();
-                    const description = (item.dataset.description || '').toLowerCase();
-                    const date = (item.dataset.date || '').toLowerCase();
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
                     
-                    const matches = title.includes(searchTerm) || 
-                                  description.includes(searchTerm) || 
-                                  date.includes(searchTerm);
+                    items.forEach(item => {
+                        const title = (item.dataset.title || '').toLowerCase();
+                        const description = (item.dataset.description || '').toLowerCase();
+                        const date = (item.dataset.date || '').toLowerCase();
+                        
+                        const matches = title.includes(searchTerm) || 
+                                      description.includes(searchTerm) || 
+                                      date.includes(searchTerm);
+                        
+                        item.style.display = matches ? '' : 'none';
+                    });
                     
-                    if (matches) {
-                        item.style.display = '';
-                    } else {
-                        item.style.display = 'none';
+                    // Rebuild mobile slider if on mobile
+                    if (window.innerWidth <= 768) {
+                        buildMobileSliders();
                     }
                 });
             });
             
-            // Sort functionality
-            sortSelect.addEventListener('change', function() {
-                const sortType = this.value;
+            // Setup sort selects
+            document.querySelectorAll('.sort-select').forEach(sortSelect => {
+                const galleryId = sortSelect.dataset.gallery;
+                const gallery = document.querySelector(`.mosaic-gallery[data-gallery="${galleryId}"]`);
+                const items = Array.from(gallery.querySelectorAll('.gallery-item'));
                 
-                // Create array of items with their data
-                const itemsData = items.map(item => ({
-                    element: item,
-                    title: item.dataset.title || '',
-                    date: item.dataset.date || '',
-                    index: parseInt(item.dataset.index)
-                }));
-                
-                // Sort based on selection
-                itemsData.sort((a, b) => {
-                    switch(sortType) {
-                        case 'title-asc':
-                            return a.title.localeCompare(b.title);
-                        case 'title-desc':
-                            return b.title.localeCompare(a.title);
-                        case 'date-newest':
-                            return parseDate(b.date) - parseDate(a.date);
-                        case 'date-oldest':
-                            return parseDate(a.date) - parseDate(b.date);
-                        default:
-                            return a.index - b.index;
+                sortSelect.addEventListener('change', function() {
+                    const sortType = this.value;
+                    
+                    const itemsData = items.map(item => ({
+                        element: item,
+                        title: item.dataset.title || '',
+                        date: item.dataset.date || '',
+                        index: parseInt(item.dataset.index)
+                    }));
+                    
+                    itemsData.sort((a, b) => {
+                        switch(sortType) {
+                            case 'title-asc':
+                                return a.title.localeCompare(b.title);
+                            case 'title-desc':
+                                return b.title.localeCompare(a.title);
+                            case 'date-newest':
+                                return parseDate(b.date) - parseDate(a.date);
+                            case 'date-oldest':
+                                return parseDate(a.date) - parseDate(b.date);
+                            default:
+                                return a.index - b.index;
+                        }
+                    });
+                    
+                    itemsData.forEach(item => {
+                        gallery.appendChild(item.element);
+                    });
+                    
+                    // Rebuild mobile slider if on mobile
+                    if (window.innerWidth <= 768) {
+                        buildMobileSliders();
                     }
-                });
-                
-                // Reorder DOM elements
-                itemsData.forEach(item => {
-                    gallery.appendChild(item.element);
                 });
             });
         }
 
-        // Helper function to parse date strings like "January 2026"
         function parseDate(dateStr) {
             if (!dateStr) return 0;
             const months = {
@@ -1302,46 +1359,34 @@ nav ul li a:hover::after {
             return 0;
         }
 
-        // Setup controls for the gallery
-        setupGalleryControls('mosaicGallery', 'searchInput1', 'sortSelect1');
+        setupGalleryControls();
 
-        // Lightbox functionality
+        // Lightbox
         let currentImageIndex = 0;
-        const galleryItems = document.querySelectorAll('.gallery-item');
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxDate = document.getElementById('lightboxDate');
         const lightboxDescription = document.getElementById('lightboxDescription');
 
-        // Open lightbox on gallery item click
-        galleryItems.forEach((item, index) => {
+        document.querySelectorAll('.gallery-item, .slider-item').forEach(item => {
             item.addEventListener('click', function() {
+                currentImageIndex = parseInt(this.dataset.index);
                 const img = this.querySelector('img');
-                const placeholder = this.querySelector('.gallery-item-placeholder');
                 
-                // Works with both images and placeholders
-                if (img || placeholder) {
-                    currentImageIndex = parseInt(this.dataset.index);
-                    
-                    if (img) {
-                        // Real image
-                        lightboxImage.src = img.src;
-                        lightboxImage.alt = img.alt;
-                        lightboxImage.style.display = 'block';
-                    } else {
-                        // Placeholder - create a demo image
-                        lightboxImage.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="%2385C7F2"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="100" fill="white">Demo Image</text></svg>';
-                        lightboxImage.alt = 'Placeholder Image';
-                        lightboxImage.style.display = 'block';
-                    }
-                    
-                    lightboxTitle.textContent = this.dataset.title || 'Untitled';
-                    lightboxDate.textContent = this.dataset.date || '';
-                    lightboxDescription.textContent = this.dataset.description || '';
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                if (img) {
+                    lightboxImage.src = img.src;
+                    lightboxImage.alt = img.alt;
+                } else {
+                    lightboxImage.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22%3E%3Crect width=%22800%22 height=%22600%22 fill=%22%2385C7F2%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%22100%22 fill=%22white%22%3EDemo Image%3C/text%3E%3C/svg%3E';
+                    lightboxImage.alt = 'Placeholder';
                 }
+                
+                lightboxTitle.textContent = this.dataset.title || 'Untitled';
+                lightboxDate.textContent = this.dataset.date || '';
+                lightboxDescription.textContent = this.dataset.description || '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
         });
 
@@ -1351,255 +1396,236 @@ nav ul li a:hover::after {
         }
 
         function navigateLightbox(direction) {
-            const visibleItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden'));
-            const currentVisibleIndex = visibleItems.findIndex(item => parseInt(item.dataset.index) === currentImageIndex);
-            let nextIndex = currentVisibleIndex + direction;
+            const allItems = Array.from(document.querySelectorAll('.gallery-item:not(.hidden), .slider-item'));
+            const currentIdx = allItems.findIndex(item => parseInt(item.dataset.index) === currentImageIndex);
+            let nextIdx = currentIdx + direction;
 
-            if (nextIndex < 0) nextIndex = visibleItems.length - 1;
-            if (nextIndex >= visibleItems.length) nextIndex = 0;
+            if (nextIdx < 0) nextIdx = allItems.length - 1;
+            if (nextIdx >= allItems.length) nextIdx = 0;
 
-            const nextItem = visibleItems[nextIndex];
-            const nextImg = nextItem.querySelector('img');
-            const nextPlaceholder = nextItem.querySelector('.gallery-item-placeholder');
+            const nextItem = allItems[nextIdx];
+            currentImageIndex = parseInt(nextItem.dataset.index);
+            const img = nextItem.querySelector('img');
             
-            if (nextImg || nextPlaceholder) {
-                currentImageIndex = parseInt(nextItem.dataset.index);
-                
-                if (nextImg) {
-                    lightboxImage.src = nextImg.src;
-                    lightboxImage.alt = nextImg.alt;
-                } else {
-                    lightboxImage.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="%2385C7F2"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="100" fill="white">Demo Image</text></svg>';
-                    lightboxImage.alt = 'Placeholder Image';
-                }
-                
-                lightboxTitle.textContent = nextItem.dataset.title || 'Untitled';
-                lightboxDate.textContent = nextItem.dataset.date || '';
-                lightboxDescription.textContent = nextItem.dataset.description || '';
+            if (img) {
+                lightboxImage.src = img.src;
+            } else {
+                lightboxImage.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22%3E%3Crect width=%22800%22 height=%22600%22 fill=%22%2385C7F2%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%22100%22 fill=%22white%22%3EDemo Image%3C/text%3E%3C/svg%3E';
             }
+            
+            lightboxTitle.textContent = nextItem.dataset.title || 'Untitled';
+            lightboxDate.textContent = nextItem.dataset.date || '';
+            lightboxDescription.textContent = nextItem.dataset.description || '';
         }
 
-        // Close lightbox on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') navigateLightbox(-1);
             if (e.key === 'ArrowRight') navigateLightbox(1);
         });
 
-        // Close lightbox on background click
         lightbox.addEventListener('click', function(e) {
             if (e.target === this) closeLightbox();
         });
 
-               // Hamburger menu toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('nav ul');
+        // Hamburger
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
 
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
 
-    // Close menu when clicking on a link
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-}
-        const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-
-function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    mobileMenuOverlay.classList.toggle('active');
-    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
-}
-
-if (hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-}
-
-if (mobileMenuOverlay) {
-    mobileMenuOverlay.addEventListener('click', toggleMenu);
-}
-
-// Close menu when clicking a link
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (mobileMenu && mobileMenu.classList.contains('active')) {
-            toggleMenu();
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
         }
-    });
-});
 
-// Close menu on escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
-        toggleMenu();
-    }
-});
-        // ─── Mobile: convert grid into slider ───
-function buildMobileSlider() {
-    if (window.innerWidth > 768) return; // desktop only
+        // Mobile Sliders - Support multiple galleries
+        function buildMobileSliders() {
+            console.log('buildMobileSliders called, window width:', window.innerWidth);
+            if (window.innerWidth > 768) {
+                console.log('Desktop mode - skipping sliders');
+                return;
+            }
 
-    const mosaic = document.getElementById('mosaicGallery');
-    const section = mosaic.closest('.gallery-section');
-    const container = section.querySelector('.gallery-container');
-
-    // Already built?
-    if (section.querySelector('.mobile-slider')) return;
-
-    // Grab ALL gallery items (visible + hidden)
-    const gridItems = Array.from(mosaic.querySelectorAll('.gallery-item'));
-
-    // Build slider HTML
-    const sliderWrapper = document.createElement('div');
-    sliderWrapper.className = 'mobile-slider image-slider';
-
-    const prevBtn = document.createElement('div');
-    prevBtn.className = 'slider-nav prev';
-    prevBtn.setAttribute('onclick', "slideMobile(-1)");
-    prevBtn.innerHTML = '&#8249;';
-
-    const track = document.createElement('div');
-    track.className = 'slider-container';
-    track.id = 'photoSliderContainer';
-
-    // Convert each grid item into a slider-item
-    gridItems.forEach(function(item) {
-        const si = document.createElement('div');
-        si.className = 'slider-item';
-        si.dataset.index = item.dataset.index;
-        si.dataset.title = item.dataset.title || '';
-        si.dataset.date = item.dataset.date || '';
-        si.dataset.description = item.dataset.description || '';
-
-        // Clone the placeholder / img
-        const placeholder = item.querySelector('.gallery-item-placeholder');
-        if (placeholder) si.appendChild(placeholder.cloneNode(true));
-        const img = item.querySelector('img');
-        if (img) si.appendChild(img.cloneNode(true));
-
-        // Caption overlay
-        const caption = document.createElement('div');
-        caption.className = 'slider-caption';
-        caption.innerHTML = '<h3>' + (item.dataset.title || '') + '</h3><p>' + (item.dataset.description || '').substring(0, 60) + '...</p>';
-        si.appendChild(caption);
-
-        track.appendChild(si);
-    });
-
-    const nextBtn = document.createElement('div');
-    nextBtn.className = 'slider-nav next';
-    nextBtn.setAttribute('onclick', "slideMobile(1)");
-    nextBtn.innerHTML = '&#8250;';
-
-    const dots = document.createElement('div');
-    dots.className = 'slider-dots';
-    dots.id = 'photoSliderDots';
-
-    sliderWrapper.appendChild(prevBtn);
-    sliderWrapper.appendChild(track);
-    sliderWrapper.appendChild(nextBtn);
-    sliderWrapper.appendChild(dots);
-
-    container.appendChild(sliderWrapper);
-
-    // Init the slider
-    initPhotoSlider();
-}
-
-// ─── Photo slider state ───
-let photoSliderState = { currentIndex: 0 };
-
-function initPhotoSlider() {
-    const track = document.getElementById('photoSliderContainer');
-    const dots = document.getElementById('photoSliderDots');
-    const items = track.querySelectorAll('.slider-item');
-
-    // Build dots
-    dots.innerHTML = '';
-    for (let i = 0; i < items.length; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => goToPhotoSlide(i);
-        dots.appendChild(dot);
-    }
-
-    // Click → lightbox
-    items.forEach(function(item) {
-        item.addEventListener('click', function() {
-            // Reuse existing openLightbox if it exists, or create basic one
-            currentImageIndex = parseInt(this.dataset.index);
-            const img = this.querySelector('img');
-            const placeholder = this.querySelector('.gallery-item-placeholder');
+            // Process each gallery section
+            const galleries = document.querySelectorAll('.mosaic-gallery');
+            console.log('Found', galleries.length, 'galleries');
             
-            if (img) {
-                lightboxImage.src = img.src;
-                lightboxImage.alt = img.alt;
-            } else {
-                lightboxImage.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="%2385C7F2"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="100" fill="white">Demo Image</text></svg>';
-                lightboxImage.alt = 'Placeholder Image';
+            galleries.forEach(mosaic => {
+                const galleryId = mosaic.dataset.gallery;
+                console.log('Processing gallery:', galleryId);
+                const section = mosaic.closest('.gallery-section');
+                const container = section.querySelector('.gallery-container');
+
+                // Remove existing slider for this gallery to rebuild
+                const existingSlider = section.querySelector('.mobile-slider');
+                if (existingSlider) {
+                    console.log('Removing existing slider for gallery', galleryId);
+                    existingSlider.remove();
+                }
+
+                // Get items that are not hidden by View All AND not hidden by search
+                const gridItems = Array.from(mosaic.querySelectorAll('.gallery-item'))
+                    .filter(item => !item.classList.contains('hidden') && item.style.display !== 'none');
+                
+                console.log('Gallery', galleryId, 'has', gridItems.length, 'visible items');
+                
+                if (gridItems.length === 0) return; // No items to show
+
+                const sliderWrapper = document.createElement('div');
+                sliderWrapper.className = 'mobile-slider image-slider';
+                sliderWrapper.dataset.gallery = galleryId;
+
+                const prevBtn = document.createElement('div');
+                prevBtn.className = 'slider-nav prev';
+                prevBtn.innerHTML = '‹';
+
+                const track = document.createElement('div');
+                track.className = 'slider-container';
+                track.dataset.gallery = galleryId;
+
+                gridItems.forEach(item => {
+                    const si = document.createElement('div');
+                    si.className = 'slider-item';
+                    si.dataset.index = item.dataset.index;
+                    si.dataset.title = item.dataset.title || '';
+                    si.dataset.date = item.dataset.date || '';
+                    si.dataset.description = item.dataset.description || '';
+
+                    const placeholder = item.querySelector('.gallery-item-placeholder');
+                    if (placeholder) si.appendChild(placeholder.cloneNode(true));
+                    const img = item.querySelector('img');
+                    if (img) si.appendChild(img.cloneNode(true));
+
+                    const caption = document.createElement('div');
+                    caption.className = 'slider-caption';
+                    caption.innerHTML = '<h3>' + (item.dataset.title || '') + '</h3><p>' + (item.dataset.description || '').substring(0, 60) + '...</p>';
+                    si.appendChild(caption);
+
+                    track.appendChild(si);
+                });
+
+                const nextBtn = document.createElement('div');
+                nextBtn.className = 'slider-nav next';
+                nextBtn.innerHTML = '›';
+
+                const dots = document.createElement('div');
+                dots.className = 'slider-dots';
+                dots.dataset.gallery = galleryId;
+
+                sliderWrapper.appendChild(prevBtn);
+                sliderWrapper.appendChild(track);
+                sliderWrapper.appendChild(nextBtn);
+                sliderWrapper.appendChild(dots);
+
+                container.appendChild(sliderWrapper);
+
+                initPhotoSlider(galleryId, prevBtn, nextBtn);
+            });
+        }
+
+        let photoSliderStates = {
+            '1': { currentIndex: 0 },
+            '2': { currentIndex: 0 },
+            '3': { currentIndex: 0 }
+        };
+
+        function initPhotoSlider(galleryId, prevBtn, nextBtn) {
+            const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
+            const dots = document.querySelector(`.slider-dots[data-gallery="${galleryId}"]`);
+            const items = track.querySelectorAll('.slider-item');
+
+            // Reset to first slide when rebuilding
+            photoSliderStates[galleryId].currentIndex = 0;
+
+            dots.innerHTML = '';
+            for (let i = 0; i < items.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToPhotoSlide(galleryId, i);
+                dots.appendChild(dot);
+            }
+
+            items.forEach(item => {
+                item.addEventListener('click', function() {
+                    currentImageIndex = parseInt(this.dataset.index);
+                    const img = this.querySelector('img');
+                    
+                    if (img) {
+                        lightboxImage.src = img.src;
+                    } else {
+                        lightboxImage.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22%3E%3Crect width=%22800%22 height=%22600%22 fill=%22%2385C7F2%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%22100%22 fill=%22white%22%3EDemo%3C/text%3E%3C/svg%3E';
+                    }
+                    
+                    lightboxTitle.textContent = this.dataset.title || 'Untitled';
+                    lightboxDate.textContent = this.dataset.date || '';
+                    lightboxDescription.textContent = this.dataset.description || '';
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            prevBtn.onclick = () => slideMobile(galleryId, -1);
+            nextBtn.onclick = () => slideMobile(galleryId, 1);
+
+            updatePhotoSlider(galleryId);
+        }
+
+        function slideMobile(galleryId, direction) {
+            const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
+            if (!track) return;
+            
+            const items = track.querySelectorAll('.slider-item');
+            
+            photoSliderStates[galleryId].currentIndex += direction;
+            if (photoSliderStates[galleryId].currentIndex < 0) {
+                photoSliderStates[galleryId].currentIndex = items.length - 1;
+            }
+            if (photoSliderStates[galleryId].currentIndex >= items.length) {
+                photoSliderStates[galleryId].currentIndex = 0;
             }
             
-            lightboxTitle.textContent = this.dataset.title || 'Untitled';
-            lightboxDate.textContent = this.dataset.date || '';
-            lightboxDescription.textContent = this.dataset.description || '';
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            updatePhotoSlider(galleryId);
+        }
+
+        function goToPhotoSlide(galleryId, index) {
+            photoSliderStates[galleryId].currentIndex = index;
+            updatePhotoSlider(galleryId);
+        }
+
+        function updatePhotoSlider(galleryId) {
+            const track = document.querySelector(`.slider-container[data-gallery="${galleryId}"]`);
+            if (!track) return;
+            
+            const dots = document.querySelector(`.slider-dots[data-gallery="${galleryId}"]`);
+            const items = track.querySelectorAll('.slider-item');
+            const current = photoSliderStates[galleryId].currentIndex;
+            
+            const itemWidth = items[0] ? items[0].offsetWidth : 0;
+            const offset = -(current * itemWidth);
+            track.style.transform = `translateX(${offset}px)`;
+            
+            if (dots) {
+                dots.querySelectorAll('.slider-dot').forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === current);
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', buildMobileSliders);
+        
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(buildMobileSliders, 250);
         });
-    });
-
-    updatePhotoSlider();
-}
-
-function slideMobile(direction) {
-    const track = document.getElementById('photoSliderContainer');
-    const items = track.querySelectorAll('.slider-item');
-    
-    photoSliderState.currentIndex += direction;
-    if (photoSliderState.currentIndex < 0) {
-        photoSliderState.currentIndex = items.length - 1;
-    }
-    if (photoSliderState.currentIndex >= items.length) {
-        photoSliderState.currentIndex = 0;
-    }
-    
-    updatePhotoSlider();
-}
-
-function goToPhotoSlide(index) {
-    photoSliderState.currentIndex = index;
-    updatePhotoSlider();
-}
-
-function updatePhotoSlider() {
-    const track = document.getElementById('photoSliderContainer');
-    const dots = document.getElementById('photoSliderDots');
-    const items = track.querySelectorAll('.slider-item');
-    const current = photoSliderState.currentIndex;
-    
-    // Update position
-    const itemWidth = items[0] ? items[0].offsetWidth : 0;
-    const offset = -(current * itemWidth);
-    track.style.transform = `translateX(${offset}px)`;
-    
-    // Update dots
-    dots.querySelectorAll('.slider-dot').forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === current);
-    });
-}
-
-// ─── Init on load ───
-document.addEventListener('DOMContentLoaded', function() {
-    buildMobileSlider();
-    window.addEventListener('resize', buildMobileSlider);
-});
     </script>
 </body>
 </html>
