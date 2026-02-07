@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinyl Collection | John D. Robbins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #85C7F2;
+            --light-gray: #DBDBDB;
+            --off-white: #D1D1D1;
+            --mid-gray: #636363;
+            --dark-gray: #4C4C4C;
+            --dark-bg: #0A0A0A;
+            --dark-card: #141414;
+            --dark-border: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--dark-border);
+            backdrop-filter: blur(10px);
+            background-image:
+                linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
+                url('https://www.johnthepm.com/images/homepage/OCTO%20HEADER.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        nav {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-profile-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            border: 2px solid var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        .nav-profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .nav-info .name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--off-white);
+            line-height: 1.2;
+        }
+
+        .nav-info .title {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            color: var(--off-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-icon:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            background: rgba(133, 199, 242, 0.1);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            margin-top: 80px;
+            padding: 4rem 2rem 2rem;
+            background: var(--dark-bg);
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-container {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--primary-blue);
+        }
+
+        .hero-subtitle {
+            text-align: center;
+            color: var(--mid-gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Collection Stats */
+        .collection-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .stat-label {
+            color: var(--mid-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Controls */
+        .controls {
+            max-width: 1500px;
+            margin: 0 auto 3rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            color: var(--off-white);
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .sort-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sort-btn {
+            padding: 0.875rem 1.5rem;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            color: var(--off-white);
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .sort-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .sort-btn.active {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+            border-color: var(--primary-blue);
+        }
+
+        select.sort-btn {
+            cursor: pointer;
+        }
+
+        /* Genre Filter */
+        .genre-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            max-width: 1500px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .genre-tag {
+            padding: 0.5rem 1rem;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            color: var(--mid-gray);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .genre-tag:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .genre-tag.active {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+            border-color: var(--primary-blue);
+        }
+
+        /* Gallery */
+        .gallery-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .vinyl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .vinyl-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .vinyl-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .vinyl-cover {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vinyl-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vinyl-cover-placeholder {
+            font-size: 3rem;
+            color: var(--primary-blue);
+        }
+
+        .vinyl-info {
+            padding: 1rem;
+        }
+
+        .vinyl-artist {
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .vinyl-title {
+            font-size: 0.95rem;
+            color: var(--off-white);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .vinyl-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--mid-gray);
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--dark-border);
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--mid-gray);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 8px;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: rgba(133, 199, 242, 0.1);
+            border: 1px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+        }
+
+        .modal-album {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .modal-cover {
+            width: 300px;
+            height: 300px;
+            background: var(--dark-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-details h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--off-white);
+        }
+
+        .modal-details h3 {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-info-grid {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            min-width: 100px;
+        }
+
+        .info-value {
+            font-size: 0.85rem;
+            color: var(--off-white);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--dark-border);
+            text-align: center;
+            background: var(--dark-bg);
+        }
+
+        .copyright {
+            color: var(--mid-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                grid-template-columns: auto auto;
+                padding: 1rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .collection-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .vinyl-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .modal-album {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-cover {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-profile">
+                <a href="/index" class="nav-profile-image">
+                    <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JR">
+                </a>
+                <div class="nav-info">
+                    <div class="name">John D. Robbins</div>
+                    <div class="title">Vinyl Collector</div>
+                </div>
+            </div>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/audio">Audio</a></li>
+                <li><a href="/vinyl-collection">Vinyl Collection</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="https://www.discogs.com/user/Deemster1" target="_blank" class="nav-icon" title="Discogs">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="3" fill="var(--dark-bg)"/>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-container">
+            <h1 class="section-title"><span>🎵</span> Vinyl Collection</h1>
+            <p class="hero-subtitle">My personal record collection from Discogs</p>
+            
+            <div class="collection-stats">
+                <div class="stat">
+                    <div class="stat-number" id="totalRecords">0</div>
+                    <div class="stat-label">Total Records</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="totalArtists">0</div>
+                    <div class="stat-label">Artists</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="totalGenres">0</div>
+                    <div class="stat-label">Genres</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls -->
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search artist, album, or label...">
+        </div>
+        <div class="sort-controls">
+            <button class="sort-btn active" data-sort="artist">Artist A-Z</button>
+            <button class="sort-btn" data-sort="year">Year</button>
+            <button class="sort-btn" data-sort="added">Date Added</button>
+            <select class="sort-btn" id="genreSelect">
+                <option value="">All Genres</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Genre Filter -->
+    <div class="genre-filter" id="genreFilter"></div>
+
+    <!-- Gallery -->
+    <div class="gallery-container">
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading collection...</p>
+        </div>
+        <div class="vinyl-grid" id="vinylGrid"></div>
+        <div class="no-results" id="noResults" style="display: none;">
+            <p>No records found matching your search.</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="albumModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()">×</div>
+            <div class="modal-album" id="modalContent">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="copyright">&copy; 2026 John D. Robbins. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Parse CSV with proper handling of quoted fields
+        function parseCSV(csv) {
+            const lines = [];
+            let currentLine = '';
+            let inQuotes = false;
+            
+            // Split by lines while respecting quoted fields
+            for (let i = 0; i < csv.length; i++) {
+                const char = csv[i];
+                const nextChar = csv[i + 1];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === '\n' && !inQuotes) {
+                    if (currentLine.trim()) {
+                        lines.push(currentLine);
+                    }
+                    currentLine = '';
+                    continue;
+                }
+                
+                currentLine += char;
+            }
+            
+            if (currentLine.trim()) {
+                lines.push(currentLine);
+            }
+            
+            // Parse headers
+            const headers = parseCSVLine(lines[0]);
+            const records = [];
+            
+            // Parse records
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                const record = {};
+                
+                headers.forEach((header, index) => {
+                    record[header.trim()] = values[index] ? values[index].trim() : '';
+                });
+                
+                // Only add if has essential data
+                if (record.Artist && record.Title) {
+                    records.push(record);
+                }
+            }
+            
+            return records;
+        }
+        
+        function parseCSVLine(line) {
+            const values = [];
+            let currentValue = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    values.push(currentValue);
+                    currentValue = '';
+                } else {
+                    currentValue += char;
+                }
+            }
+            
+            values.push(currentValue);
+            return values;
+        }
+
+        let allRecords = [];
+        let filteredRecords = [];
+        let currentSort = 'artist';
+
+        // Initialize
+        async function init() {
+            try {
+                const response = await fetch('vinyl-collection-data.csv');
+                const csvText = await response.text();
+                allRecords = parseCSV(csvText);
+                filteredRecords = [...allRecords];
+                
+                calculateStats();
+                populateGenreFilter();
+                renderGallery();
+                
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error('Error loading collection:', error);
+                document.getElementById('loading').innerHTML = '<p>Error loading collection. Please refresh the page.</p>';
+            }
+        }
+
+        // Calculate stats
+        function calculateStats() {
+            const uniqueArtists = new Set(allRecords.map(r => r.Artist)).size;
+            const uniqueGenres = new Set(allRecords.map(r => r.CollectionFolder)).size;
+            
+            document.getElementById('totalRecords').textContent = allRecords.length;
+            document.getElementById('totalArtists').textContent = uniqueArtists;
+            document.getElementById('totalGenres').textContent = uniqueGenres;
+        }
+
+        // Populate genre filter
+        function populateGenreFilter() {
+            const genres = [...new Set(allRecords.map(r => r.CollectionFolder))].sort();
+            const genreFilter = document.getElementById('genreFilter');
+            const genreSelect = document.getElementById('genreSelect');
+            
+            genres.forEach(genre => {
+                if (!genre) return;
+                
+                // Genre tags
+                const tag = document.createElement('div');
+                tag.className = 'genre-tag';
+                tag.textContent = genre;
+                tag.onclick = () => filterByGenre(genre, tag);
+                genreFilter.appendChild(tag);
+                
+                // Genre dropdown
+                const option = document.createElement('option');
+                option.value = genre;
+                option.textContent = genre;
+                genreSelect.appendChild(option);
+            });
+        }
+
+        // Filter by genre
+        function filterByGenre(genre, element) {
+            const tags = document.querySelectorAll('.genre-tag');
+            tags.forEach(tag => tag.classList.remove('active'));
+            
+            if (element.classList.contains('active')) {
+                element.classList.remove('active');
+                filteredRecords = [...allRecords];
+            } else {
+                element.classList.add('active');
+                filteredRecords = allRecords.filter(r => r.CollectionFolder === genre);
+            }
+            
+            renderGallery();
+        }
+
+        // Render gallery
+        function renderGallery() {
+            const grid = document.getElementById('vinylGrid');
+            const noResults = document.getElementById('noResults');
+            grid.innerHTML = '';
+            
+            if (filteredRecords.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            filteredRecords.forEach(record => {
+                const card = createVinylCard(record);
+                grid.appendChild(card);
+            });
+        }
+
+        // Create vinyl card
+        function createVinylCard(record) {
+            const card = document.createElement('div');
+            card.className = 'vinyl-card';
+            card.onclick = () => openModal(record);
+            
+            // Fetch album art from Discogs
+            const coverUrl = record.release_id 
+                ? `https://api.discogs.com/releases/${record.release_id}`
+                : null;
+            
+            card.innerHTML = `
+                <div class="vinyl-cover">
+                    <div class="vinyl-cover-placeholder">🎵</div>
+                    ${coverUrl ? `<img src="" data-release="${record.release_id}" alt="${record.Title}" onerror="this.style.display='none'">` : ''}
+                </div>
+                <div class="vinyl-info">
+                    <div class="vinyl-artist">${record.Artist}</div>
+                    <div class="vinyl-title">${record.Title}</div>
+                    <div class="vinyl-meta">
+                        <span>${record.Released || 'N/A'}</span>
+                        <span>${record.Format ? record.Format.split(',')[0] : 'LP'}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Load cover art if available
+            if (record.release_id) {
+                loadAlbumArt(record.release_id, card.querySelector('img'));
+            }
+            
+            return card;
+        }
+
+        // Load album art from Discogs API
+        async function loadAlbumArt(releaseId, imgElement) {
+            try {
+                const response = await fetch(`https://api.discogs.com/releases/${releaseId}`, {
+                    headers: {
+                        'User-Agent': 'VinylCollection/1.0 +https://johnthepm.com'
+                    }
+                });
+                const data = await response.json();
+                
+                if (data.images && data.images.length > 0) {
+                    if (imgElement.tagName === 'IMG') {
+                        imgElement.src = data.images[0].uri;
+                        imgElement.style.display = 'block';
+                        imgElement.onerror = () => imgElement.style.display = 'none';
+                    } else {
+                        // For modal cover div
+                        imgElement.innerHTML = `<img src="${data.images[0].uri}" alt="Album Cover" style="width: 100%; height: 100%; object-fit: cover;">`;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading album art:', error);
+            }
+        }
+
+        // Open modal
+        function openModal(record) {
+            const modal = document.getElementById('albumModal');
+            const content = document.getElementById('modalContent');
+            
+            content.innerHTML = `
+                <div class="modal-cover">
+                    <div class="vinyl-cover-placeholder">🎵</div>
+                </div>
+                <div class="modal-details">
+                    <h2>${record.Title}</h2>
+                    <h3>${record.Artist}</h3>
+                    <div class="modal-info-grid">
+                        <div class="info-row">
+                            <span class="info-label">Label:</span>
+                            <span class="info-value">${record.Label}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Year:</span>
+                            <span class="info-value">${record.Released || 'Unknown'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Format:</span>
+                            <span class="info-value">${record.Format}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Genre:</span>
+                            <span class="info-value">${record.CollectionFolder}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Catalog:</span>
+                            <span class="info-value">${record['Catalog#']}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Added:</span>
+                            <span class="info-value">${new Date(record['Date Added']).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Load cover art
+            if (record.release_id) {
+                loadAlbumArt(record.release_id, content.querySelector('.modal-cover'));
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('albumModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            filteredRecords = allRecords.filter(record => 
+                record.Artist.toLowerCase().includes(query) ||
+                record.Title.toLowerCase().includes(query) ||
+                record.Label.toLowerCase().includes(query)
+            );
+            renderGallery();
+        });
+
+        // Sort
+        document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.sort-btn[data-sort]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const sortType = this.dataset.sort;
+                
+                if (sortType === 'artist') {
+                    filteredRecords.sort((a, b) => a.Artist.localeCompare(b.Artist));
+                } else if (sortType === 'year') {
+                    filteredRecords.sort((a, b) => (b.Released || 0) - (a.Released || 0));
+                } else if (sortType === 'added') {
+                    filteredRecords.sort((a, b) => new Date(b['Date Added']) - new Date(a['Date Added']));
+                }
+                
+                renderGallery();
+            });
+        });
+
+        // Genre select
+        document.getElementById('genreSelect').addEventListener('change', (e) => {
+            const genre = e.target.value;
+            if (genre) {
+                filteredRecords = allRecords.filter(r => r.CollectionFolder === genre);
+            } else {
+                filteredRecords = [...allRecords];
+            }
+            renderGallery();
+        });
+
+        // Close modal on background click
+        document.getElementById('albumModal').addEventListener('click', (e) => {
+            if (e.target.id === 'albumModal') {
+                closeModal();
+            }
+        });
+
+        // Close modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
