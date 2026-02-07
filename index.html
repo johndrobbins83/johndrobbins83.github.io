@@ -1699,6 +1699,17 @@ header {
         font-size: 1.5rem;
     }
 }
+    /* Force loading screen to always show on all devices */
+.loading-screen {
+    display: flex !important;
+    z-index: 999999 !important;
+}
+
+.loading-screen.fade-out {
+    display: flex !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
     </style>
 </head>
 <body>
