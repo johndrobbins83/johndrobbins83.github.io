@@ -2406,12 +2406,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-        <script>
+<script>
 // Loading Screen - FIXED VERSION
 (function() {
     'use strict';
     
-    // Make sure DOM is ready
+    // Wait for DOM to be fully loaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initLoadingScreen);
     } else {
@@ -2432,6 +2432,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const radius = 115;
         const circumference = 2 * Math.PI * radius;
         
+        // Set initial state
         progressCircle.style.strokeDasharray = circumference;
         progressCircle.style.strokeDashoffset = circumference;
         
