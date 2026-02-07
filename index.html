@@ -2406,53 +2406,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-        // Loading Screen - Circle Progress Around Logo
-document.addEventListener('DOMContentLoaded', function() {
-    const loadingScreen = document.getElementById('loadingScreen');
-    const progressCircle = document.querySelector('.loading-circle-progress');
-    const percentageText = document.querySelector('.loading-percentage');
+        <script>
+// Loading Screen - FIXED VERSION
+(function() {
+    'use strict';
     
-    const radius = 115;
-    const circumference = 2 * Math.PI * radius; // 722.566
-    
-    // Set initial state
-    progressCircle.style.strokeDasharray = circumference;
-    progressCircle.style.strokeDashoffset = circumference;
-    
-    let progress = 0;
-    const duration = 8000; // 2 seconds (adjust as needed)
-    const startTime = Date.now();
-    
-    function updateProgress(percent) {
-        // As percent increases from 0 to 100, offset decreases from circumference to 0
-        // This makes the circle "draw" clockwise from the top
-        const offset = circumference - (percent / 100) * circumference;
-        progressCircle.style.strokeDashoffset = offset;
-        percentageText.textContent = Math.round(percent) + '%';
+    // Make sure DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLoadingScreen);
+    } else {
+        initLoadingScreen();
     }
     
-    function animate() {
-        const elapsed = Date.now() - startTime;
-        progress = Math.min((elapsed / duration) * 100, 100);
+    function initLoadingScreen() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const progressCircle = document.querySelector('.loading-circle-progress');
+        const percentageText = document.querySelector('.loading-percentage');
         
-        updateProgress(progress);
-        
-        if (progress < 100) {
-            requestAnimationFrame(animate);
-        } else {
-            // Completed - fade out
-            setTimeout(() => {
-                loadingScreen.classList.add('fade-out');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 400);
+        // Check if elements exist
+        if (!loadingScreen || !progressCircle || !percentageText) {
+            console.error('Loading screen elements not found!');
+            return;
         }
+        
+        const radius = 115;
+        const circumference = 2 * Math.PI * radius;
+        
+        progressCircle.style.strokeDasharray = circumference;
+        progressCircle.style.strokeDashoffset = circumference;
+        
+        let progress = 0;
+        const duration = 2000;
+        const startTime = Date.now();
+        
+        function updateProgress(percent) {
+            const offset = circumference - (percent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+            percentageText.textContent = Math.round(percent) + '%';
+        }
+        
+        function animate() {
+            const elapsed = Date.now() - startTime;
+            progress = Math.min((elapsed / duration) * 100, 100);
+            
+            updateProgress(progress);
+            
+            if (progress < 100) {
+                requestAnimationFrame(animate);
+            } else {
+                setTimeout(() => {
+                    loadingScreen.classList.add('fade-out');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }, 400);
+            }
+        }
+        
+        animate();
     }
-    
-    // Start animation
-    animate();
-});
+})();
+</script>
 </script>
 </body>
 </html>
