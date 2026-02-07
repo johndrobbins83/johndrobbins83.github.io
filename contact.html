@@ -1239,67 +1239,45 @@ document.addEventListener('keydown', (e) => {
         toggleMenu();
     }
 });
+        // Override Formspree redirect with JavaScript
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop the default form submission
+    
+    const form = this;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    
+    // Disable button and show loading state
+    submitButton.textContent = 'Sending...';
+    submitButton.disabled = true;
+    
+    // Submit form data to Formspree using fetch
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Success! Redirect to your custom thank-you page
+            window.location.href = '/thank-you.html';
+        } else {
+            // Error from Formspree
+            return response.json().then(data => {
+                throw new Error(data.error || 'Form submission failed');
+            });
+        }
+    })
+    .catch(error => {
+        // Show error message
+        alert('Oops! There was a problem sending your message. Please try again.');
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+        console.error('Error:', error);
+    });
+});
     </script>
-
-    <!-- 
-    ========================================
-    GMAIL INTEGRATION INSTRUCTIONS
-    ========================================
-    
-    To connect this form to your Gmail (johndrobbins83@gmail.com), you have several options:
-    
-    OPTION 1: FORMSPREE (Easiest - Recommended)
-    -------------------------------------------
-    1. Go to https://formspree.io
-    2. Sign up with your Gmail account
-    3. Create a new form
-    4. Get your form endpoint URL
-    5. Update the form tag above to:
-       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    6. Remove the JavaScript submit handler or modify it to allow the form to submit
-    
-    OPTION 2: EMAILJS (Free, No Backend)
-    -------------------------------------
-    1. Go to https://www.emailjs.com
-    2. Sign up and create a service connecting to Gmail
-    3. Create an email template
-    4. Add EmailJS SDK to your page:
-       <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    5. Update the form submission JavaScript to use EmailJS
-    6. Example code:
-       emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-           name: formData.get('name'),
-           email: formData.get('email'),
-           message: formData.get('message')
-       });
-    
-    OPTION 3: GOOGLE APPS SCRIPT (Free, Google-based)
-    --------------------------------------------------
-    1. Create a Google Apps Script web app
-    2. Set it up to forward form data to Gmail
-    3. Deploy as web app and get the URL
-    4. Send form data to that URL via fetch()
-    
-    OPTION 4: NETLIFY FORMS (If using Netlify)
-    -------------------------------------------
-    1. Add netlify attribute to form:
-       <form netlify name="contact">
-    2. Deploy to Netlify
-    3. Forms will appear in your Netlify dashboard
-    4. Set up email notifications in Netlify settings
-    
-    OPTION 5: CUSTOM BACKEND (Most Control)
-    ----------------------------------------
-    1. Create a backend API (Node.js, Python, PHP, etc.)
-    2. Use nodemailer (Node.js) or similar to send emails
-    3. Set up Gmail SMTP or use Gmail API
-    4. Update form to POST to your API endpoint
-    
-    RECOMMENDATION:
-    For quick setup with no backend, use FORMSPREE or EMAILJS.
-    Both are free for basic usage and very easy to implement.
-    
-    ========================================
-    -->
 </body>
 </html>
