@@ -1729,7 +1729,7 @@ header {
 
     <!-- Your page content starts here -->
     <!-- Header -->
-    <header>
+       <header>
         <nav>
             <div class="nav-profile">
                                <a href="/index" class="nav-profile-image">
@@ -1763,8 +1763,57 @@ header {
                     </svg>
                 </a>
             </div>
-            <!-- Add this button after .nav-icons -->
+
         </nav>
+        <!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <div class="mobile-menu-profile-image">JR</div>
+        <div class="mobile-menu-profile-info">
+            <div class="name">John D. Robbins</div>
+            <div class="title">Project Manager</div>
+        </div>
+    </div>
+
+    <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/work-history">Work History</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/art-design">Design</a></li>
+        <li><a href="/audio">Audio</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="mobile-nav-icons">
+        <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        </a>
+        <a href="resume.pdf" download class="nav-icon" title="Download Resume">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+        </a>
+    </div>
+            <!-- Add this button after .nav-icons -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+    <div class="mobile-menu-footer">
+        <p>Holly Ridge, NC</p>
+        <p style="color: var(--primary-blue); margin-top: 0.5rem;">johndrobbins83@gmail.com</p>
+    </div>
+</div>
     </header>
 
     <!-- Hero Section -->
