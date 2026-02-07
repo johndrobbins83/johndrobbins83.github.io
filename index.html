@@ -1197,6 +1197,17 @@ header {
     transition: opacity 0.3s ease;
 }
 
+/* Hide overlay on desktop/tablet - only show on mobile */
+@media (min-width: 769px) {
+    .mobile-menu-overlay {
+        display: none !important;
+    }
+    
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
 .mobile-menu-overlay.active {
     display: block;
     opacity: 1;
