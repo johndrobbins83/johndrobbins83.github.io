@@ -1229,7 +1229,6 @@ header {
     padding: 2rem;
     font-family: 'Poppins', sans-serif;
 }
-
 .mobile-menu.active {
     right: 0;
 }
@@ -1363,6 +1362,21 @@ header {
     
     nav {
         grid-template-columns: 1fr auto;
+    }
+}
+
+/* Add this NEW media query for desktop/tablet */
+@media (min-width: 769px) {
+    .hamburger,
+    .mobile-menu-overlay,
+    .mobile-menu {
+        display: none !important;
+    }
+    
+    /* Ensure they stay hidden even with active class */
+    .mobile-menu-overlay.active,
+    .mobile-menu.active {
+        display: none !important;
     }
 }
         /* Project Modal/Popup */
