@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Bridge of Death - Trivia Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #ff0;
+            text-shadow: 3px 3px #f00;
+            line-height: 1.5;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: #0ff;
+        }
+
+        .timer {
+            font-size: 32px;
+            color: #f00;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #000;
+        }
+
+        .timer.warning {
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        input {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            padding: 15px;
+            width: 100%;
+            max-width: 500px;
+            background: #222;
+            border: 3px solid #0ff;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff0;
+        }
+
+        button {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            padding: 15px 40px;
+            background: #f00;
+            color: #fff;
+            border: 3px solid #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #ff0;
+            color: #000;
+            border-color: #000;
+            transform: scale(1.05);
+        }
+
+        .start-screen, .end-screen {
+            text-align: center;
+        }
+
+        .end-message {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ff0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 16px;
+            }
+            .question {
+                font-size: 14px;
+            }
+            .timer {
+                font-size: 24px;
+            }
+            input {
+                font-size: 14px;
+                padding: 12px;
+            }
+            button {
+                font-size: 14px;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container" id="gameContainer">
+        <div class="overlay"></div>
+        <div class="content">
+            <!-- Start Screen -->
+            <div id="startScreen" class="start-screen">
+                <h1>STOP!<br><br>WHO WOULD CROSS THE<br>BRIDGE OF DEATH<br>MUST ANSWER ME<br>THESE QUESTIONS THREE</h1>
+                <button onclick="startGame()">BEGIN THE TRIAL</button>
+            </div>
+
+            <!-- Question Screen -->
+            <div id="questionScreen" class="hidden">
+                <div class="timer" id="timer">10</div>
+                <div class="question" id="questionText"></div>
+                <input type="text" id="answerInput" placeholder="TYPE YOUR ANSWER..." autocomplete="off">
+                <button onclick="submitAnswer()">SUBMIT ANSWER</button>
+            </div>
+
+            <!-- End Screen -->
+            <div id="endScreen" class="hidden end-screen">
+                <div class="end-message" id="endMessage"></div>
+                <button onclick="location.reload()">TRY AGAIN</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CUSTOMIZE YOUR IMAGES HERE
+        // ============================================
+        const images = {
+            start: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600', // Bridge/mystical background
+            game: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600', // Mountain/medieval
+            success: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600', // Beautiful landscape (crossing successful)
+            failure: 'https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?w=1600' // Dark/dramatic (into the gorge)
+        };
+
+        // ============================================
+        // TRIVIA QUESTIONS POOL (Question 3)
+        // ============================================
+        const easyTriviaQuestions = [
+            { q: "WHAT IS THE AIRSPEED<br>VELOCITY OF AN<br>UNLADEN SWALLOW?", a: ["african or european", "i don't know", "what do you mean"] },
+            { q: "WHAT IS YOUR<br>FAVORITE COLOR?", a: ["blue", "yellow", "red", "green", "no blue", "no yellow"] },
+            { q: "WHAT IS THE CAPITAL<br>OF ASSYRIA?", a: ["nineveh", "assur", "i don't know"] },
+            { q: "HOW MANY SHILLINGS<br>IN A POUND?", a: ["20", "twenty", "twenty shillings"] },
+            { q: "WHAT IS YOUR QUEST?", a: ["to seek the holy grail", "holy grail", "the holy grail", "seek the holy grail"] }
+        ];
+
+        const hardTriviaQuestions = [
+            { q: "WHAT YEAR WAS THE<br>MAGNA CARTA SIGNED?", a: ["1215"] },
+            { q: "WHO WROTE<br>'PARADISE LOST'?", a: ["john milton", "milton"] },
+            { q: "WHAT IS THE SMALLEST<br>PRIME NUMBER?", a: ["2", "two"] },
+            { q: "HOW MANY BONES ARE<br>IN THE HUMAN BODY?", a: ["206", "two hundred six", "two hundred and six"] },
+            { q: "WHAT IS THE CHEMICAL<br>SYMBOL FOR GOLD?", a: ["au"] },
+            { q: "WHO PAINTED THE<br>SISTINE CHAPEL<br>CEILING?", a: ["michelangelo", "michelangelo buonarroti"] },
+            { q: "WHAT IS THE SPEED<br>OF LIGHT IN<br>METERS PER SECOND?", a: ["299792458", "300000000", "3x10^8", "about 300 million"] },
+            { q: "IN WHAT YEAR DID<br>WORLD WAR I BEGIN?", a: ["1914"] }
+        ];
+
+        // ============================================
+        // GAME STATE
+        // ============================================
+        let currentQuestion = 0;
+        let timerInterval;
+        let timeLeft = 10;
+        let gamesPlayed = 0; // Track number of games for alternating difficulty
+
+        const questions = [
+            { text: "WHAT IS YOUR NAME?", time: 10, anyAnswer: true },
+            { text: "WHAT IS YOUR QUEST?", time: 10, anyAnswer: true },
+            null // Will be filled with random trivia
+        ];
+
+        // ============================================
+        // GAME FUNCTIONS
+        // ============================================
+        function startGame() {
+            // Alternate between easy and hard questions
+            const useHardQuestion = (gamesPlayed % 2 === 1);
+            const triviaPool = useHardQuestion ? hardTriviaQuestions : easyTriviaQuestions;
+            const randomTrivia = triviaPool[Math.floor(Math.random() * triviaPool.length)];
+            
+            questions[2] = {
+                text: randomTrivia.q,
+                time: 20,
+                anyAnswer: false,
+                answers: randomTrivia.a
+            };
+
+            gamesPlayed++; // Increment for next game
+
+            // Set game background
+            document.getElementById('gameContainer').style.backgroundImage = `url('${images.game}')`;
+            
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('questionScreen').classList.remove('hidden');
+            
+            currentQuestion = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById('questionText').innerHTML = question.text;
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            
+            timeLeft = question.time;
+            updateTimer();
+            startTimer();
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+                
+                if (timeLeft <= 3) {
+                    document.getElementById('timer').classList.add('warning');
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    endGame(false, "TOO SLOW!<br><br>INTO THE GORGE<br>OF ETERNAL PERIL<br>YOU GO!");
+                }
+            }, 1000);
+        }
+
+        function updateTimer() {
+            document.getElementById('timer').textContent = timeLeft;
+            document.getElementById('timer').classList.remove('warning');
+        }
+
+        function submitAnswer() {
+            clearInterval(timerInterval);
+            
+            const answer = document.getElementById('answerInput').value.trim().toLowerCase();
+            const question = questions[currentQuestion];
+
+            // Check if answer is valid
+            if (answer === '') {
+                endGame(false, "SILENCE IS NOT<br>AN ANSWER!<br><br>AAAAAAHHHHH!");
+                return;
+            }
+
+            // For questions 1 and 2, any answer is correct
+            if (question.anyAnswer) {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    // This shouldn't happen, but just in case
+                    endGame(true, "ERROR IN THE MATRIX");
+                }
+            } else {
+                // Question 3 - check against correct answers
+                const isCorrect = question.answers.some(correctAnswer => 
+                    answer.includes(correctAnswer) || correctAnswer.includes(answer)
+                );
+
+                if (isCorrect) {
+                    endGame(true, "RIGHT!<br><br>OFF YOU GO!<br><br>YOU MAY CROSS THE<br>BRIDGE OF DEATH!");
+                } else {
+                    endGame(false, "WRONG!<br><br>AAAAAAHHHHH!<br><br>INTO THE GORGE<br>OF ETERNAL PERIL!");
+                }
+            }
+        }
+
+        function endGame(success, message) {
+            clearInterval(timerInterval);
+            
+            // Change background based on outcome
+            const bgImage = success ? images.success : images.failure;
+            document.getElementById('gameContainer').style.backgroundImage = `url('${bgImage}')`;
+            
+            document.getElementById('questionScreen').classList.add('hidden');
+            document.getElementById('endMessage').innerHTML = message;
+            document.getElementById('endScreen').classList.remove('hidden');
+        }
+
+        // Allow Enter key to submit
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('gameContainer').style.backgroundImage = `url('${images.start}')`;
+            
+            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitAnswer();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
