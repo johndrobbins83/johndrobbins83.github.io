@@ -1,2473 +1,2432 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John D. Robbins | Project Manager & Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #85C7F2;
-            --light-gray: #DBDBDB;
-            --off-white: #D1D1D1;
-            --mid-gray: #636363;
-            --dark-gray: #4C4C4C;
-            --dark-bg: #0A0A0A;
-            --dark-card: #141414;
-            --dark-border: #2A2A2A;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John D. Robbins | Project Manager & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+--primary-blue: #85C7F2;
+--light-gray: #DBDBDB;
+--off-white: #D1D1D1;
+--mid-gray: #636363;
+--dark-gray: #4C4C4C;
+--dark-bg: #0A0A0A;
+--dark-card: #141414;
+--dark-border: #2A2A2A;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--dark-bg);
-            color: var(--off-white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+body {
+font-family: 'Poppins', sans-serif;
+background: var(--dark-bg);
+color: var(--off-white);
+line-height: 1.6;
+overflow-x: hidden;
+}
 
 /* Header & Navigation */
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid var(--dark-border);
-    backdrop-filter: blur(10px);
-    
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 1000;
+border-bottom: 1px solid var(--dark-border);
+backdrop-filter: blur(10px);
+
 }    
 
-        nav {
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .nav-profile {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-                .nav-profile-image {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--dark-card);
-            border: 2px solid var(--primary-blue);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--primary-blue);
-            flex-shrink: 0;
-        }
-        .nav-profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+nav {
+max-width: 1500px;
+margin: 0 auto;
+padding: 1rem 2rem;
+display: grid;
+grid-template-columns: auto 1fr auto;
+align-items: center;
+gap: 3rem;
 }
-        .nav-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
-        }
 
-        .nav-info .name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--off-white);
-            line-height: 1.2;
-        }
+.nav-profile {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
 
-        .nav-info .title {
-            font-size: 0.75rem;
-            color: var(--mid-gray);
-            font-weight: 400;
-            line-height: 1.2;
-        }
+.nav-profile-image {
+width: 45px;
+height: 45px;
+border-radius: 50%;
+background: var(--dark-card);
+border: 2px solid var(--primary-blue);
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-weight: 700;
+font-size: 1.1rem;
+color: var(--primary-blue);
+flex-shrink: 0;
+}
+.nav-profile-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.nav-info {
+display: flex;
+flex-direction: column;
+gap: 0.1rem;
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
+.nav-info .name {
+font-weight: 600;
+font-size: 0.95rem;
+color: var(--off-white);
+line-height: 1.2;
+}
 
-        .nav-icons {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+.nav-info .title {
+font-size: 0.75rem;
+color: var(--mid-gray);
+font-weight: 400;
+line-height: 1.2;
+}
 
-        .nav-icon {
-            color: var(--off-white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            border: 1px solid var(--dark-border);
-            background: rgba(255, 255, 255, 0.03);
-        }
+nav ul {
+display: flex;
+list-style: none;
+gap: 2rem;
+justify-content: center;
+margin: 0;
+padding: 0;
+}
 
-        .nav-icon:hover {
-            color: var(--primary-blue);
-            border-color: var(--primary-blue);
-            background: rgba(133, 199, 242, 0.1);
-            transform: translateY(-2px);
-        }
+.nav-icons {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
 
-        .nav-icon svg {
-            width: 18px;
-            height: 18px;
-        }
+.nav-icon {
+color: var(--off-white);
+text-decoration: none;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+transition: all 0.3s ease;
+border: 1px solid var(--dark-border);
+background: rgba(255, 255, 255, 0.03);
+}
 
-        nav ul li a {
-            color: var(--off-white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
+.nav-icon:hover {
+color: var(--primary-blue);
+border-color: var(--primary-blue);
+background: rgba(133, 199, 242, 0.1);
+transform: translateY(-2px);
+}
 
-        nav ul li a:hover {
-            color: var(--primary-blue);
-        }
+.nav-icon svg {
+width: 18px;
+height: 18px;
+}
 
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
+nav ul li a {
+color: var(--off-white);
+text-decoration: none;
+font-weight: 600;
+font-size: 0.9rem;
+transition: color 0.3s ease;
+position: relative;
+padding: 0.5rem 0;
+}
 
-        nav ul li a:hover::after {
-            width: 100%;
-        }
+nav ul li a:hover {
+color: var(--primary-blue);
+}
 
-        /* Hero Section */
+nav ul li a::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--primary-blue);
+transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+width: 100%;
+}
+
+/* Hero Section */
 /* Hero Section */
 .hero {
-    margin-top: 80px;
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    padding: 4rem 2rem;
-    position: relative;
-    overflow: hidden;
-    
-    /* ADD YOUR IMAGE HERE - Dark overlay + Your image */
-    background-image: 
-        linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)),
-        url('https://www.johnthepm.com/images/homepage/OCTO%20HEADER.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Optional: parallax effect */
+margin-top: 80px;
+min-height: 90vh;
+display: flex;
+align-items: center;
+padding: 4rem 2rem;
+position: relative;
+overflow: hidden;
+
+/* ADD YOUR IMAGE HERE - Dark overlay + Your image */
+background-image: 
+linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)),
+url('https://www.johnthepm.com/images/homepage/OCTO%20HEADER.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed; /* Optional: parallax effect */
 }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(133, 199, 242, 0.15) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
-        }
+.hero::before {
+content: '';
+position: absolute;
+top: -50%;
+right: -20%;
+width: 800px;
+height: 800px;
+background: radial-gradient(circle, rgba(133, 199, 242, 0.15) 0%, transparent 1-%);
+animation: pulse 8s ease-in-out infinite;
+}
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
-        }
+@keyframes pulse {
+0%, 100% { transform: scale(1); opacity: 0.3; }
+50% { transform: scale(1.1); opacity: 0.5; }
+}
 
-        .hero-content {
-            max-width: 1500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 500px;
-            gap: 4rem;
-            align-items: center;
-        }
+.hero-content {
+max-width: 1500px;
+margin: 0 auto;
+position: relative;
+z-index: 1;
+display: grid;
+grid-template-columns: 1fr 500px;
+gap: 4rem;
+align-items: center;
+}
 
-        .hero-image {
-            width: 500px;
-            height: 500px;
-            border-radius: 8px;
-            border: 3px solid var(--primary-blue);
-            overflow: hidden;
-            background: var(--dark-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary-blue);
-            font-weight: 700;
-        }
+.hero-image {
+width: 500px;
+height: 500px;
+border-radius: 8px;
+border: 3px solid var(--primary-blue);
+overflow: hidden;
+background: var(--dark-card);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+color: var(--primary-blue);
+font-weight: 700;
+}
 
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            background: var(--dark-bg);
-        }
+.hero-image img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+object-position: center
+background: var(--dark-bg);
+}
 
-        .hero-text h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
-        }
+.hero-text h1 {
+font-family: 'Poppins', sans-serif;
+font-size: 4.5rem;
+font-weight: 700;
+line-height: 1.1;
+margin-bottom: 1.5rem;
+letter-spacing: -2px;
+}
 
-        .hero-text h1 span {
-            color: var(--primary-blue);
-            display: block;
-        }
+.hero-text h1 span {
+color: var(--primary-blue);
+display: block;
+}
 
-        .hero-text .subtitle {
-            font-size: 1.3rem;
-            color: var(--mid-gray);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
+.hero-text .subtitle {
+font-size: 1.3rem;
+color: var(--mid-gray);
+margin-bottom: 2.5rem;
+font-weight: 300;
+}
 
-        .hero-text .summary {
-            font-size: 1.05rem;
-            color: var(--mid-gray);
-            margin-bottom: 3rem;
-            max-width: 800px;
-            line-height: 1.8;
-        }
+.hero-text .summary {
+font-size: 1.05rem;
+color: var(--mid-gray);
+margin-bottom: 3rem;
+max-width: 800px;
+line-height: 1.8;
+}
 
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
+.cta-buttons {
+display: flex;
+gap: 1.5rem;
+flex-wrap: wrap;
+}
 
-        .btn {
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-            border: 1px solid;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+.btn {
+padding: 1rem 2.5rem;
+text-decoration: none;
+font-weight: 500;
+border-radius: 2px;
+transition: all 0.3s ease;
+border: 1px solid;
+font-size: 0.95rem;
+letter-spacing: 0.5px;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+}
 
-        .btn-primary {
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            border-color: var(--primary-blue);
-        }
+.btn-primary {
+background: var(--primary-blue);
+color: var(--dark-bg);
+border-color: var(--primary-blue);
+}
 
-        .btn-primary:hover {
-            background: var(--light-gray);
-            border-color: var(--light-gray);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
-        }
+.btn-primary:hover {
+background: var(--light-gray);
+border-color: var(--light-gray);
+color: var(--dark-bg);
+transform: translateY(-2px);
+box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
+}
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--off-white);
-            border-color: var(--dark-border);
-        }
+.btn-secondary {
+background: transparent;
+color: var(--off-white);
+border-color: var(--dark-border);
+}
 
-        .btn-secondary:hover {
-            border-color: var(--off-white);
-            background: rgba(245, 245, 245, 0.05);
-        }
+.btn-secondary:hover {
+border-color: var(--off-white);
+background: rgba(245, 245, 245, 0.05);
+}
 
-        .profile-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            padding: 2rem;
-            border-radius: 4px;
-            position: relative;
-        }
+.profile-card {
+background: var(--dark-card);
+border: 1px solid var(--dark-border);
+padding: 2rem;
+border-radius: 4px;
+position: relative;
+}
 
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--light-gray));
-        }
+.profile-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(90deg, var(--primary-blue), var(--light-gray));
+}
 
-        .profile-image {
-            width: 100%;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
-            border: 1px solid var(--dark-border);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--primary-blue);
-            font-family: 'Poppins', sans-serif;
-        }
+.profile-image {
+width: 100%;
+aspect-ratio: 1;
+background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+border: 1px solid var(--dark-border);
+margin-bottom: 1.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 4rem;
+color: var(--primary-blue);
+font-family: 'Poppins', sans-serif;
+}
 
-        .profile-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
+.profile-links {
+display: flex;
+gap: 1rem;
+margin-top: 1.5rem;
+}
 
-        .profile-links a {
-            flex: 1;
-            padding: 0.75rem;
-            text-align: center;
-            background: rgba(245, 245, 245, 0.05);
-            border: 1px solid var(--dark-border);
-            color: var(--off-white);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
+.profile-links a {
+flex: 1;
+padding: 0.75rem;
+text-align: center;
+background: rgba(245, 245, 245, 0.05);
+border: 1px solid var(--dark-border);
+color: var(--off-white);
+text-decoration: none;
+font-size: 0.85rem;
+transition: all 0.3s ease;
+border-radius: 2px;
+}
 
-        .profile-links a:hover {
-            background: var(--primary-blue);
-            border-color: var(--primary-blue);
-            color: var(--dark-bg);
-        }
+.profile-links a:hover {
+background: var(--primary-blue);
+border-color: var(--primary-blue);
+color: var(--dark-bg);
+}
 
-        /* Projects Section */
-        .projects {
-            padding: 6rem 2rem;
-            background: var(--dark-bg);
-            background-image: 
-                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-        }
+/* Projects Section */
+.projects {
+padding: 6rem 2rem;
+background: var(--dark-bg);
+background-image: 
+url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
 
-        .projects-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.projects-container {
+max-width: 1400px;
+margin: 0 auto;
+}
 
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--dark-border);
-        }
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+margin-bottom: 3rem;
+padding-bottom: 1.5rem;
+border-bottom: 1px solid var(--dark-border);
+}
 
-        .section-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            font-weight: 600;
-        }
+.section-header h2 {
+font-family: 'Poppins', sans-serif;
+font-size: 3rem;
+font-weight: 600;
+}
 
-        .view-all {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+.view-all {
+color: var(--primary-blue);
+text-decoration: none;
+font-weight: 500;
+transition: transform 0.3s ease;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+}
 
-        .view-all:hover {
-            transform: translateX(5px);
-        }
+.view-all:hover {
+transform: translateX(5px);
+}
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);  /* ← Change back to 2 columns */
-    gap: 2rem;
+display: grid;
+grid-template-columns: repeat(2, 1fr);  /* ← Change back to 2 columns */
+gap: 2rem;
 }
 
-        .category-section {
-            margin-bottom: 4rem;
-        }
+.category-section {
+margin-bottom: 4rem;
+}
 
-        .category-title {
-            font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
+.category-title {
+font-size: 2rem;
+color: var(--primary-blue);
+margin-bottom: 2rem;
+font-weight: 600;
+}
 
-        .project-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+.project-card {
+background: var(--dark-card);
+border: 1px solid var(--dark-border);
+padding: 2rem;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
+.project-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--primary-blue);
+transition: width 0.3s ease;
+}
 
-        .project-card:hover::before {
-            width: 100%;
-        }
+.project-card:hover::before {
+width: 100%;
+}
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--dark-border);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
+.project-card:hover {
+transform: translateY(-5px);
+border-color: var(--dark-border);
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
 
-        .project-logo {
-            width: 150px;
-            height: 150px;
-            align-items: center;
-                   
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            overflow: hidden;
-            position: relative;
-        }
+.project-logo {
+width: 150px;
+height: 150px;
+align-items: center;
 
-        .project-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
+margin-bottom: 1.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Poppins', sans-serif;
+font-size: 1.5rem;
+color: var(--primary-blue);
+overflow: hidden;
+position: relative;
+}
 
-        .project-logo-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-        }
+.project-logo img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+display: block;
+}
 
-        .project-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
+.project-logo-text {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+}
 
-        .project-card h3 a {
-            color: var(--off-white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.project-card h3 {
+font-size: 1.3rem;
+margin-bottom: 0.75rem;
+font-weight: 600;
+}
 
-        .project-card h3 a:hover {
-            color: var(--primary-blue);
-        }
+.project-card h3 a {
+color: var(--off-white);
+text-decoration: none;
+transition: color 0.3s ease;
+}
 
-        .project-role {
-            color: var(--primary-blue);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
+.project-card h3 a:hover {
+color: var(--primary-blue);
+}
 
-        .project-description {
-            color: var(--white);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
+.project-role {
+color: var(--primary-blue);
+font-size: 1.1rem;
+margin-bottom: 1rem;
+}
 
-        /* Work History & Summary */
-        .work-summary {
-            padding: 6rem 2rem;
-            background: var(--dark-card);
-            border-top: 1px solid var(--dark-border);
-            border-bottom: 1px solid var(--dark-border);
-            background-image: 
-                radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
+.project-description {
+color: var(--white);
+font-size: 0.95rem;
+line-height: 1.6;
+}
 
-        .work-summary-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-        }
+/* Work History & Summary */
+.work-summary {
+padding: 6rem 2rem;
+background: var(--dark-card);
+border-top: 1px solid var(--dark-border);
+border-bottom: 1px solid var(--dark-border);
+background-image: 
+radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+background-size: 20px 20px;
+}
 
-        .summary-text h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
+.work-summary-container {
+max-width: 1400px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6rem;
+}
 
-        .summary-text p {
-            color: var(--mid-gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
+.summary-text h2 {
+font-family: 'Poppins', sans-serif;
+font-size: 2.5rem;
+margin-bottom: 2rem;
+font-weight: 600;
+}
 
-        .work-history h3 {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
+.summary-text p {
+color: var(--mid-gray);
+line-height: 1.8;
+margin-bottom: 1.5rem;
+}
 
-        .job {
-            margin-bottom: 2.5rem;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--dark-border);
-            transition: border-color 0.3s ease;
-        }
+.work-history h3 {
+font-size: 1.5rem;
+color: var(--primary-blue);
+margin-bottom: 2rem;
+font-weight: 600;
+}
 
-        .job:hover {
-            border-left-color: var(--primary-blue);
-        }
+.job {
+margin-bottom: 2.5rem;
+padding-left: 1.5rem;
+border-left: 2px solid var(--dark-border);
+transition: border-color 0.3s ease;
+}
 
-        .job h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--off-white);
-        }
+.job:hover {
+border-left-color: var(--primary-blue);
+}
 
-        .job .company {
-            color: var(--mid-gray);
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
+.job h4 {
+font-size: 1.1rem;
+margin-bottom: 0.5rem;
+color: var(--off-white);
+}
 
-        .job .date {
-            color: var(--mid-gray);
-            font-size: 0.85rem;
-            font-style: italic;
-        }
+.job .company {
+color: var(--mid-gray);
+font-size: 0.95rem;
+margin-bottom: 0.25rem;
+}
 
-        /* Other Sections Preview */
-        .other-sections {
-            padding: 6rem 2rem;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
+.job .date {
+color: var(--mid-gray);
+font-size: 0.85rem;
+font-style: italic;
+}
 
-        .other-sections-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+/* Other Sections Preview */
+.other-sections {
+padding: 6rem 2rem;
+background-image: 
+url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
 
-        .sections-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+.other-sections-container {
+max-width: 1400px;
+margin: 0 auto;
+}
 
-        .section-preview {
-            background: var(--dark-card);
-            
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: var(--off-white);
-            display: block;
-        }
+.sections-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+margin-top: 3rem;
+}
 
-        .section-preview:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-blue);
-        }
+.section-preview {
+background: var(--dark-card);
 
-        .section-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-blue);
-        }
+padding: 3rem 2rem;
+text-align: center;
+transition: all 0.3s ease;
+cursor: pointer;
+text-decoration: none;
+color: var(--off-white);
+display: block;
+}
 
-        .section-icon-image {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 1.5rem;
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            
-            transition: border-color 0.3s ease;
-        }
+.section-preview:hover {
+transform: translateY(-5px);
+border-color: var(--primary-blue);
+}
 
-        .section-preview:hover .section-icon-image {
-            border-color: var(--primary-blue);
-        }
+.section-icon {
+font-size: 3rem;
+margin-bottom: 1.5rem;
+color: var(--primary-blue);
+}
 
-        .section-icon-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+.section-icon-image {
+width: 200px;
+height: 200px;
+margin: 0 auto 1.5rem;
+position: relative;
+border-radius: 8px;
+overflow: hidden;
 
-        .section-icon-fallback {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            background: var(--dark-bg);
-            color: var(--primary-blue);
-        }
+transition: border-color 0.3s ease;
+}
 
-        .section-icon-image img:not([src=""]) + .section-icon-fallback {
-            display: none;
-        }
+.section-preview:hover .section-icon-image {
+border-color: var(--primary-blue);
+}
 
-        .section-preview h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: var(--off-white);
-        }
+.section-icon-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
 
-        .section-preview p {
-            color: var(--mid-gray);
-            font-size: 0.95rem;
-        }
+.section-icon-fallback {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+background: var(--dark-bg);
+color: var(--primary-blue);
+}
 
-        /* Contact Section */
-        .contact {
-            padding: 6rem 2rem;
-            background: var(--dark-card);
-            border-top: 1px solid var(--dark-border);
-            background-image: 
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' /%3E%3C/g%3E%3C/svg%3E");
-        }
+.section-icon-image img:not([src=""]) + .section-icon-fallback {
+display: none;
+}
 
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.section-preview h3 {
+font-size: 1.3rem;
+margin-bottom: 1rem;
+font-weight: 600;
+color: var(--off-white);
+}
 
-        .contact h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 600;
-        }
+.section-preview p {
+color: var(--mid-gray);
+font-size: 0.95rem;
+}
 
-        .contact-form {
-            display: grid;
-            gap: 1.5rem;
-        }
+/* Contact Section */
+.contact {
+padding: 6rem 2rem;
+background: var(--dark-card);
+border-top: 1px solid var(--dark-border);
+background-image: 
+url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' /%3E%3C/g%3E%3C/svg%3E");
+}
 
-        .form-group {
-            display: grid;
-            gap: 0.5rem;
-        }
+.contact-container {
+max-width: 800px;
+margin: 0 auto;
+}
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
+.contact h2 {
+font-family: 'Poppins', sans-serif;
+font-size: 3rem;
+text-align: center;
+margin-bottom: 3rem;
+font-weight: 600;
+}
 
-        label {
-            color: var(--mid-gray);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+.contact-form {
+display: grid;
+gap: 1.5rem;
+}
 
-        input,
-        select,
-        textarea {
-            padding: 1rem;
-            background: var(--dark-bg);
-            border: 1px solid var(--dark-border);
-            color: var(--off-white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
+.form-group {
+display: grid;
+gap: 0.5rem;
+}
 
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            background: rgba(133, 199, 242, 0.05);
-        }
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.5rem;
+}
 
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
+label {
+color: var(--mid-gray);
+font-size: 0.9rem;
+font-weight: 500;
+}
 
-        button[type="submit"] {
-            padding: 1rem 3rem;
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-            border: 1px solid var(--primary-blue);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            border-radius: 2px;
-            justify-self: start;
-        }
+input,
+select,
+textarea {
+padding: 1rem;
+background: var(--dark-bg);
+border: 1px solid var(--dark-border);
+color: var(--off-white);
+font-family: 'Poppins', sans-serif;
+font-size: 1rem;
+transition: all 0.3s ease;
+border-radius: 2px;
+}
 
-        button[type="submit"]:hover {
-            background: var(--light-gray);
-            border-color: var(--light-gray);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
-        }
+input:focus,
+select:focus,
+textarea:focus {
+outline: none;
+border-color: var(--primary-blue);
+background: rgba(133, 199, 242, 0.05);
+}
 
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            border-top: 1px solid var(--dark-border);
-            text-align: center;
-        }
+textarea {
+min-height: 150px;
+resize: vertical;
+}
 
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+button[type="submit"] {
+padding: 1rem 3rem;
+background: var(--primary-blue);
+color: var(--dark-bg);
+border: 1px solid var(--primary-blue);
+font-size: 1rem;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.3s ease;
+letter-spacing: 0.5px;
+border-radius: 2px;
+justify-self: start;
+}
 
-        .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
+button[type="submit"]:hover {
+background: var(--light-gray);
+border-color: var(--light-gray);
+color: var(--dark-bg);
+transform: translateY(-2px);
+box-shadow: 0 10px 30px rgba(133, 199, 242, 0.4);
+}
 
-        .footer-contact {
-            color: var(--mid-gray);
-            margin-bottom: 1.5rem;
-        }
+/* Footer */
+footer {
+padding: 3rem 2rem;
+border-top: 1px solid var(--dark-border);
+text-align: center;
+}
 
-        .footer-contact a {
-            color: var(--primary-blue);
-            text-decoration: none;
-        }
+.footer-content {
+max-width: 1400px;
+margin: 0 auto;
+}
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-        }
+.footer-logo {
+font-family: 'Poppins', sans-serif;
+font-size: 1.5rem;
+margin-bottom: 1rem;
+}
 
-        .footer-links a {
-            color: var(--mid-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.footer-contact {
+color: var(--mid-gray);
+margin-bottom: 1.5rem;
+}
 
-        .footer-links a:hover {
-            color: var(--off-white);
-        }
+.footer-contact a {
+color: var(--primary-blue);
+text-decoration: none;
+}
 
-        .copyright {
-            color: var(--mid-gray);
-            font-size: 0.85rem;
-        }
+.footer-links {
+display: flex;
+justify-content: center;
+gap: 2rem;
+margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+color: var(--mid-gray);
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+color: var(--off-white);
+}
+
+.copyright {
+color: var(--mid-gray);
+font-size: 0.85rem;
+}
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
+.hero-content {
+grid-template-columns: 1fr;
+gap: 3rem;
+}
 
-    .hero-image {
-        width: 100%;
-        max-width: 500px;
-        height: auto;
-        aspect-ratio: 1;
-        margin: 0 auto;
-    }
+.hero-image {
+width: 100%;
+max-width: 500px;
+height: auto;
+aspect-ratio: 1;
+margin: 0 auto;
+}
 
-    .work-summary-container {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
+.work-summary-container {
+grid-template-columns: 1fr;
+gap: 4rem;
+}
 }
 
 @media (max-width: 768px) {
-    /* Fix parallax on mobile */
-    .hero {
-        background-attachment: scroll;
-        min-height: auto;
-        padding: 3rem 1.5rem;
-    }
-
-    nav {
-        grid-template-columns: auto auto;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    nav ul {
-        gap: 1rem;
-        font-size: 0.85rem;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    }
-
-    .nav-icons {
-        justify-content: flex-start;
-    }
-
-    .nav-info .name {
-        font-size: 0.9rem;
-    }
-
-    .nav-info .title {
-        font-size: 0.7rem;
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
-
-    .hero-image {
-        width: 200px;
-        height: 200px;
-        display: block;
-        margin: 0 auto;
-        order: -1;
-    }
-
-    .hero-text h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-        text-align: center;
-    }
-
-    .hero-text .subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-
-    .hero-text .summary {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .project-card {
-        padding: 1rem;
-    }
-
-    .project-logo {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 1rem auto;
-        display: block !important;
-    }
-
-    .project-logo img {
-        display: block;
-        margin: 0 auto;
-    }
-
-    .project-card h3 {
-        font-size: 0.9rem;
-    }
-
-    .project-card h3 a {
-        font-size: 0.9rem;
-    }
-
-    .project-card p {
-        font-size: 0.75rem;
-    }
-
-    .project-role {
-        font-size: 0.75rem;
-    }
-
-    .project-description {
-        font-size: 0.75rem;
-    }
-
-    .cta-buttons {
-        flex-direction: row;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    .btn {
-        flex: 1;
-        padding: 0.875rem 1rem;
-        font-size: 0.85rem;
-        justify-content: center;
-    }
-
-    .sections-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
-    /* Project Modal Mobile */
-    .project-modal {
-        padding: 0.5rem;
-        align-items: flex-start;
-        padding-top: 1rem;
-    }
-
-    .project-modal-content {
-        padding: 1rem;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        max-height: 90vh;
-    }
-
-    .project-modal-close {
-        top: 0.5rem;
-        left: 0.5rem;
-        right: auto;
-        width: 28px;
-        height: 28px;
-        font-size: 1.2rem;
-        z-index: 10;
-    }
-
-    .project-modal-header {
-        display: block !important;
-        flex-direction: column !important;
-        padding-bottom: 1.5rem;
-        padding-top: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .project-modal-logo {
-        width: 100px !important;
-        height: 100px !important;
-        margin: 0 auto 1rem auto !important;
-        display: flex !important;
-        border-width: 2px;
-        border-color: #85C7F2;
-        align-items: center;
-        justify-content: center;
-        order: 0 !important;
-    }
-
-    .project-modal-info {
-        text-align: center;
-        order: 1 !important;
-    }
-
-    .project-modal-title {
-        font-size: 1.2rem;
-        line-height: 1.4;
-        margin-bottom: 1rem;
-    }
-
-    .project-modal-meta {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-        text-align: left;
-    }
-
-    .project-modal-meta-label {
-        font-size: 0.65rem;
-    }
-
-    .project-modal-meta-value {
-        font-size: 0.8rem;
-        word-wrap: break-word;
-    }
-
-    .project-modal-description {
-        font-size: 0.85rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        text-align: left;
-    }
-
-    .project-modal-tags {
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .project-modal-tag {
-        padding: 0.4rem 0.75rem;
-        font-size: 0.75rem;
-    }
-
-    .project-modal-buttons {
-        flex-direction: row;
-        gap: 0.5rem;
-    }
-
-    .project-modal-button {
-        flex: 1;
-        justify-content: center;
-        font-size: 0.8rem;
-        padding: 0.65rem 0.75rem;
-    }
+/* Fix parallax on mobile */
+.hero {
+background-attachment: scroll;
+min-height: auto;
+padding: 3rem 1.5rem;
 }
 
-@media (max-width: 480px) {
-    nav {
-        padding: 1rem;
-    }
-
-    nav ul {
-        gap: 1rem;
-        width: 100%;
-    }
-
-    .hero {
-        padding: 2rem 1rem;
-    }
-
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-
-    .hero-image {
-        width: 150px;
-        height: 150px;
-    }
-
-    .projects,
-    .work-summary,
-    .other-sections,
-    .contact {
-        padding: 3rem 1rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-
-
-        /* Scroll animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            animation: fadeInUp 0.8s ease-out;
-        }
-/* Hamburger Menu Styles */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: 1px solid var(--dark-border);
-    cursor: pointer;
-    padding: 0.75rem;
-    z-index: 1001;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+nav {
+grid-template-columns: auto auto;
+gap: 1rem;
+padding: 1rem;
 }
 
-.hamburger:hover {
-    border-color: var(--primary-blue);
-    background: rgba(133, 199, 242, 0.05);
+nav ul {
+gap: 1rem;
+font-size: 0.85rem;
+flex-wrap: wrap;
+justify-content: flex-start;
 }
 
-.hamburger span {
-    width: 24px;
-    height: 2px;
-    background: var(--off-white);
-    transition: all 0.3s ease;
-    border-radius: 2px;
+.nav-icons {
+justify-content: flex-start;
 }
 
-.hamburger.active {
-    border-color: var(--primary-blue);
+.nav-info .name {
+font-size: 0.9rem;
 }
 
-.hamburger.active span {
-    background: var(--primary-blue);
+.nav-info .title {
+font-size: 0.7rem;
 }
 
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
+.hero-content {
+grid-template-columns: 1fr;
+gap: 2rem;
+text-align: center;
 }
 
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
+.hero-image {
+width: 200px;
+height: 200px;
+display: block;
+margin: 0 auto;
+order: -1;
 }
 
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+.hero-text h1 {
+font-size: 2.5rem;
+margin-bottom: 0.5rem;
+text-align: center;
 }
 
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(5px);
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: none; /* Hidden by default */
+.hero-text .subtitle {
+font-size: 1.1rem;
+margin-bottom: 1rem;
+text-align: center;
 }
 
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 85%;
-    max-width: 350px;
-    height: 100vh;
-    background: var(--dark-card);
-    border-left: 1px solid var(--primary-blue);
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    transition: right 0.3s ease;
-    overflow-y: auto;
-    padding: 2rem;
-    font-family: 'Poppins', sans-serif;
-    display: none; /* Hidden by default */
+.hero-text .summary {
+font-size: 0.95rem;
+margin-bottom: 1.5rem;
+text-align: center;
 }
 
-/* Only show on mobile when active */
-@media (max-width: 768px) {
-    .mobile-menu-overlay.active {
-        display: block;
-        opacity: 1;
-    }
-
-    .mobile-menu.active {
-        display: block;
-        right: 0;
-    }
+.projects-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 1rem;
 }
 
-.mobile-menu-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--dark-border);
+.project-card {
+padding: 1rem;
 }
 
-.mobile-menu-profile-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--dark-bg);
-    border: 2px solid var(--primary-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--primary-blue);
+.project-logo {
+width: 80px;
+height: 80px;
+margin: 0 auto 1rem auto;
+display: block !important;
 }
 
-.mobile-menu-profile-info .name {
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--off-white);
-    line-height: 1.3;
+.project-logo img {
+display: block;
+margin: 0 auto;
 }
 
-.mobile-menu-profile-info .title {
-    font-size: 0.85rem;
-    color: var(--mid-gray);
-    line-height: 1.3;
+.project-card h3 {
+font-size: 0.9rem;
 }
 
-.mobile-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem 0;
+.project-card h3 a {
+font-size: 0.9rem;
 }
 
-.mobile-menu ul li {
-    border-bottom: 1px solid var(--dark-border);
+.project-card p {
+font-size: 0.75rem;
 }
 
-.mobile-menu ul li:last-child {
-    border-bottom: none;
+.project-role {
+font-size: 0.75rem;
 }
 
-.mobile-menu ul li a {
-    display: block;
-    padding: 1.25rem 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--off-white);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    padding-left: 1.5rem;
+.project-description {
+font-size: 0.75rem;
 }
 
-.mobile-menu ul li a::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary-blue);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.cta-buttons {
+flex-direction: row;
+gap: 0.5rem;
+justify-content: center;
 }
 
-.mobile-menu ul li a:hover {
-    color: var(--primary-blue);
-    padding-left: 2rem;
+.btn {
+flex: 1;
+padding: 0.875rem 1rem;
+font-size: 0.85rem;
+justify-content: center;
 }
 
-.mobile-menu ul li a:hover::before {
-    opacity: 1;
+.sections-grid {
+grid-template-columns: 1fr;
 }
 
-.mobile-nav-icons {
-    display: flex;
-    gap: 1rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--dark-border);
+.form-row {
+grid-template-columns: 1fr;
 }
 
-.mobile-nav-icons .nav-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--dark-border);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.03);
-    transition: all 0.3s ease;
+.section-header {
+flex-direction: column;
+align-items: flex-start;
+gap: 1rem;
 }
 
-.mobile-nav-icons .nav-icon:hover {
-    border-color: var(--primary-blue);
-    background: rgba(133, 199, 242, 0.1);
-    transform: translateY(-2px);
-}
-
-.mobile-menu-footer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--dark-border);
-    text-align: center;
-}
-
-.mobile-menu-footer p {
-    font-size: 0.85rem;
-    color: var(--mid-gray);
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
-    nav ul,
-    .nav-icons {
-        display: none !important;
-    }
-    
-    nav {
-        grid-template-columns: 1fr auto;
-    }
-}
-
-/* Add this NEW media query for desktop/tablet */
-@media (min-width: 769px) {
-    .hamburger,
-    .mobile-menu-overlay,
-    .mobile-menu {
-        display: none !important;
-    }
-    
-    /* Ensure they stay hidden even with active class */
-    .mobile-menu-overlay.active,
-    .mobile-menu.active {
-        display: none !important;
-    }
-}
-        /* Project Modal/Popup */
+/* Project Modal Mobile */
 .project-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 10000;
-    overflow-y: auto;
-    padding: 2rem;
-}
-
-.project-modal.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+padding: 0.5rem;
+align-items: flex-start;
+padding-top: 1rem;
 }
 
 .project-modal-content {
-    background: var(--dark-card);
-    border: 1px solid var(--dark-border);
-    border-radius: 8px;
-    max-width: 900px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    padding: 3rem;
+padding: 1rem;
+width: 100%;
+max-width: 100%;
+margin: 0;
+max-height: 90vh;
 }
 
 .project-modal-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 40px;
-    height: 40px;
-    background: rgba(133, 199, 242, 0.1);
-    border: 1px solid var(--primary-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--primary-blue);
-    transition: all 0.3s ease;
-}
-
-.project-modal-close:hover {
-    background: var(--primary-blue);
-    color: var(--dark-bg);
-    transform: rotate(90deg);
+top: 0.5rem;
+left: 0.5rem;
+right: auto;
+width: 28px;
+height: 28px;
+font-size: 1.2rem;
+z-index: 10;
 }
 
 .project-modal-header {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--dark-border);
+display: block !important;
+flex-direction: column !important;
+padding-bottom: 1.5rem;
+padding-top: 2rem;
+margin-bottom: 1.5rem;
 }
 
 .project-modal-logo {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    
-    flex-shrink: 0;
-}
-
-.project-modal-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 0.5rem;
+width: 100px !important;
+height: 100px !important;
+margin: 0 auto 1rem auto !important;
+display: flex !important;
+border-width: 2px;
+border-color: #85C7F2;
+align-items: center;
+justify-content: center;
+order: 0 !important;
 }
 
 .project-modal-info {
-    flex: 1;
+text-align: center;
+order: 1 !important;
 }
 
 .project-modal-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--off-white);
-    margin-bottom: 0.5rem;
+font-size: 1.2rem;
+line-height: 1.4;
+margin-bottom: 1rem;
 }
 
 .project-modal-meta {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-}
-
-.project-modal-meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.75rem;
+margin-bottom: 1rem;
+text-align: left;
 }
 
 .project-modal-meta-label {
-    font-size: 0.75rem;
-    color: var(--mid-gray);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+font-size: 0.65rem;
 }
 
 .project-modal-meta-value {
-    font-size: 0.95rem;
-    color: var(--off-white);
-}
-
-.project-modal-role {
-    color: var(--primary-blue);
-    font-weight: 600;
+font-size: 0.8rem;
+word-wrap: break-word;
 }
 
 .project-modal-description {
-    margin-bottom: 2rem;
-    line-height: 1.8;
-    color: var(--off-white);
+font-size: 0.85rem;
+line-height: 1.6;
+margin-bottom: 1.5rem;
+text-align: left;
 }
 
 .project-modal-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
+gap: 0.5rem;
+margin-bottom: 1.5rem;
 }
 
 .project-modal-tag {
-    padding: 0.5rem 1rem;
-    background: rgba(133, 199, 242, 0.1);
-    border: 1px solid rgba(133, 199, 242, 0.3);
-    color: var(--primary-blue);
-    font-size: 0.85rem;
-    border-radius: 4px;
+padding: 0.4rem 0.75rem;
+font-size: 0.75rem;
 }
 
 .project-modal-buttons {
-    display: flex;
-    gap: 1rem;
+flex-direction: row;
+gap: 0.5rem;
 }
 
 .project-modal-button {
-    padding: 0.75rem 2rem;
-    background: transparent;
-    border: 1px solid var(--primary-blue);
-    color: var(--primary-blue);
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+flex: 1;
+justify-content: center;
+font-size: 0.8rem;
+padding: 0.65rem 0.75rem;
+}
+}
+
+@media (max-width: 480px) {
+nav {
+padding: 1rem;
+}
+
+nav ul {
+gap: 1rem;
+width: 100%;
+}
+
+.hero {
+padding: 2rem 1rem;
+}
+
+.hero-text h1 {
+font-size: 2rem;
+}
+
+.hero-image {
+width: 150px;
+height: 150px;
+}
+
+.projects,
+.work-summary,
+.other-sections,
+.contact {
+padding: 3rem 1rem;
+}
+
+.cta-buttons {
+flex-direction: column;
+width: 100%;
+}
+
+.btn {
+width: 100%;
+justify-content: center;
+}
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Scroll animations */
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.animate-on-scroll {
+animation: fadeInUp 0.8s ease-out;
+}
+/* Hamburger Menu Styles */
+.hamburger {
+display: none;
+flex-direction: column;
+gap: 6px;
+background: none;
+border: 1px solid var(--dark-border);
+cursor: pointer;
+padding: 0.75rem;
+z-index: 1001;
+border-radius: 4px;
+transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+border-color: var(--primary-blue);
+background: rgba(133, 199, 242, 0.05);
+}
+
+.hamburger span {
+width: 24px;
+height: 2px;
+background: var(--off-white);
+transition: all 0.3s ease;
+border-radius: 2px;
+}
+
+.hamburger.active {
+border-color: var(--primary-blue);
+}
+
+.hamburger.active span {
+background: var(--primary-blue);
+}
+
+.hamburger.active span:nth-child(1) {
+transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.mobile-menu-overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: rgba(10, 10, 10, 0.95);
+backdrop-filter: blur(5px);
+z-index: 999;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+display: block;
+opacity: 1;
+}
+
+.mobile-menu {
+position: fixed;
+top: 0;
+right: -100%;
+width: 85%;
+max-width: 350px;
+height: 100vh;
+background: var(--dark-card);
+border-left: 1px solid var(--primary-blue);
+box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+z-index: 1000;
+transition: right 0.3s ease;
+overflow-y: auto;
+padding: 2rem;
+font-family: 'Poppins', sans-serif;
+}
+
+.mobile-menu.active {
+right: 0;
+}
+
+.mobile-menu-header {
+display: flex;
+align-items: center;
+gap: 1rem;
+padding-bottom: 2rem;
+margin-bottom: 2rem;
+border-bottom: 1px solid var(--dark-border);
+}
+
+.mobile-menu-profile-image {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background: var(--dark-bg);
+border: 2px solid var(--primary-blue);
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 700;
+font-size: 1.2rem;
+color: var(--primary-blue);
+}
+
+.mobile-menu-profile-info .name {
+font-weight: 600;
+font-size: 1rem;
+color: var(--off-white);
+line-height: 1.3;
+}
+
+.mobile-menu-profile-info .title {
+font-size: 0.85rem;
+color: var(--mid-gray);
+line-height: 1.3;
+}
+
+.mobile-menu ul {
+list-style: none;
+padding: 0;
+margin: 0 0 2rem 0;
+}
+
+.mobile-menu ul li {
+border-bottom: 1px solid var(--dark-border);
+}
+
+.mobile-menu ul li:last-child {
+border-bottom: none;
+}
+
+.mobile-menu ul li a {
+display: block;
+padding: 1.25rem 0;
+font-size: 1rem;
+font-weight: 600;
+color: var(--off-white);
+text-decoration: none;
+transition: all 0.3s ease;
+position: relative;
+padding-left: 1.5rem;
+}
+
+.mobile-menu ul li a::before {
+content: '▸';
+position: absolute;
+left: 0;
+color: var(--primary-blue);
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+color: var(--primary-blue);
+padding-left: 2rem;
+}
+
+.mobile-menu ul li a:hover::before {
+opacity: 1;
+}
+
+.mobile-nav-icons {
+display: flex;
+gap: 1rem;
+padding-top: 2rem;
+border-top: 1px solid var(--dark-border);
+}
+
+.mobile-nav-icons .nav-icon {
+width: 44px;
+height: 44px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid var(--dark-border);
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.03);
+transition: all 0.3s ease;
+}
+
+.mobile-nav-icons .nav-icon:hover {
+border-color: var(--primary-blue);
+background: rgba(133, 199, 242, 0.1);
+transform: translateY(-2px);
+}
+
+.mobile-menu-footer {
+margin-top: 2rem;
+padding-top: 2rem;
+border-top: 1px solid var(--dark-border);
+text-align: center;
+}
+
+.mobile-menu-footer p {
+font-size: 0.85rem;
+color: var(--mid-gray);
+}
+
+@media (max-width: 768px) {
+.hamburger {
+display: flex;
+}
+
+nav ul,
+.nav-icons {
+display: none !important;
+}
+
+nav {
+grid-template-columns: 1fr auto;
+}
+}
+/* Project Modal/Popup */
+.project-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+z-index: 10000;
+overflow-y: auto;
+padding: 2rem;
+}
+
+.project-modal.active {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.project-modal-content {
+background: var(--dark-card);
+border: 1px solid var(--dark-border);
+border-radius: 8px;
+max-width: 900px;
+width: 100%;
+max-height: 90vh;
+overflow-y: auto;
+position: relative;
+padding: 3rem;
+}
+
+.project-modal-close {
+position: absolute;
+top: 1.5rem;
+right: 1.5rem;
+width: 40px;
+height: 40px;
+background: rgba(133, 199, 242, 0.1);
+border: 1px solid var(--primary-blue);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+font-size: 1.5rem;
+color: var(--primary-blue);
+transition: all 0.3s ease;
+}
+
+.project-modal-close:hover {
+background: var(--primary-blue);
+color: var(--dark-bg);
+transform: rotate(90deg);
+}
+
+.project-modal-header {
+display: flex;
+gap: 2rem;
+margin-bottom: 2rem;
+padding-bottom: 2rem;
+border-bottom: 1px solid var(--dark-border);
+}
+
+.project-modal-logo {
+width: 80px;
+height: 80px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+font-weight: 700;
+
+flex-shrink: 0;
+}
+
+.project-modal-logo img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+padding: 0.5rem;
+}
+
+.project-modal-info {
+flex: 1;
+}
+
+.project-modal-title {
+font-size: 2rem;
+font-weight: 700;
+color: var(--off-white);
+margin-bottom: 0.5rem;
+}
+
+.project-modal-meta {
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+margin-bottom: 1rem;
+}
+
+.project-modal-meta-item {
+display: flex;
+flex-direction: column;
+gap: 0.25rem;
+}
+
+.project-modal-meta-label {
+font-size: 0.75rem;
+color: var(--mid-gray);
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.project-modal-meta-value {
+font-size: 0.95rem;
+color: var(--off-white);
+}
+
+.project-modal-role {
+color: var(--primary-blue);
+font-weight: 600;
+}
+
+.project-modal-description {
+margin-bottom: 2rem;
+line-height: 1.8;
+color: var(--off-white);
+}
+
+.project-modal-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+margin-bottom: 2rem;
+}
+
+.project-modal-tag {
+padding: 0.5rem 1rem;
+background: rgba(133, 199, 242, 0.1);
+border: 1px solid rgba(133, 199, 242, 0.3);
+color: var(--primary-blue);
+font-size: 0.85rem;
+border-radius: 4px;
+}
+
+.project-modal-buttons {
+display: flex;
+gap: 1rem;
+}
+
+.project-modal-button {
+padding: 0.75rem 2rem;
+background: transparent;
+border: 1px solid var(--primary-blue);
+color: var(--primary-blue);
+text-decoration: none;
+font-weight: 600;
+border-radius: 4px;
+transition: all 0.3s ease;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
 }
 
 .project-modal-button:hover {
-    background: var(--primary-blue);
-    color: var(--dark-bg);
+background: var(--primary-blue);
+color: var(--dark-bg);
 }
 
 .project-modal-button.primary {
-    background: var(--primary-blue);
-    color: var(--dark-bg);
+background: var(--primary-blue);
+color: var(--dark-bg);
 }
 
 .project-modal-button.primary:hover {
-    background: transparent;
-    color: var(--primary-blue);
+background: transparent;
+color: var(--primary-blue);
 }
 
 /* Make project cards clickable */
 .project-card {
-    cursor: pointer;
+cursor: pointer;
 }
-        /* Loading Screen */
+/* Loading Screen */
 .loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--dark-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: var(--dark-bg);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 99999;
+transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .loading-screen.fade-out {
-    opacity: 0;
-    visibility: hidden;
+opacity: 0;
+visibility: hidden;
 }
 
 .loading-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 2rem;
 }
 
 /* Logo container with circle */
 .loading-logo-container {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+position: relative;
+width: 250px;
+height: 250px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 /* SVG Circle */
 .loading-progress-circle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg); /* Start from top (12 o'clock) */
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+transform: rotate(-90deg); /* Start from top (12 o'clock) */
 }
 
 .loading-circle-bg {
-    opacity: 0.3;
+opacity: 0.3;
 }
 
 .loading-circle-progress {
-    stroke-dasharray: 722.566; /* 2 * PI * 115 = circumference */
-    stroke-dashoffset: 722.566; /* Start at 0% (hidden) */
-    transition: stroke-dashoffset 0.1s linear;
-    filter: drop-shadow(0 0 15px rgba(133, 199, 242, 0.6));
+stroke-dasharray: 722.566; /* 2 * PI * 115 = circumference */
+stroke-dashoffset: 722.566; /* Start at 0% (hidden) */
+transition: stroke-dashoffset 0.1s linear;
+filter: drop-shadow(0 0 15px rgba(133, 199, 242, 0.6));
 }
 
 /* Logo in center */
 .loading-logo {
-    position: relative;
-    z-index: 10;
-    width: 140px;
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: logoFadeIn 0.6s ease;
+position: relative;
+z-index: 10;
+width: 140px;
+height: 140px;
+display: flex;
+align-items: center;
+justify-content: center;
+animation: logoFadeIn 0.6s ease;
 }
 
 @keyframes logoFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+from {
+opacity: 0;
+transform: scale(0.8);
+}
+to {
+opacity: 1;
+transform: scale(1);
+}
 }
 
 .loading-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+width: 100%;
+height: 100%;
+object-fit: contain;
 }
 
 /* Percentage text */
 .loading-percentage {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-    font-family: 'Poppins', sans-serif;
-    animation: fadeInUp 0.6s ease 0.2s both;
+font-size: 2rem;
+font-weight: 700;
+color: var(--primary-blue);
+font-family: 'Poppins', sans-serif;
+animation: fadeInUp 0.6s ease 0.2s both;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 /* Loading text */
 .loading-text {
-    font-size: 1rem;
-    color: var(--mid-gray);
-    font-weight: 500;
-    letter-spacing: 1px;
-    animation: pulse 2s ease-in-out infinite;
+font-size: 1rem;
+color: var(--mid-gray);
+font-weight: 500;
+letter-spacing: 1px;
+animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0%, 100% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
+0%, 100% {
+opacity: 0.5;
+}
+50% {
+opacity: 1;
+}
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .loading-logo-container {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .loading-logo {
-        width: 110px;
-        height: 110px;
-    }
-    
-    .loading-percentage {
-        font-size: 1.5rem;
-    }
-}
-    /* Force loading screen to always show on all devices */
-.loading-screen {
-    display: flex !important;
-    z-index: 999999 !important;
+.loading-logo-container {
+width: 200px;
+height: 200px;
 }
 
-.loading-screen.fade-out {
-    display: flex !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
+.loading-logo {
+width: 110px;
+height: 110px;
 }
-    </style>
+
+.loading-percentage {
+font-size: 1.5rem;
+}
+}
+</style>
 </head>
 <body>
-    
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-wrapper">
-            <!-- Logo in center with circle around it -->
-            <div class="loading-logo-container">
-                <svg class="loading-progress-circle" width="250" height="250" viewBox="0 0 250 250">
-                    <!-- Background circle (dark gray) -->
-                    <circle 
-                        class="loading-circle-bg" 
-                        cx="125" 
-                        cy="125" 
-                        r="115"
-                        fill="none"
-                        stroke="rgba(42, 42, 42, 0.3)"
-                        stroke-width="6"
-                    />
-                    <!-- Progress circle (blue) -->
-                    <circle 
-                        class="loading-circle-progress" 
-                        cx="125" 
-                        cy="125" 
-                        r="115"
-                        fill="none"
-                        stroke="#85C7F2"
-                        stroke-width="6"
-                        stroke-linecap="round"
-                    />
-                </svg>
-                
-                <!-- Logo in the center -->
-                <div class="loading-logo">
-                    <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR Logo">
-                </div>
-            </div>
-            
-            <!-- Percentage below -->
-            <div class="loading-percentage">0%</div>
-            
-            <!-- Optional loading text -->
-            <div class="loading-text">Welcome to JohnthePM.com</div>
-            <div class="loading-text">Loading...</div>
-        </div>
-    </div>
+<body>
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+<div class="loading-wrapper">
+<!-- Logo in center with circle around it -->
+<div class="loading-logo-container">
+<svg class="loading-progress-circle" width="250" height="250" viewBox="0 0 250 250">
+<!-- Background circle (dark gray) -->
+<circle 
+class="loading-circle-bg" 
+cx="125" 
+cy="125" 
+r="115"
+fill="none"
+stroke="rgba(42, 42, 42, 0.3)"
+stroke-width="6"
+/>
+<!-- Progress circle (blue) -->
+<circle 
+class="loading-circle-progress" 
+cx="125" 
+cy="125" 
+r="115"
+fill="none"
+stroke="#85C7F2"
+stroke-width="6"
+stroke-linecap="round"
+/>
+</svg>
 
-    <!-- Your page content starts here -->
-    <!-- Header -->
-       <header>
-        <nav>
-            <div class="nav-profile">
-                               <a href="/index" class="nav-profile-image">
-  <img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JR">
+<!-- Logo in the center -->
+<div class="loading-logo">
+<img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JDR Logo">
+</div>
+</div>
+
+<!-- Percentage below -->
+<div class="loading-percentage">0%</div>
+
+<!-- Optional loading text -->
+<div class="loading-text">Welcome to JohnthePM.com</div>
+<div class="loading-text">Loading...</div>
+</div>
+</div>
+
+<!-- Your page content starts here -->
+<header>
+<!-- ... -->
+</header>
+<!-- Header -->
+<header>
+<nav>
+<div class="nav-profile">
+<a href="/index" class="nav-profile-image">
+<img src="https://www.johnthepm.com/images/nav/jdr-logo.png" alt="JR">
 </a>
-                <div class="nav-info">
-                    <div class="name">John D. Robbins</div>
-                    <div class="title">Project Manager</div>
-                </div>
-            </div>
-            <ul>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/work-history">Work History</a></li>
-                <li><a href="/art-design">Design</a></li>
-                <li><a href="/audio">Audio</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-            <div class="nav-icons">
-                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="resume.pdf" download class="nav-icon" title="Download Resume">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                                </a>
-            </div>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-        
-    </header>
-
-
-
+<div class="nav-info">
+<div class="name">John D. Robbins</div>
+<div class="title">Project Manager</div>
+</div>
+</div>
+<ul>
+<li><a href="/projects">Projects</a></li>
+<li><a href="/work-history">Work History</a></li>
+<li><a href="/art-design">Design</a></li>
+<li><a href="/audio">Audio</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+<div class="nav-icons">
+<a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+<rect x="2" y="9" width="4" height="12"></rect>
+<circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+<a href="resume.pdf" download class="nav-icon" title="Download Resume">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+<polyline points="7 10 12 15 17 10"></polyline>
+<line x1="12" y1="15" x2="12" y2="3"></line>
+</svg>
+</a>
+</div>
+<!-- Add this button after .nav-icons -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header">
-        <div class="mobile-menu-profile-image">JR</div>
-        <div class="mobile-menu-profile-info">
-            <div class="name">John D. Robbins</div>
-            <div class="title">Project Manager</div>
-        </div>
-    </div>
-
-    <ul>
-        <li><a href="/index">Home</a></li>
-        <li><a href="/work-history">Work History</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/art-design">Design</a></li>
-        <li><a href="/audio">Audio</a></li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-
-    <div class="mobile-nav-icons">
-        <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-        </a>
-        <a href="resume.pdf" download class="nav-icon" title="Download Resume">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-        </a>
-    </div>
-
-    <div class="mobile-menu-footer">
-        <p>Holly Ridge, NC</p>
-        <p style="color: var(--primary-blue); margin-top: 0.5rem;">johndrobbins83@gmail.com</p>
-    </div>
+<div class="mobile-menu-header">
+<div class="mobile-menu-profile-image">JR</div>
+<div class="mobile-menu-profile-info">
+<div class="name">John D. Robbins</div>
+<div class="title">Project Manager</div>
 </div>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>
-                    John D. Robbins
-                    <span>Project Manager</span>
-                </h1>
-                <p class="subtitle">Marketing & Web Development</p>
-                <p class="summary">
-                    Results-driven Project Manager with 15+ years of experience leading cross-functional teams in web development, digital marketing, and creative production. Expert in bridging technical and business requirements while delivering exceptional results on time and under budget.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                 <img src="https://www.johnthepm.com/images/homepage/profile-picture.jpg" alt="John D. Robbins">
-            </div>
-        </div>
-    </section>
+</div>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="projects-container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <a href="#" class="view-all">View All →</a>
-            </div>
+<ul>
+<li><a href="/index">Home</a></li>
+<li><a href="/work-history">Work History</a></li>
+<li><a href="/projects">Projects</a></li>
+<li><a href="/art-design">Design</a></li>
+<li><a href="/audio">Audio</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
 
-            <!-- Development Projects -->
-            <div class="category-section">
-                <h3 class="category-title">Development</h3>
-                <div class="projects-grid">
-                    <div class="project-card" data-project="540">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/projects/540-logo.png" alt="540.co Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">540</div>
-                        </div>
-                        <h3>540.co</h3>
-                        <p class="project-role">Project Manager, Co-Developer</p>
-                        <p class="project-description">Full-scale web development and project coordination for modern digital solution.</p>
-                    </div>
-                    <div class="project-card" data-project="wilmington-marine">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/homepage/logo-2.png" alt="Wilmington Marine Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">WM</div>
-                        </div>
-                        <h3>Wilmington Marine</h3>
-                        <p class="project-role">Project Manager, Co-Developer</p>
-                        <p class="project-description">Comprehensive marine services website with custom functionality and user experience.</p>
-                    </div>
-                    <div class="project-card" data-project="fozzie-miller">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/projects/fmg-logo.png" alt="FMG Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">FMG</div>
-                        </div>
-                        <h3>Fozzie Miller Group</h3>
-                        <p class="project-role">Project Manager, Developer</p>
-                        <p class="project-description">Project Management, Website development, Update, and Maintainence</p>
-                    </div>
-                    <div class="project-card" data-project="jungle-rapids">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/homepage/logo-4.png" alt="Jungle Rapids Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">JR</div>
-                        </div>
-                        <h3>Jungle Rapids</h3>
-                        <p class="project-role">Project Management</p>
-                        <p class="project-description">Project coordination for family entertainment venue digital presence.</p>
-                    </div>
-                </div>
-            </div>
+<div class="mobile-nav-icons">
+<a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank" class="nav-icon" title="LinkedIn">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+<rect x="2" y="9" width="4" height="12"></rect>
+<circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+<a href="resume.pdf" download class="nav-icon" title="Download Resume">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+<polyline points="7 10 12 15 17 10"></polyline>
+<line x1="12" y1="15" x2="12" y2="3"></line>
+</svg>
+</a>
+</div>
 
-            <!-- Marketing Projects -->
-            <div class="category-section">
-                <h3 class="category-title">Marketing</h3>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/projects/mhcj-logo.png" alt="Marblehead Custom Jewelry Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">MC</div>
-                        </div>
-                        <h3><a href="https://www.marbleheadcustomjewelry.com" target="_blank">Marblehead Custom Jewelry</a></h3>
-                        <p class="project-role">Marketing Manager, Advertising</p>
-                        <p class="project-description">Comprehensive digital marketing strategy including Google Ads, Meta campaigns, and custom interactive jewelry creator tool.</p>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/projects/logo-7.png" alt="Glory Foods Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">GF</div>
-                        </div>
-                        <h3>Glory Foods</h3>
-                        <p class="project-role">Marketing Project Manager</p>
-                        <p class="project-description">National campaign partnering with gospel choirs for authentic brand storytelling and community engagement.</p>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/projects/logo-8.png" alt="Peanut Patch Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">PP</div>
-                        </div>
-                        <h3>Peanut Patch</h3>
-                        <p class="project-role">Marketing Project Manager</p>
-                        <p class="project-description">Television commercial production and integrated social media campaign management.</p>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-logo">
-                            <img src="https://www.johnthepm.com/images/projects/dml-logo.png" alt="Jungle Rapids Marketing Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-logo-text" style="display:none;">JR</div>
-                        </div>
-                        <h3>Dan McCrorie Law</h3>
-                        <p class="project-role">Marketing/Development Project Management</p>
-                        <p class="project-description">Developed an SEO optimized website followed up by a specialized blog campaign optimized</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="mobile-menu-footer">
+<p>Holly Ridge, NC</p>
+<p style="color: var(--primary-blue); margin-top: 0.5rem;">johndrobbins83@gmail.com</p>
+</div>
+</div>
+</header>
 
-    <!-- Work History & Summary -->
-    <section class="work-summary" id="work">
-        <div class="work-summary-container">
-            <div class="summary-text">
-                <h2>Professional Experience</h2>
-                <p>
-                    With over 15 years of experience spanning web development, digital marketing, and creative production, I've built a career on delivering exceptional results through strategic project management and technical excellence.
-                </p>
-                <p>
-                    My unique background combines hands-on development expertise with comprehensive marketing strategy, allowing me to bridge the gap between technical teams and business objectives effectively.
-                </p>
-                <p>
-                    From managing multi-brand national campaigns to developing custom web applications, I bring a solutions-focused approach to every project, ensuring deliverables exceed client expectations while maintaining profitability and timeline commitments.
-                </p>
-            </div>
-            <div class="work-history">
-                <h3>Work History</h3>
-                <div class="job">
-                    <h4>Development and Marketing Project Manager</h4>
-                    <p class="company">Bluetone Media</p>
-                    <p class="date">January 2025 – Present</p>
-                </div>
-                <div class="job">
-                    <h4>Part-Time Marketing Advertiser & Webmaster</h4>
-                    <p class="company">Marblehead Custom Jewelry</p>
-                    <p class="date">March 2025 – Present</p>
-                </div>
-                <div class="job">
-                    <h4>Marketing Project Manager</h4>
-                    <p class="company">Coyne & Co Advertising / McCall Farms</p>
-                    <p class="date">December 2020 – June 2025</p>
-                </div>
-                <div class="job">
-                    <h4>Professional Music Producer</h4>
-                    <p class="company">Independent</p>
-                    <p class="date">September 2009 – December 2020</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+<div class="hero-text">
+<h1>
+John D. Robbins
+<span>Project Manager</span>
+</h1>
+<p class="subtitle">Marketing & Web Development</p>
+<p class="summary">
+Results-driven Project Manager with 15+ years of experience leading cross-functional teams in web development, digital marketing, and creative production. Expert in bridging technical and business requirements while delivering exceptional results on time and under budget.
+</p>
+<div class="cta-buttons">
+<a href="#projects" class="btn btn-primary">View Projects</a>
+<a href="/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+</div>
+</div>
+<div class="hero-image">
+<img src="https://www.johnthepm.com/images/homepage/profile-picture.jpg" alt="John D. Robbins">
+</div>
+</div>
+</section>
 
-    <!-- Other Sections Preview -->
-    <section class="other-sections">
-        <div class="other-sections-container">
-            <div class="section-header">
-                <h2>More to Explore</h2>
-            </div>
-            <div class="sections-grid">
-                <a href="web-development.html" class="section-preview">
-                    <div class="section-icon-image">
-                        <img src="https://www.johnthepm.com/images/homepage/icon-1.png" alt="Web Development">
-                        <!-- If no image yet, you'll see the placeholder emoji below -->
-                        <div class="section-icon-fallback">💻</div>
-                    </div>
-                    <h3>Web Development</h3>
-                    <p>Full-stack development projects and custom solutions</p>
-                </a>
-                <a href="/art-design" class="section-preview">
-                    <div class="section-icon-image">
-                        <img src="https://www.johnthepm.com/images/homepage/icon-2.png" alt="Art & Design">
-                        <div class="section-icon-fallback">🎨</div>
-                    </div>
-                    <h3>Art & Design</h3>
-                    <p>Creative design work across digital and print media</p>
-                </a>
-                <a href="/audio" class="section-preview">
-                    <div class="section-icon-image">
-                        <img src="https://www.johnthepm.com/images/homepage/icon-3.png" alt="Music & Audio">
-                        <div class="section-icon-fallback">🎵</div>
-                    </div>
-                    <h3>Music & Audio</h3>
-                    <p>Professional production, engineering, and composition</p>
-                </a>
-                <a href="/audio#podcasts" class="section-preview">
-                    <div class="section-icon-image">
-                        <img src="https://www.johnthepm.com/images/homepage/icon-4.png" alt="Podcasts">
-                        <div class="section-icon-fallback">🎙️</div>
-                    </div>
-                    <h3>Podcasts</h3>
-                    <p>Audio content creation and production projects</p>
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- Projects Section -->
+<section class="projects" id="projects">
+<div class="projects-container">
+<div class="section-header">
+<h2>Featured Projects</h2>
+<a href="#" class="view-all">View All →</a>
+</div>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <h2>Contact Me</h2>
-            <form class="contact-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="reason">Reason for Contact</label>
-                    <select id="reason" name="reason">
-                        <option value="">Select a reason</option>
-                        <option value="employment">Employment</option>
-                        <option value="project">Project Management</option>
-                        <option value="design">Design</option>
-                        <option value="development">Web Development</option>
-                        <option value="audio">Audio</option>
-                        <option value="video">Video</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+<!-- Development Projects -->
+<div class="category-section">
+<h3 class="category-title">Development</h3>
+<div class="projects-grid">
+<div class="project-card" data-project="540">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/projects/540-logo.png" alt="540.co Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">540</div>
+</div>
+<h3>540.co</h3>
+<p class="project-role">Project Manager, Co-Developer</p>
+<p class="project-description">Full-scale web development and project coordination for modern digital solution.</p>
+</div>
+<div class="project-card" data-project="wilmington-marine">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/homepage/logo-2.png" alt="Wilmington Marine Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">WM</div>
+</div>
+<h3>Wilmington Marine</h3>
+<p class="project-role">Project Manager, Co-Developer</p>
+<p class="project-description">Comprehensive marine services website with custom functionality and user experience.</p>
+</div>
+<div class="project-card" data-project="fozzie-miller">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/projects/fmg-logo.png" alt="FMG Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">FMG</div>
+</div>
+<h3>Fozzie Miller Group</h3>
+<p class="project-role">Project Manager, Developer</p>
+<p class="project-description">Project Management, Website development, Update, and Maintainence</p>
+</div>
+<div class="project-card" data-project="jungle-rapids">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/homepage/logo-4.png" alt="Jungle Rapids Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">JR</div>
+</div>
+<h3>Jungle Rapids</h3>
+<p class="project-role">Project Management</p>
+<p class="project-description">Project coordination for family entertainment venue digital presence.</p>
+</div>
+</div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">John D. Robbins</div>
-            <div class="footer-contact">
-                <a href="/cdn-cgi/l/email-protection#1a707572747e6875787873746922295a7d777b737634797577"><span class="__cf_email__" data-cfemail="b2d8dddadcd6c0ddd0d0dbdcc18a81f2d5dfd3dbde9cd1dddf">[email&#160;protected]</span></a> | Holly Ridge, NC
-            </div>
-            <div class="footer-links">
-                <a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
-                <a href="/resume.pdf" download>Resume</a>
-            </div>
-            <p class="copyright">&copy; 2026 John D. Robbins. All rights reserved.</p>
-        </div>
-    </footer>
+<!-- Marketing Projects -->
+<div class="category-section">
+<h3 class="category-title">Marketing</h3>
+<div class="projects-grid">
+<div class="project-card">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/projects/mhcj-logo.png" alt="Marblehead Custom Jewelry Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">MC</div>
+</div>
+<h3><a href="https://www.marbleheadcustomjewelry.com" target="_blank">Marblehead Custom Jewelry</a></h3>
+<p class="project-role">Marketing Manager, Advertising</p>
+<p class="project-description">Comprehensive digital marketing strategy including Google Ads, Meta campaigns, and custom interactive jewelry creator tool.</p>
+</div>
+<div class="project-card">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/projects/logo-7.png" alt="Glory Foods Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">GF</div>
+</div>
+<h3>Glory Foods</h3>
+<p class="project-role">Marketing Project Manager</p>
+<p class="project-description">National campaign partnering with gospel choirs for authentic brand storytelling and community engagement.</p>
+</div>
+<div class="project-card">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/projects/logo-8.png" alt="Peanut Patch Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">PP</div>
+</div>
+<h3>Peanut Patch</h3>
+<p class="project-role">Marketing Project Manager</p>
+<p class="project-description">Television commercial production and integrated social media campaign management.</p>
+</div>
+<div class="project-card">
+<div class="project-logo">
+<img src="https://www.johnthepm.com/images/projects/dml-logo.png" alt="Jungle Rapids Marketing Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="project-logo-text" style="display:none;">JR</div>
+</div>
+<h3>Dan McCrorie Law</h3>
+<p class="project-role">Marketing/Development Project Management</p>
+<p class="project-description">Developed an SEO optimized website followed up by a specialized blog campaign optimized</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-    <script>
+<!-- Work History & Summary -->
+<section class="work-summary" id="work">
+<div class="work-summary-container">
+<div class="summary-text">
+<h2>Professional Experience</h2>
+<p>
+With over 15 years of experience spanning web development, digital marketing, and creative production, I've built a career on delivering exceptional results through strategic project management and technical excellence.
+</p>
+<p>
+My unique background combines hands-on development expertise with comprehensive marketing strategy, allowing me to bridge the gap between technical teams and business objectives effectively.
+</p>
+<p>
+From managing multi-brand national campaigns to developing custom web applications, I bring a solutions-focused approach to every project, ensuring deliverables exceed client expectations while maintaining profitability and timeline commitments.
+</p>
+</div>
+<div class="work-history">
+<h3>Work History</h3>
+<div class="job">
+<h4>Development and Marketing Project Manager</h4>
+<p class="company">Bluetone Media</p>
+<p class="date">January 2025 – Present</p>
+</div>
+<div class="job">
+<h4>Part-Time Marketing Advertiser & Webmaster</h4>
+<p class="company">Marblehead Custom Jewelry</p>
+<p class="date">March 2025 – Present</p>
+</div>
+<div class="job">
+<h4>Marketing Project Manager</h4>
+<p class="company">Coyne & Co Advertising / McCall Farms</p>
+<p class="date">December 2020 – June 2025</p>
+</div>
+<div class="job">
+<h4>Professional Music Producer</h4>
+<p class="company">Independent</p>
+<p class="date">September 2009 – December 2020</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Other Sections Preview -->
+<section class="other-sections">
+<div class="other-sections-container">
+<div class="section-header">
+<h2>More to Explore</h2>
+</div>
+<div class="sections-grid">
+<a href="web-development.html" class="section-preview">
+<div class="section-icon-image">
+<img src="https://www.johnthepm.com/images/homepage/icon-1.png" alt="Web Development">
+<!-- If no image yet, you'll see the placeholder emoji below -->
+<div class="section-icon-fallback">💻</div>
+</div>
+<h3>Web Development</h3>
+<p>Full-stack development projects and custom solutions</p>
+</a>
+<a href="/art-design" class="section-preview">
+<div class="section-icon-image">
+<img src="https://www.johnthepm.com/images/homepage/icon-2.png" alt="Art & Design">
+<div class="section-icon-fallback">🎨</div>
+</div>
+<h3>Art & Design</h3>
+<p>Creative design work across digital and print media</p>
+</a>
+<a href="/audio" class="section-preview">
+<div class="section-icon-image">
+<img src="https://www.johnthepm.com/images/homepage/icon-3.png" alt="Music & Audio">
+<div class="section-icon-fallback">🎵</div>
+</div>
+<h3>Music & Audio</h3>
+<p>Professional production, engineering, and composition</p>
+</a>
+<a href="/audio#podcasts" class="section-preview">
+<div class="section-icon-image">
+<img src="https://www.johnthepm.com/images/homepage/icon-4.png" alt="Podcasts">
+<div class="section-icon-fallback">🎙️</div>
+</div>
+<h3>Podcasts</h3>
+<p>Audio content creation and production projects</p>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+<div class="contact-container">
+<h2>Contact Me</h2>
+<form class="contact-form">
+<div class="form-row">
+<div class="form-group">
+<label for="name">Name *</label>
+<input type="text" id="name" name="name" required>
+</div>
+<div class="form-group">
+<label for="email">Email *</label>
+<input type="email" id="email" name="email" required>
+</div>
+</div>
+<div class="form-group">
+<label for="phone">Phone</label>
+<input type="tel" id="phone" name="phone">
+</div>
+<div class="form-group">
+<label for="reason">Reason for Contact</label>
+<select id="reason" name="reason">
+<option value="">Select a reason</option>
+<option value="employment">Employment</option>
+<option value="project">Project Management</option>
+<option value="design">Design</option>
+<option value="development">Web Development</option>
+<option value="audio">Audio</option>
+<option value="video">Video</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group">
+<label for="message">Message *</label>
+<textarea id="message" name="message" required></textarea>
+</div>
+<button type="submit">Send Message</button>
+</form>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+<div class="footer-logo">John D. Robbins</div>
+<div class="footer-contact">
+<a href="/cdn-cgi/l/email-protection#1a707572747e6875787873746922295a7d777b737634797577"><span class="__cf_email__" data-cfemail="b2d8dddadcd6c0ddd0d0dbdcc18a81f2d5dfd3dbde9cd1dddf">[email&#160;protected]</span></a> | Holly Ridge, NC
+</div>
+<div class="footer-links">
+<a href="https://linkedin.com/in/john-robbins-9372b9187" target="_blank">LinkedIn</a>
+<a href="/resume.pdf" download>Resume</a>
+</div>
+<p class="copyright">&copy; 2026 John D. Robbins. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
 });
 
 // Form submission handler
 document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Form submission functionality to be implemented. This will connect to your backend service.');
+e.preventDefault();
+alert('Form submission functionality to be implemented. This will connect to your backend service.');
 });
-        // Hamburger menu functionality
+// Hamburger menu functionality
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
 function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    mobileMenuOverlay.classList.toggle('active');
-    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
+hamburger.classList.toggle('active');
+mobileMenu.classList.toggle('active');
+mobileMenuOverlay.classList.toggle('active');
+document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : 'auto';
 }
 
 if (hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
+hamburger.addEventListener('click', toggleMenu);
 }
 
 if (mobileMenuOverlay) {
-    mobileMenuOverlay.addEventListener('click', toggleMenu);
+mobileMenuOverlay.addEventListener('click', toggleMenu);
 }
 
 // Close menu when clicking a link
 document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (mobileMenu && mobileMenu.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+link.addEventListener('click', () => {
+if (mobileMenu && mobileMenu.classList.contains('active')) {
+toggleMenu();
+}
+});
 });
 
 // Close menu on escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
-        toggleMenu();
-    }
+if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+toggleMenu();
+}
 });
-    </script>
-    <!-- Project Modal -->
+</script>
+<!-- Project Modal -->
 <div class="project-modal" id="projectModal">
-    <div class="project-modal-content">
-        <div class="project-modal-close" onclick="closeProjectModal()">×</div>
-        
-        <div class="project-modal-header">
-            <div class="project-modal-logo" id="modalLogo">
-                <!-- Logo will be inserted here -->
-            </div>
-            <div class="project-modal-info">
-                <h2 class="project-modal-title" id="modalTitle"></h2>
-                <div class="project-modal-meta">
-                    <div class="project-modal-meta-item">
-                        <span class="project-modal-meta-label">Dates</span>
-                        <span class="project-modal-meta-value" id="modalDates"></span>
-                    </div>
-                    <div class="project-modal-meta-item">
-                        <span class="project-modal-meta-label">Role</span>
-                        <span class="project-modal-meta-value project-modal-role" id="modalRole"></span>
-                    </div>
-                    <div class="project-modal-meta-item">
-                        <span class="project-modal-meta-label">Platform</span>
-                        <span class="project-modal-meta-value" id="modalPlatform"></span>
-                    </div>
-                    <div class="project-modal-meta-item">
-                        <span class="project-modal-meta-label">Type</span>
-                        <span class="project-modal-meta-value" id="modalType"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <p class="project-modal-description" id="modalDescription"></p>
-        
-        <div class="project-modal-tags" id="modalTags"></div>
-        
-        <div class="project-modal-buttons" id="modalButtons"></div>
-    </div>
+<div class="project-modal-content">
+<div class="project-modal-close" onclick="closeProjectModal()">×</div>
+
+<div class="project-modal-header">
+<div class="project-modal-logo" id="modalLogo">
+<!-- Logo will be inserted here -->
 </div>
-    <script>
+<div class="project-modal-info">
+<h2 class="project-modal-title" id="modalTitle"></h2>
+<div class="project-modal-meta">
+<div class="project-modal-meta-item">
+<span class="project-modal-meta-label">Dates</span>
+<span class="project-modal-meta-value" id="modalDates"></span>
+</div>
+<div class="project-modal-meta-item">
+<span class="project-modal-meta-label">Role</span>
+<span class="project-modal-meta-value project-modal-role" id="modalRole"></span>
+</div>
+<div class="project-modal-meta-item">
+<span class="project-modal-meta-label">Platform</span>
+<span class="project-modal-meta-value" id="modalPlatform"></span>
+</div>
+<div class="project-modal-meta-item">
+<span class="project-modal-meta-label">Type</span>
+<span class="project-modal-meta-value" id="modalType"></span>
+</div>
+</div>
+</div>
+</div>
+
+<p class="project-modal-description" id="modalDescription"></p>
+
+<div class="project-modal-tags" id="modalTags"></div>
+
+<div class="project-modal-buttons" id="modalButtons"></div>
+</div>
+</div>
+<script>
 // Project data with full details
 const projectData = {
-    'marblehead': {
-        title: 'Marblehead Custom Jewelry',
-        dates: 'May 2025 - Current',
-        role: 'Project Manager, Webmaster, Marketing Manager',
-        platform: 'WordPress (DiVi Containers)',
-        type: 'Full Site + Web Tool',
-        description: 'Comprehensive digital marketing strategy including Google Ads, Meta campaigns, and custom interactive jewelry creator tool. Oversaw the creation of this website, manage the digital marketing for the site as well as create the landing pages.',
-        tags: ['HTML/CSS/JS', 'Divi', 'Google Sheets', 'Google Ads', 'Meta Ads'],
-        buttons: [
-            { text: '🖼️ View Gallery', href: '#', type: 'secondary' },
-            { text: 'Visit Site →', href: 'https://marbleheadcustomjewelry.com', type: 'primary' }
-        ],
-        logo: 'https://www.johnthepm.com/images/projects/mhcj-logo.png',
-        logoText: 'Ma'
-    },
-    '540': {
-        title: '540.co',
-        dates: 'March 2025 - August 2025',
-        role: 'Project Manager, Developer',
-        platform: 'Custom Platform (Bluetone Media Proprietary',
-        type: 'Full Custom Website',
-        description: 'Built a comprehensive website for 540 Company, a securities firm. Project included animations, video animation and editing, Full build with HTML/CSS/JS',
-        tags: ['BTM Proprietary', 'BTM', 'HTML/CSS/JS', 'premiere', 'photoshop'],
-        buttons: [
-            { text: 'Visit Site →', href: 'https://540.co', type: 'primary' }
-        ],
-        logo: 'https://www.johnthepm.com/images/projects/540-logo.png',
-        logoText: '540'
-    },
-    'wilmington-marine': {
-        title: 'Wilmington Marine',
-        dates: 'April 2025 - May 2025',
-        role: 'Project Manager, Co-Developer',
-        platform: 'Bluetone Media Proprietary',
-        type: 'Full Website',
-        description: 'Created an updated, modern website for Wilmington Marine Center showcasing their dock and bnoat services. Photos were taken on site.',
-        tags: ['HTML/CSS/JS', 'BTM CMS', 'Photoshop', 'Photography',],
-        buttons: [
-            { text: 'Visit Site →', href: 'https://wilmingtonmarine.com', type: 'primary' }
-        ],
-        logo: 'https://www.johnthepm.com/images/homepage/logo-2.png',
-        logoText: 'Wilmington Marine'
-    },
-    'fozzie-miller': {
-        title: 'Fozzie Miller Group',
-        dates: 'Jan 2025 - Current',
-        role: 'Project Manager, Co-Developer',
-        platform: 'BTM Proprietary',
-        type: 'Full Website and Maintenance',
-        description: 'Took on a site that was previously built on BTM, fully updated and fixed numerous bugs. Point of contact for revisions and additions',
-        tags: ['HTML/CSS/JS', 'BTM CMS'],
-        buttons: [
-            { text: 'Visit Site →', href: 'https://fozziemiller.com', type: 'primary' }
-        ],
-        logo: 'https://www.johnthepm.com/images/projects/fmg-logo.png',
-        logoText: '540'
-    },
-        'jungle-rapids': {
-        title: 'Jungle Rapids',
-        dates: 'January 2024 - Current',
-        role: 'Project Manager, Marketing Project Manager',
-        platform: 'Bluetone Media Proprietary',
-        type: 'Full Website, SEO Marketing',
-        description: 'Mangaged the creation of a new website build for Jungle Rapids Fun Park, managed the SEO auditing and marketing',
-        tags: ['HTML/CSS/JS', 'BTM CMS', 'SEMRush'],
-        buttons: [
-            { text: 'Visit Site →', href: 'https://junglerapids.com', type: 'primary' }
-        ],
-        logo: 'https://www.johnthepm.com/images/homepage/logo-4.png',
-        logoText: 'Glory'
-        },
-        'glory-foods': {
-        logo: 'images/logos/glory-foods-logo.jpg',
-        logoText: 'GF',
-        title: 'Glory Foods',
-        dates: 'Add Your Dates',
-        role: 'Add Your Role',
-        platform: 'WordPress',
-        type: 'Food Industry',
-        description: 'Add your project description here. What did you do for this client?',
-        tags: ['WordPress', 'Web Development', 'Food Industry'],
-        galleryLink: '#',
-        visitLink: 'https://www.gloryfoods.com'
-    },
-        'peanut-patch': {
-        logo: 'images/logos/peanut-patch-logo.jpg',
-        logoText: 'PP',
-        title: 'Peanut Patch',
-        dates: 'Add Your Dates',
-        role: 'Add Your Role',
-        platform: 'WordPress',
-        type: 'E-commerce',
-        description: 'Add your project description here. What did you do for this client?',
-        tags: ['WordPress', 'E-commerce', 'Food Industry'],
-        galleryLink: '#',
-        visitLink: 'https://www.peanutpatchboiledpeanuts.com'
-    },
-        'jungle-rapids-marketing': {
-        logo: 'images/logos/jungle-rapids-marketing-logo.jpg',
-        logoText: 'JR',
-        title: 'Jungle Rapids Marketing',
-        dates: 'Add Your Dates',
-        role: 'Add Your Role',
-        platform: 'Custom',
-        type: 'Marketing Campaign',
-        description: 'Add your project description here. What did you do for this client?',
-        tags: ['Marketing', 'Campaign Management', 'Digital Marketing'],
-        galleryLink: '#',
-        visitLink: 'https://www.junglerapids.com'
-    },
-    'coastal': {
-        title: 'Coastal Collision',
-        dates: 'March 2023 - December 2023',
-        role: 'Web Developer, Marketing Manager',
-        platform: 'WordPress',
-        type: 'Business Website',
-        description: 'Complete website redesign and digital marketing campaign for auto body shop. Implemented online booking system and customer portal.',
-        tags: ['WordPress', 'Google Ads', 'SEO', 'Booking System'],
-        buttons: [
-            { text: 'Visit Site →', href: '#', type: 'primary' }
-        ],
-        logo: 'images/logos/coastal-logo.jpg',
-        logoText: 'CC'
-    },
-    // Add more projects here...
+'marblehead': {
+title: 'Marblehead Custom Jewelry',
+dates: 'May 2025 - Current',
+role: 'Project Manager, Webmaster, Marketing Manager',
+platform: 'WordPress (DiVi Containers)',
+type: 'Full Site + Web Tool',
+description: 'Comprehensive digital marketing strategy including Google Ads, Meta campaigns, and custom interactive jewelry creator tool. Oversaw the creation of this website, manage the digital marketing for the site as well as create the landing pages.',
+tags: ['HTML/CSS/JS', 'Divi', 'Google Sheets', 'Google Ads', 'Meta Ads'],
+buttons: [
+{ text: '🖼️ View Gallery', href: '#', type: 'secondary' },
+{ text: 'Visit Site →', href: 'https://marbleheadcustomjewelry.com', type: 'primary' }
+],
+logo: 'https://www.johnthepm.com/images/projects/mhcj-logo.png',
+logoText: 'Ma'
+},
+'540': {
+title: '540.co',
+dates: 'March 2025 - August 2025',
+role: 'Project Manager, Developer',
+platform: 'Custom Platform (Bluetone Media Proprietary',
+type: 'Full Custom Website',
+description: 'Built a comprehensive website for 540 Company, a securities firm. Project included animations, video animation and editing, Full build with HTML/CSS/JS',
+tags: ['BTM Proprietary', 'BTM', 'HTML/CSS/JS', 'premiere', 'photoshop'],
+buttons: [
+{ text: 'Visit Site →', href: 'https://540.co', type: 'primary' }
+],
+logo: 'https://www.johnthepm.com/images/projects/540-logo.png',
+logoText: '540'
+},
+'wilmington-marine': {
+title: 'Wilmington Marine',
+dates: 'April 2025 - May 2025',
+role: 'Project Manager, Co-Developer',
+platform: 'Bluetone Media Proprietary',
+type: 'Full Website',
+description: 'Created an updated, modern website for Wilmington Marine Center showcasing their dock and bnoat services. Photos were taken on site.',
+tags: ['HTML/CSS/JS', 'BTM CMS', 'Photoshop', 'Photography',],
+buttons: [
+{ text: 'Visit Site →', href: 'https://wilmingtonmarine.com', type: 'primary' }
+],
+logo: 'https://www.johnthepm.com/images/homepage/logo-2.png',
+logoText: 'Wilmington Marine'
+},
+'fozzie-miller': {
+title: 'Fozzie Miller Group',
+dates: 'Jan 2025 - Current',
+role: 'Project Manager, Co-Developer',
+platform: 'BTM Proprietary',
+type: 'Full Website and Maintenance',
+description: 'Took on a site that was previously built on BTM, fully updated and fixed numerous bugs. Point of contact for revisions and additions',
+tags: ['HTML/CSS/JS', 'BTM CMS'],
+buttons: [
+{ text: 'Visit Site →', href: 'https://fozziemiller.com', type: 'primary' }
+],
+logo: 'https://www.johnthepm.com/images/projects/fmg-logo.png',
+logoText: '540'
+},
+'jungle-rapids': {
+title: 'Jungle Rapids',
+dates: 'January 2024 - Current',
+role: 'Project Manager, Marketing Project Manager',
+platform: 'Bluetone Media Proprietary',
+type: 'Full Website, SEO Marketing',
+description: 'Mangaged the creation of a new website build for Jungle Rapids Fun Park, managed the SEO auditing and marketing',
+tags: ['HTML/CSS/JS', 'BTM CMS', 'SEMRush'],
+buttons: [
+{ text: 'Visit Site →', href: 'https://junglerapids.com', type: 'primary' }
+],
+logo: 'https://www.johnthepm.com/images/homepage/logo-4.png',
+logoText: 'Glory'
+},
+'glory-foods': {
+logo: 'images/logos/glory-foods-logo.jpg',
+logoText: 'GF',
+title: 'Glory Foods',
+dates: 'Add Your Dates',
+role: 'Add Your Role',
+platform: 'WordPress',
+type: 'Food Industry',
+description: 'Add your project description here. What did you do for this client?',
+tags: ['WordPress', 'Web Development', 'Food Industry'],
+galleryLink: '#',
+visitLink: 'https://www.gloryfoods.com'
+},
+'peanut-patch': {
+logo: 'images/logos/peanut-patch-logo.jpg',
+logoText: 'PP',
+title: 'Peanut Patch',
+dates: 'Add Your Dates',
+role: 'Add Your Role',
+platform: 'WordPress',
+type: 'E-commerce',
+description: 'Add your project description here. What did you do for this client?',
+tags: ['WordPress', 'E-commerce', 'Food Industry'],
+galleryLink: '#',
+visitLink: 'https://www.peanutpatchboiledpeanuts.com'
+},
+'jungle-rapids-marketing': {
+logo: 'images/logos/jungle-rapids-marketing-logo.jpg',
+logoText: 'JR',
+title: 'Jungle Rapids Marketing',
+dates: 'Add Your Dates',
+role: 'Add Your Role',
+platform: 'Custom',
+type: 'Marketing Campaign',
+description: 'Add your project description here. What did you do for this client?',
+tags: ['Marketing', 'Campaign Management', 'Digital Marketing'],
+galleryLink: '#',
+visitLink: 'https://www.junglerapids.com'
+},
+'coastal': {
+title: 'Coastal Collision',
+dates: 'March 2023 - December 2023',
+role: 'Web Developer, Marketing Manager',
+platform: 'WordPress',
+type: 'Business Website',
+description: 'Complete website redesign and digital marketing campaign for auto body shop. Implemented online booking system and customer portal.',
+tags: ['WordPress', 'Google Ads', 'SEO', 'Booking System'],
+buttons: [
+{ text: 'Visit Site →', href: '#', type: 'primary' }
+],
+logo: 'images/logos/coastal-logo.jpg',
+logoText: 'CC'
+},
+// Add more projects here...
 };
 
 // Open project modal
 function openProjectModal(projectKey) {
-    const project = projectData[projectKey];
-    if (!project) return;
-    
-    const modal = document.getElementById('projectModal');
-    
-    // Set logo
-    const logoEl = document.getElementById('modalLogo');
-    if (project.logo) {
-        logoEl.innerHTML = `<img src="${project.logo}" alt="${project.title}">`;
-    } else {
-        logoEl.textContent = project.logoText;
-    }
-    
-    // Set text content
-    document.getElementById('modalTitle').textContent = project.title;
-    document.getElementById('modalDates').textContent = project.dates;
-    document.getElementById('modalRole').textContent = project.role;
-    document.getElementById('modalPlatform').textContent = project.platform;
-    document.getElementById('modalType').textContent = project.type;
-    document.getElementById('modalDescription').textContent = project.description;
-    
-    // Set tags
-    const tagsEl = document.getElementById('modalTags');
-    tagsEl.innerHTML = project.tags.map(tag => 
-        `<span class="project-modal-tag">${tag}</span>`
-    ).join('');
-    
-    // Set buttons
-    const buttonsEl = document.getElementById('modalButtons');
-    buttonsEl.innerHTML = project.buttons.map(btn =>
-        `<a href="${btn.href}" class="project-modal-button ${btn.type}" target="_blank">${btn.text}</a>`
-    ).join('');
-    
-    // Show modal
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+const project = projectData[projectKey];
+if (!project) return;
+
+const modal = document.getElementById('projectModal');
+
+// Set logo
+const logoEl = document.getElementById('modalLogo');
+if (project.logo) {
+logoEl.innerHTML = `<img src="${project.logo}" alt="${project.title}">`;
+} else {
+logoEl.textContent = project.logoText;
+}
+
+// Set text content
+document.getElementById('modalTitle').textContent = project.title;
+document.getElementById('modalDates').textContent = project.dates;
+document.getElementById('modalRole').textContent = project.role;
+document.getElementById('modalPlatform').textContent = project.platform;
+document.getElementById('modalType').textContent = project.type;
+document.getElementById('modalDescription').textContent = project.description;
+
+// Set tags
+const tagsEl = document.getElementById('modalTags');
+tagsEl.innerHTML = project.tags.map(tag => 
+`<span class="project-modal-tag">${tag}</span>`
+).join('');
+
+// Set buttons
+const buttonsEl = document.getElementById('modalButtons');
+buttonsEl.innerHTML = project.buttons.map(btn =>
+`<a href="${btn.href}" class="project-modal-button ${btn.type}" target="_blank">${btn.text}</a>`
+).join('');
+
+// Show modal
+modal.classList.add('active');
+document.body.style.overflow = 'hidden';
 }
 
 // Close project modal
 function closeProjectModal() {
-    const modal = document.getElementById('projectModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+const modal = document.getElementById('projectModal');
+modal.classList.remove('active');
+document.body.style.overflow = 'auto';
 }
 
 // Close on background click
 document.getElementById('projectModal')?.addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeProjectModal();
-    }
+if (e.target === this) {
+closeProjectModal();
+}
 });
 
 // Close on ESC key
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeProjectModal();
-    }
+if (e.key === 'Escape') {
+closeProjectModal();
+}
 });
 
 // Add click handlers to project cards
 document.addEventListener('DOMContentLoaded', function() {
-    // Example: Add data attributes to your project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-        card.addEventListener('click', function() {
-            const projectKey = this.dataset.project || 'marblehead';
-            openProjectModal(projectKey);
-        });
-    });
+// Example: Add data attributes to your project cards
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach((card, index) => {
+card.addEventListener('click', function() {
+const projectKey = this.dataset.project || 'marblehead';
+openProjectModal(projectKey);
 });
-<script>
-// Loading Screen - FIXED VERSION
-(function() {
-    'use strict';
-    
-    // Wait for DOM to be fully loaded
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initLoadingScreen);
-    } else {
-        initLoadingScreen();
-    }
-    
-    function initLoadingScreen() {
-        const loadingScreen = document.getElementById('loadingScreen');
-        const progressCircle = document.querySelector('.loading-circle-progress');
-        const percentageText = document.querySelector('.loading-percentage');
-        
-        // Check if elements exist
-        if (!loadingScreen || !progressCircle || !percentageText) {
-            console.error('Loading screen elements not found!');
-            return;
-        }
-        
-        const radius = 115;
-        const circumference = 2 * Math.PI * radius;
-        
-        // Set initial state
-        progressCircle.style.strokeDasharray = circumference;
-        progressCircle.style.strokeDashoffset = circumference;
-        
-        let progress = 0;
-        const duration = 2000;
-        const startTime = Date.now();
-        
-        function updateProgress(percent) {
-            const offset = circumference - (percent / 100) * circumference;
-            progressCircle.style.strokeDashoffset = offset;
-            percentageText.textContent = Math.round(percent) + '%';
-        }
-        
-        function animate() {
-            const elapsed = Date.now() - startTime;
-            progress = Math.min((elapsed / duration) * 100, 100);
-            
-            updateProgress(progress);
-            
-            if (progress < 100) {
-                requestAnimationFrame(animate);
-            } else {
-                setTimeout(() => {
-                    loadingScreen.classList.add('fade-out');
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }, 400);
-            }
-        }
-        
-        animate();
-    }
-})();
-</script>
+});
+});
+// Loading Screen - Circle Progress Around Logo
+document.addEventListener('DOMContentLoaded', function() {
+const loadingScreen = document.getElementById('loadingScreen');
+const progressCircle = document.querySelector('.loading-circle-progress');
+const percentageText = document.querySelector('.loading-percentage');
+
+const radius = 115;
+const circumference = 2 * Math.PI * radius; // 722.566
+
+// Set initial state
+progressCircle.style.strokeDasharray = circumference;
+progressCircle.style.strokeDashoffset = circumference;
+
+let progress = 0;
+const duration = 2000; // 2 seconds (adjust as needed)
+const startTime = Date.now();
+
+function updateProgress(percent) {
+// As percent increases from 0 to 100, offset decreases from circumference to 0
+// This makes the circle "draw" clockwise from the top
+const offset = circumference - (percent / 100) * circumference;
+progressCircle.style.strokeDashoffset = offset;
+percentageText.textContent = Math.round(percent) + '%';
+}
+
+function animate() {
+const elapsed = Date.now() - startTime;
+progress = Math.min((elapsed / duration) * 100, 100);
+
+updateProgress(progress);
+
+if (progress < 100) {
+requestAnimationFrame(animate);
+} else {
+// Completed - fade out
+setTimeout(() => {
+loadingScreen.classList.add('fade-out');
+setTimeout(() => {
+loadingScreen.style.display = 'none';
+}, 500);
+}, 400);
+}
+}
+
+// Start animation
+animate();
+});
 </script>
 </body>
 </html>
