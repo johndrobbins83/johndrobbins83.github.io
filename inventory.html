@@ -30,7 +30,7 @@
     font-weight: bold;
     font-size: 22px;
     min-height: 100vh;
-    padding: 20px;
+    padding: 20px 40px;
     background-image:
       repeating-linear-gradient(
         45deg,
@@ -93,7 +93,7 @@
     border-left: 2px solid var(--win-light);
     border-right: 2px solid var(--win-darker);
     border-bottom: 2px solid var(--win-darker);
-    max-width: 780px;
+    max-width: 1100px;
     margin: 0 auto 60px auto;
     box-shadow: 2px 2px 0 var(--win-black);
   }
@@ -312,15 +312,16 @@
   .upload-zone .upload-text { font-size: 21px; color: #444; }
   #imagePreview {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    flex-direction: column;
+    gap: 3px;
     margin-top: 8px;
   }
-  #imagePreview img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border: 2px solid var(--win-darker);
+  .preview-file-item {
+    font-size: 19px;
+    padding: 2px 6px;
+    background: #e8f4e8;
+    border-left: 4px solid #008000;
+    color: #003300;
   }
 
   /* BUTTONS */
@@ -395,7 +396,7 @@
     border-right: 2px solid var(--win-darker);
     border-bottom: 2px solid var(--win-darker);
     min-width: 280px;
-    max-width: 400px;
+    max-width: 500px;
     box-shadow: 3px 3px 0 var(--win-black);
   }
   .dialog-body {
@@ -446,7 +447,7 @@
     border-left: 2px solid var(--win-light);
     border-right: 2px solid var(--win-darker);
     border-bottom: 2px solid var(--win-darker);
-    max-width: 780px;
+    max-width: 1100px;
     margin: 0 auto 80px auto;
     box-shadow: 2px 2px 0 var(--win-black);
   }
@@ -484,7 +485,7 @@
     border-bottom: 2px solid var(--win-darker);
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     .form-row { flex-direction: column; }
     .form-group { min-width: 100%; }
   }
@@ -620,7 +621,7 @@
       <div class="upload-zone" id="uploadZone">
         <input type="file" id="imageInput" multiple accept="image/*" onchange="handleImageSelect(event)">
         <div class="upload-icon">📁</div>
-        <div class="upload-text">Click to browse or drag images here<br><span style="font-size: 20px;color:#888;">(JPEG, PNG, GIF supported)</span></div>
+        <div class="upload-text">Click to browse or drag images here<br><span style="font-size: 19px;color:#555;">Images save to Google Drive — links logged in sheet</span></div>
       </div>
       <div id="imagePreview"></div>
       <div id="imageCount" style="font-size: 21px;color:#555;margin-top:4px;"></div>
@@ -800,16 +801,13 @@ function handleImageSelect(event) {
   const count = document.getElementById('imageCount');
   preview.innerHTML = '';
   files.forEach(file => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      img.title = file.name;
-      preview.appendChild(img);
-    };
-    reader.readAsDataURL(file);
+    const item = document.createElement('div');
+    item.className = 'preview-file-item';
+    const kb = (file.size / 1024).toFixed(0);
+    item.textContent = '📷 ' + file.name + '  (' + kb + ' KB)';
+    preview.appendChild(item);
   });
-  count.textContent = files.length > 0 ? `${files.length} image(s) selected` : '';
+  count.textContent = files.length > 0 ? `✅ ${files.length} image(s) queued for Drive upload` : '';
 }
 
 // ==================== SUBMIT ====================
