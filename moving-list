@@ -1,1 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📦 Moving Inventory System</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+  :root {
+    --win-bg: #008080;
+    --win-face: #c0c0c0;
+    --win-dark: #808080;
+    --win-darker: #404040;
+    --win-light: #ffffff;
+    --win-black: #000000;
+    --win-blue: #000080;
+    --win-blue-light: #1084d0;
+    --win-title-active: linear-gradient(to right, #000080, #1084d0);
+    --win-btn: #c0c0c0;
+    --win-red: #ff0000;
+    --win-yellow: #ffff00;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--win-bg);
+    font-family: 'VT323', 'Courier New', monospace;
+    font-size: 16px;
+    min-height: 100vh;
+    padding: 20px;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+  }
+
+  /* TASKBAR */
+  .taskbar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    z-index: 9999;
+    box-shadow: 0 -1px 0 var(--win-dark);
+  }
+  .start-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    border-left: 2px solid var(--win-light);
+    border-right: 2px solid var(--win-darker);
+    border-bottom: 2px solid var(--win-darker);
+    padding: 2px 8px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+  }
+  .start-btn:active {
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+  }
+  .taskbar-clock {
+    margin-left: auto;
+    border-top: 2px solid var(--win-dark);
+    border-left: 2px solid var(--win-dark);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    padding: 2px 8px;
+    font-size: 14px;
+  }
+
+  /* WINDOW */
+  .window {
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    border-left: 2px solid var(--win-light);
+    border-right: 2px solid var(--win-darker);
+    border-bottom: 2px solid var(--win-darker);
+    max-width: 780px;
+    margin: 0 auto 60px auto;
+    box-shadow: 2px 2px 0 var(--win-black);
+  }
+
+  .title-bar {
+    background: var(--win-title-active);
+    color: white;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  .title-bar-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  .title-bar-icon { font-size: 18px; }
+  .title-bar-controls {
+    display: flex;
+    gap: 2px;
+  }
+  .win-btn {
+    width: 18px;
+    height: 16px;
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    border-left: 2px solid var(--win-light);
+    border-right: 2px solid var(--win-darker);
+    border-bottom: 2px solid var(--win-darker);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--win-black);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+  }
+  .win-btn:active {
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+  }
+
+  .menu-bar {
+    display: flex;
+    background: var(--win-face);
+    border-bottom: 1px solid var(--win-dark);
+    padding: 2px 4px;
+    gap: 2px;
+  }
+  .menu-item {
+    padding: 2px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--win-black);
+  }
+  .menu-item:hover {
+    background: var(--win-blue);
+    color: white;
+  }
+
+  .window-body {
+    padding: 12px;
+  }
+
+  /* FORM SECTIONS */
+  .section-label {
+    font-size: 13px;
+    background: var(--win-face);
+    padding: 0 4px;
+    position: relative;
+    top: 8px;
+    left: 8px;
+    display: inline-block;
+    z-index: 1;
+  }
+
+  .fieldset-win {
+    border: 2px groove var(--win-dark);
+    padding: 12px 10px 10px 10px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .fieldset-win legend {
+    font-size: 14px;
+    padding: 0 6px;
+    font-weight: bold;
+    color: var(--win-black);
+  }
+
+  .form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    color: var(--win-black);
+    white-space: nowrap;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group select,
+  .form-group textarea {
+    background: white;
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    padding: 3px 5px;
+    font-family: 'VT323', monospace;
+    font-size: 15px;
+    color: var(--win-black);
+    outline: none;
+    width: 100%;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: 1px dotted var(--win-black);
+    outline-offset: 0px;
+  }
+
+  /* Item number display */
+  #itemNumberDisplay {
+    background: white;
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    padding: 3px 5px;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    color: var(--win-blue);
+    min-width: 80px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+
+  /* RADIO / CHECKBOX */
+  .radio-group, .checkbox-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+  .radio-group label, .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .radio-group input[type="radio"],
+  .checkbox-group input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: var(--win-black);
+  }
+
+  /* IMAGE UPLOAD */
+  .upload-zone {
+    background: white;
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+  }
+  .upload-zone:hover { background: #f0f0ff; }
+  .upload-zone input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .upload-zone .upload-icon { font-size: 28px; }
+  .upload-zone .upload-text { font-size: 14px; color: #444; }
+  #imagePreview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  #imagePreview img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid var(--win-darker);
+  }
+
+  /* BUTTONS */
+  .btn-row {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .win-action-btn {
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    border-left: 2px solid var(--win-light);
+    border-right: 2px solid var(--win-darker);
+    border-bottom: 2px solid var(--win-darker);
+    padding: 4px 20px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--win-black);
+    min-width: 90px;
+  }
+  .win-action-btn:active {
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    padding: 5px 19px 3px 21px;
+  }
+  .win-action-btn.primary {
+    font-weight: bold;
+  }
+  .win-action-btn:focus {
+    outline: 1px dotted var(--win-black);
+    outline-offset: -4px;
+  }
+
+  /* STATUS BAR */
+  .status-bar {
+    display: flex;
+    border-top: 2px solid var(--win-dark);
+    padding: 2px 6px;
+    font-size: 13px;
+    gap: 8px;
+  }
+  .status-panel {
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    padding: 1px 6px;
+    flex: 1;
+  }
+
+  /* DIALOG / MODAL */
+  .dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .dialog-overlay.active { display: flex; }
+  .dialog-box {
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    border-left: 2px solid var(--win-light);
+    border-right: 2px solid var(--win-darker);
+    border-bottom: 2px solid var(--win-darker);
+    min-width: 280px;
+    max-width: 400px;
+    box-shadow: 3px 3px 0 var(--win-black);
+  }
+  .dialog-body {
+    padding: 16px;
+    font-size: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .dialog-icon { font-size: 30px; }
+  .dialog-text { line-height: 1.5; }
+  .dialog-buttons {
+    padding: 8px 16px 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    height: 18px;
+    background: white;
+    display: none;
+    overflow: hidden;
+  }
+  .progress-wrap.active { display: block; }
+  .progress-fill {
+    height: 100%;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--win-blue) 0px,
+      var(--win-blue) 14px,
+      var(--win-blue-light) 14px,
+      var(--win-blue-light) 16px
+    );
+    width: 0%;
+    transition: width 0.3s;
+  }
+
+  /* ITEMS LOG WINDOW */
+  .log-window {
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    border-left: 2px solid var(--win-light);
+    border-right: 2px solid var(--win-darker);
+    border-bottom: 2px solid var(--win-darker);
+    max-width: 780px;
+    margin: 0 auto 80px auto;
+    box-shadow: 2px 2px 0 var(--win-black);
+  }
+  .log-body {
+    padding: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    background: white;
+    border-top: 2px solid var(--win-darker);
+    border-left: 2px solid var(--win-darker);
+    border-right: 2px solid var(--win-light);
+    border-bottom: 2px solid var(--win-light);
+    margin: 8px;
+    font-size: 13px;
+  }
+  .log-entry {
+    padding: 3px 4px;
+    border-bottom: 1px dotted var(--win-dark);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .log-entry:hover { background: var(--win-blue); color: white; }
+  .log-num { color: var(--win-blue); font-weight: bold; min-width: 45px; }
+  .log-entry:hover .log-num { color: var(--win-yellow); }
+
+  /* Scrollbar win95 style */
+  ::-webkit-scrollbar { width: 16px; }
+  ::-webkit-scrollbar-track { background: var(--win-face); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--win-face);
+    border-top: 2px solid var(--win-light);
+    border-left: 2px solid var(--win-light);
+    border-right: 2px solid var(--win-darker);
+    border-bottom: 2px solid var(--win-darker);
+  }
+
+  @media (max-width: 500px) {
+    .form-row { flex-direction: column; }
+    .form-group { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MAIN FORM WINDOW -->
+<div class="window" id="mainWindow">
+  <div class="title-bar">
+    <div class="title-bar-text">
+      <span class="title-bar-icon">📦</span>
+      Moving Inventory System v1.0 — Add New Item
+    </div>
+    <div class="title-bar-controls">
+      <div class="win-btn">_</div>
+      <div class="win-btn">□</div>
+      <div class="win-btn" style="font-size:13px;">✕</div>
+    </div>
+  </div>
+
+  <div class="menu-bar">
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Help</span>
+  </div>
+
+  <div class="window-body">
+
+    <!-- CONFIG NOTICE -->
+    <div class="fieldset-win" style="border-color: var(--win-blue); background: #fffde7;">
+      <legend>⚙️ Configuration</legend>
+      <div style="font-size:14px; line-height:1.6;">
+        <strong>Sheet URL:</strong>
+        <input type="text" id="sheetUrl" placeholder="Paste your Google Apps Script Web App URL here..."
+          style="width:100%; margin-top:4px; border-top:2px solid #888; border-left:2px solid #888; border-right:2px solid #fff; border-bottom:2px solid #fff; padding:3px 5px; font-family:'VT323',monospace; font-size:14px;">
+        <div style="margin-top:4px; font-size:13px; color:#555;">See setup instructions below. Paste the deployment URL from Google Apps Script.</div>
+      </div>
+    </div>
+
+    <!-- IDENTIFICATION -->
+    <fieldset class="fieldset-win">
+      <legend>📋 Item Identification</legend>
+      <div class="form-row">
+        <div class="form-group" style="flex:0 0 auto;">
+          <label>Item #</label>
+          <div id="itemNumberDisplay">--</div>
+        </div>
+        <div class="form-group" style="flex:2;">
+          <label for="itemName">Item Name *</label>
+          <input type="text" id="itemName" placeholder="e.g. IKEA Bookshelf" required>
+        </div>
+        <div class="form-group">
+          <label for="itemType">Type *</label>
+          <select id="itemType" required>
+            <option value="">-- Select --</option>
+            <option value="Bin">Bin</option>
+            <option value="Box">Box</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Art/Wall">Art/Wall</option>
+            <option value="Kitchen Appliance">Kitchen Appliance</option>
+            <option value="Dishes/Bar">Dishes/Bar</option>
+          </select>
+        </div>
+        <div class="form-group" style="flex:0 0 80px;">
+          <label for="quantity">Qty *</label>
+          <input type="number" id="quantity" value="1" min="1" max="999">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Color, size, condition, notes..."></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- LOCATION & STATUS -->
+    <fieldset class="fieldset-win">
+      <legend>🏠 Location &amp; Status</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="location">Item Location *</label>
+          <select id="location" required>
+            <option value="">-- Select Room --</option>
+            <option value="Living Room">Living Room</option>
+            <option value="Bedroom">Bedroom</option>
+            <option value="Studio">Studio</option>
+            <option value="Office">Office</option>
+            <option value="Closet 1">Closet 1</option>
+            <option value="Closet 2">Closet 2</option>
+            <option value="Closet 3">Closet 3</option>
+            <option value="Closet 4">Closet 4</option>
+            <option value="Sitting Room">Sitting Room</option>
+            <option value="Listening Room">Listening Room</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Mini Office">Mini Office</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Wrapped?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="wrapped" value="Yes"> Yes</label>
+            <label><input type="radio" name="wrapped" value="No" checked> No</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Fragile / Breakable?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="fragile" value="Yes"> Yes</label>
+            <label><input type="radio" name="fragile" value="No" checked> No</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- IMAGE UPLOAD -->
+    <fieldset class="fieldset-win">
+      <legend>🖼️ Images</legend>
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="imageInput" multiple accept="image/*" onchange="handleImageSelect(event)">
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">Click to browse or drag images here<br><span style="font-size:12px;color:#888;">(JPEG, PNG, GIF supported)</span></div>
+      </div>
+      <div id="imagePreview"></div>
+      <div id="imageCount" style="font-size:13px;color:#555;margin-top:4px;"></div>
+    </fieldset>
+
+    <!-- PROGRESS -->
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="btn-row">
+      <button class="win-action-btn" onclick="clearForm()">Clear</button>
+      <button class="win-action-btn primary" onclick="submitItem()">Submit Item</button>
+    </div>
+
+  </div><!-- window-body -->
+
+  <div class="status-bar">
+    <div class="status-panel" id="statusText">Ready — Fill out the form and click Submit Item.</div>
+    <div class="status-panel" style="flex:0 0 auto; min-width:120px; text-align:center;" id="itemCountStatus">Items logged: 0</div>
+  </div>
+</div><!-- window -->
+
+
+<!-- ITEM LOG WINDOW -->
+<div class="log-window">
+  <div class="title-bar" style="background: linear-gradient(to right,#404040,#707070);">
+    <div class="title-bar-text">
+      <span class="title-bar-icon">📝</span>
+      Session Log — Items Added This Session
+    </div>
+    <div class="title-bar-controls">
+      <div class="win-btn">_</div>
+      <div class="win-btn">□</div>
+      <div class="win-btn" style="font-size:13px;">✕</div>
+    </div>
+  </div>
+  <div class="window-body" style="padding:8px;">
+    <div class="log-body" id="logBody">
+      <div style="color:#888; font-size:13px; padding:4px;">No items logged yet this session.</div>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:6px;">
+      <button class="win-action-btn" onclick="clearLog()">Clear Log</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- SUCCESS DIALOG -->
+<div class="dialog-overlay" id="successDialog">
+  <div class="dialog-box">
+    <div class="title-bar">
+      <div class="title-bar-text">✅ Success</div>
+      <div class="title-bar-controls">
+        <div class="win-btn" onclick="closeDialog('successDialog')" style="font-size:13px;">✕</div>
+      </div>
+    </div>
+    <div class="dialog-body">
+      <div class="dialog-icon">✅</div>
+      <div class="dialog-text" id="successMsg">Item submitted successfully!</div>
+    </div>
+    <div class="dialog-buttons">
+      <button class="win-action-btn primary" onclick="closeDialog('successDialog')">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- ERROR DIALOG -->
+<div class="dialog-overlay" id="errorDialog">
+  <div class="dialog-box">
+    <div class="title-bar" style="background:linear-gradient(to right, #800000, #c00000);">
+      <div class="title-bar-text">⚠️ Error</div>
+      <div class="title-bar-controls">
+        <div class="win-btn" onclick="closeDialog('errorDialog')" style="font-size:13px;">✕</div>
+      </div>
+    </div>
+    <div class="dialog-body">
+      <div class="dialog-icon">⚠️</div>
+      <div class="dialog-text" id="errorMsg">An error occurred.</div>
+    </div>
+    <div class="dialog-buttons">
+      <button class="win-action-btn primary" onclick="closeDialog('errorDialog')">OK</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- TASKBAR -->
+<div class="taskbar">
+  <button class="start-btn">🪟 Start</button>
+  <div style="width:2px; background:var(--win-dark); height:22px; margin:0 4px;"></div>
+  <div style="display:flex; align-items:center; gap:4px; background:var(--win-blue); color:white; padding:2px 8px; font-size:14px; border-top:2px solid var(--win-light); border-left:2px solid var(--win-light); border-right:2px solid var(--win-darker); border-bottom:2px solid var(--win-darker);">
+    📦 Moving Inventory
+  </div>
+  <div class="taskbar-clock" id="taskbarClock">00:00</div>
+</div>
+
+
+<script>
+// ==================== STATE ====================
+let itemCounter = 1;
+let sessionItems = [];
+let selectedImages = [];
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  loadItemCounter();
+  updateClock();
+  setInterval(updateClock, 1000);
+  // Load saved URL
+  const saved = localStorage.getItem('sheetUrl');
+  if (saved) document.getElementById('sheetUrl').value = saved;
+  document.getElementById('sheetUrl').addEventListener('change', e => {
+    localStorage.setItem('sheetUrl', e.target.value);
+  });
+});
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('taskbarClock').textContent =
+    now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+}
+
+function loadItemCounter() {
+  const stored = localStorage.getItem('itemCounter');
+  if (stored) itemCounter = parseInt(stored);
+  updateItemNumberDisplay();
+}
+
+function updateItemNumberDisplay() {
+  document.getElementById('itemNumberDisplay').textContent =
+    String(itemCounter).padStart(4, '0');
+}
+
+// ==================== IMAGE HANDLING ====================
+function handleImageSelect(event) {
+  const files = Array.from(event.target.files);
+  selectedImages = files;
+  const preview = document.getElementById('imagePreview');
+  const count = document.getElementById('imageCount');
+  preview.innerHTML = '';
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.title = file.name;
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+  count.textContent = files.length > 0 ? `${files.length} image(s) selected` : '';
+}
+
+// ==================== SUBMIT ====================
+async function submitItem() {
+  const url = document.getElementById('sheetUrl').value.trim();
+  if (!url) {
+    showError('Please enter your Google Apps Script Web App URL in the Configuration field at the top.');
+    return;
+  }
+
+  // Validation
+  const itemName = document.getElementById('itemName').value.trim();
+  const itemType = document.getElementById('itemType').value;
+  const location  = document.getElementById('location').value;
+  const quantity  = document.getElementById('quantity').value;
+
+  if (!itemName || !itemType || !location || !quantity) {
+    showError('Please fill in all required fields:\n• Item Name\n• Type\n• Location\n• Quantity');
+    return;
+  }
+
+  const wrapped  = document.querySelector('input[name="wrapped"]:checked')?.value || 'No';
+  const fragile  = document.querySelector('input[name="fragile"]:checked')?.value || 'No';
+  const description = document.getElementById('description').value.trim();
+  const itemNumber = String(itemCounter).padStart(4, '0');
+
+  setStatus('Preparing submission...');
+  showProgress(20);
+
+  // Convert images to base64
+  let imageDataArray = [];
+  try {
+    imageDataArray = await Promise.all(selectedImages.map(fileToBase64));
+  } catch(e) {
+    showError('Image processing failed: ' + e.message);
+    hideProgress();
+    return;
+  }
+
+  showProgress(50);
+  setStatus('Sending to Google Sheets...');
+
+  const payload = {
+    itemNumber,
+    itemName,
+    itemType,
+    location,
+    quantity: parseInt(quantity),
+    description,
+    wrapped,
+    fragile,
+    images: imageDataArray,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    showProgress(100);
+    // no-cors means we can't read response — assume success
+    onSubmitSuccess(payload);
+
+  } catch (err) {
+    hideProgress();
+    showError('Network error: ' + err.message + '\n\nCheck your Script URL and make sure the deployment is set to "Anyone" access.');
+  }
+}
+
+function onSubmitSuccess(payload) {
+  // Add to session log
+  sessionItems.push(payload);
+  addToLog(payload);
+
+  // Increment counter
+  itemCounter++;
+  localStorage.setItem('itemCounter', itemCounter);
+  updateItemNumberDisplay();
+
+  // Update count display
+  document.getElementById('itemCountStatus').textContent = `Items logged: ${sessionItems.length}`;
+
+  setStatus(`✅ Item #${payload.itemNumber} "${payload.itemName}" submitted OK.`);
+
+  showSuccess(`Item #${payload.itemNumber} — "${payload.itemName}" has been logged!\n\nNext item number: ${String(itemCounter).padStart(4,'0')}`);
+
+  // Partial clear
+  document.getElementById('itemName').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('imagePreview').innerHTML = '';
+  document.getElementById('imageCount').textContent = '';
+  document.getElementById('imageInput').value = '';
+  selectedImages = [];
+  document.getElementById('quantity').value = 1;
+  // Keep type, location, wrapped, fragile
+
+  setTimeout(hideProgress, 800);
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve({
+      name: file.name,
+      type: file.type,
+      data: reader.result.split(',')[1]
+    });
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// ==================== CLEAR ====================
+function clearForm() {
+  document.getElementById('itemName').value = '';
+  document.getElementById('itemType').value = '';
+  document.getElementById('location').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('quantity').value = 1;
+  document.querySelector('input[name="wrapped"][value="No"]').checked = true;
+  document.querySelector('input[name="fragile"][value="No"]').checked = true;
+  document.getElementById('imagePreview').innerHTML = '';
+  document.getElementById('imageCount').textContent = '';
+  document.getElementById('imageInput').value = '';
+  selectedImages = [];
+  setStatus('Form cleared.');
+}
+
+// ==================== LOG ====================
+function addToLog(item) {
+  const log = document.getElementById('logBody');
+  // Remove placeholder
+  const placeholder = log.querySelector('div[style]');
+  if (placeholder) placeholder.remove();
+
+  const entry = document.createElement('div');
+  entry.className = 'log-entry';
+  entry.innerHTML = `
+    <span class="log-num">#${item.itemNumber}</span>
+    <span style="flex:1;">${item.itemName}</span>
+    <span style="min-width:80px;color:#555;">${item.itemType}</span>
+    <span style="min-width:110px;color:#555;">${item.location}</span>
+    <span style="min-width:40px;text-align:right;color:#555;">×${item.quantity}</span>
+  `;
+  log.appendChild(entry);
+  log.scrollTop = log.scrollHeight;
+}
+
+function clearLog() {
+  document.getElementById('logBody').innerHTML =
+    '<div style="color:#888; font-size:13px; padding:4px;">No items logged yet this session.</div>';
+  sessionItems = [];
+  document.getElementById('itemCountStatus').textContent = 'Items logged: 0';
+}
+
+// ==================== UI HELPERS ====================
+function setStatus(msg) {
+  document.getElementById('statusText').textContent = msg;
+}
+
+function showProgress(pct) {
+  const wrap = document.getElementById('progressWrap');
+  const fill = document.getElementById('progressFill');
+  wrap.classList.add('active');
+  fill.style.width = pct + '%';
+}
+function hideProgress() {
+  document.getElementById('progressWrap').classList.remove('active');
+  document.getElementById('progressFill').style.width = '0%';
+}
+
+function showSuccess(msg) {
+  document.getElementById('successMsg').innerText = msg;
+  document.getElementById('successDialog').classList.add('active');
+}
+function showError(msg) {
+  document.getElementById('errorMsg').innerText = msg;
+  document.getElementById('errorDialog').classList.add('active');
+}
+function closeDialog(id) {
+  document.getElementById(id).classList.remove('active');
+}
+</script>
+
+</body>
+</html>
