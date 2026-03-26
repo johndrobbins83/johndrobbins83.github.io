@@ -21,18 +21,12 @@
     --blue2:   #1084d0;
     --red:     #800000;
     --yellow:  #ffff00;
-    --inset:   border-top 2px solid #404040, border-left 2px solid #404040, border-right 2px solid #fff, border-bottom 2px solid #fff;
-    --raise:   border-top 2px solid #fff, border-left 2px solid #fff, border-right 2px solid #404040, border-bottom 2px solid #404040;
     --header-h: 48px;
     --nav-h:    52px;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-  html, body {
-    height: 100%;
-    overscroll-behavior: none;
-  }
+  html, body { height: 100%; overscroll-behavior: none; }
 
   body {
     background: var(--bg);
@@ -41,14 +35,14 @@
     font-weight: bold;
     color: var(--black);
     padding-top: var(--header-h);
-    padding-bottom: var(--nav-h);
+    padding-bottom: calc(var(--nav-h) + 80px);
     background-image: repeating-linear-gradient(
       45deg, transparent, transparent 2px,
       rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
     );
   }
 
-  /* ── STICKY HEADER ── */
+  /* ── HEADER ── */
   .app-header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -62,19 +56,8 @@
     box-shadow: 0 2px 0 var(--darker);
   }
   .app-header-icon { font-size: 24px; }
-  .app-header-title {
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    flex: 1;
-    line-height: 1;
-  }
-  .app-header-sub {
-    color: rgba(255,255,255,0.75);
-    font-size: 16px;
-    font-weight: normal;
-  }
+  .app-header-title { color: white; font-size: 22px; font-weight: bold; flex: 1; line-height: 1; }
+  .app-header-sub   { color: rgba(255,255,255,0.75); font-size: 15px; font-weight: normal; }
   .header-item-num {
     background: var(--blue2);
     border: 2px solid rgba(255,255,255,0.4);
@@ -87,13 +70,17 @@
     gap: 6px;
   }
   .header-reset-btn {
-    background: none;
-    border: none;
+    background: none; border: none;
     color: rgba(255,255,255,0.7);
-    font-size: 18px;
-    cursor: pointer;
+    font-size: 18px; cursor: pointer;
     padding: 0 2px;
     font-family: 'VT323', monospace;
+  }
+  .header-refresh-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white; font-family: 'VT323', monospace;
+    font-size: 18px; padding: 4px 10px; cursor: pointer;
   }
 
   /* ── BOTTOM NAV ── */
@@ -124,18 +111,19 @@
     border-right: 1px solid var(--dark);
     color: var(--darker);
     padding: 4px 0;
+    text-decoration: none;
   }
   .nav-btn:last-child { border-right: none; }
   .nav-btn.active { background: var(--blue); color: white; }
-  .nav-btn:active { background: var(--dark); }
-  .nav-btn-icon { font-size: 20px; line-height: 1; }
+  .nav-btn:active  { background: var(--dark); color: white; }
+  .nav-btn-icon  { font-size: 20px; line-height: 1; }
   .nav-btn-label { font-size: 13px; line-height: 1; }
 
   /* ── PAGES ── */
   .page { display: none; }
   .page.active { display: block; }
 
-  /* ── WINDOW CARD ── */
+  /* ── WIN CARD ── */
   .win-card {
     background: var(--face);
     border-top: 2px solid var(--light);
@@ -152,31 +140,14 @@
     padding: 4px 8px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 6px;
   }
   .win-card-body { padding: 10px; }
 
-  /* ── FIELDSETS ── */
-  .section {
-    border: 2px groove var(--dark);
-    padding: 12px 10px 10px;
-    margin-bottom: 12px;
-    position: relative;
-  }
-  .section legend {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 0 6px;
-  }
-
-  /* ── FORM ELEMENTS ── */
+  /* ── FORM FIELDS ── */
   .field { margin-bottom: 10px; }
-  .field label {
-    display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 3px;
-  }
+  .field label { display: block; font-size: 18px; font-weight: bold; margin-bottom: 3px; }
   .field input[type="text"],
   .field input[type="number"],
   .field select,
@@ -187,375 +158,317 @@
     border-left: 2px solid var(--darker);
     border-right: 2px solid var(--light);
     border-bottom: 2px solid var(--light);
-    padding: 8px 8px;
+    padding: 8px;
     font-family: 'VT323', monospace;
     font-size: 20px;
     font-weight: bold;
     color: var(--black);
     outline: none;
-    /* bigger touch target */
     min-height: 44px;
     -webkit-appearance: none;
     border-radius: 0;
   }
-  .field textarea {
-    min-height: 80px;
-    resize: vertical;
+  .field textarea { min-height: 80px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: 2px dotted var(--black); outline-offset: 1px;
   }
-  .field input:focus,
-  .field select:focus,
-  .field textarea:focus {
-    outline: 2px dotted var(--black);
-    outline-offset: 1px;
-  }
-
-  /* two-col row */
-  .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
   .field-row .field { margin-bottom: 0; }
   .field-row .field.wide { grid-column: 1 / -1; }
 
-  /* ── RADIO TOGGLE ── */
-  .toggle-group {
-    display: flex;
-    gap: 0;
-    margin-top: 2px;
-  }
+  /* ── TOGGLE BUTTONS ── */
+  .toggle-group { display: flex; gap: 0; margin-top: 2px; }
   .toggle-group input[type="radio"] { display: none; }
   .toggle-group label {
-    flex: 1;
-    text-align: center;
-    padding: 8px 4px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
+    flex: 1; text-align: center; padding: 8px 4px;
+    font-size: 18px; font-weight: bold; cursor: pointer;
     background: var(--face);
-    border-top: 2px solid var(--light);
-    border-left: 2px solid var(--light);
-    border-right: 2px solid var(--darker);
-    border-bottom: 2px solid var(--darker);
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
     user-select: none;
   }
   .toggle-group input[type="radio"]:checked + label {
-    background: var(--blue);
-    color: white;
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--light);
-    border-bottom: 2px solid var(--light);
+    background: var(--blue); color: white;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
   }
 
-  /* ── UPLOAD ZONE ── */
+  /* ── UPLOAD ── */
   .upload-zone {
-    position: relative;
-    background: white;
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--light);
-    border-bottom: 2px solid var(--light);
-    padding: 16px;
-    text-align: center;
-    min-height: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
+    position: relative; background: white;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    padding: 16px; text-align: center; min-height: 80px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
   }
-  .upload-zone input[type="file"] {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
+  .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
   .upload-icon { font-size: 32px; }
   .upload-text { font-size: 18px; color: #444; }
   .upload-hint { font-size: 15px; color: #777; font-weight: normal; }
   #imagePreview { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
-  .preview-file-item {
-    font-size: 16px;
-    font-weight: normal;
-    padding: 4px 8px;
-    background: #e8f4e8;
-    border-left: 4px solid #008000;
-    color: #003300;
-  }
+  .preview-file-item { font-size: 16px; font-weight: normal; padding: 4px 8px; background: #e8f4e8; border-left: 4px solid #008000; color: #003300; }
   #imageCount { font-size: 17px; color: #555; margin-top: 4px; font-weight: normal; }
 
   /* ── BUTTONS ── */
   .btn {
     background: var(--face);
-    border-top: 2px solid var(--light);
-    border-left: 2px solid var(--light);
-    border-right: 2px solid var(--darker);
-    border-bottom: 2px solid var(--darker);
-    padding: 10px 20px;
-    font-family: 'VT323', monospace;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-    color: var(--black);
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    padding: 10px 20px; font-family: 'VT323', monospace;
+    font-size: 22px; font-weight: bold; cursor: pointer; color: var(--black);
+    min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
   }
   .btn:active {
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--light);
-    border-bottom: 2px solid var(--light);
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
     padding: 11px 19px 9px 21px;
   }
-  .btn.primary { background: var(--face); }
-  .btn.danger  { color: var(--red); }
-  .btn-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-  }
+  .btn.danger { color: var(--red); }
+  .btn-row { display: flex; gap: 8px; margin-top: 12px; }
   .btn-row .btn { flex: 1; }
   .btn-submit {
-    background: var(--blue);
-    color: white;
-    border-top: 2px solid var(--blue2);
-    border-left: 2px solid var(--blue2);
-    border-right: 2px solid var(--darker);
-    border-bottom: 2px solid var(--darker);
-    font-size: 24px;
-    padding: 14px 20px;
-    min-height: 52px;
+    background: var(--blue); color: white;
+    border-top: 2px solid var(--blue2); border-left: 2px solid var(--blue2);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    font-size: 22px; padding: 12px 16px; min-height: 52px; white-space: nowrap;
   }
   .btn-submit:active {
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--blue2);
-    border-bottom: 2px solid var(--blue2);
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--blue2); border-bottom: 2px solid var(--blue2);
   }
 
   /* ── PROGRESS ── */
   .progress-wrap {
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--light);
-    border-bottom: 2px solid var(--light);
-    height: 20px;
-    background: white;
-    display: none;
-    overflow: hidden;
-    margin-bottom: 10px;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    height: 20px; background: white; display: none; overflow: hidden; margin-bottom: 10px;
   }
   .progress-wrap.active { display: block; }
   .progress-fill {
     height: 100%;
-    background: repeating-linear-gradient(
-      90deg, var(--blue) 0px, var(--blue) 14px,
-      var(--blue2) 14px, var(--blue2) 16px
-    );
-    width: 0%;
-    transition: width 0.3s;
+    background: repeating-linear-gradient(90deg, var(--blue) 0px, var(--blue) 14px, var(--blue2) 14px, var(--blue2) 16px);
+    width: 0%; transition: width 0.3s;
   }
 
   /* ── STATUS BAR ── */
-  .status-bar {
-    display: flex;
-    gap: 6px;
-    margin-top: 8px;
-    font-size: 16px;
-    font-weight: normal;
-  }
+  .status-bar { display: flex; gap: 6px; margin-top: 8px; font-size: 16px; font-weight: normal; }
   .status-panel {
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--light);
-    border-bottom: 2px solid var(--light);
-    padding: 2px 6px;
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    padding: 2px 6px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
-  .status-count {
-    flex: 0 0 auto;
-    white-space: nowrap;
-  }
+  .status-count { flex: 0 0 auto; white-space: nowrap; }
 
-  /* ── SESSION LOG ── */
+  /* ── LOG ── */
   .log-body {
     background: white;
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--light);
-    border-bottom: 2px solid var(--light);
-    max-height: 55vh;
-    overflow-y: auto;
-    font-size: 17px;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    max-height: 55vh; overflow-y: auto; font-size: 17px;
   }
   .log-entry {
-    padding: 8px 8px;
-    border-bottom: 1px dotted var(--dark);
-    display: grid;
-    grid-template-columns: 50px 1fr auto;
-    gap: 6px;
-    align-items: center;
+    padding: 8px; border-bottom: 1px dotted var(--dark);
+    display: grid; grid-template-columns: 50px 1fr auto; gap: 6px; align-items: center;
   }
   .log-entry:active { background: var(--blue); color: white; }
   .log-num { color: var(--blue); font-weight: bold; font-size: 18px; }
   .log-name { font-weight: bold; font-size: 17px; }
   .log-meta { font-size: 15px; color: #555; text-align: right; }
 
-  /* ── CONFIG PAGE ── */
+  /* ── CONFIG ── */
   .config-field { margin-bottom: 14px; }
   .config-field label { display: block; font-size: 18px; font-weight: bold; margin-bottom: 4px; }
   .config-field input[type="text"] {
-    width: 100%;
+    width: 100%; background: white;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    padding: 8px; font-family: 'VT323', monospace; font-size: 16px; font-weight: normal;
+    min-height: 44px; -webkit-appearance: none; border-radius: 0;
+  }
+  .config-note {
+    margin-top: 6px; font-size: 14px; font-weight: normal; color: #555;
+    padding: 6px 8px; background: #fffde7; border-left: 4px solid #888; line-height: 1.5;
+  }
+  .config-divider { border-top: 2px solid var(--dark); margin: 16px 0 14px; }
+
+  /* ── VIEWER FILTERS ── */
+  .filter-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .filter-bar .wide { grid-column: 1 / -1; }
+  .filter-group label { display: block; font-size: 15px; font-weight: bold; margin-bottom: 2px; color: var(--darker); }
+  .filter-group select,
+  .filter-group input[type="text"] {
+    width: 100%; background: white;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    padding: 6px 8px; font-family: 'VT323', monospace;
+    font-size: 17px; font-weight: bold; color: var(--black);
+    min-height: 40px; -webkit-appearance: none; border-radius: 0; outline: none;
+  }
+  .filter-toggles { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-chip {
+    background: var(--face);
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    padding: 4px 12px; font-family: 'VT323', monospace;
+    font-size: 17px; font-weight: bold; cursor: pointer; color: var(--darker);
+    -webkit-appearance: none; border-radius: 0;
+  }
+  .filter-chip.on {
+    background: var(--blue); color: white;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--blue2); border-bottom: 2px solid var(--blue2);
+  }
+  .sort-bar { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .sort-bar label { font-size: 15px; color: var(--darker); white-space: nowrap; }
+  .sort-bar select {
     background: white;
-    border-top: 2px solid var(--darker);
-    border-left: 2px solid var(--darker);
-    border-right: 2px solid var(--light);
-    border-bottom: 2px solid var(--light);
-    padding: 8px;
-    font-family: 'VT323', monospace;
-    font-size: 16px;
-    font-weight: normal;
-    min-height: 44px;
-    word-break: break-all;
-    -webkit-appearance: none;
-    border-radius: 0;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    padding: 4px 8px; font-family: 'VT323', monospace;
+    font-size: 17px; font-weight: bold; color: var(--black);
+    min-height: 36px; -webkit-appearance: none; border-radius: 0; flex: 1;
   }
-  #urlStatus {
-    margin-top: 6px;
-    font-size: 16px;
-    font-weight: normal;
-    color: #555;
-    padding: 4px 6px;
-    background: #fffde7;
-    border-left: 4px solid #888;
+
+  /* ── STATS BAR ── */
+  .stats-bar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .stat-chip {
+    background: var(--blue); color: white; font-size: 15px; padding: 3px 10px;
+    border-top: 2px solid var(--blue2); border-left: 2px solid var(--blue2);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
   }
+
+  /* ── ITEM CARDS ── */
+  #itemGrid { display: flex; flex-direction: column; gap: 8px; }
+  .item-card {
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    overflow: hidden; box-shadow: 1px 1px 0 var(--black);
+  }
+  .item-card-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+  .item-num {
+    font-size: 16px; font-weight: bold; color: var(--blue);
+    min-width: 44px; background: rgba(255,255,255,0.5);
+    padding: 2px 6px; text-align: center; border: 1px solid rgba(0,0,0,0.1);
+  }
+  .item-name { flex: 1; font-size: 19px; font-weight: bold; line-height: 1.1; }
+  .item-type-badge {
+    font-size: 13px; background: rgba(0,0,0,0.12);
+    padding: 2px 8px; border: 1px solid rgba(0,0,0,0.15); white-space: nowrap;
+  }
+  .item-card-body {
+    padding: 8px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 15px;
+  }
+  .item-field { line-height: 1.4; }
+  .item-field-label { color: rgba(0,0,0,0.5); font-size: 13px; font-weight: bold; }
+  .item-field-value { font-weight: bold; }
+  .item-field.wide { grid-column: 1 / -1; }
+  .item-desc { grid-column: 1 / -1; font-size: 14px; font-weight: normal; color: #333; padding-top: 4px; border-top: 1px dotted var(--dark); margin-top: 2px; }
+  .badge { display: inline-block; padding: 1px 8px; font-size: 13px; font-weight: bold; border: 1px solid rgba(0,0,0,0.2); }
+  .badge-yes  { background: #ffebee; color: #b71c1c; }
+  .badge-no   { background: #e8f5e9; color: #1b5e20; }
+  .badge-frag { background: #fff3e0; color: #e65100; }
+  .state-msg { text-align: center; padding: 40px 20px; color: var(--darker); font-size: 18px; font-weight: normal; }
+  .state-msg .icon { font-size: 40px; display: block; margin-bottom: 10px; }
+
+  /* ── ROOM COLORS ── */
+  .room-Living-Room    { background: #FFD180; }
+  .room-Bedroom        { background: #B3C5F7; }
+  .room-Studio         { background: #A5D6A7; }
+  .room-Office         { background: #80D8FF; }
+  .room-Closet-1       { background: #CE93D8; }
+  .room-Closet-2       { background: #F48FB1; }
+  .room-Closet-3       { background: #FFAB91; }
+  .room-Closet-4       { background: #BCAAA4; }
+  .room-Sitting-Room   { background: #FFF176; }
+  .room-Listening-Room { background: #80CBC4; }
+  .room-Kitchen        { background: #C5E1A5; }
+  .room-Mini-Office    { background: #FFE082; }
+  .room-default        { background: #e0e0e0; }
 
   /* ── DIALOGS ── */
   .dialog-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
-    padding: 16px;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    display: none; align-items: center; justify-content: center; z-index: 200; padding: 16px;
   }
   .dialog-overlay.active { display: flex; }
   .dialog-box {
     background: var(--face);
-    border-top: 2px solid var(--light);
-    border-left: 2px solid var(--light);
-    border-right: 2px solid var(--darker);
-    border-bottom: 2px solid var(--darker);
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 4px 4px 0 var(--black);
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    width: 100%; max-width: 400px; box-shadow: 4px 4px 0 var(--black);
   }
   .dialog-title {
-    padding: 6px 10px;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 6px 10px; color: white; font-size: 18px; font-weight: bold;
+    display: flex; align-items: center; justify-content: space-between;
   }
   .dialog-title.success { background: linear-gradient(to right, #006400, #008000); }
   .dialog-title.error   { background: linear-gradient(to right, #800000, #c00000); }
-  .dialog-body {
-    padding: 16px;
-    font-size: 19px;
-    white-space: pre-wrap;
-    line-height: 1.5;
-  }
-  .dialog-btns {
-    padding: 8px 16px 14px;
-    display: flex;
-    justify-content: center;
-  }
-  .dialog-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    font-family: 'VT323', monospace;
-    padding: 0 4px;
-  }
+  .dialog-body { padding: 16px; font-size: 19px; white-space: pre-wrap; line-height: 1.5; }
+  .dialog-btns { padding: 8px 16px 14px; display: flex; justify-content: center; }
+  .dialog-close { background: none; border: none; color: white; font-size: 20px; cursor: pointer; font-family: 'VT323', monospace; padding: 0 4px; }
 
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 14px; }
   ::-webkit-scrollbar-track { background: var(--face); }
   ::-webkit-scrollbar-thumb {
     background: var(--face);
-    border-top: 2px solid var(--light);
-    border-left: 2px solid var(--light);
-    border-right: 2px solid var(--darker);
-    border-bottom: 2px solid var(--darker);
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
   }
 
-  /* ── DESKTOP BOOST ── */
+  /* ── RESPONSIVE ── */
   @media (min-width: 640px) {
-    body { padding-top: calc(var(--header-h) + 10px); }
     .win-card { max-width: 700px; margin: 10px auto; }
-    .log-body { max-height: 40vh; }
+    #itemGrid { display: grid; grid-template-columns: 1fr 1fr; }
   }
   @media (min-width: 1000px) {
     .win-card { max-width: 1100px; }
+    #itemGrid { grid-template-columns: 1fr 1fr 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── STICKY HEADER ── -->
-<div class="app-header">
+<!-- ── HEADER ── -->
+<div class="app-header" id="appHeader">
   <span class="app-header-icon">📦</span>
   <div style="flex:1; line-height:1.2;">
     <div class="app-header-title">Moving Inventory</div>
     <div class="app-header-sub" id="headerStatus">Ready</div>
   </div>
-  <div class="header-item-num">
+  <!-- Item # shown on form tab only -->
+  <div class="header-item-num" id="headerItemNum">
     <span id="itemNumberDisplay">--</span>
     <button class="header-reset-btn" onclick="resetItemCounter()" title="Reset counter">↺</button>
   </div>
+  <!-- Refresh shown on viewer tab only -->
+  <button class="header-refresh-btn" id="headerRefreshBtn" style="display:none;" onclick="loadViewerData()">↺ Refresh</button>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
      PAGE: FORM
-══════════════════════════════════════ -->
+══════════════════════════════ -->
 <div class="page active" id="page-form">
+
   <div class="win-card">
     <div class="win-card-title">📋 Item Identification</div>
     <div class="win-card-body">
-
       <div class="field-row">
         <div class="field wide">
           <label for="itemName">Item Name *</label>
           <input type="text" id="itemName" placeholder="e.g. IKEA Bookshelf" autocomplete="off">
         </div>
       </div>
-
       <div class="field-row">
         <div class="field">
           <label for="itemType">Type *</label>
           <select id="itemType">
             <option value="">-- Select --</option>
-            <option value="Bin">Bin</option>
-            <option value="Box">Box</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Art/Wall">Art/Wall</option>
-            <option value="Kitchen Appliance">Kitchen Appliance</option>
-            <option value="Dishes/Bar">Dishes/Bar</option>
+            <option>Bin</option><option>Box</option><option>Furniture</option>
+            <option>Art/Wall</option><option>Kitchen Appliance</option><option>Dishes/Bar</option>
           </select>
         </div>
         <div class="field">
@@ -563,69 +476,46 @@
           <input type="text" id="binBoxNumber" placeholder="e.g. B-12" autocomplete="off">
         </div>
       </div>
-
       <div class="field-row">
         <div class="field">
           <label for="quantity">Qty *</label>
           <input type="number" id="quantity" value="1" min="1" max="999">
         </div>
-        <div class="field">
-          <!-- spacer -->
-        </div>
+        <div class="field"></div>
       </div>
-
       <div class="field">
         <label for="description">Description</label>
         <textarea id="description" placeholder="Color, size, condition, notes..."></textarea>
       </div>
-
     </div>
   </div>
 
   <div class="win-card">
     <div class="win-card-title">🏠 Location &amp; Status</div>
     <div class="win-card-body">
-
       <div class="field-row">
         <div class="field">
           <label for="location">Location *</label>
           <select id="location">
             <option value="">-- Room --</option>
-            <option value="Living Room">Living Room</option>
-            <option value="Bedroom">Bedroom</option>
-            <option value="Studio">Studio</option>
-            <option value="Office">Office</option>
-            <option value="Closet 1">Closet 1</option>
-            <option value="Closet 2">Closet 2</option>
-            <option value="Closet 3">Closet 3</option>
-            <option value="Closet 4">Closet 4</option>
-            <option value="Sitting Room">Sitting Room</option>
-            <option value="Listening Room">Listening Room</option>
-            <option value="Kitchen">Kitchen</option>
-            <option value="Mini Office">Mini Office</option>
+            <option>Living Room</option><option>Bedroom</option><option>Studio</option>
+            <option>Office</option><option>Closet 1</option><option>Closet 2</option>
+            <option>Closet 3</option><option>Closet 4</option><option>Sitting Room</option>
+            <option>Listening Room</option><option>Kitchen</option><option>Mini Office</option>
           </select>
         </div>
         <div class="field">
           <label for="itemOrigin">Origin</label>
           <select id="itemOrigin">
             <option value="">-- Origin --</option>
-            <option value="Bedroom">Bedroom</option>
-            <option value="Guestroom">Guestroom</option>
-            <option value="Office">Office</option>
-            <option value="Garage">Garage</option>
-            <option value="Studio">Studio</option>
-            <option value="Living Room">Living Room</option>
-            <option value="Bathrooms">Bathrooms</option>
-            <option value="Closet 1">Closet 1</option>
-            <option value="Closet 2">Closet 2</option>
-            <option value="Utility Closet">Utility Closet</option>
-            <option value="Kitchen">Kitchen</option>
-            <option value="Patio/Garden">Patio/Garden</option>
-            <option value="Dining/Bar">Dining/Bar</option>
+            <option>Bedroom</option><option>Guestroom</option><option>Office</option>
+            <option>Garage</option><option>Studio</option><option>Living Room</option>
+            <option>Bathrooms</option><option>Closet 1</option><option>Closet 2</option>
+            <option>Utility Closet</option><option>Kitchen</option>
+            <option>Patio/Garden</option><option>Dining/Bar</option>
           </select>
         </div>
       </div>
-
       <div class="field-row">
         <div class="field">
           <label>Wrapped?</label>
@@ -646,14 +536,13 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="win-card">
     <div class="win-card-title">🖼️ Images → Google Drive</div>
     <div class="win-card-body">
-      <div class="upload-zone" id="uploadZone">
+      <div class="upload-zone">
         <input type="file" id="imageInput" multiple accept="image/*" onchange="handleImageSelect(event)">
         <div class="upload-icon">📁</div>
         <div class="upload-text">Tap to add photos</div>
@@ -664,7 +553,7 @@
     </div>
   </div>
 
-  <div class="win-card">
+  <div class="win-card" style="margin-bottom:20px;">
     <div class="win-card-body">
       <div class="progress-wrap" id="progressWrap">
         <div class="progress-fill" id="progressFill"></div>
@@ -679,11 +568,12 @@
       </div>
     </div>
   </div>
+  <div style="height:40px;"></div>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
      PAGE: LOG
-══════════════════════════════════════ -->
+══════════════════════════════ -->
 <div class="page" id="page-log">
   <div class="win-card">
     <div class="win-card-title">📝 Session Log</div>
@@ -698,29 +588,136 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
+     PAGE: VIEWER
+══════════════════════════════ -->
+<div class="page" id="page-viewer">
+
+  <div class="win-card">
+    <div class="win-card-title">
+      🔍 Filter &amp; Sort
+      <span id="resultCount" style="font-size:14px; font-weight:normal; opacity:0.8;"></span>
+    </div>
+    <div class="win-card-body">
+      <div class="filter-bar">
+        <div class="filter-group wide">
+          <label>Search</label>
+          <input type="text" id="filterSearch" placeholder="Item name, description..." oninput="applyFilters()">
+        </div>
+        <div class="filter-group">
+          <label>Room</label>
+          <select id="filterRoom" onchange="applyFilters()">
+            <option value="">All Rooms</option>
+            <option>Living Room</option><option>Bedroom</option><option>Studio</option>
+            <option>Office</option><option>Closet 1</option><option>Closet 2</option>
+            <option>Closet 3</option><option>Closet 4</option><option>Sitting Room</option>
+            <option>Listening Room</option><option>Kitchen</option><option>Mini Office</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Type</label>
+          <select id="filterType" onchange="applyFilters()">
+            <option value="">All Types</option>
+            <option>Bin</option><option>Box</option><option>Furniture</option>
+            <option>Art/Wall</option><option>Kitchen Appliance</option><option>Dishes/Bar</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Bin/Box #</label>
+          <input type="text" id="filterBin" placeholder="e.g. B-12" oninput="applyFilters()">
+        </div>
+        <div class="filter-group wide">
+          <label>Quick Filters</label>
+          <div class="filter-toggles">
+            <button class="filter-chip" id="chipFragile" onclick="toggleChip('chipFragile')">⚠ Fragile</button>
+            <button class="filter-chip" id="chipWrapped" onclick="toggleChip('chipWrapped')">📦 Wrapped</button>
+            <button class="filter-chip" id="chipUnwrapped" onclick="toggleChip('chipUnwrapped')">📭 Not Wrapped</button>
+          </div>
+        </div>
+      </div>
+      <div class="sort-bar">
+        <label>Sort:</label>
+        <select id="sortBy" onchange="applyFilters()">
+          <option value="room-name">Room → Name A-Z</option>
+          <option value="num-asc">Item # ↑</option>
+          <option value="num-desc">Item # ↓ (newest)</option>
+          <option value="name-asc">Name A-Z</option>
+          <option value="type">Type</option>
+        </select>
+        <button class="btn" onclick="clearFilters()" style="padding:6px 12px; font-size:17px;">✕ Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="win-card">
+    <div class="win-card-title">📦 Items</div>
+    <div class="win-card-body" style="padding:8px;">
+      <div class="stats-bar" id="statsBar"></div>
+      <div id="itemGrid">
+        <div class="state-msg">
+          <span class="icon">🗂️</span>
+          Tap Refresh to load inventory.<br>
+          <span style="font-size:15px;font-weight:normal;">Make sure Sheet ID and API Key are saved in Config.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
      PAGE: CONFIG
-══════════════════════════════════════ -->
+══════════════════════════════ -->
 <div class="page" id="page-config">
   <div class="win-card">
-    <div class="win-card-title">⚙️ Configuration</div>
+    <div class="win-card-title">⚙️ Apps Script URL</div>
     <div class="win-card-body">
       <div class="config-field">
-        <label>Google Apps Script URL</label>
+        <label>Web App URL</label>
         <input type="text" id="sheetUrl" placeholder="https://script.google.com/macros/s/..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-        <div id="urlStatus">No URL saved. Paste your deployment URL above and tap Save.</div>
+        <div class="config-note" id="urlStatus">Paste your Google Apps Script deployment URL and tap Save.</div>
       </div>
       <div class="btn-row">
         <button class="btn btn-submit" onclick="saveSheetUrl()" id="saveUrlBtn">💾 Save URL</button>
       </div>
+    </div>
+  </div>
 
-      <div style="margin-top:20px; border-top:2px solid var(--dark); padding-top:12px;">
-        <div class="config-field">
-          <label>Item Counter</label>
-          <div style="display:flex; gap:8px; align-items:center;">
-            <div id="counterDisplay" style="background:white; border-top:2px solid var(--darker); border-left:2px solid var(--darker); border-right:2px solid var(--light); border-bottom:2px solid var(--light); padding:8px 12px; font-size:22px; letter-spacing:2px; color:var(--blue); min-width:80px; text-align:center;"></div>
-            <button class="btn" onclick="resetItemCounter()" style="flex:1;">↺ Reset Counter</button>
-          </div>
+  <div class="win-card">
+    <div class="win-card-title">🗂️ Inventory Viewer (Google Sheets API)</div>
+    <div class="win-card-body">
+      <div class="config-note" style="margin-bottom:12px;">
+        <b>Setup:</b> Get your Sheet ID from the sheet URL:<br>
+        <span style="font-size:13px;">docs.google.com/spreadsheets/d/<b>SHEET_ID</b>/edit</span><br><br>
+        Get a free API Key: console.cloud.google.com → APIs → Sheets API → Credentials<br>
+        Set sheet sharing to <b>Anyone with link can view</b>.
+      </div>
+      <div class="config-field">
+        <label>Google Sheet ID</label>
+        <input type="text" id="cfgSheetId" placeholder="1BxiMVs0XRA..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div class="config-field">
+        <label>API Key</label>
+        <input type="text" id="cfgApiKey" placeholder="AIzaSy..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div class="config-field">
+        <label>Sheet Tab Name</label>
+        <input type="text" id="cfgTabName" placeholder="Inventory" autocomplete="off">
+        <div class="config-note" id="apiKeyStatus">Enter your Sheet ID and API Key above.</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-submit" onclick="saveApiConfig()" id="saveApiBtn">💾 Save Viewer Config</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="win-card">
+    <div class="win-card-title">🔢 Item Counter</div>
+    <div class="win-card-body">
+      <div class="config-field">
+        <label>Current Counter</label>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <div id="counterDisplay" style="background:white;border-top:2px solid var(--darker);border-left:2px solid var(--darker);border-right:2px solid var(--light);border-bottom:2px solid var(--light);padding:8px 12px;font-size:22px;letter-spacing:2px;color:var(--blue);min-width:80px;text-align:center;"></div>
+          <button class="btn" onclick="resetItemCounter()" style="flex:1;">↺ Reset Counter</button>
         </div>
       </div>
     </div>
@@ -736,6 +733,10 @@
   <button class="nav-btn" id="nav-log" onclick="showPage('log')">
     <span class="nav-btn-icon">📝</span>
     <span class="nav-btn-label">Log</span>
+  </button>
+  <button class="nav-btn" id="nav-viewer" onclick="showPage('viewer')">
+    <span class="nav-btn-icon">🗂️</span>
+    <span class="nav-btn-label">Viewer</span>
   </button>
   <button class="nav-btn" id="nav-config" onclick="showPage('config')">
     <span class="nav-btn-icon">⚙️</span>
@@ -756,7 +757,6 @@
     </div>
   </div>
 </div>
-
 <div class="dialog-overlay" id="errorDialog">
   <div class="dialog-box">
     <div class="dialog-title error">
@@ -771,33 +771,73 @@
 </div>
 
 <script>
-// ── STATE ──
-let itemCounter  = 1;
-let sessionItems = [];
+// ══════════════════════════════
+//  STATE
+// ══════════════════════════════
+let itemCounter   = 1;
+let sessionItems  = [];
 let selectedImages = [];
+let allItems      = [];
+let filtered      = [];
+let activeChips   = new Set();
 
-// ── INIT ──
+// ══════════════════════════════
+//  INIT
+// ══════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
   loadItemCounter();
-  const saved = localStorage.getItem('sheetUrl');
-  if (saved) {
-    document.getElementById('sheetUrl').value = saved;
-    document.getElementById('urlStatus').textContent = 'Saved: ' + saved.substring(0, 55) + '...';
+  loadSavedConfig();
+});
+
+function loadSavedConfig() {
+  const sheetUrl = localStorage.getItem('sheetUrl');
+  if (sheetUrl) {
+    document.getElementById('sheetUrl').value = sheetUrl;
+    document.getElementById('urlStatus').textContent = 'Saved: ' + sheetUrl.substring(0,55) + '...';
     document.getElementById('urlStatus').style.borderLeftColor = '#006400';
     document.getElementById('urlStatus').style.color = '#006400';
   }
-});
+  const sheetId = localStorage.getItem('sheetId');
+  const apiKey  = localStorage.getItem('apiKey');
+  const tabName = localStorage.getItem('tabName');
+  if (sheetId) document.getElementById('cfgSheetId').value = sheetId;
+  if (apiKey)  document.getElementById('cfgApiKey').value  = apiKey;
+  if (tabName) document.getElementById('cfgTabName').value = tabName;
+  else         document.getElementById('cfgTabName').value = 'Inventory';
+  if (sheetId && apiKey) {
+    document.getElementById('apiKeyStatus').textContent = '✅ Viewer configured. Open Viewer tab to browse.';
+    document.getElementById('apiKeyStatus').style.borderLeftColor = '#006400';
+    document.getElementById('apiKeyStatus').style.color = '#006400';
+  }
+}
 
-// ── NAVIGATION ──
+// ══════════════════════════════
+//  NAVIGATION
+// ══════════════════════════════
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
   document.getElementById('nav-' + name).classList.add('active');
   window.scrollTo(0, 0);
+
+  // Swap header elements per page
+  const isForm   = name === 'form';
+  const isViewer = name === 'viewer';
+  document.getElementById('headerItemNum').style.display    = isForm   ? 'flex'  : 'none';
+  document.getElementById('headerRefreshBtn').style.display = isViewer ? 'block' : 'none';
+
+  // Update header subtitle
+  const subs = { form:'Add items', log:'Session log', viewer:'Browse inventory', config:'Settings' };
+  document.getElementById('headerStatus').textContent = subs[name] || '';
+
+  // Auto-load viewer when switching to it
+  if (isViewer && allItems.length === 0) loadViewerData();
 }
 
-// ── ITEM COUNTER ──
+// ══════════════════════════════
+//  COUNTER
+// ══════════════════════════════
 function loadItemCounter() {
   const stored = localStorage.getItem('itemCounter');
   if (stored) itemCounter = parseInt(stored);
@@ -820,32 +860,50 @@ function resetItemCounter() {
   setStatus('Counter reset to ' + String(num).padStart(4, '0'));
 }
 
-// ── CONFIG ──
+// ══════════════════════════════
+//  CONFIG SAVES
+// ══════════════════════════════
 function saveSheetUrl() {
   const url = document.getElementById('sheetUrl').value.trim();
   const status = document.getElementById('urlStatus');
-  const btn = document.getElementById('saveUrlBtn');
-  if (!url) {
-    status.textContent = 'Please paste a URL first.';
-    status.style.borderLeftColor = '#cc0000';
-    status.style.color = '#cc0000';
-    return;
-  }
+  const btn    = document.getElementById('saveUrlBtn');
+  if (!url) { status.textContent = 'Please paste a URL first.'; status.style.borderLeftColor='#cc0000'; return; }
   if (!url.startsWith('https://script.google.com')) {
     status.textContent = 'Warning: does not look like an Apps Script URL. Saved anyway.';
-    status.style.borderLeftColor = '#cc6600';
-    status.style.color = '#cc6600';
+    status.style.borderLeftColor = '#cc6600'; status.style.color = '#cc6600';
   } else {
-    status.textContent = 'Saved: ' + url.substring(0, 55) + '...';
-    status.style.borderLeftColor = '#006400';
-    status.style.color = '#006400';
+    status.textContent = 'Saved: ' + url.substring(0,55) + '...';
+    status.style.borderLeftColor = '#006400'; status.style.color = '#006400';
   }
   localStorage.setItem('sheetUrl', url);
   btn.textContent = '✅ Saved!';
   setTimeout(() => { btn.textContent = '💾 Save URL'; }, 2000);
 }
 
-// ── IMAGE HANDLING ──
+function saveApiConfig() {
+  const sheetId = document.getElementById('cfgSheetId').value.trim();
+  const apiKey  = document.getElementById('cfgApiKey').value.trim();
+  const tabName = document.getElementById('cfgTabName').value.trim() || 'Inventory';
+  const status  = document.getElementById('apiKeyStatus');
+  const btn     = document.getElementById('saveApiBtn');
+  if (!sheetId || !apiKey) {
+    status.textContent = 'Please fill in both Sheet ID and API Key.';
+    status.style.borderLeftColor = '#cc0000'; status.style.color = '#cc0000'; return;
+  }
+  localStorage.setItem('sheetId', sheetId);
+  localStorage.setItem('apiKey',  apiKey);
+  localStorage.setItem('tabName', tabName);
+  status.textContent = '✅ Saved! Open the Viewer tab to browse your inventory.';
+  status.style.borderLeftColor = '#006400'; status.style.color = '#006400';
+  btn.textContent = '✅ Saved!';
+  setTimeout(() => { btn.textContent = '💾 Save Viewer Config'; }, 2000);
+  // Reset viewer so it reloads fresh
+  allItems = []; filtered = [];
+}
+
+// ══════════════════════════════
+//  IMAGE HANDLING
+// ══════════════════════════════
 function handleImageSelect(event) {
   const files = Array.from(event.target.files);
   selectedImages = files;
@@ -861,62 +919,48 @@ function handleImageSelect(event) {
   count.textContent = files.length > 0 ? '✅ ' + files.length + ' image(s) queued for Drive' : '';
 }
 
-// ── SUBMIT ──
+// ══════════════════════════════
+//  SUBMIT
+// ══════════════════════════════
 async function submitItem() {
-  const url = document.getElementById('sheetUrl').value.trim();
-  if (!url) {
-    showError('No Apps Script URL saved.\nGo to the Config tab and save your URL first.');
-    return;
-  }
+  const url = localStorage.getItem('sheetUrl') || '';
+  if (!url) { showError('No Apps Script URL saved.\nGo to the Config tab and save your URL first.'); return; }
+
   const itemName = document.getElementById('itemName').value.trim();
   const itemType = document.getElementById('itemType').value;
   const location = document.getElementById('location').value;
   const quantity = document.getElementById('quantity').value;
-
   if (!itemName || !itemType || !location || !quantity) {
-    showError('Please fill in required fields:\n• Item Name\n• Type\n• Location\n• Quantity');
-    return;
+    showError('Please fill in required fields:\n• Item Name\n• Type\n• Location\n• Quantity'); return;
   }
 
-  const wrapped     = document.querySelector('input[name="wrapped"]:checked')?.value || 'No';
-  const fragile     = document.querySelector('input[name="fragile"]:checked')?.value || 'No';
-  const description = document.getElementById('description').value.trim();
+  const wrapped      = document.querySelector('input[name="wrapped"]:checked')?.value || 'No';
+  const fragile      = document.querySelector('input[name="fragile"]:checked')?.value || 'No';
+  const description  = document.getElementById('description').value.trim();
   const binBoxNumber = document.getElementById('binBoxNumber').value.trim();
-  const itemOrigin  = document.getElementById('itemOrigin').value;
-  const itemNumber  = String(itemCounter).padStart(4, '0');
+  const itemOrigin   = document.getElementById('itemOrigin').value;
+  const itemNumber   = String(itemCounter).padStart(4, '0');
 
-  setStatus('Preparing...');
-  showProgress(20);
+  setStatus('Preparing...'); showProgress(20);
 
   let imageDataArray = [];
   try {
     imageDataArray = await Promise.all(selectedImages.map(fileToBase64));
-  } catch(e) {
-    showError('Image error: ' + e.message);
-    hideProgress();
-    return;
-  }
+  } catch(e) { showError('Image error: ' + e.message); hideProgress(); return; }
 
-  showProgress(55);
-  setStatus('Sending to Sheets...');
+  showProgress(55); setStatus('Sending to Sheets...');
 
   const payload = {
     itemNumber, itemName, itemType, binBoxNumber, itemOrigin,
     location, quantity: parseInt(quantity), description,
-    wrapped, fragile, images: imageDataArray,
-    timestamp: new Date().toISOString()
+    wrapped, fragile, images: imageDataArray, timestamp: new Date().toISOString()
   };
 
   try {
-    await fetch(url, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    await fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
     showProgress(100);
     onSubmitSuccess(payload);
-  } catch (err) {
+  } catch(err) {
     hideProgress();
     showError('Network error: ' + err.message + '\n\nCheck your Script URL and "Anyone" access.');
   }
@@ -931,7 +975,7 @@ function onSubmitSuccess(payload) {
   document.getElementById('itemCountStatus').textContent = 'Logged: ' + sessionItems.length;
   setStatus('✅ #' + payload.itemNumber + ' "' + payload.itemName + '" saved.');
   document.getElementById('headerStatus').textContent = 'Last: ' + payload.itemName;
-  showSuccess('Item #' + payload.itemNumber + '\n"' + payload.itemName + '"\nlogged successfully!\n\nNext: #' + String(itemCounter).padStart(4,'0'));
+  showSuccess('Item #' + payload.itemNumber + '\n"' + payload.itemName + '"\nlogged!\n\nNext: #' + String(itemCounter).padStart(4,'0'));
   document.getElementById('itemName').value = '';
   document.getElementById('description').value = '';
   document.getElementById('imagePreview').innerHTML = '';
@@ -939,6 +983,8 @@ function onSubmitSuccess(payload) {
   document.getElementById('imageInput').value = '';
   selectedImages = [];
   document.getElementById('quantity').value = 1;
+  // Reset viewer cache so next visit reloads fresh data
+  allItems = []; filtered = [];
   setTimeout(hideProgress, 800);
 }
 
@@ -951,17 +997,16 @@ function fileToBase64(file) {
   });
 }
 
-// ── CLEAR ──
+// ══════════════════════════════
+//  CLEAR FORM
+// ══════════════════════════════
 function clearForm() {
-  document.getElementById('itemName').value = '';
-  document.getElementById('itemType').value = '';
-  document.getElementById('location').value = '';
-  document.getElementById('itemOrigin').value = '';
-  document.getElementById('binBoxNumber').value = '';
-  document.getElementById('description').value = '';
+  ['itemName','itemType','location','itemOrigin','binBoxNumber','description'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
   document.getElementById('quantity').value = 1;
-  document.getElementById('wrappedNo').checked = true;
-  document.getElementById('fragileNo').checked = true;
+  document.getElementById('wrappedNo').checked  = true;
+  document.getElementById('fragileNo').checked  = true;
   document.getElementById('imagePreview').innerHTML = '';
   document.getElementById('imageCount').textContent = '';
   document.getElementById('imageInput').value = '';
@@ -969,7 +1014,9 @@ function clearForm() {
   setStatus('Form cleared.');
 }
 
-// ── LOG ──
+// ══════════════════════════════
+//  SESSION LOG
+// ══════════════════════════════
 function addToLog(item) {
   const log = document.getElementById('logBody');
   const placeholder = log.querySelector('div[style]');
@@ -989,29 +1036,192 @@ function clearLog() {
   document.getElementById('itemCountStatus').textContent = 'Logged: 0';
 }
 
-// ── UI HELPERS ──
-function setStatus(msg) {
-  document.getElementById('statusText').textContent = msg;
+// ══════════════════════════════
+//  VIEWER — LOAD DATA
+// ══════════════════════════════
+async function loadViewerData() {
+  const sheetId = localStorage.getItem('sheetId') || '';
+  const apiKey  = localStorage.getItem('apiKey')  || '';
+  const tabName = localStorage.getItem('tabName') || 'Inventory';
+
+  if (!sheetId || !apiKey) {
+    document.getElementById('itemGrid').innerHTML = `
+      <div class="state-msg">
+        <span class="icon">⚙️</span>
+        Not configured yet.<br>
+        <span style="font-size:15px;font-weight:normal;line-height:1.6;">
+          Go to <b>Config</b> tab and enter your<br>
+          <b>Google Sheet ID</b> and <b>API Key</b>.
+        </span>
+      </div>`;
+    document.getElementById('headerStatus').textContent = 'Config needed';
+    return;
+  }
+
+  document.getElementById('itemGrid').innerHTML = '<div class="state-msg"><span class="icon">⏳</span>Loading live data...</div>';
+  document.getElementById('headerRefreshBtn').textContent = '⏳';
+
+  try {
+    const range = encodeURIComponent(tabName);
+    const url   = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+    const res   = await fetch(url);
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || 'API error ' + res.status);
+    }
+    const json    = await res.json();
+    const rows    = json.values || [];
+    if (rows.length < 2) { allItems = []; applyFilters(); return; }
+    const headers = rows[0];
+    allItems = rows.slice(1).map(row => {
+      const obj = {};
+      headers.forEach((h, i) => { obj[h.trim()] = (row[i] || '').trim(); });
+      return obj;
+    }).filter(item => Object.values(item).some(v => v));
+    document.getElementById('headerStatus').textContent = allItems.length + ' items — live';
+    document.getElementById('headerRefreshBtn').textContent = '↺ Refresh';
+    applyFilters();
+  } catch(err) {
+    document.getElementById('itemGrid').innerHTML = `
+      <div class="state-msg">
+        <span class="icon">⚠️</span>
+        Failed to load: ${err.message}<br>
+        <span style="font-size:14px;font-weight:normal;">
+          Check Sheet ID and API Key in Config tab.<br>
+          Sheet must be shared: Anyone with link can view.
+        </span>
+      </div>`;
+    document.getElementById('headerRefreshBtn').textContent = '↺ Refresh';
+    document.getElementById('headerStatus').textContent = 'Load failed';
+  }
 }
-function showProgress(pct) {
-  document.getElementById('progressWrap').classList.add('active');
-  document.getElementById('progressFill').style.width = pct + '%';
+
+// ══════════════════════════════
+//  VIEWER — FILTERS
+// ══════════════════════════════
+function toggleChip(id) {
+  document.getElementById(id).classList.toggle('on');
+  if (activeChips.has(id)) activeChips.delete(id);
+  else activeChips.add(id);
+  applyFilters();
 }
-function hideProgress() {
-  document.getElementById('progressWrap').classList.remove('active');
-  document.getElementById('progressFill').style.width = '0%';
+
+function applyFilters() {
+  const search    = document.getElementById('filterSearch').value.toLowerCase();
+  const room      = document.getElementById('filterRoom').value;
+  const type      = document.getElementById('filterType').value;
+  const bin       = document.getElementById('filterBin').value.toLowerCase();
+  const fragile   = activeChips.has('chipFragile');
+  const wrapped   = activeChips.has('chipWrapped');
+  const unwrapped = activeChips.has('chipUnwrapped');
+  const sortBy    = document.getElementById('sortBy').value;
+
+  filtered = allItems.filter(item => {
+    if (search && !((item['Item Name']||'').toLowerCase().includes(search) ||
+                    (item['Description']||'').toLowerCase().includes(search) ||
+                    (item['Item #']||'').toLowerCase().includes(search))) return false;
+    if (room && item['Location'] !== room) return false;
+    if (type && item['Type'] !== type) return false;
+    if (bin  && !(item['Bin/Box #']||'').toLowerCase().includes(bin)) return false;
+    if (fragile   && (item['Fragile?']||'').toLowerCase() !== 'yes') return false;
+    if (wrapped   && (item['Wrapped?']||'').toLowerCase() !== 'yes') return false;
+    if (unwrapped && (item['Wrapped?']||'').toLowerCase() === 'yes') return false;
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    switch(sortBy) {
+      case 'room-name': return (a['Location']||'').localeCompare(b['Location']||'') || (a['Item Name']||'').localeCompare(b['Item Name']||'');
+      case 'num-asc':   return parseInt(a['Item #']||0) - parseInt(b['Item #']||0);
+      case 'num-desc':  return parseInt(b['Item #']||0) - parseInt(a['Item #']||0);
+      case 'name-asc':  return (a['Item Name']||'').localeCompare(b['Item Name']||'');
+      case 'type':      return (a['Type']||'').localeCompare(b['Type']||'') || (a['Item Name']||'').localeCompare(b['Item Name']||'');
+    }
+    return 0;
+  });
+
+  renderItems();
+  renderStats();
+  document.getElementById('resultCount').textContent =
+    filtered.length === allItems.length
+      ? '(' + allItems.length + ' items)'
+      : '(' + filtered.length + ' of ' + allItems.length + ')';
 }
-function showSuccess(msg) {
-  document.getElementById('successMsg').textContent = msg;
-  document.getElementById('successDialog').classList.add('active');
+
+function clearFilters() {
+  document.getElementById('filterSearch').value = '';
+  document.getElementById('filterRoom').value   = '';
+  document.getElementById('filterType').value   = '';
+  document.getElementById('filterBin').value    = '';
+  activeChips.forEach(id => document.getElementById(id)?.classList.remove('on'));
+  activeChips.clear();
+  document.getElementById('sortBy').value = 'room-name';
+  applyFilters();
 }
-function showError(msg) {
-  document.getElementById('errorMsg').textContent = msg;
-  document.getElementById('errorDialog').classList.add('active');
+
+// ══════════════════════════════
+//  VIEWER — RENDER
+// ══════════════════════════════
+function roomClass(loc) { return 'room-' + (loc || 'default').replace(/\s+/g, '-'); }
+
+function renderItems() {
+  const grid = document.getElementById('itemGrid');
+  if (!filtered.length) {
+    grid.innerHTML = allItems.length === 0
+      ? '<div class="state-msg"><span class="icon">🗂️</span>No data loaded.<br><span style="font-size:15px;font-weight:normal;">Tap ↺ Refresh in the header.</span></div>'
+      : '<div class="state-msg"><span class="icon">🔍</span>No items match your filters.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(item => {
+    const loc     = item['Location'] || '';
+    const name    = item['Item Name'] || '(unnamed)';
+    const num     = item['Item #'] || '?';
+    const type    = item['Type'] || '';
+    const qty     = item['Quantity'] || '1';
+    const desc    = item['Description'] || '';
+    const wrapped = item['Wrapped?'] || 'No';
+    const fragile = item['Fragile?'] || 'No';
+    const origin  = item['Origin'] || '';
+    const bin     = item['Bin/Box #'] || '';
+    const imgUrl  = item['Image URL(s)'] || '';
+    const wBadge  = wrapped.toLowerCase()==='yes' ? '<span class="badge badge-yes">Wrapped</span>' : '<span class="badge badge-no">Unwrapped</span>';
+    const fBadge  = fragile.toLowerCase()==='yes' ? '<span class="badge badge-frag">⚠ Fragile</span>' : '';
+    const imgLink = imgUrl ? `<a href="${imgUrl}" target="_blank" style="color:var(--blue);font-size:14px;">📷 Photos</a>` : '';
+    return `<div class="item-card">
+      <div class="item-card-header ${roomClass(loc)}">
+        <span class="item-num">#${String(num).padStart(4,'0')}</span>
+        <span class="item-name">${name}</span>
+        <span class="item-type-badge">${type}</span>
+      </div>
+      <div class="item-card-body">
+        <div class="item-field"><div class="item-field-label">Location</div><div class="item-field-value">${loc||'—'}</div></div>
+        <div class="item-field"><div class="item-field-label">Qty</div><div class="item-field-value">${qty}</div></div>
+        ${origin?`<div class="item-field"><div class="item-field-label">Origin</div><div class="item-field-value">${origin}</div></div>`:''}
+        ${bin?`<div class="item-field"><div class="item-field-label">Bin/Box #</div><div class="item-field-value">${bin}</div></div>`:''}
+        <div class="item-field wide" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">${wBadge} ${fBadge} ${imgLink}</div>
+        ${desc?`<div class="item-desc">${desc}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
 }
-function closeDialog(id) {
-  document.getElementById(id).classList.remove('active');
+
+function renderStats() {
+  const rooms = {};
+  filtered.forEach(item => { const r = item['Location']||'Unknown'; rooms[r]=(rooms[r]||0)+1; });
+  document.getElementById('statsBar').innerHTML = Object.entries(rooms)
+    .sort((a,b) => b[1]-a[1])
+    .map(([r,n]) => `<span class="stat-chip">${r}: ${n}</span>`).join('');
 }
+
+// ══════════════════════════════
+//  UI HELPERS
+// ══════════════════════════════
+function setStatus(msg) { document.getElementById('statusText').textContent = msg; }
+function showProgress(pct) { document.getElementById('progressWrap').classList.add('active'); document.getElementById('progressFill').style.width = pct + '%'; }
+function hideProgress()    { document.getElementById('progressWrap').classList.remove('active'); document.getElementById('progressFill').style.width = '0%'; }
+function showSuccess(msg)  { document.getElementById('successMsg').textContent = msg; document.getElementById('successDialog').classList.add('active'); }
+function showError(msg)    { document.getElementById('errorMsg').textContent = msg; document.getElementById('errorDialog').classList.add('active'); }
+function closeDialog(id)   { document.getElementById(id).classList.remove('active'); }
 </script>
 </body>
 </html>
