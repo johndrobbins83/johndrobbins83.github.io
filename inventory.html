@@ -2,538 +2,553 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📦 Moving Inventory System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#008080">
+<title>📦 Moving Inventory</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
   :root {
-    --win-bg: #008080;
-    --win-face: #c0c0c0;
-    --win-dark: #808080;
-    --win-darker: #404040;
-    --win-light: #ffffff;
-    --win-black: #000000;
-    --win-blue: #000080;
-    --win-blue-light: #1084d0;
-    --win-title-active: linear-gradient(to right, #000080, #1084d0);
-    --win-btn: #c0c0c0;
-    --win-red: #ff0000;
-    --win-yellow: #ffff00;
+    --bg:      #008080;
+    --face:    #c0c0c0;
+    --dark:    #808080;
+    --darker:  #404040;
+    --light:   #ffffff;
+    --black:   #000000;
+    --blue:    #000080;
+    --blue2:   #1084d0;
+    --red:     #800000;
+    --yellow:  #ffff00;
+    --inset:   border-top 2px solid #404040, border-left 2px solid #404040, border-right 2px solid #fff, border-bottom 2px solid #fff;
+    --raise:   border-top 2px solid #fff, border-left 2px solid #fff, border-right 2px solid #404040, border-bottom 2px solid #404040;
+    --header-h: 48px;
+    --nav-h:    52px;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    height: 100%;
+    overscroll-behavior: none;
+  }
 
   body {
-    background: var(--win-bg);
+    background: var(--bg);
     font-family: 'VT323', 'Courier New', monospace;
+    font-size: 20px;
     font-weight: bold;
-    font-size: 22px;
-    min-height: 100vh;
-    padding: 20px 40px;
-    background-image:
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.03) 2px,
-        rgba(0,0,0,0.03) 4px
-      );
+    color: var(--black);
+    padding-top: var(--header-h);
+    padding-bottom: var(--nav-h);
+    background-image: repeating-linear-gradient(
+      45deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
   }
 
-  /* TASKBAR */
-  .taskbar {
+  /* ── STICKY HEADER ── */
+  .app-header {
     position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 32px;
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: linear-gradient(to right, var(--blue), var(--blue2));
     display: flex;
     align-items: center;
-    padding: 2px 4px;
-    z-index: 9999;
-    box-shadow: 0 -1px 0 var(--win-dark);
+    padding: 0 12px;
+    gap: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 0 var(--darker);
   }
-  .start-btn {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
-    border-left: 2px solid var(--win-light);
-    border-right: 2px solid var(--win-darker);
-    border-bottom: 2px solid var(--win-darker);
-    padding: 2px 8px;
-    font-family: 'VT323', monospace;
+  .app-header-icon { font-size: 24px; }
+  .app-header-title {
+    color: white;
     font-size: 22px;
     font-weight: bold;
-    cursor: pointer;
-    user-select: none;
+    letter-spacing: 0.5px;
+    flex: 1;
+    line-height: 1;
   }
-  .start-btn:active {
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
+  .app-header-sub {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    font-weight: normal;
   }
-  .taskbar-clock {
-    margin-left: auto;
-    border-top: 2px solid var(--win-dark);
-    border-left: 2px solid var(--win-dark);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    padding: 2px 8px;
-    font-size: 21px;
-  }
-
-  /* WINDOW */
-  .window {
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
-    border-left: 2px solid var(--win-light);
-    border-right: 2px solid var(--win-darker);
-    border-bottom: 2px solid var(--win-darker);
-    max-width: 1100px;
-    margin: 0 auto 60px auto;
-    box-shadow: 2px 2px 0 var(--win-black);
-  }
-
-  .title-bar {
-    background: var(--win-title-active);
-    color: white;
-    padding: 4px 6px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    user-select: none;
-  }
-  .title-bar-text {
+  .header-item-num {
+    background: var(--blue2);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: var(--yellow);
+    font-size: 22px;
+    padding: 2px 10px;
+    letter-spacing: 2px;
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 21px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
   }
-  .title-bar-icon { font-size: 24px; }
-  .title-bar-controls {
-    display: flex;
-    gap: 2px;
+  .header-reset-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 2px;
+    font-family: 'VT323', monospace;
   }
-  .win-btn {
-    width: 18px;
-    height: 16px;
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
-    border-left: 2px solid var(--win-light);
-    border-right: 2px solid var(--win-darker);
-    border-bottom: 2px solid var(--win-darker);
-    font-size: 19px;
+
+  /* ── BOTTOM NAV ── */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: var(--face);
+    border-top: 2px solid var(--light);
+    box-shadow: 0 -1px 0 var(--darker);
     display: flex;
+    align-items: stretch;
+    z-index: 100;
+  }
+  .nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    color: var(--win-black);
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-  }
-  .win-btn:active {
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-  }
-
-  .menu-bar {
-    display: flex;
-    background: var(--win-face);
-    border-bottom: 1px solid var(--win-dark);
-    padding: 2px 4px;
     gap: 2px;
-  }
-  .menu-item {
-    padding: 2px 8px;
-    font-size: 21px;
+    border: none;
+    background: var(--face);
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-    color: var(--win-black);
+    border-right: 1px solid var(--dark);
+    color: var(--darker);
+    padding: 4px 0;
   }
-  .menu-item:hover {
-    background: var(--win-blue);
+  .nav-btn:last-child { border-right: none; }
+  .nav-btn.active { background: var(--blue); color: white; }
+  .nav-btn:active { background: var(--dark); }
+  .nav-btn-icon { font-size: 20px; line-height: 1; }
+  .nav-btn-label { font-size: 13px; line-height: 1; }
+
+  /* ── PAGES ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── WINDOW CARD ── */
+  .win-card {
+    background: var(--face);
+    border-top: 2px solid var(--light);
+    border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker);
+    border-bottom: 2px solid var(--darker);
+    margin: 10px;
+    box-shadow: 2px 2px 0 var(--black);
+  }
+  .win-card-title {
+    background: linear-gradient(to right, var(--darker), var(--dark));
     color: white;
+    font-size: 16px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
+  .win-card-body { padding: 10px; }
 
-  .window-body {
-    padding: 12px;
-  }
-
-  /* FORM SECTIONS */
-  .section-label {
-    font-size: 21px;
-    background: var(--win-face);
-    padding: 0 4px;
-    position: relative;
-    top: 8px;
-    left: 8px;
-    display: inline-block;
-    z-index: 1;
-  }
-
-  .fieldset-win {
-    border: 2px groove var(--win-dark);
-    padding: 12px 10px 10px 10px;
+  /* ── FIELDSETS ── */
+  .section {
+    border: 2px groove var(--dark);
+    padding: 12px 10px 10px;
     margin-bottom: 12px;
     position: relative;
   }
-  .fieldset-win legend {
-    font-size: 21px;
-    padding: 0 6px;
+  .section legend {
+    font-size: 18px;
     font-weight: bold;
-    color: var(--win-black);
+    padding: 0 6px;
   }
 
-  .form-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 8px;
-    align-items: flex-end;
-    flex-wrap: wrap;
+  /* ── FORM ELEMENTS ── */
+  .field { margin-bottom: 10px; }
+  .field label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 3px;
   }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex: 1;
-    min-width: 120px;
-  }
-
-  .form-group label {
-    font-size: 21px;
-    color: var(--win-black);
-    white-space: nowrap;
-  }
-
-  .form-group label { font-weight: bold; }
-
-  .form-group input[type="text"],
-  .form-group input[type="number"],
-  .form-group select,
-  .form-group textarea {
-    background: white;
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    padding: 3px 5px;
-    font-family: 'VT323', monospace;
-    font-size: 21px;
-    color: var(--win-black);
-    outline: none;
+  .field input[type="text"],
+  .field input[type="number"],
+  .field select,
+  .field textarea {
     width: 100%;
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 60px;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: 1px dotted var(--win-black);
-    outline-offset: 0px;
-  }
-
-  /* Item number display */
-  #itemNumberDisplay {
     background: white;
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    padding: 3px 5px;
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+    padding: 8px 8px;
     font-family: 'VT323', monospace;
-    font-size: 24px;
-    color: var(--win-blue);
-    min-width: 80px;
-    text-align: center;
-    letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--black);
+    outline: none;
+    /* bigger touch target */
+    min-height: 44px;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .field textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: 2px dotted var(--black);
+    outline-offset: 1px;
   }
 
-  /* RADIO / CHECKBOX */
-  .radio-group, .checkbox-group {
+  /* two-col row */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .field-row .field { margin-bottom: 0; }
+  .field-row .field.wide { grid-column: 1 / -1; }
+
+  /* ── RADIO TOGGLE ── */
+  .toggle-group {
     display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
+    gap: 0;
     margin-top: 2px;
   }
-  .radio-group label, .checkbox-group label {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  .toggle-group input[type="radio"] { display: none; }
+  .toggle-group label {
+    flex: 1;
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 21px;
+    background: var(--face);
+    border-top: 2px solid var(--light);
+    border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker);
+    border-bottom: 2px solid var(--darker);
+    user-select: none;
   }
-  .radio-group input[type="radio"],
-  .checkbox-group input[type="checkbox"] {
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-    accent-color: var(--win-black);
+  .toggle-group input[type="radio"]:checked + label {
+    background: var(--blue);
+    color: white;
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
   }
 
-  /* IMAGE UPLOAD */
+  /* ── UPLOAD ZONE ── */
   .upload-zone {
+    position: relative;
     background: white;
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    padding: 12px;
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+    padding: 16px;
     text-align: center;
-    cursor: pointer;
     min-height: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    position: relative;
+    gap: 4px;
   }
-  .upload-zone:hover { background: #f0f0ff; }
   .upload-zone input[type="file"] {
     position: absolute;
     inset: 0;
     opacity: 0;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
   }
-  .upload-zone .upload-icon { font-size: 34px; }
-  .upload-zone .upload-text { font-size: 21px; color: #444; }
-  #imagePreview {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-top: 8px;
-  }
+  .upload-icon { font-size: 32px; }
+  .upload-text { font-size: 18px; color: #444; }
+  .upload-hint { font-size: 15px; color: #777; font-weight: normal; }
+  #imagePreview { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
   .preview-file-item {
-    font-size: 19px;
-    padding: 2px 6px;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 4px 8px;
     background: #e8f4e8;
     border-left: 4px solid #008000;
     color: #003300;
   }
+  #imageCount { font-size: 17px; color: #555; margin-top: 4px; font-weight: normal; }
 
-  /* BUTTONS */
+  /* ── BUTTONS ── */
+  .btn {
+    background: var(--face);
+    border-top: 2px solid var(--light);
+    border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker);
+    border-bottom: 2px solid var(--darker);
+    padding: 10px 20px;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--black);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn:active {
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+    padding: 11px 19px 9px 21px;
+  }
+  .btn.primary { background: var(--face); }
+  .btn.danger  { color: var(--red); }
   .btn-row {
     display: flex;
     gap: 8px;
-    justify-content: flex-end;
     margin-top: 12px;
-    flex-wrap: wrap;
+  }
+  .btn-row .btn { flex: 1; }
+  .btn-submit {
+    background: var(--blue);
+    color: white;
+    border-top: 2px solid var(--blue2);
+    border-left: 2px solid var(--blue2);
+    border-right: 2px solid var(--darker);
+    border-bottom: 2px solid var(--darker);
+    font-size: 24px;
+    padding: 14px 20px;
+    min-height: 52px;
+  }
+  .btn-submit:active {
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--blue2);
+    border-bottom: 2px solid var(--blue2);
   }
 
-  .win-action-btn {
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
-    border-left: 2px solid var(--win-light);
-    border-right: 2px solid var(--win-darker);
-    border-bottom: 2px solid var(--win-darker);
-    padding: 4px 20px;
-    font-family: 'VT323', monospace;
-    font-size: 22px;
-    cursor: pointer;
-    color: var(--win-black);
-    min-width: 90px;
-  }
-  .win-action-btn:active {
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    padding: 5px 19px 3px 21px;
-  }
-  .win-action-btn.primary {
-    font-weight: bold;
-  }
-  .win-action-btn:focus {
-    outline: 1px dotted var(--win-black);
-    outline-offset: -4px;
-  }
-
-  /* STATUS BAR */
-  .status-bar {
-    display: flex;
-    border-top: 2px solid var(--win-dark);
-    padding: 2px 6px;
-    font-size: 21px;
-    gap: 8px;
-  }
-  .status-panel {
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    padding: 1px 6px;
-    flex: 1;
-  }
-
-  /* DIALOG / MODAL */
-  .dialog-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  .dialog-overlay.active { display: flex; }
-  .dialog-box {
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
-    border-left: 2px solid var(--win-light);
-    border-right: 2px solid var(--win-darker);
-    border-bottom: 2px solid var(--win-darker);
-    min-width: 280px;
-    max-width: 500px;
-    box-shadow: 3px 3px 0 var(--win-black);
-  }
-  .dialog-body {
-    padding: 16px;
-    font-size: 21px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .dialog-icon { font-size: 34px; }
-  .dialog-text { line-height: 1.5; }
-  .dialog-buttons {
-    padding: 8px 16px 12px;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  /* PROGRESS BAR */
+  /* ── PROGRESS ── */
   .progress-wrap {
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    height: 18px;
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+    height: 20px;
     background: white;
     display: none;
     overflow: hidden;
+    margin-bottom: 10px;
   }
   .progress-wrap.active { display: block; }
   .progress-fill {
     height: 100%;
     background: repeating-linear-gradient(
-      90deg,
-      var(--win-blue) 0px,
-      var(--win-blue) 14px,
-      var(--win-blue-light) 14px,
-      var(--win-blue-light) 16px
+      90deg, var(--blue) 0px, var(--blue) 14px,
+      var(--blue2) 14px, var(--blue2) 16px
     );
     width: 0%;
     transition: width 0.3s;
   }
 
-  /* ITEMS LOG WINDOW */
-  .log-window {
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
-    border-left: 2px solid var(--win-light);
-    border-right: 2px solid var(--win-darker);
-    border-bottom: 2px solid var(--win-darker);
-    max-width: 1100px;
-    margin: 0 auto 80px auto;
-    box-shadow: 2px 2px 0 var(--win-black);
+  /* ── STATUS BAR ── */
+  .status-bar {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: normal;
   }
+  .status-panel {
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+    padding: 2px 6px;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .status-count {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  /* ── SESSION LOG ── */
   .log-body {
-    padding: 8px;
-    max-height: 220px;
-    overflow-y: auto;
     background: white;
-    border-top: 2px solid var(--win-darker);
-    border-left: 2px solid var(--win-darker);
-    border-right: 2px solid var(--win-light);
-    border-bottom: 2px solid var(--win-light);
-    margin: 8px;
-    font-size: 21px;
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+    max-height: 55vh;
+    overflow-y: auto;
+    font-size: 17px;
   }
   .log-entry {
-    padding: 3px 4px;
-    border-bottom: 1px dotted var(--win-dark);
-    display: flex;
-    gap: 8px;
+    padding: 8px 8px;
+    border-bottom: 1px dotted var(--dark);
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    gap: 6px;
     align-items: center;
   }
-  .log-entry:hover { background: var(--win-blue); color: white; }
-  .log-num { color: var(--win-blue); font-weight: bold; min-width: 45px; }
-  .log-entry:hover .log-num { color: var(--win-yellow); }
+  .log-entry:active { background: var(--blue); color: white; }
+  .log-num { color: var(--blue); font-weight: bold; font-size: 18px; }
+  .log-name { font-weight: bold; font-size: 17px; }
+  .log-meta { font-size: 15px; color: #555; text-align: right; }
 
-  /* Scrollbar win95 style */
-  ::-webkit-scrollbar { width: 16px; }
-  ::-webkit-scrollbar-track { background: var(--win-face); }
-  ::-webkit-scrollbar-thumb {
-    background: var(--win-face);
-    border-top: 2px solid var(--win-light);
-    border-left: 2px solid var(--win-light);
-    border-right: 2px solid var(--win-darker);
-    border-bottom: 2px solid var(--win-darker);
+  /* ── CONFIG PAGE ── */
+  .config-field { margin-bottom: 14px; }
+  .config-field label { display: block; font-size: 18px; font-weight: bold; margin-bottom: 4px; }
+  .config-field input[type="text"] {
+    width: 100%;
+    background: white;
+    border-top: 2px solid var(--darker);
+    border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+    padding: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    font-weight: normal;
+    min-height: 44px;
+    word-break: break-all;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  #urlStatus {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+    padding: 4px 6px;
+    background: #fffde7;
+    border-left: 4px solid #888;
   }
 
-  @media (max-width: 600px) {
-    .form-row { flex-direction: column; }
-    .form-group { min-width: 100%; }
+  /* ── DIALOGS ── */
+  .dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 16px;
+  }
+  .dialog-overlay.active { display: flex; }
+  .dialog-box {
+    background: var(--face);
+    border-top: 2px solid var(--light);
+    border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker);
+    border-bottom: 2px solid var(--darker);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .dialog-title {
+    padding: 6px 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dialog-title.success { background: linear-gradient(to right, #006400, #008000); }
+  .dialog-title.error   { background: linear-gradient(to right, #800000, #c00000); }
+  .dialog-body {
+    padding: 16px;
+    font-size: 19px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+  }
+  .dialog-btns {
+    padding: 8px 16px 14px;
+    display: flex;
+    justify-content: center;
+  }
+  .dialog-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    padding: 0 4px;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 14px; }
+  ::-webkit-scrollbar-track { background: var(--face); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--face);
+    border-top: 2px solid var(--light);
+    border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker);
+    border-bottom: 2px solid var(--darker);
+  }
+
+  /* ── DESKTOP BOOST ── */
+  @media (min-width: 640px) {
+    body { padding-top: calc(var(--header-h) + 10px); }
+    .win-card { max-width: 700px; margin: 10px auto; }
+    .log-body { max-height: 40vh; }
+  }
+  @media (min-width: 1000px) {
+    .win-card { max-width: 1100px; }
   }
 </style>
 </head>
 <body>
 
-<!-- MAIN FORM WINDOW -->
-<div class="window" id="mainWindow">
-  <div class="title-bar">
-    <div class="title-bar-text">
-      <span class="title-bar-icon">📦</span>
-      Moving Inventory System v1.0 — Add New Item
-    </div>
-    <div class="title-bar-controls">
-      <div class="win-btn">_</div>
-      <div class="win-btn">□</div>
-      <div class="win-btn" style="font-size: 21px;">✕</div>
-    </div>
+<!-- ── STICKY HEADER ── -->
+<div class="app-header">
+  <span class="app-header-icon">📦</span>
+  <div style="flex:1; line-height:1.2;">
+    <div class="app-header-title">Moving Inventory</div>
+    <div class="app-header-sub" id="headerStatus">Ready</div>
   </div>
-
-  <div class="menu-bar">
-    <span class="menu-item">File</span>
-    <span class="menu-item">Edit</span>
-    <span class="menu-item">View</span>
-    <span class="menu-item">Help</span>
+  <div class="header-item-num">
+    <span id="itemNumberDisplay">--</span>
+    <button class="header-reset-btn" onclick="resetItemCounter()" title="Reset counter">↺</button>
   </div>
+</div>
 
-  <div class="window-body">
+<!-- ══════════════════════════════════════
+     PAGE: FORM
+══════════════════════════════════════ -->
+<div class="page active" id="page-form">
+  <div class="win-card">
+    <div class="win-card-title">📋 Item Identification</div>
+    <div class="win-card-body">
 
-    <!-- IDENTIFICATION -->
-    <fieldset class="fieldset-win">
-      <legend>📋 Item Identification</legend>
-      <div class="form-row">
-        <div class="form-group" style="flex:0 0 auto;">
-          <label>Item #</label>
-          <div style="display:flex; gap:4px; align-items:center;">
-            <div id="itemNumberDisplay">--</div>
-            <button class="win-action-btn" onclick="resetItemCounter()" title="Reset item counter" style="font-size:17px; padding:2px 7px; min-width:0;">↺</button>
-          </div>
-        </div>
-        <div class="form-group" style="flex:2;">
+      <div class="field-row">
+        <div class="field wide">
           <label for="itemName">Item Name *</label>
-          <input type="text" id="itemName" placeholder="e.g. IKEA Bookshelf" required>
+          <input type="text" id="itemName" placeholder="e.g. IKEA Bookshelf" autocomplete="off">
         </div>
-        <div class="form-group">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
           <label for="itemType">Type *</label>
-          <select id="itemType" required>
+          <select id="itemType">
             <option value="">-- Select --</option>
             <option value="Bin">Bin</option>
             <option value="Box">Box</option>
@@ -543,31 +558,39 @@
             <option value="Dishes/Bar">Dishes/Bar</option>
           </select>
         </div>
-        <div class="form-group" style="flex:0 0 110px;">
+        <div class="field">
           <label for="binBoxNumber">Bin/Box #</label>
-          <input type="text" id="binBoxNumber" placeholder="e.g. B-12">
+          <input type="text" id="binBoxNumber" placeholder="e.g. B-12" autocomplete="off">
         </div>
-        <div class="form-group" style="flex:0 0 80px;">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
           <label for="quantity">Qty *</label>
           <input type="number" id="quantity" value="1" min="1" max="999">
         </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea id="description" placeholder="Color, size, condition, notes..."></textarea>
+        <div class="field">
+          <!-- spacer -->
         </div>
       </div>
-    </fieldset>
 
-    <!-- LOCATION & STATUS -->
-    <fieldset class="fieldset-win">
-      <legend>🏠 Location &amp; Status</legend>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="location">Item Location *</label>
-          <select id="location" required>
-            <option value="">-- Select Room --</option>
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="Color, size, condition, notes..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="win-card">
+    <div class="win-card-title">🏠 Location &amp; Status</div>
+    <div class="win-card-body">
+
+      <div class="field-row">
+        <div class="field">
+          <label for="location">Location *</label>
+          <select id="location">
+            <option value="">-- Room --</option>
             <option value="Living Room">Living Room</option>
             <option value="Bedroom">Bedroom</option>
             <option value="Studio">Studio</option>
@@ -582,10 +605,10 @@
             <option value="Mini Office">Mini Office</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="itemOrigin">Item Origin</label>
+        <div class="field">
+          <label for="itemOrigin">Origin</label>
           <select id="itemOrigin">
-            <option value="">-- Select Origin --</option>
+            <option value="">-- Origin --</option>
             <option value="Bedroom">Bedroom</option>
             <option value="Guestroom">Guestroom</option>
             <option value="Office">Office</option>
@@ -601,325 +624,314 @@
             <option value="Dining/Bar">Dining/Bar</option>
           </select>
         </div>
-        <div class="form-group">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
           <label>Wrapped?</label>
-          <div class="radio-group">
-            <label><input type="radio" name="wrapped" value="Yes"> Yes</label>
-            <label><input type="radio" name="wrapped" value="No" checked> No</label>
+          <div class="toggle-group">
+            <input type="radio" name="wrapped" id="wrappedNo" value="No" checked>
+            <label for="wrappedNo">No</label>
+            <input type="radio" name="wrapped" id="wrappedYes" value="Yes">
+            <label for="wrappedYes">Yes</label>
           </div>
         </div>
-        <div class="form-group">
-          <label>Fragile / Breakable?</label>
-          <div class="radio-group">
-            <label><input type="radio" name="fragile" value="Yes"> Yes</label>
-            <label><input type="radio" name="fragile" value="No" checked> No</label>
+        <div class="field">
+          <label>Fragile?</label>
+          <div class="toggle-group">
+            <input type="radio" name="fragile" id="fragileNo" value="No" checked>
+            <label for="fragileNo">No</label>
+            <input type="radio" name="fragile" id="fragileYes" value="Yes">
+            <label for="fragileYes">Yes</label>
           </div>
         </div>
       </div>
-    </fieldset>
 
-    <!-- IMAGE UPLOAD -->
-    <fieldset class="fieldset-win">
-      <legend>🖼️ Images</legend>
+    </div>
+  </div>
+
+  <div class="win-card">
+    <div class="win-card-title">🖼️ Images → Google Drive</div>
+    <div class="win-card-body">
       <div class="upload-zone" id="uploadZone">
         <input type="file" id="imageInput" multiple accept="image/*" onchange="handleImageSelect(event)">
         <div class="upload-icon">📁</div>
-        <div class="upload-text">Click to browse or drag images here<br><span style="font-size: 19px;color:#555;">Images save to Google Drive — links logged in sheet</span></div>
+        <div class="upload-text">Tap to add photos</div>
+        <div class="upload-hint">Saved to Drive by room folder</div>
       </div>
       <div id="imagePreview"></div>
-      <div id="imageCount" style="font-size: 21px;color:#555;margin-top:4px;"></div>
-    </fieldset>
-
-    <!-- PROGRESS -->
-    <div class="progress-wrap" id="progressWrap">
-      <div class="progress-fill" id="progressFill"></div>
+      <div id="imageCount"></div>
     </div>
+  </div>
 
-    <!-- BUTTONS -->
-    <div class="btn-row">
-      <button class="win-action-btn" onclick="clearForm()">Clear</button>
-      <button class="win-action-btn primary" onclick="submitItem()">Submit Item</button>
-    </div>
-
-    <!-- CONFIG NOTICE -->
-    <div class="fieldset-win" style="border-color: var(--win-blue); background: #fffde7; margin-top:12px;">
-      <legend>⚙️ Configuration</legend>
-      <div style="font-size: 21px; line-height:1.4;">
-        <strong>Google Apps Script Web App URL:</strong>
-        <div style="display:flex; gap:6px; margin-top:4px; align-items:center;">
-          <input type="text" id="sheetUrl" placeholder="Paste your deployment URL here..."
-            style="flex:1; border-top:2px solid #888; border-left:2px solid #888; border-right:2px solid #fff; border-bottom:2px solid #fff; padding:3px 5px; font-family:'VT323',monospace; font-size: 21px;">
-          <button class="win-action-btn" onclick="saveSheetUrl()" id="saveUrlBtn" style="white-space:nowrap; min-width:80px;">💾 Save URL</button>
-        </div>
-        <div id="urlStatus" style="margin-top:4px; font-size: 21px; color:#555;">No URL saved. Paste your Apps Script deployment URL and click Save URL.</div>
+  <div class="win-card">
+    <div class="win-card-body">
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-fill" id="progressFill"></div>
       </div>
-    </div>
-
-  </div><!-- window-body -->
-
-  <div class="status-bar">
-    <div class="status-panel" id="statusText">Ready — Fill out the form and click Submit Item.</div>
-    <div class="status-panel" style="flex:0 0 auto; min-width:120px; text-align:center;" id="itemCountStatus">Items logged: 0</div>
-  </div>
-</div><!-- window -->
-
-
-<!-- ITEM LOG WINDOW -->
-<div class="log-window">
-  <div class="title-bar" style="background: linear-gradient(to right,#404040,#707070);">
-    <div class="title-bar-text">
-      <span class="title-bar-icon">📝</span>
-      Session Log — Items Added This Session
-    </div>
-    <div class="title-bar-controls">
-      <div class="win-btn">_</div>
-      <div class="win-btn">□</div>
-      <div class="win-btn" style="font-size: 21px;">✕</div>
-    </div>
-  </div>
-  <div class="window-body" style="padding:8px;">
-    <div class="log-body" id="logBody">
-      <div style="color:#888; font-size: 21px; padding:4px;">No items logged yet this session.</div>
-    </div>
-    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:6px;">
-      <button class="win-action-btn" onclick="clearLog()">Clear Log</button>
+      <div class="btn-row">
+        <button class="btn danger" onclick="clearForm()">✕ Clear</button>
+        <button class="btn btn-submit" onclick="submitItem()">✔ Submit Item</button>
+      </div>
+      <div class="status-bar">
+        <div class="status-panel" id="statusText">Ready — fill out form and submit.</div>
+        <div class="status-panel status-count" id="itemCountStatus">Logged: 0</div>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- ══════════════════════════════════════
+     PAGE: LOG
+══════════════════════════════════════ -->
+<div class="page" id="page-log">
+  <div class="win-card">
+    <div class="win-card-title">📝 Session Log</div>
+    <div class="win-card-body">
+      <div class="log-body" id="logBody">
+        <div style="padding:12px; color:#888; font-weight:normal; font-size:17px;">No items logged yet.</div>
+      </div>
+      <div class="btn-row" style="margin-top:8px;">
+        <button class="btn danger" onclick="clearLog()">✕ Clear Log</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- SUCCESS DIALOG -->
+<!-- ══════════════════════════════════════
+     PAGE: CONFIG
+══════════════════════════════════════ -->
+<div class="page" id="page-config">
+  <div class="win-card">
+    <div class="win-card-title">⚙️ Configuration</div>
+    <div class="win-card-body">
+      <div class="config-field">
+        <label>Google Apps Script URL</label>
+        <input type="text" id="sheetUrl" placeholder="https://script.google.com/macros/s/..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <div id="urlStatus">No URL saved. Paste your deployment URL above and tap Save.</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-submit" onclick="saveSheetUrl()" id="saveUrlBtn">💾 Save URL</button>
+      </div>
+
+      <div style="margin-top:20px; border-top:2px solid var(--dark); padding-top:12px;">
+        <div class="config-field">
+          <label>Item Counter</label>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div id="counterDisplay" style="background:white; border-top:2px solid var(--darker); border-left:2px solid var(--darker); border-right:2px solid var(--light); border-bottom:2px solid var(--light); padding:8px 12px; font-size:22px; letter-spacing:2px; color:var(--blue); min-width:80px; text-align:center;"></div>
+            <button class="btn" onclick="resetItemCounter()" style="flex:1;">↺ Reset Counter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BOTTOM NAV ── -->
+<div class="bottom-nav">
+  <button class="nav-btn active" id="nav-form" onclick="showPage('form')">
+    <span class="nav-btn-icon">📋</span>
+    <span class="nav-btn-label">Form</span>
+  </button>
+  <button class="nav-btn" id="nav-log" onclick="showPage('log')">
+    <span class="nav-btn-icon">📝</span>
+    <span class="nav-btn-label">Log</span>
+  </button>
+  <button class="nav-btn" id="nav-config" onclick="showPage('config')">
+    <span class="nav-btn-icon">⚙️</span>
+    <span class="nav-btn-label">Config</span>
+  </button>
+</div>
+
+<!-- ── DIALOGS ── -->
 <div class="dialog-overlay" id="successDialog">
   <div class="dialog-box">
-    <div class="title-bar">
-      <div class="title-bar-text">✅ Success</div>
-      <div class="title-bar-controls">
-        <div class="win-btn" onclick="closeDialog('successDialog')" style="font-size: 21px;">✕</div>
-      </div>
+    <div class="dialog-title success">
+      <span>✅ Item Logged</span>
+      <button class="dialog-close" onclick="closeDialog('successDialog')">✕</button>
     </div>
-    <div class="dialog-body">
-      <div class="dialog-icon">✅</div>
-      <div class="dialog-text" id="successMsg">Item submitted successfully!</div>
-    </div>
-    <div class="dialog-buttons">
-      <button class="win-action-btn primary" onclick="closeDialog('successDialog')">OK</button>
+    <div class="dialog-body" id="successMsg"></div>
+    <div class="dialog-btns">
+      <button class="btn btn-submit" onclick="closeDialog('successDialog')" style="min-width:120px;">OK</button>
     </div>
   </div>
 </div>
 
-<!-- ERROR DIALOG -->
 <div class="dialog-overlay" id="errorDialog">
   <div class="dialog-box">
-    <div class="title-bar" style="background:linear-gradient(to right, #800000, #c00000);">
-      <div class="title-bar-text">⚠️ Error</div>
-      <div class="title-bar-controls">
-        <div class="win-btn" onclick="closeDialog('errorDialog')" style="font-size: 21px;">✕</div>
-      </div>
+    <div class="dialog-title error">
+      <span>⚠️ Error</span>
+      <button class="dialog-close" onclick="closeDialog('errorDialog')">✕</button>
     </div>
-    <div class="dialog-body">
-      <div class="dialog-icon">⚠️</div>
-      <div class="dialog-text" id="errorMsg">An error occurred.</div>
-    </div>
-    <div class="dialog-buttons">
-      <button class="win-action-btn primary" onclick="closeDialog('errorDialog')">OK</button>
+    <div class="dialog-body" id="errorMsg"></div>
+    <div class="dialog-btns">
+      <button class="btn" onclick="closeDialog('errorDialog')" style="min-width:120px;">OK</button>
     </div>
   </div>
 </div>
-
-
-<!-- TASKBAR -->
-<div class="taskbar">
-  <button class="start-btn">🪟 Start</button>
-  <div style="width:2px; background:var(--win-dark); height:22px; margin:0 4px;"></div>
-  <div style="display:flex; align-items:center; gap:4px; background:var(--win-blue); color:white; padding:2px 8px; font-size: 21px; border-top:2px solid var(--win-light); border-left:2px solid var(--win-light); border-right:2px solid var(--win-darker); border-bottom:2px solid var(--win-darker);">
-    📦 Moving Inventory
-  </div>
-  <div class="taskbar-clock" id="taskbarClock">00:00</div>
-</div>
-
 
 <script>
-// ==================== STATE ====================
-let itemCounter = 1;
+// ── STATE ──
+let itemCounter  = 1;
 let sessionItems = [];
 let selectedImages = [];
 
-// ==================== INIT ====================
+// ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   loadItemCounter();
-  updateClock();
-  setInterval(updateClock, 1000);
-  // Load saved URL
   const saved = localStorage.getItem('sheetUrl');
   if (saved) {
     document.getElementById('sheetUrl').value = saved;
-    document.getElementById('urlStatus').textContent = 'URL saved: ' + saved.substring(0, 60) + '...';
+    document.getElementById('urlStatus').textContent = 'Saved: ' + saved.substring(0, 55) + '...';
+    document.getElementById('urlStatus').style.borderLeftColor = '#006400';
     document.getElementById('urlStatus').style.color = '#006400';
   }
 });
 
-function updateClock() {
-  const now = new Date();
-  document.getElementById('taskbarClock').textContent =
-    now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+// ── NAVIGATION ──
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.getElementById('nav-' + name).classList.add('active');
+  window.scrollTo(0, 0);
 }
 
-function saveSheetUrl() {
-  const url = document.getElementById('sheetUrl').value.trim();
-  if (!url) {
-    document.getElementById('urlStatus').textContent = 'Please paste a URL first.';
-    document.getElementById('urlStatus').style.color = '#cc0000';
-    return;
-  }
-  if (!url.startsWith('https://script.google.com')) {
-    document.getElementById('urlStatus').textContent = 'Warning: URL does not look like a Google Apps Script URL. Saved anyway.';
-    document.getElementById('urlStatus').style.color = '#cc6600';
-  } else {
-    document.getElementById('urlStatus').textContent = 'Saved: ' + url.substring(0, 60) + '...';
-    document.getElementById('urlStatus').style.color = '#006400';
-  }
-  localStorage.setItem('sheetUrl', url);
-  // Flash the button
-  const btn = document.getElementById('saveUrlBtn');
-  btn.textContent = '✅ Saved!';
-  setTimeout(() => { btn.textContent = '💾 Save URL'; }, 2000);
-}
-
+// ── ITEM COUNTER ──
 function loadItemCounter() {
   const stored = localStorage.getItem('itemCounter');
   if (stored) itemCounter = parseInt(stored);
   updateItemNumberDisplay();
 }
-
 function updateItemNumberDisplay() {
-  document.getElementById('itemNumberDisplay').textContent =
-    String(itemCounter).padStart(4, '0');
+  const val = String(itemCounter).padStart(4, '0');
+  document.getElementById('itemNumberDisplay').textContent = val;
+  const cd = document.getElementById('counterDisplay');
+  if (cd) cd.textContent = val;
 }
-
 function resetItemCounter() {
-  const input = prompt('Reset item counter to what number?', '1');
-  if (input === null) return; // cancelled
+  const input = prompt('Reset item counter to:', '1');
+  if (input === null) return;
   const num = parseInt(input);
-  if (isNaN(num) || num < 1) {
-    showError('Please enter a valid number (1 or higher).');
-    return;
-  }
+  if (isNaN(num) || num < 1) { showError('Enter a valid number (1 or higher).'); return; }
   itemCounter = num;
   localStorage.setItem('itemCounter', itemCounter);
   updateItemNumberDisplay();
-  setStatus('Item counter reset to ' + String(num).padStart(4, '0') + '.');
+  setStatus('Counter reset to ' + String(num).padStart(4, '0'));
 }
 
-// ==================== IMAGE HANDLING ====================
+// ── CONFIG ──
+function saveSheetUrl() {
+  const url = document.getElementById('sheetUrl').value.trim();
+  const status = document.getElementById('urlStatus');
+  const btn = document.getElementById('saveUrlBtn');
+  if (!url) {
+    status.textContent = 'Please paste a URL first.';
+    status.style.borderLeftColor = '#cc0000';
+    status.style.color = '#cc0000';
+    return;
+  }
+  if (!url.startsWith('https://script.google.com')) {
+    status.textContent = 'Warning: does not look like an Apps Script URL. Saved anyway.';
+    status.style.borderLeftColor = '#cc6600';
+    status.style.color = '#cc6600';
+  } else {
+    status.textContent = 'Saved: ' + url.substring(0, 55) + '...';
+    status.style.borderLeftColor = '#006400';
+    status.style.color = '#006400';
+  }
+  localStorage.setItem('sheetUrl', url);
+  btn.textContent = '✅ Saved!';
+  setTimeout(() => { btn.textContent = '💾 Save URL'; }, 2000);
+}
+
+// ── IMAGE HANDLING ──
 function handleImageSelect(event) {
   const files = Array.from(event.target.files);
   selectedImages = files;
   const preview = document.getElementById('imagePreview');
-  const count = document.getElementById('imageCount');
+  const count   = document.getElementById('imageCount');
   preview.innerHTML = '';
   files.forEach(file => {
     const item = document.createElement('div');
     item.className = 'preview-file-item';
-    const kb = (file.size / 1024).toFixed(0);
-    item.textContent = '📷 ' + file.name + '  (' + kb + ' KB)';
+    item.textContent = '📷 ' + file.name + ' (' + (file.size/1024).toFixed(0) + ' KB)';
     preview.appendChild(item);
   });
-  count.textContent = files.length > 0 ? `✅ ${files.length} image(s) queued for Drive upload` : '';
+  count.textContent = files.length > 0 ? '✅ ' + files.length + ' image(s) queued for Drive' : '';
 }
 
-// ==================== SUBMIT ====================
+// ── SUBMIT ──
 async function submitItem() {
   const url = document.getElementById('sheetUrl').value.trim();
   if (!url) {
-    showError('Please enter your Google Apps Script Web App URL in the Configuration field at the top.');
+    showError('No Apps Script URL saved.\nGo to the Config tab and save your URL first.');
     return;
   }
-
-  // Validation
   const itemName = document.getElementById('itemName').value.trim();
   const itemType = document.getElementById('itemType').value;
-  const location  = document.getElementById('location').value;
-  const quantity  = document.getElementById('quantity').value;
+  const location = document.getElementById('location').value;
+  const quantity = document.getElementById('quantity').value;
 
   if (!itemName || !itemType || !location || !quantity) {
-    showError('Please fill in all required fields:\n• Item Name\n• Type\n• Location\n• Quantity');
+    showError('Please fill in required fields:\n• Item Name\n• Type\n• Location\n• Quantity');
     return;
   }
 
-  const wrapped  = document.querySelector('input[name="wrapped"]:checked')?.value || 'No';
-  const fragile  = document.querySelector('input[name="fragile"]:checked')?.value || 'No';
+  const wrapped     = document.querySelector('input[name="wrapped"]:checked')?.value || 'No';
+  const fragile     = document.querySelector('input[name="fragile"]:checked')?.value || 'No';
   const description = document.getElementById('description').value.trim();
-  const itemNumber = String(itemCounter).padStart(4, '0');
+  const binBoxNumber = document.getElementById('binBoxNumber').value.trim();
+  const itemOrigin  = document.getElementById('itemOrigin').value;
+  const itemNumber  = String(itemCounter).padStart(4, '0');
 
-  setStatus('Preparing submission...');
+  setStatus('Preparing...');
   showProgress(20);
 
-  // Convert images to base64
   let imageDataArray = [];
   try {
     imageDataArray = await Promise.all(selectedImages.map(fileToBase64));
   } catch(e) {
-    showError('Image processing failed: ' + e.message);
+    showError('Image error: ' + e.message);
     hideProgress();
     return;
   }
 
-  showProgress(50);
-  setStatus('Sending to Google Sheets...');
-
-  const binBoxNumber = document.getElementById('binBoxNumber').value.trim();
+  showProgress(55);
+  setStatus('Sending to Sheets...');
 
   const payload = {
-    itemNumber,
-    itemName,
-    itemType,
-    binBoxNumber,
-    itemOrigin: document.getElementById('itemOrigin').value,
-    location,
-    quantity: parseInt(quantity),
-    description,
-    wrapped,
-    fragile,
-    images: imageDataArray,
+    itemNumber, itemName, itemType, binBoxNumber, itemOrigin,
+    location, quantity: parseInt(quantity), description,
+    wrapped, fragile, images: imageDataArray,
     timestamp: new Date().toISOString()
   };
 
   try {
-    const response = await fetch(url, {
+    await fetch(url, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-
     showProgress(100);
-    // no-cors means we can't read response — assume success
     onSubmitSuccess(payload);
-
   } catch (err) {
     hideProgress();
-    showError('Network error: ' + err.message + '\n\nCheck your Script URL and make sure the deployment is set to "Anyone" access.');
+    showError('Network error: ' + err.message + '\n\nCheck your Script URL and "Anyone" access.');
   }
 }
 
 function onSubmitSuccess(payload) {
-  // Add to session log
   sessionItems.push(payload);
   addToLog(payload);
-
-  // Increment counter
   itemCounter++;
   localStorage.setItem('itemCounter', itemCounter);
   updateItemNumberDisplay();
-
-  // Update count display
-  document.getElementById('itemCountStatus').textContent = `Items logged: ${sessionItems.length}`;
-
-  setStatus(`✅ Item #${payload.itemNumber} "${payload.itemName}" submitted OK.`);
-
-  showSuccess(`Item #${payload.itemNumber} — "${payload.itemName}" has been logged!\n\nNext item number: ${String(itemCounter).padStart(4,'0')}`);
-
-  // Partial clear
+  document.getElementById('itemCountStatus').textContent = 'Logged: ' + sessionItems.length;
+  setStatus('✅ #' + payload.itemNumber + ' "' + payload.itemName + '" saved.');
+  document.getElementById('headerStatus').textContent = 'Last: ' + payload.itemName;
+  showSuccess('Item #' + payload.itemNumber + '\n"' + payload.itemName + '"\nlogged successfully!\n\nNext: #' + String(itemCounter).padStart(4,'0'));
   document.getElementById('itemName').value = '';
   document.getElementById('description').value = '';
   document.getElementById('imagePreview').innerHTML = '';
@@ -927,25 +939,19 @@ function onSubmitSuccess(payload) {
   document.getElementById('imageInput').value = '';
   selectedImages = [];
   document.getElementById('quantity').value = 1;
-  // Keep type, location, wrapped, fragile
-
   setTimeout(hideProgress, 800);
 }
 
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => resolve({
-      name: file.name,
-      type: file.type,
-      data: reader.result.split(',')[1]
-    });
+    reader.onload = () => resolve({ name: file.name, type: file.type, data: reader.result.split(',')[1] });
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
 }
 
-// ==================== CLEAR ====================
+// ── CLEAR ──
 function clearForm() {
   document.getElementById('itemName').value = '';
   document.getElementById('itemType').value = '';
@@ -954,8 +960,8 @@ function clearForm() {
   document.getElementById('binBoxNumber').value = '';
   document.getElementById('description').value = '';
   document.getElementById('quantity').value = 1;
-  document.querySelector('input[name="wrapped"][value="No"]').checked = true;
-  document.querySelector('input[name="fragile"][value="No"]').checked = true;
+  document.getElementById('wrappedNo').checked = true;
+  document.getElementById('fragileNo').checked = true;
   document.getElementById('imagePreview').innerHTML = '';
   document.getElementById('imageCount').textContent = '';
   document.getElementById('imageInput').value = '';
@@ -963,61 +969,49 @@ function clearForm() {
   setStatus('Form cleared.');
 }
 
-// ==================== LOG ====================
+// ── LOG ──
 function addToLog(item) {
   const log = document.getElementById('logBody');
-  // Remove placeholder
   const placeholder = log.querySelector('div[style]');
   if (placeholder) placeholder.remove();
-
   const entry = document.createElement('div');
   entry.className = 'log-entry';
-  entry.innerHTML = `
-    <span class="log-num">#${item.itemNumber}</span>
-    <span style="flex:1;">${item.itemName}</span>
-    <span style="min-width:80px;color:#555;">${item.itemType}</span>
-    <span style="min-width:110px;color:#555;">${item.location}</span>
-    <span style="min-width:40px;text-align:right;color:#555;">×${item.quantity}</span>
-  `;
+  entry.innerHTML =
+    '<span class="log-num">#' + item.itemNumber + '</span>' +
+    '<span class="log-name">' + item.itemName + '<br><span style="font-size:14px;color:#555;font-weight:normal;">' + item.itemType + ' · ' + item.location + '</span></span>' +
+    '<span class="log-meta">×' + item.quantity + '</span>';
   log.appendChild(entry);
   log.scrollTop = log.scrollHeight;
 }
-
 function clearLog() {
-  document.getElementById('logBody').innerHTML =
-    '<div style="color:#888; font-size: 21px; padding:4px;">No items logged yet this session.</div>';
+  document.getElementById('logBody').innerHTML = '<div style="padding:12px;color:#888;font-weight:normal;font-size:17px;">No items logged yet.</div>';
   sessionItems = [];
-  document.getElementById('itemCountStatus').textContent = 'Items logged: 0';
+  document.getElementById('itemCountStatus').textContent = 'Logged: 0';
 }
 
-// ==================== UI HELPERS ====================
+// ── UI HELPERS ──
 function setStatus(msg) {
   document.getElementById('statusText').textContent = msg;
 }
-
 function showProgress(pct) {
-  const wrap = document.getElementById('progressWrap');
-  const fill = document.getElementById('progressFill');
-  wrap.classList.add('active');
-  fill.style.width = pct + '%';
+  document.getElementById('progressWrap').classList.add('active');
+  document.getElementById('progressFill').style.width = pct + '%';
 }
 function hideProgress() {
   document.getElementById('progressWrap').classList.remove('active');
   document.getElementById('progressFill').style.width = '0%';
 }
-
 function showSuccess(msg) {
-  document.getElementById('successMsg').innerText = msg;
+  document.getElementById('successMsg').textContent = msg;
   document.getElementById('successDialog').classList.add('active');
 }
 function showError(msg) {
-  document.getElementById('errorMsg').innerText = msg;
+  document.getElementById('errorMsg').textContent = msg;
   document.getElementById('errorDialog').classList.add('active');
 }
 function closeDialog(id) {
   document.getElementById(id).classList.remove('active');
 }
 </script>
-
 </body>
 </html>
