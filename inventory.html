@@ -35,7 +35,7 @@
     font-weight: bold;
     color: var(--black);
     padding-top: var(--header-h);
-    padding-bottom: calc(var(--nav-h) + 80px);
+    padding-bottom: calc(var(--nav-h) + 140px);
     background-image: repeating-linear-gradient(
       45deg, transparent, transparent 2px,
       rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
@@ -337,36 +337,64 @@
     border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
   }
 
-  /* ── ITEM CARDS ── */
-  #itemGrid { display: flex; flex-direction: column; gap: 8px; }
-  .item-card {
-    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
-    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
-    overflow: hidden; box-shadow: 1px 1px 0 var(--black);
+  /* ── ITEM LIST ── */
+  #itemGrid { display: flex; flex-direction: column; gap: 0; }
+
+  /* Column header row */
+  .list-header {
+    display: grid;
+    grid-template-columns: 46px 1fr 90px 110px 55px 80px 60px 60px;
+    gap: 0;
+    background: var(--blue);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--darker);
+    position: sticky;
+    top: 0;
+    z-index: 5;
   }
-  .item-card-header {
-    display: flex; align-items: center; gap: 8px;
-    padding: 6px 10px; border-bottom: 1px solid rgba(0,0,0,0.15);
+  .list-header span {
+    padding: 5px 6px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .item-num {
-    font-size: 16px; font-weight: bold; color: var(--blue);
-    min-width: 44px; background: rgba(255,255,255,0.5);
-    padding: 2px 6px; text-align: center; border: 1px solid rgba(0,0,0,0.1);
+  .list-header span:last-child { border-right: none; }
+
+  /* Data rows */
+  .item-row {
+    display: grid;
+    grid-template-columns: 46px 1fr 90px 110px 55px 80px 60px 60px;
+    gap: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    font-size: 13px;
+    min-height: 30px;
+    align-items: stretch;
   }
-  .item-name { flex: 1; font-size: 19px; font-weight: bold; line-height: 1.1; }
-  .item-type-badge {
-    font-size: 13px; background: rgba(0,0,0,0.12);
-    padding: 2px 8px; border: 1px solid rgba(0,0,0,0.15); white-space: nowrap;
+  .item-row:last-child { border-bottom: none; }
+  .item-row:hover { filter: brightness(0.94); }
+  .item-cell {
+    padding: 5px 6px;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
   }
-  .item-card-body {
-    padding: 8px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 15px;
-  }
-  .item-field { line-height: 1.4; }
-  .item-field-label { color: rgba(0,0,0,0.5); font-size: 13px; font-weight: bold; }
-  .item-field-value { font-weight: bold; }
-  .item-field.wide { grid-column: 1 / -1; }
-  .item-desc { grid-column: 1 / -1; font-size: 14px; font-weight: normal; color: #333; padding-top: 4px; border-top: 1px dotted var(--dark); margin-top: 2px; }
-  .badge { display: inline-block; padding: 1px 8px; font-size: 13px; font-weight: bold; border: 1px solid rgba(0,0,0,0.2); }
+  .item-cell:last-child { border-right: none; }
+  .cell-num  { color: var(--blue); font-size: 12px; justify-content: center; background: rgba(255,255,255,0.4); }
+  .cell-name { font-size: 14px; }
+  .cell-desc { font-size: 11px; font-weight: normal; color: #333; }
+  .cell-center { justify-content: center; }
+  .cell-frag-yes { color: #c62828; }
+  .cell-wrap-yes { color: #2e7d32; }
+
+  .badge { display: inline-block; padding: 1px 6px; font-size: 11px; font-weight: bold; border: 1px solid rgba(0,0,0,0.2); }
   .badge-yes  { background: #ffebee; color: #b71c1c; }
   .badge-no   { background: #e8f5e9; color: #1b5e20; }
   .badge-frag { background: #fff3e0; color: #e65100; }
@@ -410,6 +438,146 @@
   .dialog-btns { padding: 8px 16px 14px; display: flex; justify-content: center; }
   .dialog-close { background: none; border: none; color: white; font-size: 20px; cursor: pointer; font-family: 'VT323', monospace; padding: 0 4px; }
 
+  /* ── CALENDAR ── */
+  .cal-nav-btn {
+    background: var(--face); border: none;
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    font-family: 'VT323', monospace; font-size: 16px; font-weight: bold;
+    cursor: pointer; color: var(--black); padding: 2px 8px;
+  }
+  .cal-nav-btn:active {
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+  }
+  /* ── CALENDAR ── */
+  .cal-dow-row {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    text-align: center; font-size: 12px; font-weight: bold;
+    color: white; background: var(--darker);
+    margin-bottom: 2px;
+  }
+  .cal-dow-row span { padding: 4px 0; }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+  .cal-day {
+    min-height: 48px;
+    display: flex; flex-direction: column;
+    align-items: stretch;
+    cursor: pointer; position: relative;
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    background: white; overflow: hidden;
+  }
+  .cal-day:active { opacity: 0.8; }
+  .cal-day.other-month { background: #d8d8d8; }
+  .cal-day.other-month .cal-day-num { color: var(--dark); }
+  .cal-day-num {
+    font-size: 12px; font-weight: bold;
+    padding: 2px 4px 1px;
+    line-height: 1;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+  .cal-day.today .cal-day-num {
+    background: var(--blue); color: white;
+    display: inline-block; width: 22px; height: 22px;
+    border-radius: 50%; text-align: center; line-height: 22px;
+    padding: 0; margin: 3px 0 1px 4px;
+  }
+  .cal-day.selected {
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    background: #eef2ff;
+  }
+  .cal-ev-pills { display: flex; flex-direction: column; gap: 1px; padding: 0 3px 3px; flex: 1; overflow: hidden; }
+  .cal-ev-pill {
+    font-size: 9px; font-weight: bold;
+    padding: 1px 3px;
+    border-radius: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    color: white; line-height: 1.4;
+  }
+  .cal-ev-more { font-size: 10px; color: var(--dark); padding: 0 4px; font-weight: normal; }
+
+  /* ── EVENT LIST ── */
+  .ev-item {
+    padding: 8px 10px; margin-bottom: 6px;
+    border-left: 5px solid #888;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 2px solid rgba(0,0,0,0.15);
+    cursor: pointer; background: white;
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+  }
+  .ev-item:hover { background: #f5f5ff; }
+  .ev-item-header { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+  .ev-type-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .ev-time { font-size: 13px; color: var(--darker); font-weight: normal; }
+  .ev-name { font-size: 16px; font-weight: bold; flex: 1; }
+  .ev-contact { font-size: 13px; font-weight: normal; color: #444; line-height: 1.6; }
+
+  /* ── COLLAPSIBLE CONFIG ── */
+  .cfg-toggle-title {
+    cursor: pointer;
+    user-select: none;
+  }
+  .cfg-toggle-title:hover { filter: brightness(1.15); }
+  .cfg-toggle-title button { pointer-events: none; }
+
+  /* ── CHECKLIST ── */
+  .ck-filter-btn {
+    background: var(--face);
+    border-top: 2px solid var(--light); border-left: 2px solid var(--light);
+    border-right: 2px solid var(--darker); border-bottom: 2px solid var(--darker);
+    font-family: 'VT323', monospace; font-size: 15px; font-weight: bold;
+    cursor: pointer; color: var(--darker); padding: 2px 8px;
+  }
+  .ck-filter-btn.active {
+    background: var(--blue); color: white;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+  }
+  .ck-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    background: white;
+  }
+  .ck-item:last-child { border-bottom: none; }
+  .ck-item.done .ck-text { text-decoration: line-through; opacity: 0.45; }
+  .ck-check {
+    width: 22px; height: 22px; flex-shrink: 0; cursor: pointer;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+    border-right: 2px solid var(--light); border-bottom: 2px solid var(--light);
+    background: white; display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .ck-check.checked {
+    background: var(--blue); color: white;
+    border-top: 2px solid var(--darker); border-left: 2px solid var(--darker);
+  }
+  .ck-cat-badge {
+    font-size: 12px; font-weight: bold; padding: 1px 7px;
+    border: 1px solid rgba(0,0,0,0.15); white-space: nowrap; flex-shrink: 0;
+  }
+  .ck-text { flex: 1; font-size: 16px; font-weight: bold; line-height: 1.3; }
+  .ck-delete {
+    background: none; border: none; cursor: pointer;
+    color: #aaa; font-size: 16px; font-family: 'VT323', monospace;
+    padding: 0 4px; flex-shrink: 0;
+  }
+  .ck-delete:hover { color: var(--red); }
+  .ck-section-header {
+    background: var(--face); padding: 4px 8px;
+    font-size: 13px; font-weight: bold; color: var(--darker);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex; justify-content: space-between;
+  }
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 14px; }
   ::-webkit-scrollbar-track { background: var(--face); }
@@ -422,11 +590,16 @@
   /* ── RESPONSIVE ── */
   @media (min-width: 640px) {
     .win-card { max-width: 700px; margin: 10px auto; }
-    #itemGrid { display: grid; grid-template-columns: 1fr 1fr; }
+    .cal-day { min-height: 64px; }
+  }
+  @media (max-width: 400px) {
+    .cal-day { min-height: 38px; }
+    .cal-day-num { font-size: 11px; }
+    .cal-ev-pill { font-size: 8px; padding: 1px 2px; }
   }
   @media (min-width: 1000px) {
     .win-card { max-width: 1100px; }
-    #itemGrid { grid-template-columns: 1fr 1fr 1fr; }
+    .list-header, .item-row { grid-template-columns: 46px 1fr 110px 130px 55px 90px 65px 65px; }
   }
 </style>
 </head>
@@ -468,20 +641,28 @@
           <select id="itemType">
             <option value="">-- Select --</option>
             <option>Bin</option><option>Box</option><option>Furniture</option>
-            <option>Art/Wall</option><option>Kitchen Appliance</option><option>Dishes/Bar</option>
+            <option>Art/Wall</option><option>Kitchen Appliance</option><option>Dishes/Bar</option><option>Pet Supplies</option><option>Pet Supplies</option>
           </select>
         </div>
         <div class="field">
           <label for="binBoxNumber">Bin/Box #</label>
           <input type="text" id="binBoxNumber" placeholder="e.g. B-12" autocomplete="off">
         </div>
-      </div>
-      <div class="field-row">
         <div class="field">
+          <label for="itemWeight">Weight</label>
+          <select id="itemWeight">
+            <option value="">-- Weight --</option>
+            <option>Light</option>
+            <option>Medium</option>
+            <option>Heavy</option>
+            <option>Very Heavy</option>
+            <option>Bulky</option>
+          </select>
+        </div>
+        <div class="field" style="flex:0 0 80px;">
           <label for="quantity">Qty *</label>
           <input type="number" id="quantity" value="1" min="1" max="999">
         </div>
-        <div class="field"></div>
       </div>
       <div class="field">
         <label for="description">Description</label>
@@ -571,22 +752,7 @@
   <div style="height:40px;"></div>
 </div>
 
-<!-- ══════════════════════════════
-     PAGE: LOG
-══════════════════════════════ -->
-<div class="page" id="page-log">
-  <div class="win-card">
-    <div class="win-card-title">📝 Session Log</div>
-    <div class="win-card-body">
-      <div class="log-body" id="logBody">
-        <div style="padding:12px; color:#888; font-weight:normal; font-size:17px;">No items logged yet.</div>
-      </div>
-      <div class="btn-row" style="margin-top:8px;">
-        <button class="btn danger" onclick="clearLog()">✕ Clear Log</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- ══════════════════════════════
      PAGE: VIEWER
@@ -619,7 +785,7 @@
           <select id="filterType" onchange="applyFilters()">
             <option value="">All Types</option>
             <option>Bin</option><option>Box</option><option>Furniture</option>
-            <option>Art/Wall</option><option>Kitchen Appliance</option><option>Dishes/Bar</option>
+            <option>Art/Wall</option><option>Kitchen Appliance</option><option>Dishes/Bar</option><option>Pet Supplies</option><option>Pet Supplies</option>
           </select>
         </div>
         <div class="filter-group">
@@ -668,60 +834,430 @@
      PAGE: CONFIG
 ══════════════════════════════ -->
 <div class="page" id="page-config">
+
   <div class="win-card">
-    <div class="win-card-title">⚙️ Apps Script URL</div>
-    <div class="win-card-body">
-      <div class="config-field">
-        <label>Web App URL</label>
-        <input type="text" id="sheetUrl" placeholder="https://script.google.com/macros/s/..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-        <div class="config-note" id="urlStatus">Paste your Google Apps Script deployment URL and tap Save.</div>
-      </div>
-      <div class="btn-row">
-        <button class="btn btn-submit" onclick="saveSheetUrl()" id="saveUrlBtn">💾 Save URL</button>
+    <div class="win-card-title cfg-toggle-title" onclick="toggleSection('secPersonal','btnPersonal')">
+      <span>&#128100; Personal Info</span>
+      <button class="cal-nav-btn" id="btnPersonal">&#9660;</button>
+    </div>
+    <div id="secPersonal" style="display:none;">
+      <div class="win-card-body">
+        <div class="config-field">
+          <label>Full Name</label>
+          <input type="text" id="piName" placeholder="Your Name" autocomplete="off">
+        </div>
+        <div class="config-field">
+          <label>Moving From Address</label>
+          <input type="text" id="piFromAddr" placeholder="123 Old Street, City, State ZIP" autocomplete="off">
+        </div>
+        <div class="config-field">
+          <label>Moving To Address</label>
+          <input type="text" id="piToAddr" placeholder="456 New Street, City, State ZIP" autocomplete="off">
+        </div>
+        <div class="field-row">
+          <div class="config-field">
+            <label>Move Out Date</label>
+            <input type="date" id="piMoveOut" style="min-height:44px;padding:8px;font-size:16px;width:100%;background:white;border-top:2px solid var(--darker);border-left:2px solid var(--darker);border-right:2px solid var(--light);border-bottom:2px solid var(--light);font-family:'VT323',monospace;font-weight:bold;-webkit-appearance:none;border-radius:0;">
+          </div>
+          <div class="config-field">
+            <label>Move In Date</label>
+            <input type="date" id="piMoveIn" style="min-height:44px;padding:8px;font-size:16px;width:100%;background:white;border-top:2px solid var(--darker);border-left:2px solid var(--darker);border-right:2px solid var(--light);border-bottom:2px solid var(--light);font-family:'VT323',monospace;font-weight:bold;-webkit-appearance:none;border-radius:0;">
+          </div>
+        </div>
+        <div class="config-field">
+          <label>Email</label>
+          <input type="email" id="piEmail" placeholder="you@email.com" autocomplete="off">
+        </div>
+        <div class="field-row">
+          <div class="config-field">
+            <label>Phone 1</label>
+            <input type="tel" id="piPhone1" placeholder="(555) 000-0001" autocomplete="off">
+          </div>
+          <div class="config-field">
+            <label>Phone 2</label>
+            <input type="tel" id="piPhone2" placeholder="(555) 000-0002" autocomplete="off">
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-submit" onclick="savePersonalInfo()" id="savePersonalBtn">&#128190; Save</button>
+        </div>
+        <div class="config-note" id="personalStatus" style="margin-top:8px;">Fill in your move details above.</div>
       </div>
     </div>
   </div>
 
   <div class="win-card">
-    <div class="win-card-title">🗂️ Inventory Viewer (Google Sheets API)</div>
-    <div class="win-card-body">
-      <div class="config-note" style="margin-bottom:12px;">
-        <b>Setup:</b> Get your Sheet ID from the sheet URL:<br>
-        <span style="font-size:13px;">docs.google.com/spreadsheets/d/<b>SHEET_ID</b>/edit</span><br><br>
-        Get a free API Key: console.cloud.google.com → APIs → Sheets API → Credentials<br>
-        Set sheet sharing to <b>Anyone with link can view</b>.
+    <div class="win-card-title cfg-toggle-title" onclick="toggleSection('secLog','btnLog')">
+      <span>&#128221; Session Log</span>
+      <button class="cal-nav-btn" id="btnLog">&#9660;</button>
+    </div>
+    <div id="secLog" style="display:none; padding:8px;">
+      <div class="log-body" id="logBody">
+        <div style="padding:12px; color:#888; font-weight:normal; font-size:17px;">No items logged yet.</div>
       </div>
-      <div class="config-field">
-        <label>Google Sheet ID</label>
-        <input type="text" id="cfgSheetId" placeholder="1BxiMVs0XRA..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-      </div>
-      <div class="config-field">
-        <label>API Key</label>
-        <input type="text" id="cfgApiKey" placeholder="AIzaSy..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-      </div>
-      <div class="config-field">
-        <label>Sheet Tab Name</label>
-        <input type="text" id="cfgTabName" placeholder="Inventory" autocomplete="off">
-        <div class="config-note" id="apiKeyStatus">Enter your Sheet ID and API Key above.</div>
-      </div>
-      <div class="btn-row">
-        <button class="btn btn-submit" onclick="saveApiConfig()" id="saveApiBtn">💾 Save Viewer Config</button>
+      <div class="btn-row" style="margin-top:8px;">
+        <button class="btn danger" onclick="clearLog()">&#10005; Clear Log</button>
       </div>
     </div>
   </div>
 
   <div class="win-card">
-    <div class="win-card-title">🔢 Item Counter</div>
-    <div class="win-card-body">
-      <div class="config-field">
-        <label>Current Counter</label>
-        <div style="display:flex; gap:8px; align-items:center;">
-          <div id="counterDisplay" style="background:white;border-top:2px solid var(--darker);border-left:2px solid var(--darker);border-right:2px solid var(--light);border-bottom:2px solid var(--light);padding:8px 12px;font-size:22px;letter-spacing:2px;color:var(--blue);min-width:80px;text-align:center;"></div>
-          <button class="btn" onclick="resetItemCounter()" style="flex:1;">↺ Reset Counter</button>
+    <div class="win-card-title cfg-toggle-title" onclick="toggleSection('secScript','btnScript')">
+      <span>&#9881;&#65039; Apps Script URL</span>
+      <button class="cal-nav-btn" id="btnScript">&#9660;</button>
+    </div>
+    <div id="secScript" style="display:none;">
+      <div class="win-card-body">
+        <div class="config-field">
+          <label>Web App URL</label>
+          <input type="text" id="sheetUrl" placeholder="https://script.google.com/macros/s/..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="config-note" id="urlStatus">Paste your Google Apps Script deployment URL and tap Save.</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-submit" onclick="saveSheetUrl()" id="saveUrlBtn">&#128190; Save URL</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="win-card">
+    <div class="win-card-title cfg-toggle-title" onclick="toggleSection('secViewer','btnViewer')">
+      <span>&#128193;&#65039; Inventory Viewer</span>
+      <button class="cal-nav-btn" id="btnViewer">&#9660;</button>
+    </div>
+    <div id="secViewer" style="display:none;">
+      <div class="win-card-body">
+        <div class="config-note" style="margin-bottom:12px;">
+          Sheet ID is in your sheet URL: docs.google.com/spreadsheets/d/<b>SHEET_ID</b>/edit<br><br>
+          API Key: console.cloud.google.com&#8594; APIs &#8594; Sheets API &#8594; Credentials.<br>
+          Set sheet to <b>Anyone with link can view</b>.
+        </div>
+        <div class="config-field">
+          <label>Google Sheet ID</label>
+          <input type="text" id="cfgSheetId" placeholder="1BxiMVs0XRA..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <div class="config-field">
+          <label>API Key</label>
+          <input type="text" id="cfgApiKey" placeholder="AIzaSy..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <div class="config-field">
+          <label>Sheet Tab Name</label>
+          <input type="text" id="cfgTabName" placeholder="Inventory" autocomplete="off">
+          <div class="config-note" id="apiKeyStatus">Enter your Sheet ID and API Key above.</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-submit" onclick="saveApiConfig()" id="saveApiBtn">&#128190; Save Viewer Config</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="win-card">
+    <div class="win-card-title cfg-toggle-title" onclick="toggleSection('secCounter','btnCounter')">
+      <span>&#128290; Item Counter</span>
+      <button class="cal-nav-btn" id="btnCounter">&#9660;</button>
+    </div>
+    <div id="secCounter" style="display:none;">
+      <div class="win-card-body">
+        <div class="config-field">
+          <label>Current Counter</label>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div id="counterDisplay" style="background:white;border-top:2px solid var(--darker);border-left:2px solid var(--darker);border-right:2px solid var(--light);border-bottom:2px solid var(--light);padding:8px 12px;font-size:22px;letter-spacing:2px;color:var(--blue);min-width:80px;text-align:center;"></div>
+            <button class="btn" onclick="resetItemCounter()" style="flex:1;">&#8635; Reset Counter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="win-card">
+    <div class="win-card-title cfg-toggle-title" onclick="toggleSection('secGcal','btnGcal')">
+      <span>&#128197; Google Calendar</span>
+      <button class="cal-nav-btn" id="btnGcal">&#9660;</button>
+    </div>
+    <div id="secGcal" style="display:none;">
+      <div class="win-card-body">
+        <div class="config-note" style="margin-bottom:12px;">
+          Optional. Find Calendar ID at:<br>
+          calendar.google.com &#8594; Settings &#8594; your calendar &#8594; Integrate calendar
+        </div>
+        <div class="config-field">
+          <label>Calendar ID <span style="font-weight:normal;font-size:14px;">(optional)</span></label>
+          <input type="text" id="gcalId" placeholder="your@gmail.com or abc123@group.calendar.google.com"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="config-note" id="gcalIdStatus">Leave blank to use your default Google Calendar.</div>
+        </div>
+        <div class="config-field">
+          <label>Default Event Duration <span style="font-weight:normal;font-size:14px;">(hours)</span></label>
+          <select id="gcalDuration" style="width:100%;background:white;border-top:2px solid var(--darker);border-left:2px solid var(--darker);border-right:2px solid var(--light);border-bottom:2px solid var(--light);padding:8px;font-family:'VT323',monospace;font-size:18px;font-weight:bold;min-height:44px;-webkit-appearance:none;border-radius:0;">
+            <option value="1">1 hour</option>
+            <option value="2">2 hours</option>
+            <option value="3">3 hours</option>
+            <option value="4">4 hours</option>
+            <option value="8">8 hours (full day)</option>
+          </select>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-submit" onclick="saveGcalConfig()" id="saveGcalBtn">&#128190; Save Calendar Config</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:120px;"></div>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: CHECKLIST
+══════════════════════════════ -->
+<div class="page" id="page-checklist">
+
+  <!-- Add item form -->
+  <div class="win-card">
+    <div class="win-card-title">✅ Add Task</div>
+    <div class="win-card-body">
+      <div class="field-row">
+        <div class="field" style="flex:0 0 130px;">
+          <label for="ckCategory">Category</label>
+          <select id="ckCategory">
+            <option value="">-- Type --</option>
+            <option value="Pack">📦 Pack</option>
+            <option value="Load">🚛 Load</option>
+            <option value="Moving">🏃 Moving</option>
+            <option value="Cleaning">🧹 Cleaning</option>
+            <option value="Paint/Repair">🖌️ Paint/Repair</option>
+          </select>
+        </div>
+        <div class="field wide">
+          <label for="ckText">Task</label>
+          <input type="text" id="ckText" placeholder="e.g. Pack kitchen boxes" autocomplete="off"
+            onkeydown="if(event.key==='Enter') addChecklistItem()">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-submit" onclick="addChecklistItem()" style="flex:1;">+ Add Task</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="win-card">
+    <div class="win-card-title" style="padding:4px 8px;">
+      <div style="display:flex;gap:4px;flex-wrap:wrap;width:100%;">
+        <button class="ck-filter-btn active" id="ckf-all"     onclick="filterChecklist('all')">All</button>
+        <button class="ck-filter-btn"         id="ckf-Pack"   onclick="filterChecklist('Pack')">📦 Pack</button>
+        <button class="ck-filter-btn"         id="ckf-Load"   onclick="filterChecklist('Load')">🚛 Load</button>
+        <button class="ck-filter-btn"         id="ckf-Moving" onclick="filterChecklist('Moving')">🏃 Moving</button>
+        <button class="ck-filter-btn"         id="ckf-Cleaning" onclick="filterChecklist('Cleaning')">🧹 Clean</button>
+        <button class="ck-filter-btn"         id="ckf-Paint/Repair" onclick="filterChecklist('Paint/Repair')">🖌️ Paint</button>
+        <button class="ck-filter-btn"         id="ckf-done"   onclick="filterChecklist('done')" style="margin-left:auto;">✔ Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="win-card">
+    <div class="win-card-body" style="padding:8px 10px;">
+      <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;">
+        <span id="ckProgressLabel">0 of 0 complete</span>
+        <span id="ckProgressPct">0%</span>
+      </div>
+      <div style="background:white;border-top:2px solid var(--darker);border-left:2px solid var(--darker);border-right:2px solid var(--light);border-bottom:2px solid var(--light);height:16px;overflow:hidden;">
+        <div id="ckProgressFill" style="height:100%;width:0%;background:repeating-linear-gradient(90deg,var(--blue) 0px,var(--blue) 14px,var(--blue2) 14px,var(--blue2) 16px);transition:width 0.4s;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="win-card" style="margin-bottom:20px;">
+    <div class="win-card-body" style="padding:6px;">
+      <div id="ckList">
+        <div style="padding:16px;text-align:center;color:#888;font-size:16px;font-weight:normal;">No tasks yet. Add one above.</div>
+      </div>
+    </div>
+  </div>
+  <div style="height:80px;"></div>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: SCHEDULE
+══════════════════════════════ -->
+<div class="page" id="page-schedule">
+
+  <!-- Mini calendar -->
+  <div class="win-card">
+    <div class="win-card-title">
+      <span id="calMonthLabel">Month</span>
+      <div style="display:flex;gap:4px;">
+        <button class="cal-nav-btn" onclick="changeMonth(-1)">◀</button>
+        <button class="cal-nav-btn" onclick="changeMonth(1)">▶</button>
+      </div>
+    </div>
+    <div class="win-card-body" style="padding:8px;">
+      <div class="cal-dow-row">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div id="calGrid" class="cal-grid"></div>
+    </div>
+  </div>
+
+  <!-- Events for selected day -->
+  <div class="win-card" id="dayEventsCard">
+    <div class="win-card-title">
+      <span id="dayEventsTitle">Add an Event</span>
+      <button class="cal-nav-btn" onclick="openEventForm(null)" title="Add event">+ Add</button>
+    </div>
+    <div id="dayEventsList" style="padding:4px 8px 8px;">
+      <div style="padding:12px;color:#888;font-size:15px;font-weight:normal;">Tap a date to see events.</div>
+    </div>
+  </div>
+
+  <!-- Event form (hidden until + Add or edit) -->
+  <div class="win-card" id="eventFormCard" style="display:none;">
+    <div class="win-card-title" id="eventFormTitle">📅 New Event</div>
+    <div class="win-card-body">
+
+      <div class="field-row">
+        <div class="field">
+          <label for="evDate">Date *</label>
+          <input type="date" id="evDate">
+        </div>
+        <div class="field">
+          <label for="evTime">Time</label>
+          <input type="time" id="evTime">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="evType">Event Type *</label>
+        <select id="evType">
+          <option value="">-- Select --</option>
+          <option>Movers</option>
+          <option>Move Out</option>
+          <option>Move In</option>
+          <option>Driving</option>
+          <option>Hotel</option>
+          <option>Truck Return</option>
+          <option>Junk Removal</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="evContact">Contact Name</label>
+        <input type="text" id="evContact" placeholder="e.g. ABC Moving Co." autocomplete="off">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="evPhone">Phone</label>
+          <input type="tel" id="evPhone" placeholder="(555) 000-0000" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="evEmail">Email</label>
+          <input type="email" id="evEmail" placeholder="contact@email.com" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="evDesc">Notes / Description</label>
+        <textarea id="evDesc" placeholder="Address, confirmation #, instructions..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn danger" onclick="cancelEventForm()">✕ Cancel</button>
+        <button class="btn" id="evDeleteBtn" onclick="deleteEvent()" style="display:none;color:#800000;">🗑 Delete</button>
+        <button class="btn btn-submit" onclick="saveEvent()">💾 Save Event</button>
+      </div>
+      <div id="evGcalLink" style="margin-top:10px;display:none;">
+        <a id="evGcalAnchor" href="#" target="_blank" style="color:var(--blue);font-size:15px;font-weight:normal;">📅 Open in Google Calendar</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════
+       DELIVERIES & UTILITIES
+  ═════════════════════════════ -->
+  <div class="win-card" style="margin-top:6px;">
+    <div class="win-card-title">
+      🚚 Deliveries &amp; Utilities
+      <button class="cal-nav-btn" onclick="openDeliveryForm(null)">+ Add</button>
+    </div>
+    <div id="deliveryList" style="padding:6px 8px 2px;">
+      <div style="padding:10px;color:#888;font-size:15px;font-weight:normal;">No deliveries or utilities added yet.</div>
+    </div>
+  </div>
+
+  <!-- Delivery Form -->
+  <div class="win-card" id="deliveryFormCard" style="display:none;">
+    <div class="win-card-title" id="deliveryFormTitle">🚚 New Delivery / Utility</div>
+    <div class="win-card-body">
+
+      <div class="field">
+        <label for="dlvType">Type *</label>
+        <select id="dlvType">
+          <option value="">-- Select Type --</option>
+          <option>Utility</option>
+          <option>Furniture</option>
+          <option>Large Item</option>
+          <option>Small Item</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="dlvItem">Item / Service *</label>
+        <input type="text" id="dlvItem" placeholder="e.g. Sofa, Internet Setup, Washer..." autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="dlvCompany">Company</label>
+        <input type="text" id="dlvCompany" placeholder="e.g. IKEA, Comcast, Best Buy..." autocomplete="off">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="dlvPhone">Phone</label>
+          <input type="tel" id="dlvPhone" placeholder="(555) 000-0000" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="dlvEmail">Email</label>
+          <input type="email" id="dlvEmail" placeholder="contact@company.com" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="dlvWebsite">Website</label>
+        <input type="url" id="dlvWebsite" placeholder="https://www.company.com" autocomplete="off">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="dlvDate">Delivery Date *</label>
+          <input type="date" id="dlvDate">
+        </div>
+        <div class="field">
+          <label for="dlvTime">Delivery Time</label>
+          <input type="time" id="dlvTime">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="dlvDesc">Description / Notes</label>
+        <textarea id="dlvDesc" placeholder="Order #, tracking, instructions, window time..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn danger" onclick="cancelDeliveryForm()">✕ Cancel</button>
+        <button class="btn" id="dlvDeleteBtn" onclick="deleteDelivery()" style="display:none;color:#800000;">🗑 Delete</button>
+        <button class="btn btn-submit" onclick="saveDelivery()">💾 Save</button>
+      </div>
+      <div id="dlvGcalLink" style="margin-top:10px;display:none;">
+        <a id="dlvGcalAnchor" href="#" target="_blank" style="color:var(--blue);font-size:15px;font-weight:normal;">📅 Add to Google Calendar</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:80px;"></div>
 </div>
 
 <!-- ── BOTTOM NAV ── -->
@@ -734,9 +1270,14 @@
     <span class="nav-btn-icon">🗂️</span>
     <span class="nav-btn-label">Inventory</span>
   </button>
-  <button class="nav-btn" id="nav-log" onclick="showPage('log')">
-    <span class="nav-btn-icon">📝</span>
-    <span class="nav-btn-label">Log</span>
+
+  <button class="nav-btn" id="nav-schedule" onclick="showPage('schedule')">
+    <span class="nav-btn-icon">📅</span>
+    <span class="nav-btn-label">Schedule</span>
+  </button>
+  <button class="nav-btn" id="nav-checklist" onclick="showPage('checklist')">
+    <span class="nav-btn-icon">✅</span>
+    <span class="nav-btn-label">Tasks</span>
   </button>
   <button class="nav-btn" id="nav-config" onclick="showPage('config')">
     <span class="nav-btn-icon">⚙️</span>
@@ -787,6 +1328,7 @@ let activeChips   = new Set();
 document.addEventListener('DOMContentLoaded', () => {
   loadItemCounter();
   loadSavedConfig();
+  loadPersonalInfo();
 });
 
 function loadSavedConfig() {
@@ -809,6 +1351,15 @@ function loadSavedConfig() {
     document.getElementById('apiKeyStatus').style.borderLeftColor = '#006400';
     document.getElementById('apiKeyStatus').style.color = '#006400';
   }
+  const gcalId = localStorage.getItem('gcalId');
+  const gcalDur = localStorage.getItem('gcalDuration') || '2';
+  if (gcalId) {
+    document.getElementById('gcalId').value = gcalId;
+    document.getElementById('gcalIdStatus').textContent = '✅ Calendar ID saved.';
+    document.getElementById('gcalIdStatus').style.borderLeftColor = '#006400';
+    document.getElementById('gcalIdStatus').style.color = '#006400';
+  }
+  document.getElementById('gcalDuration').value = gcalDur;
 }
 
 // ══════════════════════════════
@@ -828,7 +1379,7 @@ function showPage(name) {
   document.getElementById('headerRefreshBtn').style.display = isViewer ? 'block' : 'none';
 
   // Update header subtitle
-  const subs = { form:'Add items', log:'Session log', viewer:'Browse inventory', config:'Settings' };
+  const subs = { form:'Add items', viewer:'Browse inventory', config:'Settings', schedule:'Move Schedule', checklist:'Tasks & Checklist' };
   document.getElementById('headerStatus').textContent = subs[name] || '';
 
   // Auto-load viewer when switching to it
@@ -938,6 +1489,7 @@ async function submitItem() {
   const fragile      = document.querySelector('input[name="fragile"]:checked')?.value || 'No';
   const description  = document.getElementById('description').value.trim();
   const binBoxNumber = document.getElementById('binBoxNumber').value.trim();
+  const itemWeight   = document.getElementById('itemWeight').value;
   const itemOrigin   = document.getElementById('itemOrigin').value;
   const itemNumber   = String(itemCounter).padStart(4, '0');
 
@@ -951,7 +1503,7 @@ async function submitItem() {
   showProgress(55); setStatus('Sending to Sheets...');
 
   const payload = {
-    itemNumber, itemName, itemType, binBoxNumber, itemOrigin,
+    itemNumber, itemName, itemType, binBoxNumber, itemWeight, itemOrigin,
     location, quantity: parseInt(quantity), description,
     wrapped, fragile, images: imageDataArray, timestamp: new Date().toISOString()
   };
@@ -1001,7 +1553,7 @@ function fileToBase64(file) {
 //  CLEAR FORM
 // ══════════════════════════════
 function clearForm() {
-  ['itemName','itemType','location','itemOrigin','binBoxNumber','description'].forEach(id => {
+  ['itemName','itemType','location','itemOrigin','binBoxNumber','itemWeight','description'].forEach(id => {
     document.getElementById(id).value = '';
   });
   document.getElementById('quantity').value = 1;
@@ -1034,6 +1586,85 @@ function clearLog() {
   document.getElementById('logBody').innerHTML = '<div style="padding:12px;color:#888;font-weight:normal;font-size:17px;">No items logged yet.</div>';
   sessionItems = [];
   document.getElementById('itemCountStatus').textContent = 'Logged: 0';
+}
+
+function saveGcalConfig() {
+  const id  = document.getElementById('gcalId').value.trim();
+  const dur = document.getElementById('gcalDuration').value;
+  const status = document.getElementById('gcalIdStatus');
+  const btn    = document.getElementById('saveGcalBtn');
+  localStorage.setItem('gcalId', id);
+  localStorage.setItem('gcalDuration', dur);
+  if (id) {
+    status.textContent = '✅ Calendar ID saved: ' + id;
+    status.style.borderLeftColor = '#006400';
+    status.style.color = '#006400';
+  } else {
+    status.textContent = 'Using default Google Calendar.';
+    status.style.borderLeftColor = '#888';
+    status.style.color = '#555';
+  }
+  btn.textContent = '✅ Saved!';
+  setTimeout(() => { btn.textContent = '💾 Save Calendar Config'; }, 2000);
+}
+
+function toggleSection(sectionId, btnId) {
+  const sec = document.getElementById(sectionId);
+  const btn = document.getElementById(btnId);
+  const isOpen = sec.style.display !== 'none';
+  sec.style.display = isOpen ? 'none' : 'block';
+  btn.innerHTML = isOpen ? '&#9660;' : '&#9650;';
+}
+
+function savePersonalInfo() {
+  const data = {
+    name:     document.getElementById('piName').value.trim(),
+    fromAddr: document.getElementById('piFromAddr').value.trim(),
+    toAddr:   document.getElementById('piToAddr').value.trim(),
+    moveOut:  document.getElementById('piMoveOut').value,
+    moveIn:   document.getElementById('piMoveIn').value,
+    email:    document.getElementById('piEmail').value.trim(),
+    phone1:   document.getElementById('piPhone1').value.trim(),
+    phone2:   document.getElementById('piPhone2').value.trim()
+  };
+  localStorage.setItem('personalInfo', JSON.stringify(data));
+  const status = document.getElementById('personalStatus');
+  status.textContent = '✅ Saved! ' + (data.name ? 'Hello, ' + data.name + '!' : '');
+  status.style.borderLeftColor = '#006400';
+  status.style.color = '#006400';
+  const btn = document.getElementById('savePersonalBtn');
+  btn.textContent = '✅ Saved!';
+  setTimeout(() => { btn.innerHTML = '&#128190; Save'; }, 2000);
+}
+
+function loadPersonalInfo() {
+  const raw = localStorage.getItem('personalInfo');
+  if (!raw) return;
+  try {
+    const d = JSON.parse(raw);
+    if (d.name)     document.getElementById('piName').value     = d.name;
+    if (d.fromAddr) document.getElementById('piFromAddr').value = d.fromAddr;
+    if (d.toAddr)   document.getElementById('piToAddr').value   = d.toAddr;
+    if (d.moveOut)  document.getElementById('piMoveOut').value  = d.moveOut;
+    if (d.moveIn)   document.getElementById('piMoveIn').value   = d.moveIn;
+    if (d.email)    document.getElementById('piEmail').value    = d.email;
+    if (d.phone1)   document.getElementById('piPhone1').value   = d.phone1;
+    if (d.phone2)   document.getElementById('piPhone2').value   = d.phone2;
+    if (d.name || d.fromAddr) {
+      const status = document.getElementById('personalStatus');
+      status.textContent = '✅ Personal info loaded.';
+      status.style.borderLeftColor = '#006400';
+      status.style.color = '#006400';
+    }
+  } catch(e) {}
+}
+
+function toggleLogPanel() {
+  const panel = document.getElementById('logPanel');
+  const btn   = document.getElementById('logToggleBtn');
+  const open  = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  btn.textContent = open ? '▲ Hide' : '▼ Show';
 }
 
 // ══════════════════════════════
@@ -1172,37 +1803,44 @@ function renderItems() {
       : '<div class="state-msg"><span class="icon">🔍</span>No items match your filters.</div>';
     return;
   }
-  grid.innerHTML = filtered.map(item => {
+
+  const header = `<div class="list-header">
+    <span>#</span>
+    <span>Item Name</span>
+    <span>Type</span>
+    <span>Location</span>
+    <span>Bin/Box</span>
+    <span>Weight</span>
+    <span>Wrap</span>
+    <span>Fragile</span>
+  </div>`;
+
+  const rows = filtered.map(item => {
     const loc     = item['Location'] || '';
     const name    = item['Item Name'] || '(unnamed)';
     const num     = item['Item #'] || '?';
     const type    = item['Type'] || '';
-    const qty     = item['Quantity'] || '1';
-    const desc    = item['Description'] || '';
     const wrapped = item['Wrapped?'] || 'No';
     const fragile = item['Fragile?'] || 'No';
-    const origin  = item['Origin'] || '';
-    const bin     = item['Bin/Box #'] || '';
+    const bin     = item['Bin/Box #'] || '—';
+    const weight  = item['Weight'] || '—';
     const imgUrl  = item['Image URL(s)'] || '';
-    const wBadge  = wrapped.toLowerCase()==='yes' ? '<span class="badge badge-yes">Wrapped</span>' : '<span class="badge badge-no">Unwrapped</span>';
-    const fBadge  = fragile.toLowerCase()==='yes' ? '<span class="badge badge-frag">⚠ Fragile</span>' : '';
-    const imgLink = imgUrl ? `<a href="${imgUrl}" target="_blank" style="color:var(--blue);font-size:14px;">📷 Photos</a>` : '';
-    return `<div class="item-card">
-      <div class="item-card-header ${roomClass(loc)}">
-        <span class="item-num">#${String(num).padStart(4,'0')}</span>
-        <span class="item-name">${name}</span>
-        <span class="item-type-badge">${type}</span>
-      </div>
-      <div class="item-card-body">
-        <div class="item-field"><div class="item-field-label">Location</div><div class="item-field-value">${loc||'—'}</div></div>
-        <div class="item-field"><div class="item-field-label">Qty</div><div class="item-field-value">${qty}</div></div>
-        ${origin?`<div class="item-field"><div class="item-field-label">Origin</div><div class="item-field-value">${origin}</div></div>`:''}
-        ${bin?`<div class="item-field"><div class="item-field-label">Bin/Box #</div><div class="item-field-value">${bin}</div></div>`:''}
-        <div class="item-field wide" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">${wBadge} ${fBadge} ${imgLink}</div>
-        ${desc?`<div class="item-desc">${desc}</div>`:''}
-      </div>
+    const isWrapped  = wrapped.toLowerCase() === 'yes';
+    const isFragile  = fragile.toLowerCase() === 'yes';
+    const imgIcon = imgUrl ? `<a href="${imgUrl}" target="_blank" style="margin-left:4px;font-size:12px;color:var(--blue);">📷</a>` : '';
+    return `<div class="item-row ${roomClass(loc)}">
+      <div class="item-cell cell-num">${String(num).padStart(4,'0')}</div>
+      <div class="item-cell cell-name">${name}${imgIcon}</div>
+      <div class="item-cell">${type}</div>
+      <div class="item-cell">${loc||'—'}</div>
+      <div class="item-cell cell-center">${bin}</div>
+      <div class="item-cell cell-center">${weight}</div>
+      <div class="item-cell cell-center ${isWrapped?'cell-wrap-yes':''}">${isWrapped?'✔':'—'}</div>
+      <div class="item-cell cell-center ${isFragile?'cell-frag-yes':''}">${isFragile?'⚠':'—'}</div>
     </div>`;
   }).join('');
+
+  grid.innerHTML = header + rows;
 }
 
 function renderStats() {
@@ -1222,6 +1860,562 @@ function hideProgress()    { document.getElementById('progressWrap').classList.r
 function showSuccess(msg)  { document.getElementById('successMsg').textContent = msg; document.getElementById('successDialog').classList.add('active'); }
 function showError(msg)    { document.getElementById('errorMsg').textContent = msg; document.getElementById('errorDialog').classList.add('active'); }
 function closeDialog(id)   { document.getElementById(id).classList.remove('active'); }
+
+
+// ══════════════════════════════
+//  CHECKLIST
+// ══════════════════════════════
+const CK_COLORS = {
+  'Pack':        { bg:'#E3F2FD', border:'#1E88E5', text:'#0D47A1' },
+  'Load':        { bg:'#FFF3E0', border:'#FB8C00', text:'#E65100' },
+  'Moving':      { bg:'#E8F5E9', border:'#43A047', text:'#1B5E20' },
+  'Cleaning':    { bg:'#F3E5F5', border:'#8E24AA', text:'#4A148C' },
+  'Paint/Repair':{ bg:'#FFF8E1', border:'#FDD835', text:'#F57F17' }
+};
+
+let checklistItems = JSON.parse(localStorage.getItem('checklistItems') || '[]');
+let ckFilter = 'all';
+
+function saveChecklist() {
+  localStorage.setItem('checklistItems', JSON.stringify(checklistItems));
+}
+
+function addChecklistItem() {
+  const text = document.getElementById('ckText').value.trim();
+  const cat  = document.getElementById('ckCategory').value;
+  if (!text) { document.getElementById('ckText').focus(); return; }
+  checklistItems.push({
+    id:   'ck_' + Date.now(),
+    text,
+    cat:  cat || 'Moving',
+    done: false,
+    created: new Date().toISOString()
+  });
+  saveChecklist();
+  document.getElementById('ckText').value = '';
+  renderChecklist();
+  updateCkProgress();
+  document.getElementById('ckText').focus();
+}
+
+function toggleCkItem(id) {
+  const item = checklistItems.find(i => i.id === id);
+  if (item) item.done = !item.done;
+  saveChecklist();
+  renderChecklist();
+  updateCkProgress();
+}
+
+function deleteCkItem(id) {
+  checklistItems = checklistItems.filter(i => i.id !== id);
+  saveChecklist();
+  renderChecklist();
+  updateCkProgress();
+}
+
+function filterChecklist(f) {
+  ckFilter = f;
+  document.querySelectorAll('.ck-filter-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('ckf-' + f);
+  if (btn) btn.classList.add('active');
+  renderChecklist();
+}
+
+function renderChecklist() {
+  const list = document.getElementById('ckList');
+  let items = [...checklistItems];
+
+  if (ckFilter === 'done') {
+    items = items.filter(i => i.done);
+  } else if (ckFilter !== 'all') {
+    items = items.filter(i => i.cat === ckFilter);
+  }
+
+  if (!items.length) {
+    list.innerHTML = '<div style="padding:16px;text-align:center;color:#888;font-size:16px;font-weight:normal;">' +
+      (ckFilter === 'done' ? 'No completed tasks yet.' : ckFilter === 'all' ? 'No tasks yet. Add one above.' : 'No tasks in this category.') +
+      '</div>';
+    return;
+  }
+
+  // Group by category
+  const cats = ckFilter === 'all'
+    ? ['Pack','Load','Moving','Cleaning','Paint/Repair']
+    : ckFilter === 'done'
+    ? [...new Set(items.map(i => i.cat))]
+    : [ckFilter];
+
+  let html = '';
+  let anyShown = false;
+
+  cats.forEach(cat => {
+    const catItems = items.filter(i => i.cat === cat);
+    if (!catItems.length) return;
+    anyShown = true;
+    const col   = CK_COLORS[cat] || { bg:'#f5f5f5', border:'#888', text:'#333' };
+    const total = catItems.length;
+    const done  = catItems.filter(i => i.done).length;
+
+    html += `<div class="ck-section-header" style="border-left:4px solid ${col.border};">
+      <span style="color:${col.text};">${getCkEmoji(cat)} ${cat}</span>
+      <span style="font-weight:normal;font-size:12px;">${done}/${total}</span>
+    </div>`;
+
+    catItems.forEach(item => {
+      html += `<div class="ck-item${item.done ? ' done' : ''}" id="ckrow_${item.id}" style="border-left:3px solid ${col.border};">
+        <div class="ck-check${item.done ? ' checked' : ''}" onclick="toggleCkItem('${item.id}')">
+          ${item.done ? '✔' : ''}
+        </div>
+        <span class="ck-text">${item.text}</span>
+        <button class="ck-delete" onclick="deleteCkItem('${item.id}')" title="Delete">✕</button>
+      </div>`;
+    });
+  });
+
+  list.innerHTML = anyShown ? html : '<div style="padding:16px;text-align:center;color:#888;font-size:16px;font-weight:normal;">No tasks found.</div>';
+}
+
+function getCkEmoji(cat) {
+  const map = { 'Pack':'📦', 'Load':'🚛', 'Moving':'🏃', 'Cleaning':'🧹', 'Paint/Repair':'🖌️' };
+  return map[cat] || '•';
+}
+
+function updateCkProgress() {
+  const total = checklistItems.length;
+  const done  = checklistItems.filter(i => i.done).length;
+  const pct   = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('ckProgressLabel').textContent = done + ' of ' + total + ' complete';
+  document.getElementById('ckProgressPct').textContent   = pct + '%';
+  document.getElementById('ckProgressFill').style.width  = pct + '%';
+}
+
+// Init checklist on load
+document.addEventListener('DOMContentLoaded', () => {
+  renderChecklist();
+  updateCkProgress();
+});
+// ══════════════════════════════
+//  SCHEDULE
+// ══════════════════════════════
+const EVENT_TYPES = {
+  'Movers':       '#E53935',
+  'Move Out':     '#FB8C00',
+  'Move In':      '#43A047',
+  'Driving':      '#1E88E5',
+  'Hotel':        '#8E24AA',
+  'Truck Return': '#00ACC1',
+  'Junk Removal': '#6D4C41'
+};
+
+let calYear  = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+let selDate  = null;
+let editingEventId = null;
+let scheduleEvents = JSON.parse(localStorage.getItem('scheduleEvents') || '[]');
+
+function saveScheduleEvents() {
+  localStorage.setItem('scheduleEvents', JSON.stringify(scheduleEvents));
+}
+
+function renderCalendar() {
+  const now   = new Date();
+  const first = new Date(calYear, calMonth, 1);
+  const last  = new Date(calYear, calMonth + 1, 0);
+  document.getElementById('calMonthLabel').textContent =
+    first.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  function makeCell(dayNum, dateStr, isOther) {
+    const cell = document.createElement('div');
+    const dayEvents = dateStr
+      ? scheduleEvents.filter(e => e.date === dateStr).sort((a,b) => (a.time||'').localeCompare(b.time||''))
+      : [];
+    const isToday = dateStr &&
+      dayNum === now.getDate() && calMonth === now.getMonth() && calYear === now.getFullYear();
+
+    // Pick the dominant event color for the day background
+    let dayBg = '';
+    if (!isOther && dayEvents.length > 0) {
+      const firstColor = EVENT_TYPES[dayEvents[0].type];
+      if (firstColor) dayBg = firstColor;
+    }
+    cell.className = 'cal-day' +
+      (isOther ? ' other-month' : '') +
+      (isToday ? ' today' : '') +
+      (dateStr === selDate ? ' selected' : '');
+    if (dayBg && !isToday && dateStr !== selDate) {
+      cell.style.background = dayBg + '33'; // 20% opacity tint
+      cell.style.borderLeftColor = dayBg;
+      cell.style.borderTopColor  = dayBg;
+    }
+
+    // Day number
+    const numEl = document.createElement('div');
+    numEl.className = 'cal-day-num';
+    numEl.textContent = dayNum;
+    cell.appendChild(numEl);
+
+    // Event pills
+    if (dayEvents.length) {
+      const pillsWrap = document.createElement('div');
+      pillsWrap.className = 'cal-ev-pills';
+      const showCount = Math.min(dayEvents.length, 3);
+      dayEvents.slice(0, showCount).forEach(ev => {
+        const pill = document.createElement('div');
+        pill.className = 'cal-ev-pill';
+        pill.style.background = EVENT_TYPES[ev.type] || '#888';
+        pill.title = ev.type + (ev.time ? ' ' + formatTime(ev.time) : '') + (ev.contact ? ' — ' + ev.contact : '');
+        const label = (ev.time ? formatTime(ev.time) + ' ' : '') + ev.type;
+        pill.textContent = label;
+        pillsWrap.appendChild(pill);
+      });
+      if (dayEvents.length > showCount) {
+        const more = document.createElement('div');
+        more.className = 'cal-ev-more';
+        more.textContent = '+' + (dayEvents.length - showCount) + ' more';
+        pillsWrap.appendChild(more);
+      }
+      cell.appendChild(pillsWrap);
+    }
+
+    if (dateStr) cell.onclick = () => selectDate(dateStr);
+    return cell;
+  }
+
+  // Pad start with prev-month days
+  for (let i = 0; i < first.getDay(); i++) {
+    const d = new Date(calYear, calMonth, i - first.getDay() + 1);
+    grid.appendChild(makeCell(d.getDate(), null, true));
+  }
+
+  // Current month days
+  for (let d = 1; d <= last.getDate(); d++) {
+    const dateStr = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    grid.appendChild(makeCell(d, dateStr, false));
+  }
+
+  // Pad end
+  const remaining = 7 - ((first.getDay() + last.getDate()) % 7);
+  if (remaining < 7) {
+    for (let i = 1; i <= remaining; i++) {
+      grid.appendChild(makeCell(i, null, true));
+    }
+  }
+}
+
+function changeMonth(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  renderCalendar();
+}
+
+function selectDate(dateStr) {
+  selDate = dateStr;
+  renderCalendar();
+  renderDayEvents(dateStr);
+  // Pre-fill date in form if open
+  document.getElementById('evDate').value = dateStr;
+}
+
+function renderDayEvents(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const label = d.toLocaleDateString('default', { weekday:'long', month:'long', day:'numeric' });
+  document.getElementById('dayEventsTitle').textContent = label;
+
+  const dayEvs = scheduleEvents
+    .filter(e => e.date === dateStr)
+    .sort((a,b) => (a.time||'').localeCompare(b.time||''));
+
+  const list = document.getElementById('dayEventsList');
+  if (!dayEvs.length) {
+    list.innerHTML = '<div style="padding:10px;color:#888;font-size:15px;font-weight:normal;">No events. Tap + Add to schedule one.</div>';
+    return;
+  }
+
+  list.innerHTML = dayEvs.map(ev => `
+    <div class="ev-item" onclick="openEventForm('${ev.id}')">
+      <div class="ev-item-header">
+        <div class="ev-type-dot" style="background:${EVENT_TYPES[ev.type]||'#888'}"></div>
+        <span class="ev-name">${ev.type}</span>
+        <span class="ev-time">${ev.time ? formatTime(ev.time) : 'All day'}</span>
+      </div>
+      ${ev.contact ? '<div class="ev-contact">👤 ' + ev.contact + '</div>' : ''}
+      ${ev.phone   ? '<div class="ev-contact">📞 <a href="tel:' + ev.phone + '" style="color:var(--blue)">' + ev.phone + '</a></div>' : ''}
+      ${ev.email   ? '<div class="ev-contact">✉️ <a href="mailto:' + ev.email + '" style="color:var(--blue)">' + ev.email + '</a></div>' : ''}
+      ${ev.desc    ? '<div class="ev-contact" style="margin-top:3px;">' + ev.desc + '</div>' : ''}
+    </div>`).join('');
+}
+
+function formatTime(t) {
+  if (!t) return '';
+  const [h, m] = t.split(':').map(Number);
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  return ((h % 12) || 12) + ':' + String(m).padStart(2,'0') + ' ' + ampm;
+}
+
+function openEventForm(id) {
+  editingEventId = id;
+  const form = document.getElementById('eventFormCard');
+  form.style.display = 'block';
+  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  const delBtn = document.getElementById('evDeleteBtn');
+  const gcal   = document.getElementById('evGcalLink');
+
+  if (id) {
+    // Edit existing
+    const ev = scheduleEvents.find(e => e.id === id);
+    if (!ev) return;
+    document.getElementById('eventFormTitle').textContent = '✏️ Edit Event';
+    document.getElementById('evDate').value    = ev.date    || '';
+    document.getElementById('evTime').value    = ev.time    || '';
+    document.getElementById('evType').value    = ev.type    || '';
+    document.getElementById('evContact').value = ev.contact || '';
+    document.getElementById('evPhone').value   = ev.phone   || '';
+    document.getElementById('evEmail').value   = ev.email   || '';
+    document.getElementById('evDesc').value    = ev.desc    || '';
+    delBtn.style.display = 'inline-flex';
+    updateGcalLink(ev);
+    gcal.style.display = 'block';
+  } else {
+    // New event
+    document.getElementById('eventFormTitle').textContent = '📅 New Event';
+    document.getElementById('evDate').value    = selDate || '';
+    document.getElementById('evTime').value    = '';
+    document.getElementById('evType').value    = '';
+    document.getElementById('evContact').value = '';
+    document.getElementById('evPhone').value   = '';
+    document.getElementById('evEmail').value   = '';
+    document.getElementById('evDesc').value    = '';
+    delBtn.style.display = 'none';
+    gcal.style.display = 'none';
+  }
+}
+
+function cancelEventForm() {
+  document.getElementById('eventFormCard').style.display = 'none';
+  editingEventId = null;
+}
+
+function saveEvent() {
+  const date    = document.getElementById('evDate').value;
+  const type    = document.getElementById('evType').value;
+  if (!date || !type) { showError('Please fill in Date and Event Type.'); return; }
+
+  const ev = {
+    id:      editingEventId || ('ev_' + Date.now()),
+    date,
+    time:    document.getElementById('evTime').value,
+    type,
+    contact: document.getElementById('evContact').value.trim(),
+    phone:   document.getElementById('evPhone').value.trim(),
+    email:   document.getElementById('evEmail').value.trim(),
+    desc:    document.getElementById('evDesc').value.trim()
+  };
+
+  if (editingEventId) {
+    const idx = scheduleEvents.findIndex(e => e.id === editingEventId);
+    if (idx >= 0) scheduleEvents[idx] = ev;
+  } else {
+    scheduleEvents.push(ev);
+  }
+
+  saveScheduleEvents();
+  cancelEventForm();
+
+  // Re-render
+  if (selDate === date) renderDayEvents(date);
+  else selectDate(date);
+  renderCalendar();
+
+  // Show gcal link tip
+  const gcalUrl = buildGcalUrl(ev);
+  showSuccess('Event saved!\n\nTap "Open in Google Calendar" inside the event to add it to your Google Calendar.');
+}
+
+function deleteEvent() {
+  if (!editingEventId) return;
+  if (!confirm('Delete this event?')) return;
+  scheduleEvents = scheduleEvents.filter(e => e.id !== editingEventId);
+  saveScheduleEvents();
+  cancelEventForm();
+  if (selDate) renderDayEvents(selDate);
+  renderCalendar();
+}
+
+function buildGcalUrl(ev) {
+  const dur     = parseInt(localStorage.getItem('gcalDuration') || '2');
+  const calId   = localStorage.getItem('gcalId') || '';
+  const timeStr = ev.time || '09:00';
+  const [h, m]  = timeStr.split(':').map(Number);
+  const endH    = h + dur;
+  const pad     = n => String(n).padStart(2,'0');
+  const start   = ev.date.replace(/-/g,'') + 'T' + pad(h) + pad(m) + '00';
+  const end     = ev.date.replace(/-/g,'') + 'T' + pad(endH > 23 ? 23 : endH) + pad(m) + '00';
+  const details = [
+    ev.contact ? 'Contact: ' + ev.contact : '',
+    ev.phone   ? 'Phone: '   + ev.phone   : '',
+    ev.email   ? 'Email: '   + ev.email   : '',
+    ev.desc    ? ev.desc                  : ''
+  ].filter(Boolean).join('\n');
+  let url = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+    '&text='    + encodeURIComponent(ev.type) +
+    '&dates='   + start + '/' + end +
+    '&details=' + encodeURIComponent(details);
+  if (calId) url += '&src=' + encodeURIComponent(calId);
+  return url;
+}
+
+function updateGcalLink(ev) {
+  const a = document.getElementById('evGcalAnchor');
+  a.href = buildGcalUrl(ev);
+}
+
+// Init calendar on page load
+document.addEventListener('DOMContentLoaded', () => {
+  renderCalendar();
+  renderDeliveryList();
+});
+
+// ══════════════════════════════
+//  DELIVERIES & UTILITIES
+// ══════════════════════════════
+const DELIVERY_TYPE_COLORS = {
+  'Utility':    '#5C6BC0',
+  'Furniture':  '#795548',
+  'Large Item': '#EF6C00',
+  'Small Item': '#2E7D32'
+};
+
+let deliveryEvents    = JSON.parse(localStorage.getItem('deliveryEvents') || '[]');
+let editingDeliveryId = null;
+
+function saveDeliveryEvents() {
+  localStorage.setItem('deliveryEvents', JSON.stringify(deliveryEvents));
+}
+
+function renderDeliveryList() {
+  const list = document.getElementById('deliveryList');
+  if (!deliveryEvents.length) {
+    list.innerHTML = '<div style="padding:10px;color:#888;font-size:15px;font-weight:normal;">No deliveries or utilities added yet.</div>';
+    return;
+  }
+  const sorted = [...deliveryEvents].sort((a,b) => {
+    const da = (a.date||'9999') + (a.time||'00:00');
+    const db = (b.date||'9999') + (b.time||'00:00');
+    return da.localeCompare(db);
+  });
+  list.innerHTML = sorted.map(d => {
+    const color = DELIVERY_TYPE_COLORS[d.type] || '#888';
+    const dateLabel = d.date ? new Date(d.date + 'T12:00:00').toLocaleDateString('default', {month:'short',day:'numeric',year:'numeric'}) : '';
+    const timeLabel = d.time ? formatTime(d.time) : '';
+    return `<div class="ev-item" style="border-left-color:\${color};" onclick="openDeliveryForm('\${d.id}')">
+      <div class="ev-item-header">
+        <div class="ev-type-dot" style="background:\${color}"></div>
+        <span class="ev-name">\${d.item || '(unnamed)'}</span>
+        <span class="ev-time">\${d.type || ''}</span>
+      </div>
+      \${d.company ? '<div class="ev-contact">🏢 ' + d.company + '</div>' : ''}
+      \${d.phone   ? '<div class="ev-contact">📞 <a href="tel:' + d.phone + '" style="color:var(--blue)" onclick="event.stopPropagation()">' + d.phone + '</a></div>' : ''}
+      \${d.email   ? '<div class="ev-contact">✉️ <a href="mailto:' + d.email + '" style="color:var(--blue)" onclick="event.stopPropagation()">' + d.email + '</a></div>' : ''}
+      \${d.website ? '<div class="ev-contact">🌐 <a href="' + d.website + '" target="_blank" style="color:var(--blue)" onclick="event.stopPropagation()">' + d.website.replace(/^https?:\/\//, '') + '</a></div>' : ''}
+      \${dateLabel || timeLabel ? '<div class="ev-contact">📅 ' + [dateLabel, timeLabel].filter(Boolean).join(' ') + '</div>' : ''}
+      \${d.desc ? '<div class="ev-contact" style="margin-top:2px;">' + d.desc + '</div>' : ''}
+    </div>`;
+  }).join('');
+}
+
+function openDeliveryForm(id) {
+  editingDeliveryId = id;
+  const card   = document.getElementById('deliveryFormCard');
+  const delBtn = document.getElementById('dlvDeleteBtn');
+  const gcal   = document.getElementById('dlvGcalLink');
+  card.style.display = 'block';
+  card.scrollIntoView({ behavior:'smooth', block:'start' });
+
+  if (id) {
+    const d = deliveryEvents.find(e => e.id === id);
+    if (!d) return;
+    document.getElementById('deliveryFormTitle').textContent = '✏️ Edit Delivery / Utility';
+    document.getElementById('dlvType').value    = d.type    || '';
+    document.getElementById('dlvItem').value    = d.item    || '';
+    document.getElementById('dlvCompany').value = d.company || '';
+    document.getElementById('dlvPhone').value   = d.phone   || '';
+    document.getElementById('dlvEmail').value   = d.email   || '';
+    document.getElementById('dlvWebsite').value = d.website || '';
+    document.getElementById('dlvDate').value    = d.date    || '';
+    document.getElementById('dlvTime').value    = d.time    || '';
+    document.getElementById('dlvDesc').value    = d.desc    || '';
+    delBtn.style.display = 'inline-flex';
+    gcal.style.display   = 'block';
+    document.getElementById('dlvGcalAnchor').href = buildGcalUrl({
+      type: d.type + ': ' + d.item,
+      date: d.date, time: d.time,
+      contact: d.company, phone: d.phone||'', email: d.email||'', desc: [d.website||'', d.desc||''].filter(Boolean).join('\n')
+    });
+  } else {
+    document.getElementById('deliveryFormTitle').textContent = '🚚 New Delivery / Utility';
+    document.getElementById('dlvType').value    = '';
+    document.getElementById('dlvItem').value    = '';
+    document.getElementById('dlvCompany').value = '';
+    document.getElementById('dlvPhone').value   = '';
+    document.getElementById('dlvEmail').value   = '';
+    document.getElementById('dlvWebsite').value = '';
+    document.getElementById('dlvDate').value    = selDate || '';
+    document.getElementById('dlvTime').value    = '';
+    document.getElementById('dlvDesc').value    = '';
+    delBtn.style.display = 'none';
+    gcal.style.display   = 'none';
+  }
+}
+
+function cancelDeliveryForm() {
+  document.getElementById('deliveryFormCard').style.display = 'none';
+  editingDeliveryId = null;
+}
+
+function saveDelivery() {
+  const type = document.getElementById('dlvType').value;
+  const item = document.getElementById('dlvItem').value.trim();
+  if (!type || !item) { showError('Please fill in Type and Item / Service.'); return; }
+
+  const d = {
+    id:      editingDeliveryId || ('dlv_' + Date.now()),
+    type,
+    item,
+    company: document.getElementById('dlvCompany').value.trim(),
+    phone:   document.getElementById('dlvPhone').value.trim(),
+    email:   document.getElementById('dlvEmail').value.trim(),
+    website: document.getElementById('dlvWebsite').value.trim(),
+    date:    document.getElementById('dlvDate').value,
+    time:    document.getElementById('dlvTime').value,
+    desc:    document.getElementById('dlvDesc').value.trim()
+  };
+
+  if (editingDeliveryId) {
+    const idx = deliveryEvents.findIndex(e => e.id === editingDeliveryId);
+    if (idx >= 0) deliveryEvents[idx] = d;
+  } else {
+    deliveryEvents.push(d);
+  }
+
+  saveDeliveryEvents();
+  cancelDeliveryForm();
+  renderDeliveryList();
+  showSuccess('Delivery / utility saved!');
+}
+
+function deleteDelivery() {
+  if (!editingDeliveryId) return;
+  if (!confirm('Delete this entry?')) return;
+  deliveryEvents = deliveryEvents.filter(e => e.id !== editingDeliveryId);
+  saveDeliveryEvents();
+  cancelDeliveryForm();
+  renderDeliveryList();
+}
 </script>
 </body>
 </html>
