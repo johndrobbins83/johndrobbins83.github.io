@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,7 @@
 <title>📦 Moving Inventory System</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
+ 
   :root {
     --win-bg: #008080;
     --win-face: #c0c0c0;
@@ -21,9 +21,9 @@
     --win-red: #ff0000;
     --win-yellow: #ffff00;
   }
-
+ 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   body {
     background: var(--win-bg);
     font-family: 'VT323', 'Courier New', monospace;
@@ -39,7 +39,7 @@
         rgba(0,0,0,0.03) 4px
       );
   }
-
+ 
   /* TASKBAR */
   .taskbar {
     position: fixed;
@@ -84,7 +84,7 @@
     padding: 2px 8px;
     font-size: 14px;
   }
-
+ 
   /* WINDOW */
   .window {
     background: var(--win-face);
@@ -96,7 +96,7 @@
     margin: 0 auto 60px auto;
     box-shadow: 2px 2px 0 var(--win-black);
   }
-
+ 
   .title-bar {
     background: var(--win-title-active);
     color: white;
@@ -142,7 +142,7 @@
     border-right: 2px solid var(--win-light);
     border-bottom: 2px solid var(--win-light);
   }
-
+ 
   .menu-bar {
     display: flex;
     background: var(--win-face);
@@ -160,11 +160,11 @@
     background: var(--win-blue);
     color: white;
   }
-
+ 
   .window-body {
     padding: 12px;
   }
-
+ 
   /* FORM SECTIONS */
   .section-label {
     font-size: 13px;
@@ -176,7 +176,7 @@
     display: inline-block;
     z-index: 1;
   }
-
+ 
   .fieldset-win {
     border: 2px groove var(--win-dark);
     padding: 12px 10px 10px 10px;
@@ -189,7 +189,7 @@
     font-weight: bold;
     color: var(--win-black);
   }
-
+ 
   .form-row {
     display: flex;
     gap: 10px;
@@ -197,7 +197,7 @@
     align-items: flex-end;
     flex-wrap: wrap;
   }
-
+ 
   .form-group {
     display: flex;
     flex-direction: column;
@@ -205,13 +205,13 @@
     flex: 1;
     min-width: 120px;
   }
-
+ 
   .form-group label {
     font-size: 14px;
     color: var(--win-black);
     white-space: nowrap;
   }
-
+ 
   .form-group input[type="text"],
   .form-group input[type="number"],
   .form-group select,
@@ -228,19 +228,19 @@
     outline: none;
     width: 100%;
   }
-
+ 
   .form-group textarea {
     resize: vertical;
     min-height: 60px;
   }
-
+ 
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
     outline: 1px dotted var(--win-black);
     outline-offset: 0px;
   }
-
+ 
   /* Item number display */
   #itemNumberDisplay {
     background: white;
@@ -256,7 +256,7 @@
     text-align: center;
     letter-spacing: 2px;
   }
-
+ 
   /* RADIO / CHECKBOX */
   .radio-group, .checkbox-group {
     display: flex;
@@ -279,7 +279,7 @@
     cursor: pointer;
     accent-color: var(--win-black);
   }
-
+ 
   /* IMAGE UPLOAD */
   .upload-zone {
     background: white;
@@ -319,7 +319,7 @@
     object-fit: cover;
     border: 2px solid var(--win-darker);
   }
-
+ 
   /* BUTTONS */
   .btn-row {
     display: flex;
@@ -328,7 +328,7 @@
     margin-top: 12px;
     flex-wrap: wrap;
   }
-
+ 
   .win-action-btn {
     background: var(--win-face);
     border-top: 2px solid var(--win-light);
@@ -356,7 +356,7 @@
     outline: 1px dotted var(--win-black);
     outline-offset: -4px;
   }
-
+ 
   /* STATUS BAR */
   .status-bar {
     display: flex;
@@ -373,7 +373,7 @@
     padding: 1px 6px;
     flex: 1;
   }
-
+ 
   /* DIALOG / MODAL */
   .dialog-overlay {
     position: fixed;
@@ -410,7 +410,7 @@
     justify-content: center;
     gap: 8px;
   }
-
+ 
   /* PROGRESS BAR */
   .progress-wrap {
     border-top: 2px solid var(--win-darker);
@@ -435,7 +435,7 @@
     width: 0%;
     transition: width 0.3s;
   }
-
+ 
   /* ITEMS LOG WINDOW */
   .log-window {
     background: var(--win-face);
@@ -469,7 +469,7 @@
   .log-entry:hover { background: var(--win-blue); color: white; }
   .log-num { color: var(--win-blue); font-weight: bold; min-width: 45px; }
   .log-entry:hover .log-num { color: var(--win-yellow); }
-
+ 
   /* Scrollbar win95 style */
   ::-webkit-scrollbar { width: 16px; }
   ::-webkit-scrollbar-track { background: var(--win-face); }
@@ -480,7 +480,7 @@
     border-right: 2px solid var(--win-darker);
     border-bottom: 2px solid var(--win-darker);
   }
-
+ 
   @media (max-width: 500px) {
     .form-row { flex-direction: column; }
     .form-group { min-width: 100%; }
@@ -488,7 +488,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- MAIN FORM WINDOW -->
 <div class="window" id="mainWindow">
   <div class="title-bar">
@@ -502,16 +502,16 @@
       <div class="win-btn" style="font-size:13px;">✕</div>
     </div>
   </div>
-
+ 
   <div class="menu-bar">
     <span class="menu-item">File</span>
     <span class="menu-item">Edit</span>
     <span class="menu-item">View</span>
     <span class="menu-item">Help</span>
   </div>
-
+ 
   <div class="window-body">
-
+ 
     <!-- CONFIG NOTICE -->
     <div class="fieldset-win" style="border-color: var(--win-blue); background: #fffde7;">
       <legend>⚙️ Configuration</legend>
@@ -522,7 +522,7 @@
         <div style="margin-top:4px; font-size:13px; color:#555;">See setup instructions below. Paste the deployment URL from Google Apps Script.</div>
       </div>
     </div>
-
+ 
     <!-- IDENTIFICATION -->
     <fieldset class="fieldset-win">
       <legend>📋 Item Identification</legend>
@@ -559,7 +559,7 @@
         </div>
       </div>
     </fieldset>
-
+ 
     <!-- LOCATION & STATUS -->
     <fieldset class="fieldset-win">
       <legend>🏠 Location &amp; Status</legend>
@@ -598,7 +598,7 @@
         </div>
       </div>
     </fieldset>
-
+ 
     <!-- IMAGE UPLOAD -->
     <fieldset class="fieldset-win">
       <legend>🖼️ Images</legend>
@@ -610,27 +610,27 @@
       <div id="imagePreview"></div>
       <div id="imageCount" style="font-size:13px;color:#555;margin-top:4px;"></div>
     </fieldset>
-
+ 
     <!-- PROGRESS -->
     <div class="progress-wrap" id="progressWrap">
       <div class="progress-fill" id="progressFill"></div>
     </div>
-
+ 
     <!-- BUTTONS -->
     <div class="btn-row">
       <button class="win-action-btn" onclick="clearForm()">Clear</button>
       <button class="win-action-btn primary" onclick="submitItem()">Submit Item</button>
     </div>
-
+ 
   </div><!-- window-body -->
-
+ 
   <div class="status-bar">
     <div class="status-panel" id="statusText">Ready — Fill out the form and click Submit Item.</div>
     <div class="status-panel" style="flex:0 0 auto; min-width:120px; text-align:center;" id="itemCountStatus">Items logged: 0</div>
   </div>
 </div><!-- window -->
-
-
+ 
+ 
 <!-- ITEM LOG WINDOW -->
 <div class="log-window">
   <div class="title-bar" style="background: linear-gradient(to right,#404040,#707070);">
@@ -653,8 +653,8 @@
     </div>
   </div>
 </div>
-
-
+ 
+ 
 <!-- SUCCESS DIALOG -->
 <div class="dialog-overlay" id="successDialog">
   <div class="dialog-box">
@@ -673,7 +673,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- ERROR DIALOG -->
 <div class="dialog-overlay" id="errorDialog">
   <div class="dialog-box">
@@ -692,8 +692,8 @@
     </div>
   </div>
 </div>
-
-
+ 
+ 
 <!-- TASKBAR -->
 <div class="taskbar">
   <button class="start-btn">🪟 Start</button>
@@ -703,14 +703,14 @@
   </div>
   <div class="taskbar-clock" id="taskbarClock">00:00</div>
 </div>
-
-
+ 
+ 
 <script>
 // ==================== STATE ====================
 let itemCounter = 1;
 let sessionItems = [];
 let selectedImages = [];
-
+ 
 // ==================== INIT ====================
 document.addEventListener('DOMContentLoaded', () => {
   loadItemCounter();
@@ -723,24 +723,24 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('sheetUrl', e.target.value);
   });
 });
-
+ 
 function updateClock() {
   const now = new Date();
   document.getElementById('taskbarClock').textContent =
     now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
 }
-
+ 
 function loadItemCounter() {
   const stored = localStorage.getItem('itemCounter');
   if (stored) itemCounter = parseInt(stored);
   updateItemNumberDisplay();
 }
-
+ 
 function updateItemNumberDisplay() {
   document.getElementById('itemNumberDisplay').textContent =
     String(itemCounter).padStart(4, '0');
 }
-
+ 
 // ==================== IMAGE HANDLING ====================
 function handleImageSelect(event) {
   const files = Array.from(event.target.files);
@@ -760,7 +760,7 @@ function handleImageSelect(event) {
   });
   count.textContent = files.length > 0 ? `${files.length} image(s) selected` : '';
 }
-
+ 
 // ==================== SUBMIT ====================
 async function submitItem() {
   const url = document.getElementById('sheetUrl').value.trim();
@@ -768,26 +768,26 @@ async function submitItem() {
     showError('Please enter your Google Apps Script Web App URL in the Configuration field at the top.');
     return;
   }
-
+ 
   // Validation
   const itemName = document.getElementById('itemName').value.trim();
   const itemType = document.getElementById('itemType').value;
   const location  = document.getElementById('location').value;
   const quantity  = document.getElementById('quantity').value;
-
+ 
   if (!itemName || !itemType || !location || !quantity) {
     showError('Please fill in all required fields:\n• Item Name\n• Type\n• Location\n• Quantity');
     return;
   }
-
+ 
   const wrapped  = document.querySelector('input[name="wrapped"]:checked')?.value || 'No';
   const fragile  = document.querySelector('input[name="fragile"]:checked')?.value || 'No';
   const description = document.getElementById('description').value.trim();
   const itemNumber = String(itemCounter).padStart(4, '0');
-
+ 
   setStatus('Preparing submission...');
   showProgress(20);
-
+ 
   // Convert images to base64
   let imageDataArray = [];
   try {
@@ -797,10 +797,10 @@ async function submitItem() {
     hideProgress();
     return;
   }
-
+ 
   showProgress(50);
   setStatus('Sending to Google Sheets...');
-
+ 
   const payload = {
     itemNumber,
     itemName,
@@ -813,7 +813,7 @@ async function submitItem() {
     images: imageDataArray,
     timestamp: new Date().toISOString()
   };
-
+ 
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -821,34 +821,34 @@ async function submitItem() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-
+ 
     showProgress(100);
     // no-cors means we can't read response — assume success
     onSubmitSuccess(payload);
-
+ 
   } catch (err) {
     hideProgress();
     showError('Network error: ' + err.message + '\n\nCheck your Script URL and make sure the deployment is set to "Anyone" access.');
   }
 }
-
+ 
 function onSubmitSuccess(payload) {
   // Add to session log
   sessionItems.push(payload);
   addToLog(payload);
-
+ 
   // Increment counter
   itemCounter++;
   localStorage.setItem('itemCounter', itemCounter);
   updateItemNumberDisplay();
-
+ 
   // Update count display
   document.getElementById('itemCountStatus').textContent = `Items logged: ${sessionItems.length}`;
-
+ 
   setStatus(`✅ Item #${payload.itemNumber} "${payload.itemName}" submitted OK.`);
-
+ 
   showSuccess(`Item #${payload.itemNumber} — "${payload.itemName}" has been logged!\n\nNext item number: ${String(itemCounter).padStart(4,'0')}`);
-
+ 
   // Partial clear
   document.getElementById('itemName').value = '';
   document.getElementById('description').value = '';
@@ -858,10 +858,10 @@ function onSubmitSuccess(payload) {
   selectedImages = [];
   document.getElementById('quantity').value = 1;
   // Keep type, location, wrapped, fragile
-
+ 
   setTimeout(hideProgress, 800);
 }
-
+ 
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -874,7 +874,7 @@ function fileToBase64(file) {
     reader.readAsDataURL(file);
   });
 }
-
+ 
 // ==================== CLEAR ====================
 function clearForm() {
   document.getElementById('itemName').value = '';
@@ -890,14 +890,14 @@ function clearForm() {
   selectedImages = [];
   setStatus('Form cleared.');
 }
-
+ 
 // ==================== LOG ====================
 function addToLog(item) {
   const log = document.getElementById('logBody');
   // Remove placeholder
   const placeholder = log.querySelector('div[style]');
   if (placeholder) placeholder.remove();
-
+ 
   const entry = document.createElement('div');
   entry.className = 'log-entry';
   entry.innerHTML = `
@@ -910,19 +910,19 @@ function addToLog(item) {
   log.appendChild(entry);
   log.scrollTop = log.scrollHeight;
 }
-
+ 
 function clearLog() {
   document.getElementById('logBody').innerHTML =
     '<div style="color:#888; font-size:13px; padding:4px;">No items logged yet this session.</div>';
   sessionItems = [];
   document.getElementById('itemCountStatus').textContent = 'Items logged: 0';
 }
-
+ 
 // ==================== UI HELPERS ====================
 function setStatus(msg) {
   document.getElementById('statusText').textContent = msg;
 }
-
+ 
 function showProgress(pct) {
   const wrap = document.getElementById('progressWrap');
   const fill = document.getElementById('progressFill');
@@ -933,7 +933,7 @@ function hideProgress() {
   document.getElementById('progressWrap').classList.remove('active');
   document.getElementById('progressFill').style.width = '0%';
 }
-
+ 
 function showSuccess(msg) {
   document.getElementById('successMsg').innerText = msg;
   document.getElementById('successDialog').classList.add('active');
@@ -946,6 +946,6 @@ function closeDialog(id) {
   document.getElementById(id).classList.remove('active');
 }
 </script>
-
+ 
 </body>
 </html>
