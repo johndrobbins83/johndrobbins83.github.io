@@ -27,7 +27,8 @@
   body {
     background: var(--win-bg);
     font-family: 'VT323', 'Courier New', monospace;
-    font-size: 16px;
+    font-weight: bold;
+    font-size: 22px;
     min-height: 100vh;
     padding: 20px;
     background-image:
@@ -64,7 +65,7 @@
     border-bottom: 2px solid var(--win-darker);
     padding: 2px 8px;
     font-family: 'VT323', monospace;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     cursor: pointer;
     user-select: none;
@@ -82,7 +83,7 @@
     border-right: 2px solid var(--win-light);
     border-bottom: 2px solid var(--win-light);
     padding: 2px 8px;
-    font-size: 14px;
+    font-size: 21px;
   }
 
   /* WINDOW */
@@ -110,11 +111,11 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 15px;
+    font-size: 21px;
     font-weight: bold;
     letter-spacing: 0.5px;
   }
-  .title-bar-icon { font-size: 18px; }
+  .title-bar-icon { font-size: 24px; }
   .title-bar-controls {
     display: flex;
     gap: 2px;
@@ -127,7 +128,7 @@
     border-left: 2px solid var(--win-light);
     border-right: 2px solid var(--win-darker);
     border-bottom: 2px solid var(--win-darker);
-    font-size: 11px;
+    font-size: 19px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +153,7 @@
   }
   .menu-item {
     padding: 2px 8px;
-    font-size: 14px;
+    font-size: 21px;
     cursor: pointer;
     color: var(--win-black);
   }
@@ -167,7 +168,7 @@
 
   /* FORM SECTIONS */
   .section-label {
-    font-size: 13px;
+    font-size: 21px;
     background: var(--win-face);
     padding: 0 4px;
     position: relative;
@@ -184,7 +185,7 @@
     position: relative;
   }
   .fieldset-win legend {
-    font-size: 14px;
+    font-size: 21px;
     padding: 0 6px;
     font-weight: bold;
     color: var(--win-black);
@@ -207,10 +208,12 @@
   }
 
   .form-group label {
-    font-size: 14px;
+    font-size: 21px;
     color: var(--win-black);
     white-space: nowrap;
   }
+
+  .form-group label { font-weight: bold; }
 
   .form-group input[type="text"],
   .form-group input[type="number"],
@@ -223,7 +226,7 @@
     border-bottom: 2px solid var(--win-light);
     padding: 3px 5px;
     font-family: 'VT323', monospace;
-    font-size: 15px;
+    font-size: 21px;
     color: var(--win-black);
     outline: none;
     width: 100%;
@@ -250,7 +253,7 @@
     border-bottom: 2px solid var(--win-light);
     padding: 3px 5px;
     font-family: 'VT323', monospace;
-    font-size: 18px;
+    font-size: 24px;
     color: var(--win-blue);
     min-width: 80px;
     text-align: center;
@@ -270,7 +273,7 @@
     align-items: center;
     gap: 4px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 21px;
   }
   .radio-group input[type="radio"],
   .checkbox-group input[type="checkbox"] {
@@ -305,8 +308,8 @@
     opacity: 0;
     cursor: pointer;
   }
-  .upload-zone .upload-icon { font-size: 28px; }
-  .upload-zone .upload-text { font-size: 14px; color: #444; }
+  .upload-zone .upload-icon { font-size: 34px; }
+  .upload-zone .upload-text { font-size: 21px; color: #444; }
   #imagePreview {
     display: flex;
     flex-wrap: wrap;
@@ -337,7 +340,7 @@
     border-bottom: 2px solid var(--win-darker);
     padding: 4px 20px;
     font-family: 'VT323', monospace;
-    font-size: 16px;
+    font-size: 22px;
     cursor: pointer;
     color: var(--win-black);
     min-width: 90px;
@@ -362,7 +365,7 @@
     display: flex;
     border-top: 2px solid var(--win-dark);
     padding: 2px 6px;
-    font-size: 13px;
+    font-size: 21px;
     gap: 8px;
   }
   .status-panel {
@@ -397,12 +400,12 @@
   }
   .dialog-body {
     padding: 16px;
-    font-size: 15px;
+    font-size: 21px;
     display: flex;
     gap: 12px;
     align-items: flex-start;
   }
-  .dialog-icon { font-size: 30px; }
+  .dialog-icon { font-size: 34px; }
   .dialog-text { line-height: 1.5; }
   .dialog-buttons {
     padding: 8px 16px 12px;
@@ -457,7 +460,7 @@
     border-right: 2px solid var(--win-light);
     border-bottom: 2px solid var(--win-light);
     margin: 8px;
-    font-size: 13px;
+    font-size: 21px;
   }
   .log-entry {
     padding: 3px 4px;
@@ -499,7 +502,7 @@
     <div class="title-bar-controls">
       <div class="win-btn">_</div>
       <div class="win-btn">□</div>
-      <div class="win-btn" style="font-size:13px;">✕</div>
+      <div class="win-btn" style="font-size: 21px;">✕</div>
     </div>
   </div>
 
@@ -511,17 +514,6 @@
   </div>
 
   <div class="window-body">
-
-    <!-- CONFIG NOTICE -->
-    <div class="fieldset-win" style="border-color: var(--win-blue); background: #fffde7;">
-      <legend>⚙️ Configuration</legend>
-      <div style="font-size:14px; line-height:1.6;">
-        <strong>Sheet URL:</strong>
-        <input type="text" id="sheetUrl" placeholder="Paste your Google Apps Script Web App URL here..."
-          style="width:100%; margin-top:4px; border-top:2px solid #888; border-left:2px solid #888; border-right:2px solid #fff; border-bottom:2px solid #fff; padding:3px 5px; font-family:'VT323',monospace; font-size:14px;">
-        <div style="margin-top:4px; font-size:13px; color:#555;">See setup instructions below. Paste the deployment URL from Google Apps Script.</div>
-      </div>
-    </div>
 
     <!-- IDENTIFICATION -->
     <fieldset class="fieldset-win">
@@ -546,6 +538,10 @@
             <option value="Kitchen Appliance">Kitchen Appliance</option>
             <option value="Dishes/Bar">Dishes/Bar</option>
           </select>
+        </div>
+        <div class="form-group" style="flex:0 0 110px;">
+          <label for="binBoxNumber">Bin/Box #</label>
+          <input type="text" id="binBoxNumber" placeholder="e.g. B-12">
         </div>
         <div class="form-group" style="flex:0 0 80px;">
           <label for="quantity">Qty *</label>
@@ -583,6 +579,25 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="itemOrigin">Item Origin</label>
+          <select id="itemOrigin">
+            <option value="">-- Select Origin --</option>
+            <option value="Bedroom">Bedroom</option>
+            <option value="Guestroom">Guestroom</option>
+            <option value="Office">Office</option>
+            <option value="Garage">Garage</option>
+            <option value="Studio">Studio</option>
+            <option value="Living Room">Living Room</option>
+            <option value="Bathrooms">Bathrooms</option>
+            <option value="Closet 1">Closet 1</option>
+            <option value="Closet 2">Closet 2</option>
+            <option value="Utility Closet">Utility Closet</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Patio/Garden">Patio/Garden</option>
+            <option value="Dining/Bar">Dining/Bar</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label>Wrapped?</label>
           <div class="radio-group">
             <label><input type="radio" name="wrapped" value="Yes"> Yes</label>
@@ -605,10 +620,10 @@
       <div class="upload-zone" id="uploadZone">
         <input type="file" id="imageInput" multiple accept="image/*" onchange="handleImageSelect(event)">
         <div class="upload-icon">📁</div>
-        <div class="upload-text">Click to browse or drag images here<br><span style="font-size:12px;color:#888;">(JPEG, PNG, GIF supported)</span></div>
+        <div class="upload-text">Click to browse or drag images here<br><span style="font-size: 20px;color:#888;">(JPEG, PNG, GIF supported)</span></div>
       </div>
       <div id="imagePreview"></div>
-      <div id="imageCount" style="font-size:13px;color:#555;margin-top:4px;"></div>
+      <div id="imageCount" style="font-size: 21px;color:#555;margin-top:4px;"></div>
     </fieldset>
 
     <!-- PROGRESS -->
@@ -620,6 +635,20 @@
     <div class="btn-row">
       <button class="win-action-btn" onclick="clearForm()">Clear</button>
       <button class="win-action-btn primary" onclick="submitItem()">Submit Item</button>
+    </div>
+
+    <!-- CONFIG NOTICE -->
+    <div class="fieldset-win" style="border-color: var(--win-blue); background: #fffde7; margin-top:12px;">
+      <legend>⚙️ Configuration</legend>
+      <div style="font-size: 21px; line-height:1.4;">
+        <strong>Google Apps Script Web App URL:</strong>
+        <div style="display:flex; gap:6px; margin-top:4px; align-items:center;">
+          <input type="text" id="sheetUrl" placeholder="Paste your deployment URL here..."
+            style="flex:1; border-top:2px solid #888; border-left:2px solid #888; border-right:2px solid #fff; border-bottom:2px solid #fff; padding:3px 5px; font-family:'VT323',monospace; font-size: 21px;">
+          <button class="win-action-btn" onclick="saveSheetUrl()" id="saveUrlBtn" style="white-space:nowrap; min-width:80px;">💾 Save URL</button>
+        </div>
+        <div id="urlStatus" style="margin-top:4px; font-size: 21px; color:#555;">No URL saved. Paste your Apps Script deployment URL and click Save URL.</div>
+      </div>
     </div>
 
   </div><!-- window-body -->
@@ -641,12 +670,12 @@
     <div class="title-bar-controls">
       <div class="win-btn">_</div>
       <div class="win-btn">□</div>
-      <div class="win-btn" style="font-size:13px;">✕</div>
+      <div class="win-btn" style="font-size: 21px;">✕</div>
     </div>
   </div>
   <div class="window-body" style="padding:8px;">
     <div class="log-body" id="logBody">
-      <div style="color:#888; font-size:13px; padding:4px;">No items logged yet this session.</div>
+      <div style="color:#888; font-size: 21px; padding:4px;">No items logged yet this session.</div>
     </div>
     <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:6px;">
       <button class="win-action-btn" onclick="clearLog()">Clear Log</button>
@@ -661,7 +690,7 @@
     <div class="title-bar">
       <div class="title-bar-text">✅ Success</div>
       <div class="title-bar-controls">
-        <div class="win-btn" onclick="closeDialog('successDialog')" style="font-size:13px;">✕</div>
+        <div class="win-btn" onclick="closeDialog('successDialog')" style="font-size: 21px;">✕</div>
       </div>
     </div>
     <div class="dialog-body">
@@ -680,7 +709,7 @@
     <div class="title-bar" style="background:linear-gradient(to right, #800000, #c00000);">
       <div class="title-bar-text">⚠️ Error</div>
       <div class="title-bar-controls">
-        <div class="win-btn" onclick="closeDialog('errorDialog')" style="font-size:13px;">✕</div>
+        <div class="win-btn" onclick="closeDialog('errorDialog')" style="font-size: 21px;">✕</div>
       </div>
     </div>
     <div class="dialog-body">
@@ -698,7 +727,7 @@
 <div class="taskbar">
   <button class="start-btn">🪟 Start</button>
   <div style="width:2px; background:var(--win-dark); height:22px; margin:0 4px;"></div>
-  <div style="display:flex; align-items:center; gap:4px; background:var(--win-blue); color:white; padding:2px 8px; font-size:14px; border-top:2px solid var(--win-light); border-left:2px solid var(--win-light); border-right:2px solid var(--win-darker); border-bottom:2px solid var(--win-darker);">
+  <div style="display:flex; align-items:center; gap:4px; background:var(--win-blue); color:white; padding:2px 8px; font-size: 21px; border-top:2px solid var(--win-light); border-left:2px solid var(--win-light); border-right:2px solid var(--win-darker); border-bottom:2px solid var(--win-darker);">
     📦 Moving Inventory
   </div>
   <div class="taskbar-clock" id="taskbarClock">00:00</div>
@@ -718,16 +747,38 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateClock, 1000);
   // Load saved URL
   const saved = localStorage.getItem('sheetUrl');
-  if (saved) document.getElementById('sheetUrl').value = saved;
-  document.getElementById('sheetUrl').addEventListener('change', e => {
-    localStorage.setItem('sheetUrl', e.target.value);
-  });
+  if (saved) {
+    document.getElementById('sheetUrl').value = saved;
+    document.getElementById('urlStatus').textContent = 'URL saved: ' + saved.substring(0, 60) + '...';
+    document.getElementById('urlStatus').style.color = '#006400';
+  }
 });
 
 function updateClock() {
   const now = new Date();
   document.getElementById('taskbarClock').textContent =
     now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+}
+
+function saveSheetUrl() {
+  const url = document.getElementById('sheetUrl').value.trim();
+  if (!url) {
+    document.getElementById('urlStatus').textContent = 'Please paste a URL first.';
+    document.getElementById('urlStatus').style.color = '#cc0000';
+    return;
+  }
+  if (!url.startsWith('https://script.google.com')) {
+    document.getElementById('urlStatus').textContent = 'Warning: URL does not look like a Google Apps Script URL. Saved anyway.';
+    document.getElementById('urlStatus').style.color = '#cc6600';
+  } else {
+    document.getElementById('urlStatus').textContent = 'Saved: ' + url.substring(0, 60) + '...';
+    document.getElementById('urlStatus').style.color = '#006400';
+  }
+  localStorage.setItem('sheetUrl', url);
+  // Flash the button
+  const btn = document.getElementById('saveUrlBtn');
+  btn.textContent = '✅ Saved!';
+  setTimeout(() => { btn.textContent = '💾 Save URL'; }, 2000);
 }
 
 function loadItemCounter() {
@@ -801,10 +852,14 @@ async function submitItem() {
   showProgress(50);
   setStatus('Sending to Google Sheets...');
 
+  const binBoxNumber = document.getElementById('binBoxNumber').value.trim();
+
   const payload = {
     itemNumber,
     itemName,
     itemType,
+    binBoxNumber,
+    itemOrigin: document.getElementById('itemOrigin').value,
     location,
     quantity: parseInt(quantity),
     description,
@@ -880,6 +935,8 @@ function clearForm() {
   document.getElementById('itemName').value = '';
   document.getElementById('itemType').value = '';
   document.getElementById('location').value = '';
+  document.getElementById('itemOrigin').value = '';
+  document.getElementById('binBoxNumber').value = '';
   document.getElementById('description').value = '';
   document.getElementById('quantity').value = 1;
   document.querySelector('input[name="wrapped"][value="No"]').checked = true;
@@ -913,7 +970,7 @@ function addToLog(item) {
 
 function clearLog() {
   document.getElementById('logBody').innerHTML =
-    '<div style="color:#888; font-size:13px; padding:4px;">No items logged yet this session.</div>';
+    '<div style="color:#888; font-size: 21px; padding:4px;">No items logged yet this session.</div>';
   sessionItems = [];
   document.getElementById('itemCountStatus').textContent = 'Items logged: 0';
 }
